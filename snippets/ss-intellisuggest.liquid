@@ -1,7 +1,7 @@
 {% if template == 'product' or cart.item_count > 0 %}
 	<!-- Searchspring IntelliSuggest Tracking -->
-	<script type="lazyload2" data-src="//cdn.searchspring.net/intellisuggest/is.min.js"></script>
-	<script type="lazyload2">
+	<script src="//cdn.searchspring.net/intellisuggest/is.min.js"></script>
+	<script>
 		var ss_site_id = '{{ settings.ss_site_id }}';
  
 		try {

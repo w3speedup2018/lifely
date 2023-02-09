@@ -11,7 +11,7 @@
 							<div class="left_icon_grid_box">
                         		 {% if block.settings.grid_image != blank %}
                               			<div class="icon_box_">
-                              				<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
+                              				<img src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
                               			</div>                                       
                                   {% endif %}
                               	  {% if block.settings.img_heading != blank or block.settings.subheading != blank %}

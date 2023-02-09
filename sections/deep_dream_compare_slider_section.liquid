@@ -13,8 +13,8 @@
                       {% assign index = forloop.index0 %}
                       {% if product.metafields.scale.heading[index] != blank and product.metafields.mattress.image[index] != blank and product.metafields.mattress.scale_image[index] != blank %}
                            <div class="mattress_compare_slider_item">
-                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.mattress.image[index] }}" alt=""/>
-                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.mattress.scale_image[index] }}" alt=""/>
+                              <img src="{{ product.metafields.mattress.image[index] }}" alt=""/>
+                              <img src="{{ product.metafields.mattress.scale_image[index] }}" alt=""/>
                               {% if product.metafields.scale.product-url[index] != blank %}
                               <div class="compare_link_button">
                                 <a href="{{ product.metafields.scale.product-url[index] }}">View Product</a> 

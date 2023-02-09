@@ -12,9 +12,9 @@
 {% for block in section.blocks %}
 {% if block.settings.mattress_image != blank and block.settings.slide_title != blank %}
 <div class="mattress_compare_slider_item">
-<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.mattress_image | img_url:"master"}}" alt=""/>
+<img src="{{ block.settings.mattress_image | img_url:"master"}}" alt=""/>
 {% if block.settings.scale_image != blank %}
-<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.scale_image  | img_url:"master" }}" alt=""/>
+<img src="{{ block.settings.scale_image  | img_url:"master" }}" alt=""/>
 {% endif %}
 
 

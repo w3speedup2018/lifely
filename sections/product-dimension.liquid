@@ -16,15 +16,15 @@
       {% endif %}
       <div class="desktop_dimension">
           {% if product.metafields.arena.dimension_image != blank %}
-              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+              <img src="{{product.metafields.arena.dimension_image}}">
           {% endif %}
       </div>
       <div class="mobile_dimension" style="display:none;">  
           {% if product.metafields.arena_mobile.mobile_dimension_image != blank %}
-              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
+              <img src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
           {% else %}
                {% if product.metafields.arena.dimension_image != blank %}
-                  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+                  <img src="{{product.metafields.arena.dimension_image}}">
               {% endif %}
           {% endif %}  
           {% if product.metafields.mobile_dimension.content != blank %}

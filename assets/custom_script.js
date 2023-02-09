@@ -1525,8 +1525,10 @@ $('#productSliderThumbs').slick({
            $('.shipping_zip_loader').remove();
          }
         });
-      
+        $('.add_to_cart_loader_form').remove();
       },2000);  
+    }else{
+      $('.add_to_cart_loader_form').remove();
     }
   })
   
@@ -2072,8 +2074,9 @@ $('#productSliderThumbs').slick({
            }
          }
         });
+       
     }
-
+     
   })
    
  if($('.collection_subcategory_bottom_description_sec .collection-hero__subdescription p').length > 1){

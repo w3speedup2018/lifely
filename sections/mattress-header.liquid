@@ -1,4 +1,4 @@
-<link rel="stylesheet" data-href="{{ 'component-collection-hero.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-collection-hero.css' | asset_url }}">
 
 {%- style -%}
   @media screen and (max-width: 749px) {
@@ -101,8 +101,8 @@
 
   
 </div>  
-<script type="lazyload2" >
-  setTimeout(function(){
+<script>
+document.addEventListener("DOMContentLoaded", function() {
     $('.top_content_item .desc-half .read-more-content').on('click', function(){
         $(this).closest('.top_content_item').find('.desc-half').hide();
         $(this).closest('.top_content_item').find('.desc-full').show();

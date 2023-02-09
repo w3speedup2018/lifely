@@ -1332,6 +1332,13 @@ body.cart_.cart .cart-notice-wrapper { margin:0px; padding:0px; }
 
   .landing_collection_grid .view_all_collection { margin-top:55px; }
   section.landing_collection_grid { padding-bottom:0px; }
+
+  div#shopify-section-announcement-bar .announcement-bar p {     letter-spacing: 0px; }
+
+  .ss__result.ss__result--item .card__inner:after { bottom:-25px; }
+
+    .footer-block__details-content {     margin-bottom: 1rem !important;  }
+
 }
 
 
@@ -1344,4 +1351,11 @@ html {
 .coupon_spend_cart { background:#E5C0BB !important; }
 p.spend_save_fill,
 p.spend_save_obj { color:#000 !important; }
+
+#shopify-section-template--14859129290794__66b9d8e6-ebe4-4e37-9b46-af06aacb1c95 .ss__recommendation__header { display:none; }
+
+.quick-view-button a.quick-view:before {      background-image: url(magnifying-glass.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    content: " " !important; }
 

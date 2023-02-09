@@ -231,8 +231,8 @@ data-currency="{{ shop.currency }}"
 data-description="{{ product.description | escape }}">
 </div>
 
-<script type="lazyload2">
-    setTimeout(function() {
+<script>
+    (function() {
       var length_related_slider = jQuery('.related_products .related_slider .bestseller_product').length; 
       var length_like_slider = jQuery('.related_products .also_like_slider .bestseller_product').length;
       

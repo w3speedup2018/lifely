@@ -1,11 +1,11 @@
-<link rel="stylesheet" data-href="{{ 'component-list-menu.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-search.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-menu-drawer.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-cart-notification.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-cart-items.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}">
 {%- if settings.predictive_search_enabled -%}
-  <link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}">
-  <link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}">
+  <link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}">
 {%- endif -%}
 
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
@@ -78,9 +78,9 @@
   }
 {%- endstyle -%}
 
-<script type="lazyload2" data-src="{{ 'details-disclosure.js' | asset_url }}"></script>
-<script type="lazyload2" data-src="{{ 'details-modal.js' | asset_url }}"></script>
-<script type="lazyload2" data-src="{{ 'cart-notification.js' | asset_url }}"></script>
+<script defer src="{{ 'details-disclosure.js' | asset_url }}"></script>
+<script defer src="{{ 'details-modal.js' | asset_url }}"></script>
+<script defer src="{{ 'cart-notification.js' | asset_url }}"></script>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
@@ -133,7 +133,7 @@
                                             {% if collection.handle == link_handle %}
                                                 {% assign collection_image = collection.metafields.arena.add_menu_image %}
                                                 <li class="submenu_category_image">
-                                                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ collection_image }}">
+                                                    <img src="{{ collection_image }}">
                                                 </li>
                                             {% endif %}	
                                         {% endfor %}
@@ -802,7 +802,7 @@
 								{% if collection.handle == menu_title_handle %}
 									{% assign collection_image = collection.metafields.arena.add_menu_image %}
 									<div class="submenu_category_image">
-										<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ collection_image }}">
+										<img src="{{ collection_image }}">
 									</div>
 								{% endif %}	
 							{% endfor %}

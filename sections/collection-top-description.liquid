@@ -40,8 +40,8 @@
         </div>  
     </div> 
 {% endif %}
-<script type="lazyload2" >
-  setTimeout(function(){
+<script>
+  jQuery(document).ready(function($){
     $('.collection_top_description .top_content_item .desc-half .read-more-content').on('click', function(){
         $(this).closest('.top_content_item').find('.desc-half').hide();
         $(this).closest('.top_content_item').find('.desc-full').show();

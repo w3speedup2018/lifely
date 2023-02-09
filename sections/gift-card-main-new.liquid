@@ -1,17 +1,17 @@
 {% comment %}theme-check-disable TemplateLength{% endcomment %}
-<link rel="stylesheet" data-href="{{ 'section-main-product.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-accordion.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-slider.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rating.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-accordion.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rating.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
 
  {%- liquid  
             assign min_price = product.price_min 
             assign max_price = product.price_max 
         %}
-<link rel="stylesheet" data-href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
 
 {% style %}
   .section-{{ section.id }}-padding {
@@ -371,7 +371,7 @@ border-radius: 4px; border-radius: 4px;}
                             {%- assign  variant_compare_price =  variant_compare_price | replace: ",", ""  -%} 
                             {% if variant_compare_price > variant_sale_price %}                              
                                 <p class="pre_order_discount_text" style="display:block !important" data-id="{{ variant.id }}" data-compare="{{ variant_compare_price }}" data-sale="{{ variant_sale_price }}">Pre-Order now available!  Save extra $<span class="pre_price_discont_price">{{ variant_compare_price | minus: variant_sale_price }}</span></p>
-                                <script type="lazyload2">
+                                <script>
                                   jQuery(document).ready(function($){
                                     if($('.pre_order_discount_text').length > 0){
                                        var com_price = $('.pre_order_discount_text').attr('data-compare');
@@ -841,7 +841,7 @@ border-radius: 4px; border-radius: 4px;}
                   </div>
                 {%- endform -%}
               </product-form>              
-              <link rel="stylesheet" data-href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
+              <link rel="stylesheet" href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
 
               {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 				
@@ -1080,7 +1080,7 @@ border-radius: 4px; border-radius: 4px;}
 
 </section>
 
-<script type="lazyload2">
+<script>
   class ProductModal extends ModalDialog {
     constructor() {
       super();

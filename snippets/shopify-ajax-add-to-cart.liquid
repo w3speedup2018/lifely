@@ -299,7 +299,7 @@
           	<div class="cart-habit-wrap">
               <div class="cart-habit-inner">
                   <div class="h-img">
-                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_142.png?v=1653035811" alt="image">
+                    <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_142.png?v=1653035811" alt="image">
                   </div>
                   <div class="h-content">
                     <h3>Together for the World</h3>
@@ -325,8 +325,8 @@
   
 </div>
 
- <script type="lazyload2">
-        setTimeout(function() { 
+ <script>
+        jQuery(document).ready(function($){ 
           if ($(".product-form__buttons")[0]){
             $(window).bind('scroll', function() {
                var navHeight = $('.product-form__buttons').offset().top;
@@ -519,11 +519,7 @@
     </script>
 
 
-{%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
 	<script>
-{%- else -%}
-	<script type="lazyload2">
-{%- endif -%}
       	const defaults = {
           cartModal: '.js-ajax-cart-modal', // classname
           cartModalContent: '.js-ajax-cart-modal-content', // classname

@@ -1,14 +1,12 @@
- 
-
 {% comment %}theme-check-disable TemplateLength{% endcomment %}
-<link rel="stylesheet" data-href="{{ 'section-main-product.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-accordion.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-slider.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rating.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-accordion.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rating.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -24,7 +22,7 @@
   }
 {%- endstyle -%}
 
-<script type="lazyload2" data-src="{{ 'product-form.js' | asset_url }}" ></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
 
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
@@ -320,7 +318,7 @@
                 </div>
               </details>
             </share-button>
-            <script type="lazyload2" data-src="{{ 'share.js' | asset_url }}" ></script>
+            <script src="{{ 'share.js' | asset_url }}" defer></script>
           {%- when 'variant_picker' -%}
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
@@ -444,7 +442,7 @@
                 {%- endform -%}
               </product-form>
 
-              <link rel="stylesheet" data-href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
+              <link rel="stylesheet" href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
 
               {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 				
@@ -466,7 +464,7 @@
               </pickup-availability>
             </div>
 
-            <script type="lazyload2" data-src="{{ 'pickup-availability.js' | asset_url }}" ></script>
+            <script src="{{ 'pickup-availability.js' | asset_url }}" defer></script>
           {%- when 'rating' -%}
             {%- if product.metafields.reviews.rating.value != blank -%}
               {% liquid
@@ -543,7 +541,7 @@
 {% comment %}End automatically added Judge.me widget{% endcomment %}
 </section>
 
-<script type="lazyload2">
+<script>
   class ProductModal extends ModalDialog {
     constructor() {
       super();
@@ -581,7 +579,7 @@
 </script>
 
 {% if product.media.size > 0 %}
-  <script type="lazyload2" data-src="{{ 'media-gallery.js' | asset_url }}" ></script>
+  <script src="{{ 'media-gallery.js' | asset_url }}" defer></script>
 {% endif %}
 
 <script>

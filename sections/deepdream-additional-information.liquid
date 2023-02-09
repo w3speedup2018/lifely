@@ -26,13 +26,13 @@
                         {% if desc_video[index] != blank %}
                                 <div class="product_info_video">
                                   <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
-                                   <video preload="none" class="pro_-video" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline>
+                                   <video class="pro_-video" src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline autoplay>
                                     Your browser does not support the video tag.
                                    </video>
                                 </div>
                         {% else %}           
                           	<div class="desc-image">
-                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                              	<img src="{{desc_image[index]}}" alt="image">
                             </div>                  
                       {% endif %}
                     </div>
@@ -57,13 +57,13 @@
                       {% if desc_video[index] != blank %}                   
                             <div class="product_info_video">
                                   <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
-                                   <video class="pro_-video" preload="none" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline>
+                                   <video class="pro_-video" src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline autoplay>
                                     Your browser does not support the video tag.
                                    </video>
                               </div>
                       {% else %}           
                       	<div class="desc-image">
-                          	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                          	<img src="{{desc_image[index]}}" alt="image">
                         </div>
                       {% endif %}
               		</div>
@@ -84,12 +84,12 @@
                   	{% assign index = forloop.index0 %}
                       <div class="description-slide">
                            {% if desc_video[index] != blank %}                   
-                              <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                              <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                               Your browser does not support the video tag.
                               </video>
                           {% else %}                             
                           	<div class="desc-image">
-                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                              	<img src="{{desc_image[index]}}" alt="image">
                             </div>                  
                           {% endif %}
                           {% if desc_title != blank or desc_content != blank %}
@@ -143,14 +143,14 @@
                                                        
                                    <div class="product_info_video">
                                     <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
-                                     <video class="pro_-video" preload="none" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline >
+                                     <video class="pro_-video" src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline autoplay>
                                       Your browser does not support the video tag.
                                      </video> 
                                 
                                   </div>
                             {% else %}           
                               	<div class="desc-image">
-                                  	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                  	<img src="{{desc_image[index]}}" alt="image">
                                 </div>                  
                           {% endif %}
                         </div>
@@ -175,14 +175,14 @@
                           {% if desc_video[index] != blank %}                   
                                 <div class="product_info_video">
                                   <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
-                                   <video preload="none" class="pro_-video" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline >
+                                   <video class="pro_-video" src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline autoplay>
                                     Your browser does not support the video tag.
                                    </video>
                                    <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
                                 </div>
                           {% else %}           
                           	<div class="desc-image">
-                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                              	<img src="{{desc_image[index]}}" alt="image">
                             </div>
                           {% endif %}
                   		</div>
@@ -203,12 +203,12 @@
                       	{% assign index = forloop.index0 %}
                           <div class="description-slide">
                                {% if desc_video[index] != blank %}                   
-                                  <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                                  <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                                   Your browser does not support the video tag.
                                   </video>
                               {% else %}                             
                               	<div class="desc-image">
-                                  	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                  	<img src="{{desc_image[index]}}" alt="image">
                                 </div>                  
                               {% endif %}
                               {% if desc_title != blank or desc_content != blank %}
@@ -249,14 +249,14 @@
                       {% if product.metafields.mattress.mobile_image[index] != blank and product.metafields.closer_look.heading[index] != blank %}
                          <div class="closer_like_slide">
                            <div class="left_sec">
-                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.mattress.mobile_image[index]}}"/>
+                              <img src="{{product.metafields.mattress.mobile_image[index]}}"/>
                            </div> 
                             <div class="right_sec page-width">
                               <h2>{{ product.metafields.closer_look.heading[index] }}</h2>
                               {% if product.metafields.cloder_look.content[index] != blank and product.metafields.closer_look.left_image[index] != blank %}
                                 <div class="content-closer-slide">
                                   <div class="image">
-                                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.closer_look.left_image[index] }}"/>
+                                      <img src="{{ product.metafields.closer_look.left_image[index] }}"/>
                                   </div>
                                   <div class="content_p">
                                     <p>{{product.metafields.cloder_look.content[index]}}</p>
@@ -302,13 +302,13 @@
             	{% if m == 0 %}
                   <div class="col-md-6 col-sm-6">  
                       {% if desc_video[index] != blank %}
-                          <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                          <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                           Your browser does not support the video tag.
                           </video>
                           <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
                       {% else %}           
                         	<div class="desc-image">
-                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            	<img src="{{desc_image[index]}}" alt="image">
                           </div>                  
                     {% endif %}
                   </div>
@@ -331,13 +331,13 @@
                   </div>
             		<div class="col-md-6 col-sm-6">
                     {% if desc_video[index] != blank %}                   
-                          <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                          <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                           Your browser does not support the video tag.
                           </video>
                           <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
                     {% else %}           
                     	<div class="desc-image">
-                        	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                        	<img src="{{desc_image[index]}}" alt="image">
                       </div>
                     {% endif %}
             		</div>
@@ -358,12 +358,12 @@
                 	{% assign index = forloop.index0 %}
                     <div class="description-slide">
                          {% if desc_video[index] != blank %}                   
-                            <video class="pro_-video" preload="none" muted playsinline webkit-playsinline  data-src="{{ desc_video[index] }}" type="video/mp4">
+                            <video class="pro_-video" autoplay muted playsinline webkit-playsinline  src="{{ desc_video[index] }}" type="video/mp4">
                             Your browser does not support the video tag.
                             </video>
                         {% else %}                             
                         	<div class="desc-image">
-                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            	<img src="{{desc_image[index]}}" alt="image">
                           </div>                  
                         {% endif %}
                         {% if desc_title != blank or desc_content != blank %}
@@ -415,12 +415,12 @@
                       <div class="col-md-6 col-sm-6">  
                           {% if desc_video[index] != blank %}
                                                      
-                                  <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                                  <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                                   Your browser does not support the video tag.
                                   </video>
                           {% else %}           
                             	<div class="desc-image">
-                                	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                	<img src="{{desc_image[index]}}" alt="image">
                               </div>                  
                         {% endif %}
                       </div>
@@ -443,12 +443,12 @@
                       </div>
                 		<div class="col-md-6 col-sm-6">
                         {% if desc_video[index] != blank %}                   
-                              <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                              <video class="pro_-video" muted playsinline webkit-playsinline autoplay src="{{ desc_video[index] }}" type="video/mp4">
                               Your browser does not support the video tag.
                               </video>
                         {% else %}           
                         	<div class="desc-image">
-                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            	<img src="{{desc_image[index]}}" alt="image">
                           </div>
                         {% endif %}
                 		</div>
@@ -469,12 +469,12 @@
                     	{% assign index = forloop.index0 %}
                         <div class="description-slide">
                              {% if desc_video[index] != blank %}                   
-                                <video class="pro_-video" preload="none" muted playsinline webkit-playsinline  data-src="{{ desc_video[index] }}" type="video/mp4">
+                                <video class="pro_-video" muted playsinline webkit-playsinline  autoplay src="{{ desc_video[index] }}" type="video/mp4">
                                 Your browser does not support the video tag.
                                 </video>
                             {% else %}                             
                             	<div class="desc-image">
-                                	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                	<img src="{{desc_image[index]}}" alt="image">
                               </div>                  
                             {% endif %}
                             {% if desc_title != blank or desc_content != blank %}
@@ -515,14 +515,14 @@
                     {% if product.metafields.mattress.mobile_image[index] != blank and product.metafields.closer_look.heading[index] != blank %}
                        <div class="closer_like_slide">
                          <div class="left_sec">
-                            <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.mattress.mobile_image[index]}}"/>
+                            <img src="{{product.metafields.mattress.mobile_image[index]}}"/>
                          </div> 
                           <div class="right_sec page-width">
                             <h2>{{ product.metafields.closer_look.heading[index] }}</h2>
                             {% if product.metafields.cloder_look.content[index] != blank and product.metafields.closer_look.left_image[index] != blank %}
                               <div class="content-closer-slide">
                                 <div class="image">
-                                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.closer_look.left_image[index] }}"/>
+                                    <img src="{{ product.metafields.closer_look.left_image[index] }}"/>
                                 </div>
                                 <div class="content_p">
                                   <p>{{product.metafields.cloder_look.content[index]}}</p>
@@ -551,6 +551,21 @@
   {% endif %}
 {% endif %}  
 
+<script>
+  jQuery(document).ready(function($){
+    jQuery('.product-description video.pro_-video').each(function(){
+       jQuery(this).prop('muted',true);
+       jQuery(this)[0].autoplay = true;
+    });
+  });
+  jQuery(window).on('load',function($){
+    jQuery('.product-description video.pro_-video').each(function(){
+       jQuery(this).prop('muted',true);
+       jQuery(this)[0].autoplay = true;
+    });
+  });
+  
+</script>
 
 
 

@@ -18,7 +18,7 @@
                         <div class="col-md-4">
                           {%- for block in section.blocks -%}
                             {% if forloop.index == 1 %}
-                                   <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                   <div class="landing_collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                     
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -31,7 +31,7 @@
                         <div class="col-md-4">
                             {%- for block in section.blocks -%}
                               {% if forloop.index == 2 %}
-                                    <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                    <div class="landing_collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                                  
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -44,7 +44,7 @@
                         <div class="col-md-4 landing_collection_grid_box_last">
                             {%- for block in section.blocks -%}
                               {% if forloop.index == 3 %}
-                                    <div class="collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                    <div class="collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                       
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -60,7 +60,7 @@
                                         <div class="landing_collection_small_box_col">
                                           <a href="{{ block.settings.collection.url }}" class="collection_link">                       
                                             {% if block.settings.collection_image != blank %}
-                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyloaded lazy2" alt="{{ block.settings.collection_image.alt }}" />
+                                              <img src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyloaded" alt="{{ block.settings.collection_image.alt }}" />
                                             {% endif %}
                                             {%- if block.settings.collection.title != blank -%}
                                             <div class="inner_small_col"><h3>{{- block.settings.collection.title | escape -}}</h3></div>
@@ -80,7 +80,7 @@
                         <div class="col-md-4">
                           {%- for block in section.blocks -%}
                             {% if forloop.index == 7 %}
-                                   <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                   <div class="landing_collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                     
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -93,7 +93,7 @@
                         <div class="col-md-4">
                             {%- for block in section.blocks -%}
                               {% if forloop.index == 8 %}
-                                    <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                    <div class="landing_collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                                  
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -106,7 +106,7 @@
                         <div class="col-md-4 landing_collection_grid_box_last">
                             {%- for block in section.blocks -%}
                               {% if forloop.index == 9 %}
-                                    <div class="collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                    <div class="collection_grid_box" style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
                                        <a href="{{ block.settings.collection.url }}" class="collection_link">                       
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -122,7 +122,7 @@
                                         <div class="landing_collection_small_box_col">
                                           <a href="{{ block.settings.collection.url }}" class="collection_link">                       
                                             {% if block.settings.collection_image != blank %}
-                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyloaded lazy2" alt="{{ block.settings.collection_image.alt }}" />
+                                              <img src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyload" alt="{{ block.settings.collection_image.alt }}" />
                                             {% endif %}
                                             {%- if block.settings.collection.title != blank -%}
                                             <div class="inner_small_col"><h3>{{- block.settings.collection.title | escape -}}</h3></div>
@@ -144,7 +144,7 @@
                           {% if forloop.index <= 3 %}                                
                                    	<div class="slide">
                                      <a href="{{ block.settings.collection.url }}" class="collection_link">                     
-                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded lazy2"> 
+                                        <img src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded"> 
                                        	<div class="slide_content">
                                           {%- if block.settings.collection.title != blank -%}
                                               <h3>{{- block.settings.collection.title | escape -}}</h3>
@@ -160,7 +160,7 @@
 						{%- for block in section.blocks -%}
                           {% if forloop.index <= 3 %}                               
                                    	<div class="slide">
-                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded lazy2"> 
+                                     <img src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded"> 
                                     </div>
                           {% endif %}	
                         {%- endfor -%} 

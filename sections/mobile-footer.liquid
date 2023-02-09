@@ -1,11 +1,11 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
-<link rel="stylesheet" data-href="{{ 'section-footer.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-newsletter.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-list-menu.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-list-payment.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-list-social.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}">
-<link rel="stylesheet" data-href="{{ 'disclosure.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'section-footer.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-newsletter.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-list-payment.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-list-social.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'disclosure.css' | asset_url }}">
 
 <noscript>{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
@@ -65,7 +65,7 @@
                   <div class="footer-block__details-content rte">
                       {%- if block.settings.image != blank -%}
                       <div class="footer-logo-grid">
-                        <a href="/"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.image | img_url: 'master' }}" alt="logo"></a>
+                        <a href="/"><img src="{{ block.settings.image | img_url: 'master' }}" alt="logo"></a>
                       </div>
                       {%- endif -%}
                       {%- if block.settings.subtext != blank -%}
@@ -163,7 +163,7 @@
                         </div>
                         <div class="footer-ext-img">
                            {% if block.settings.footer_img != blank %}
-                          		<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.footer_img | img_url: 'master'}}">
+                          		<img src="{{block.settings.footer_img | img_url: 'master'}}">
                            {% endif %}
                         </div>
              		 </div>
@@ -218,7 +218,7 @@
                     {%- endif -%}
                     
                     {% if block.settings.cause_image != blank %}
-                    	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.cause_image | img_url: 'master'}}">
+                    	<img src="{{block.settings.cause_image | img_url: 'master'}}">
                     {% endif %}
 
                   </div>

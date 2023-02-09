@@ -1,16 +1,16 @@
 {% comment %}theme-check-disable TemplateLength{% endcomment %}
-<link rel="stylesheet" data-href="{{ 'section-main-product.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-accordion.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-slider.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-rating.css' | asset_url }}" media="all">
-<link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-accordion.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-rating.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="all">
  {%- liquid  
             assign min_price = product.price_min 
             assign max_price = product.price_max 
         %}
-<link rel="stylesheet" data-href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
 
 {% style %}
 
@@ -81,7 +81,7 @@ ul.mid_sale_header_bar li,
     }
 {% endstyle %}
 
-<script type="lazyload2" data-src="{{ 'product-form.js' | asset_url }}"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
 
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
@@ -203,8 +203,8 @@ ul.mid_sale_header_bar li,
                         {%- endcapture -%}
                         {%- assign media_index = media_index | plus: 1 -%}
                         <li>
-                            <img class="gallery-thumb lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                              id="Thumbnail-{{ section.id }}-0" data-srcset="{% if featured_media.preview_image.width >= 54 %}{{ featured_media.preview_image | img_url: '54x' }} 54w,{% endif %}
+                            <img class="gallery-thumb"
+                              id="Thumbnail-{{ section.id }}-0" srcset="{% if featured_media.preview_image.width >= 54 %}{{ featured_media.preview_image | img_url: '54x' }} 54w,{% endif %}
                               {% if featured_media.preview_image.width >= 74 %}{{ featured_media.preview_image | img_url: '74x' }} 74w,{% endif %}
                               {% if featured_media.preview_image.width >= 104 %}{{ featured_media.preview_image | img_url: '104x' }} 104w,{% endif %}
                               {% if featured_media.preview_image.width >= 162 %}{{ featured_media.preview_image | img_url: '162x' }} 162w,{% endif %}
@@ -212,7 +212,7 @@ ul.mid_sale_header_bar li,
                               {% if featured_media.preview_image.width >= 324 %}{{ featured_media.preview_image | img_url: '324x' }} 324w,{% endif %}
                               {% if featured_media.preview_image.width >= 416 %}{{ featured_media.preview_image | img_url: '416x' }} 416w,{% endif %},
                               {{ featured_media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
-                              data-src="{{ featured_media | img_url: '416x' }}"
+                              src="{{ featured_media | img_url: '416x' }}"
                               sizes="(min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4), (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4), (min-width: 750px) calc((100vw - 15rem) / 8), calc((100vw - 14rem) / 3)"
                               alt="{{ featured_media.alt | escape }}"
                               height="208"
@@ -240,14 +240,14 @@ ul.mid_sale_header_bar li,
                                 {%- render 'icon-play' -%}
                               </span>
                             {%- endif -%}
-                              <img class="wwee gallery-thumb lazy2" id="Thumbnail-{{ section.id }}-{{ forloop.index }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                data-srcset="{% if media.preview_image.width >= 59 %}{{ media.preview_image | img_url: '260x' }} 59x,{% endif %}
+                              <img class="wwee gallery-thumb" id="Thumbnail-{{ section.id }}-{{ forloop.index }}"
+                                srcset="{% if media.preview_image.width >= 59 %}{{ media.preview_image | img_url: '260x' }} 59x,{% endif %}
                                         {% if media.preview_image.width >= 118 %}{{ media.preview_image | img_url: '260x' }} 118w,{% endif %}
                                         {% if media.preview_image.width >= 84 %}{{ media.preview_image | img_url: '260x' }} 84w,{% endif %}
                                         {% if media.preview_image.width >= 168 %}{{ media.preview_image | img_url: '260x' }} 168w,{% endif %}
                                         {% if media.preview_image.width >= 130 %}{{ media.preview_image | img_url: '260x' }} 130w,{% endif %}
                                         {% if media.preview_image.width >= 260 %}{{ media.preview_image | img_url: '260x' }} 260w{% endif %}"
-                                data-src="{{ media | img_url: '254x254' }}"
+                                src="{{ media | img_url: '254x254' }}"
                              
                                 alt="{{ media.alt | escape }}"
                                 height="200"
@@ -272,7 +272,7 @@ ul.mid_sale_header_bar li,
                 {% endif %}
                 {%- if product.description != blank -%}
                     <div class="deepdream_product__description rte">
-                      {{ product.description | replace: "<img src=", "<img class='lazy2' data-src=" }}
+                      {{ product.description }}
                     </div>
                 {%- endif -%}
               	{% if product.metafields.grid.image != blank %}
@@ -281,7 +281,7 @@ ul.mid_sale_header_bar li,
                            {% assign index = forloop.index %}
                            {%assign m = index | modulo: 3 %}
                            <div class="gallery_grid_col {% if m == 0 %}full_img_col{% endif %}">
-                      	   		<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ g_img }}" alt=""/>
+                      	   		<img src="{{ g_img }}" alt=""/>
                            </div>  
                       {% endfor %}
                     </div>  
@@ -445,9 +445,9 @@ ul.mid_sale_header_bar li,
                         {% endif %}
                       {% endcomment %}
                       <div class="csv_result_show" data-shipping_icon ="{{'product_shipping_icon.png' | asset_img_url:'master'}}" data-dispatch ="{{'dispatch.png' | asset_img_url:'master'}}" data-delivery_icon ="{{'delivery_icon.png' | asset_img_url:'master'}}">
-                        <p class="shipping_deatil"><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'new_product_shipping_icon.png' | asset_img_url:'master'}}" alt=""></span> <span class="shipping_fee"></span></p>
-                        <p class="dispatch_deatil"><span class="disp-main"><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'new-Truck-icon.png' | asset_img_url:'master'}}" alt=""></span> <span class="dispatch_label">Dispatch in</span> <span class="dispatch_date">24 hours</span></span> <span class="quantity-avl"></span></p>
-                        <p class="delivery_detail"><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'new-Credit-Card.png' | asset_img_url:'master'}}" alt=""></span> Estimated Delivery: <span class="delivery_date"></span>                         
+                        <p class="shipping_deatil"><span><img src="{{'new_product_shipping_icon.png' | asset_img_url:'master'}}" alt=""></span> <span class="shipping_fee"></span></p>
+                        <p class="dispatch_deatil"><span class="disp-main"><span><img src="{{'new-Truck-icon.png' | asset_img_url:'master'}}" alt=""></span> <span class="dispatch_label">Dispatch in</span> <span class="dispatch_date">24 hours</span></span> <span class="quantity-avl"></span></p>
+                        <p class="delivery_detail"><span><img src="{{'new-Credit-Card.png' | asset_img_url:'master'}}" alt=""></span> Estimated Delivery: <span class="delivery_date"></span>                         
                         </p>
                       </div>  
                       <div class="form-inner-wrap">
@@ -550,14 +550,14 @@ ul.mid_sale_header_bar li,
                               <p>
 
                               {% if block.settings.form_icon != blank %}
-                                <span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.form_icon | img_url: "master"}}" alt="image"></span>  
+                                <span><img src="{{block.settings.form_icon | img_url: "master"}}" alt="image"></span>  
                               {% endif %}
                                 <span class="span_dispatch_note">{{block.settings.form_note}}</span>
                               </p>
                             </div>
                         {% endif %}
                       </div>
-                      <div id="csv-display">           
+                      <div id="csv-display">
                         <h3 class="diliverd_to">Delivery to <span>Banrangaoo, 2000</span> <span class="edit_shipping_postcode"><i class="fas fa-pencil-alt"></i></span></h3> 
                         <div class="shiping_with_deliverd">
                             <div class="shipping_check">
@@ -624,9 +624,9 @@ ul.mid_sale_header_bar li,
                           <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                             {% if option.name == 'Color' %}
                            		{% if product.variants[forloop.index0].featured_image.src != blank %}
-                            		<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.variants[forloop.index0].featured_image.src | img_url: 'small' }}" alt=""/>
+                            		<img src="{{ product.variants[forloop.index0].featured_image.src | img_url: 'small' }}" alt=""/>
                             	{% else %}
-                            		<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.featured_image.src | img_url: 'small' }}" alt=""/>
+                            		<img src="{{ product.featured_image.src | img_url: 'small' }}" alt=""/>
                                 {% endif %}
                             {% else %}
                             	{{ value }}	
@@ -735,7 +735,7 @@ ul.mid_sale_header_bar li,
              {% comment %}
                <div id="ISR_button">Notify Me</div>
              {% endcomment %}   
-              <link rel="stylesheet" data-href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
+              <link rel="stylesheet" href="{{ 'component-pickup-availability.css' | asset_url }}" media="all">
 
               {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 				
@@ -757,7 +757,7 @@ ul.mid_sale_header_bar li,
               </pickup-availability>
             </div>
 
-            <script type="lazyload2" data-src="{{ 'pickup-availability.js' | asset_url }}"></script>
+            <script src="{{ 'pickup-availability.js' | asset_url }}" defer></script>
           {%- when 'rating' -%}
             {%- if product.metafields.reviews.rating.value != blank -%}
               {% liquid
@@ -787,19 +787,19 @@ ul.mid_sale_header_bar li,
                {%- assign  variant_sale_price =  variant.price | money  -%}   
                <div class="product_payement_logo_new product_payement_logo_{{ variant.id }}" style="display:none">        
                  <div class="product_payement_logo_grid">
-                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/klarana.png?v=1664957418" alt=""/>
+                    <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/klarana.png?v=1664957418" alt=""/>
                     <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                  </div>
                  <div class="product_payement_logo_grid">
-                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/afterpay.png?v=1664957418" alt=""/>
+                    <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/afterpay.png?v=1664957418" alt=""/>
                     <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                  </div>
                  <div class="product_payement_logo_grid">
-                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/paypal.png?v=1664957418" alt=""/>
+                    <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/paypal.png?v=1664957418" alt=""/>
                     <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                  </div>                
                  <div class="product_payement_logo_grid">
-                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/zip_pay.png?v=1664957418" alt=""/>
+                    <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/zip_pay.png?v=1664957418" alt=""/>
                     <p>From $10/week</p>                  
                  </div>
                </div>   
@@ -809,19 +809,19 @@ ul.mid_sale_header_bar li,
                 {%- assign  variant_sale_price =  variant.price | money -%} 
                  <div class="product_payement_logo_new active">        
                    <div class="product_payement_logo_grid">
-                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/klarana.png?v=1664957418" alt=""/>
+                      <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/klarana.png?v=1664957418" alt=""/>
                       <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                    </div>
                    <div class="product_payement_logo_grid">
-                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/afterpay.png?v=1664957418" alt=""/>
+                      <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/afterpay.png?v=1664957418" alt=""/>
                       <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                    </div>
                    <div class="product_payement_logo_grid">
-                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/paypal.png?v=1664957418" alt=""/>
+                      <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/paypal.png?v=1664957418" alt=""/>
                       <p>4 payments of <br>{{ variant.price | divided_by : 4 | money }}</p>                  
                    </div>                
                    <div class="product_payement_logo_grid">
-                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/zip_pay.png?v=1664957418" alt=""/>
+                      <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/zip_pay.png?v=1664957418" alt=""/>
                       <p>From $10/week</p>                  
                    </div>
                </div> 
@@ -919,7 +919,7 @@ ul.mid_sale_header_bar li,
                                      {% if block.settings.preorder_heading != blank and block.settings.preorder_subheading != blank and block.settings.preorder_icon != blank %}
                                          {%- assign j = j | plus:'1'  -%}      
                                            <li class="pre_list {% if j > 3 %}hide_pre_order_list{% endif %}" data-id="{{ j }}">
-                                             <div class="icon_img"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.preorder_icon | img_url:'master' }}"/></div>
+                                             <div class="icon_img"><img src="{{ block.settings.preorder_icon | img_url:'master' }}"/></div>
                                              <div class="pre_content"><h3>{{ block.settings.preorder_heading }}</h3> {{ block.settings.preorder_subheading }}</div>
                                            </li>                   
                                      {% endif %}  
@@ -950,7 +950,7 @@ ul.mid_sale_header_bar li,
     </div>
   </div>
   <div class="USP_icon">
-     <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ 'USP.svg' | asset_url }}" alt=""/>	
+     <img src="{{ 'USP.svg' | asset_url }}" alt=""/>	
   </div>  
   <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
     <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
@@ -995,7 +995,7 @@ ul.mid_sale_header_bar li,
   {%- endfor -%}
 </section>
 
-<script type="lazyload2">
+<script>
   class ProductModal extends ModalDialog {
     constructor() {
       super();
@@ -1033,7 +1033,7 @@ ul.mid_sale_header_bar li,
 </script>
 
 {% if product.media.size > 0 %}
-  <script type="lazyload2" data-src="{{ 'media-gallery.js' | asset_url }}"></script>
+  <script src="{{ 'media-gallery.js' | asset_url }}" defer></script>
 {% endif %}
 
 <script>

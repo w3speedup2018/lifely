@@ -1,12 +1,12 @@
-<!doctype html> 
-<html class="no-js" lang="{{ request.locale.iso_code }}"> 
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
 	<head>
 		<!-- Start VWO Async SmartCode -->
-  		<script type="lazyload2" id="ck-bucketing">
+  		<script id="ck-bucketing">
 			(function () { function optGetCookie(cname) { var name = cname + "="; var decodedCookie = decodeURIComponent(document.cookie); var ca = decodedCookie.split(';'); for (var i = 0; i < ca.length; i++) { var c = ca[i]; while (c.charAt(0) == ' ') { c = c.substring(1); } if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); } } return ""; } var optSetCrossDomainCookie = function (name, value, days) { var expires; if (days) { var date = new Date(); date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); expires = "; expires=" + date.toGMTString(); } else { expires = ""; } document.cookie = name + "=" + value + expires + "; path=/; domain=lifely.com.au"; }; var retrieve = optGetCookie("optVal"); if (!retrieve) { var optVal = Math.floor(Math.random() * 10) + 1; optSetCrossDomainCookie("optVal", optVal, 1000); } })()
 		</script>
 		<!-- Start VWO Async SmartCode -->
-		<script type="lazyload2" id='vwoCode'>
+		<script id='vwoCode'>
 			window._vwo_code=window._vwo_code || (function() {
 			var account_id=571727,
 			version=1.3,
@@ -19,7 +19,7 @@
 			f=false,d=document,code={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.innerText;t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},init:function(){window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');e.setAttribute('nonce',document.querySelector('#vwoCode').nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version);return settings_timer}};window._vwo_settings_timer = code.init();return code;}());
 		</script>
 		<!-- End VWO Async SmartCode -->
-		<script type="lazyload2">
+		<script>
 			/* >> TriplePixel :: start*/
 			~function(W,H,A,L,E){try{A.setItem(H,1+(0|A.getItem(H)||0)),W.includes("⇈")&&A.setItem(H+"Stg",1+(0|A.getItem(H+"Stg")||0))}catch(e){}function O(T,R){void 0===R&&(R=!1),H=new XMLHttpRequest,H.open("GET","//triplewhale-pixel.web.app/triplepx.txt?"+~(Date.now()/9e7),!0),H.send(null),H.onreadystatechange=function(){4===H.readyState&&200===H.status?setTimeout(function(){return eval(H.responseText)},50):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(T-1))}}A=window,A[H]||(L=function(){return"tp.."+Date.now().toString(36)+Math.random().toString(36)},E=A[H]=function(t,e,n){return W=L(),(E._q=E._q||[]).push([W,e,n]),W},E.ch=W,O(5))}("","TriplePixel",localStorage);
 			/* << TriplePixel :: end*/
@@ -46,17 +46,8 @@
 			<meta name="description" content="{{ page_description | escape }}">
 		{% endif %}
 		{% render 'meta-tags' %}
-        {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
-            <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-        	{{ content_for_header }}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
-        {%- else -%}
-            <script data-src="{{ 'global.js' | asset_url }}" type="lazyload2"></script>
-        	{% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
-        	{{ content_for_header2 | replace: ' defer="defer" ', ' type="lazyload2" ' | replace: " src=", " data-src=" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('wnw_load', asyncLoad, false);" | replace: "DOMContentLoaded", "DOMContentLoaded2" }}
-        	<script>var trekkie=[];trekkie.integrations=!0;window.BOOMR={},window.BOOMR.version=true;</script>
-        {%- endif -%}      
+        <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+      	{{ content_for_header }}
 
 		{% include 'tipo.booking.script' %}
 		{%- liquid
@@ -64,13 +55,14 @@
 			assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
 			assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 		%}
-		<style type="lazyload2">
+		<style>
 			{{ settings.type_body_font | font_face: font_display: 'swap' }}
 			{{ body_font_bold | font_face: font_display: 'swap' }}
 			{{ body_font_italic | font_face: font_display: 'swap' }}
 			{{ body_font_bold_italic | font_face: font_display: 'swap' }}
 			{{ settings.type_header_font | font_face: font_display: 'swap' }}
 		</style>
+  
 		<style>
 			:root {
 				--font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
@@ -191,11 +183,12 @@
 			}
 			@media screen and (min-width: 750px) {
 				body {
-				font-size: 1.6rem;
+    				font-size: 1.6rem;
 				}
 			}
 		</style>
-		<style type="lazyload2">
+  
+		<style>
 			@font-face {
 				font-family: 'Gellix';
 				src: url("{{'Gellix-Bold.woff' | asset_url }}") format('woff');
@@ -203,7 +196,6 @@
 				font-style: normal;
 				font-display: swap;
 			}
-
 			@font-face {
 				font-family: 'Gellix';
 				src: url("{{'Gellix-Regular.woff' | asset_url }}") format('woff');
@@ -211,7 +203,6 @@
 				font-style: normal;
 				font-display: swap;
 			}
-
 			@font-face {
 				font-family: 'Gellix';
 				src: url("{{'GellixMedium.woff' | asset_url }}") format('woff');
@@ -227,29 +218,9 @@
 				font-display: swap;
 			}
 		</style>
-		{% if template contains 'index' %}
-			{% render 'homepage-critical-css' %}
-		{% elsif template contains 'collection' or request.page_type == 'search' or template contains "page.clearance" or template contains "page.new_arrival" or template contains 'page.master-campaign' %}
-			{% render 'collection-critical-css' %}
-		{% elsif template contains 'product' %}
-			{% render 'product-critical-css' %}
-		{% else %}
-			{% render 'all-css' %}
-			{% render 'all-css-2' %}
-			{% render 'all-css-3' %}
-		{% endif %}
-        <style class="critical23">@media(min-width:1200px){.header .search-modal__form input#Search-In-Modal-1::placeholder{color:transparent}.announcement-bar{min-height:41.19px}.header .menu-list-custom{visibility:visible!important}.header ul.list-menu>li>.header__menu-item{padding:12px!important;text-decoration:unset}.header .search-modal__form input.search__input{max-width:476px}}@media(min-width:1200px){.list-menu li:last-child>.header__menu-item.header__menu-item.list-menu__item{color:#ce2a1e!important;background:url(https://cdn.shopify.com/s/files/1/0562/7569/7706/t/33/assets/Frame.png) 0 center no-repeat;padding-left:20px!important}}</style>
-		<link rel="stylesheet" data-href="{{ 'base.css' | asset_url }}">
-		{% comment %}
-		{%- unless settings.type_body_font.system? -%}
-			<link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-		{%- endunless -%}
-		{%- unless settings.type_header_font.system? -%}
-			<link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-		{%- endunless -%}
-		{% endcomment %}
+		<link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
 		{%- if settings.predictive_search_enabled -%}
-			<link rel="stylesheet" data-href="{{ 'component-predictive-search.css' | asset_url }}" media="all">
+			<link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="all">
 		{%- endif -%}
 		<script>
 			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -262,23 +233,23 @@
 				brandId: 'f25ac531-9254-3e41-8279-7d3f7d9c0381'
 			};
 		</script>
-		<script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
-        <script type="lazyload2" src="https://qhmodel-viewer-oss.kujiale.com/release/0.0.146/sdk-ui.min.js"></script> 
-		<script type="lazyload2" data-src="https://cdn.productreview.com.au/assets/widgets/loader.js" ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+        <script src="https://qhmodel-viewer-oss.kujiale.com/release/0.0.146/sdk-ui.min.js"></script> 
+		<script src="https://cdn.productreview.com.au/assets/widgets/loader.js"></script>
 		<!--begin-boost-pfs-filter-css-->
 		{% render 'boost-pfs-style' %}
 		<!--end-boost-pfs-filter-css--> 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script type="lazyload2" data-src="https://www.googletagmanager.com/gtag/js?id=G-RX1QS6L3D1"></script>
-		<script type="lazyload2">
+		<script src="https://www.googletagmanager.com/gtag/js?id=G-RX1QS6L3D1"></script>
+		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', 'G-RX1QS6L3D1');
 		</script>
 		<!-- Google Tag Manager -->
-		<script type="lazyload2">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -287,42 +258,44 @@
 		{% comment %}
 		{% render 'judgeme_core' %}
 		{% endcomment %}
-		<script type="lazyload2" data-src="{{ 'timesact.js' | asset_url }}"></script>
+		<script src="{{ 'timesact.js' | asset_url }}" defer></script>
 		<!--Lazy Loading -->
-		<script type="lazyload2" data-src="{{ 'lazysizes.min.js' | asset_url }}"></script>
+		<script src="{{ 'lazysizes.min.js' | asset_url }}" defer></script>
 		<style>.lazyload,.lazyloading{opacity:0}.lazyloaded{opacity:1;transition:opacity.3s}</style>
-		<link rel="stylesheet" data-href="{{ 'bootstrap.min.css' | asset_url }}">
-		<link rel="stylesheet" data-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">   
-		<link rel="stylesheet" data-href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
-        <link rel="stylesheet" data-href="{{ 'pricing_test_v1.css' | asset_url }}">
-        <link rel="stylesheet" data-href="{{ 'search_prominance.css' | asset_url }}">
-		<link rel="stylesheet" data-href="{{ 'style.css' | asset_url }}">
-		<link rel="stylesheet" data-href="{{ 'custom.css' | asset_url }}">
-		<link rel="stylesheet" data-href="{{ 'deep_dream.css' | asset_url }}">
-		<link rel="stylesheet" data-href="{{ 'swatches_color.css' | asset_url }}">
-		<link rel="stylesheet" data-href="{{ 'blog.css' | asset_url }}">
-        <link rel="stylesheet" data-href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"/>
-        <link rel="stylesheet" data-href="{{ 'quickview.scss.css' | asset_url }}">
-        <link rel="stylesheet" data-href="{{ 'quickview_custom.css' | asset_url }}">
-        <script type="lazyload2" data-src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script type="lazyload2" data-src="{{ 'quickview.js' | asset_url }}"></script>
-        <script type="lazyload2" data-src="{{ 'pricing_test_v1.js' | asset_url }}"></script>
-        <script type="lazyload2" data-src="{{ 'search_prominance.js' | asset_url }}"></script>
-        <script type="lazyload2">
+		<link rel="stylesheet" href="{{ 'bootstrap.min.css' | asset_url }}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">   
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+        <link rel="stylesheet" href="{{ 'pricing_test_v1.css' | asset_url }}">
+        <link rel="stylesheet" href="{{ 'search_prominance.css' | asset_url }}">
+		<link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
+		<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+		<link rel="stylesheet" href="{{ 'deep_dream.css' | asset_url }}">
+		<link rel="stylesheet" href="{{ 'swatches_color.css' | asset_url }}">
+		<link rel="stylesheet" href="{{ 'blog.css' | asset_url }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"/>
+        <link rel="stylesheet" href="{{ 'quickview.scss.css' | asset_url }}">
+        <link rel="stylesheet" href="{{ 'quickview_custom.css' | asset_url }}">
+        <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="{{ 'quickview.js' | asset_url }}"></script>
+        <!-- <script src="{{ 'pricing_test_v1.js' | asset_url }}"></script>
+        <script src="{{ 'search_prominance.js' | asset_url }}"></script> -->
+        <script>
           {% capture content %}{% include 'quickview' %}{% endcapture %}
           var content = {{ content | json }};
         </script>
+
         {% if settings.ss_enable %}
         	{% render 'ss-script' %}
         {% endif %}
         {% render 'app-block' %}
-		<style>#website-preloader{display:none!important}@media (min-width:1025px){.page_zooomywishlist .shop-cagy  .slick-list.draggable,.page_zooomywishlist .shop-cagy .slick-track{transform:none!important;width:100%!important}}@media only screen and (max-width:575px){.gorg-custom-chatbox{padding:10px 6px 15px!important}.gorg-custom-chatbox img{width:21px!important}}li.Swatches-Color[value=White],variant-radios .product-form__input input[value=White]+label,variant-radios .product-form__input input[value=White]:checked+label,variant-radios .product-form__input input[value=White]:hover+label{background:#fff!important}li.Swatches-Color[value=Natural],variant-radios .product-form__input input[value=Natural]+label,variant-radios .product-form__input input[value=Natural]:checked+label,variant-radios .product-form__input input[value=Natural]:hover+label{background:#caa472!important}li.Swatches-Color[value=Grey],li.Swatches-Color[value=LightGrey],variant-radios .product-form__input input[value="Light Grey"]+label,variant-radios .product-form__input input[value="Light Grey"]:checked+label,variant-radios .product-form__input input[value="Light Grey"]:hover+label,variant-radios .product-form__input input[value=Grey]+label,variant-radios .product-form__input input[value=Grey]:checked+label,variant-radios .product-form__input input[value=Grey]:hover+label{background:grey!important}li.Swatches-Color[value=Pink],variant-radios .product-form__input input[value=Pink]+label,variant-radios .product-form__input input[value=Pink]:checked+label,variant-radios .product-form__input input[value=Pink]:hover+label{background:pink!important}li.Swatches-Color[value=Green],variant-radios .product-form__input input[value=Green]+label,variant-radios .product-form__input input[value=Green]:checked+label,variant-radios .product-form__input input[value=Green]:hover+label{background:#068408!important}li.Swatches-Color[value=Blue],variant-radios .product-form__input input[value=Blue]+label,variant-radios .product-form__input input[value=Blue]:checked+label,variant-radios .product-form__input input[value=Blue]:hover+label{background:#334fb4!important}li.Swatches-Color[value=Beige],variant-radios .product-form__input input[value=Beige]+label,variant-radios .product-form__input input[value=Beige]:checked+label,variant-radios .product-form__input input[value=Beige]:hover+label{background:#cecbbe!important}li.Swatches-Color[value=Charcoal],variant-radios .product-form__input input[value=Charcoal]+label,variant-radios .product-form__input input[value=Charcoal]:checked+label,variant-radios .product-form__input input[value=Charcoal]:hover+label{background:#463131!important}.newsletter-custom-footer .klaviyo-form label.needsclick.kl-private-reset-css-Xuajs1 .needsclick.kl-private-reset-css-Xuajs1{color:#fff!important}.newsletter-custom-footer .klaviyo-form-WHfKJf button.kl-private-reset-css-Xuajs1{background:#2c474b!important;border:2px solid #fff!important;box-sizing:border-box!important;border-radius:100px!important;padding:12px 16px!important;font-family:Gellix!important;font-style:normal!important;font-weight:600!important;font-size:18px!important;line-height:120%!important;text-align:center!important;color:#fff!important}li.Swatches-Color[value=White]{background:#fff!important}html body{opacity:1!important}#website-preloader1{display:none}</style>
+        {% comment %}        
+        <style>#website-preloader{display:none!important}@media (min-width:1025px){.page_zooomywishlist .shop-cagy  .slick-list.draggable,.page_zooomywishlist .shop-cagy .slick-track{transform:none!important;width:100%!important}}@media only screen and (max-width:575px){.gorg-custom-chatbox{padding:10px 6px 15px!important}.gorg-custom-chatbox img{width:21px!important}}li.Swatches-Color[value=White],variant-radios .product-form__input input[value=White]+label,variant-radios .product-form__input input[value=White]:checked+label,variant-radios .product-form__input input[value=White]:hover+label{background:#fff!important}li.Swatches-Color[value=Natural],variant-radios .product-form__input input[value=Natural]+label,variant-radios .product-form__input input[value=Natural]:checked+label,variant-radios .product-form__input input[value=Natural]:hover+label{background:#caa472!important}li.Swatches-Color[value=Grey],li.Swatches-Color[value=LightGrey],variant-radios .product-form__input input[value="Light Grey"]+label,variant-radios .product-form__input input[value="Light Grey"]:checked+label,variant-radios .product-form__input input[value="Light Grey"]:hover+label,variant-radios .product-form__input input[value=Grey]+label,variant-radios .product-form__input input[value=Grey]:checked+label,variant-radios .product-form__input input[value=Grey]:hover+label{background:grey!important}li.Swatches-Color[value=Pink],variant-radios .product-form__input input[value=Pink]+label,variant-radios .product-form__input input[value=Pink]:checked+label,variant-radios .product-form__input input[value=Pink]:hover+label{background:pink!important}li.Swatches-Color[value=Green],variant-radios .product-form__input input[value=Green]+label,variant-radios .product-form__input input[value=Green]:checked+label,variant-radios .product-form__input input[value=Green]:hover+label{background:#068408!important}li.Swatches-Color[value=Blue],variant-radios .product-form__input input[value=Blue]+label,variant-radios .product-form__input input[value=Blue]:checked+label,variant-radios .product-form__input input[value=Blue]:hover+label{background:#334fb4!important}li.Swatches-Color[value=Beige],variant-radios .product-form__input input[value=Beige]+label,variant-radios .product-form__input input[value=Beige]:checked+label,variant-radios .product-form__input input[value=Beige]:hover+label{background:#cecbbe!important}li.Swatches-Color[value=Charcoal],variant-radios .product-form__input input[value=Charcoal]+label,variant-radios .product-form__input input[value=Charcoal]:checked+label,variant-radios .product-form__input input[value=Charcoal]:hover+label{background:#463131!important}.newsletter-custom-footer .klaviyo-form label.needsclick.kl-private-reset-css-Xuajs1 .needsclick.kl-private-reset-css-Xuajs1{color:#fff!important}.newsletter-custom-footer .klaviyo-form-WHfKJf button.kl-private-reset-css-Xuajs1{background:#2c474b!important;border:2px solid #fff!important;box-sizing:border-box!important;border-radius:100px!important;padding:12px 16px!important;font-family:Gellix!important;font-style:normal!important;font-weight:600!important;font-size:18px!important;line-height:120%!important;text-align:center!important;color:#fff!important}li.Swatches-Color[value=White]{background:#fff!important}html body{opacity:1!important}#website-preloader1{display:none}</style>
+        {% endcomment %}
 	</head>
-	<body class="gradient body--name--{{ collection.handle }} {{ template.name }}_{{ template.suffix }} {{ template.name }}{% if settings.ss_enable and collection.handle and collection.handle == settings.ss_collection_handle %} ss-shop{% endif %}{% if template.name == 'product' and template.suffix == 'deepdream_new_design'%} product_deepdream_new{% endif %}">
-		<script type="lazyload2" data-src="https://oc-library.klarnaservices.com/lib.js" data-client-id="617074ef-4543-5d7c-b680-0a7390246e59"></script>
+	<body class="gradient body--name--{{ collection.handle }} {{ template.name }}_{{ template.suffix }} {{ template.name }} {% if settings.ss_enable and collection.handle and collection.handle == settings.ss_collection_handle %} ss-shop{% endif %}{% if template.name == 'product' and template.suffix == 'deepdream_new_design'%} product_deepdream_new{% endif %}">
+		<script src="https://oc-library.klarnaservices.com/lib.js" data-client-id="617074ef-4543-5d7c-b680-0a7390246e59"></script>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57S2VN4"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57S2VN4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
         <div id="website-preloader"></div>
 		<div class="body_inner_div">
@@ -368,29 +341,29 @@
 			}
 		</script>
 		{%- if settings.predictive_search_enabled -%}
-			<script type="lazyload2" data-src="{{ 'predictive-search.js' | asset_url }}"></script>
+			<script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
 		{%- endif -%}
-		<script type="lazyload2" data-src="{{ 'bootstrap.min.js' | asset_url }}"></script>
-		<script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+		<script src="{{ 'bootstrap.min.js' | asset_url }}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 		{% if template.name == 'product' and template.suffix == 'deepdream_new'%}       
           {% comment %}
-            <script type="lazyload2" data-src="{{ 'mattress_pdp_custom_script.js' | asset_url }}"></script>
+            <script src="{{ 'mattress_pdp_custom_script.js' | asset_url }}"></script>
           {% endcomment %}
-          <script type="lazyload2" data-src="{{ 'custom_script.js' | asset_url }}"></script>
+          <script src="{{ 'custom_script.js' | asset_url }}" defer></script>
        {% elsif template.name == 'product' and template.suffix == 'deepdream_new_design' %} 
-            <script type="lazyload2" data-src="{{ 'mattress_pdp_custom_script.js' | asset_url }}"></script>
+            <script src="{{ 'mattress_pdp_custom_script.js' | asset_url }}" defer></script>
        {% else %}
-         <script type="lazyload2" data-src="{{ 'custom_script.js' | asset_url }}"></script>
+         <script src="{{ 'custom_script.js' | asset_url }}" defer></script>
        {% endif %}  
 		{% if template != 'index' %}
-			<script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
-			<script type="lazyload2" data-src="{{ 'lifelycountdown.js' | asset_url }}"></script>
-			<script type="lazyload2" data-src="{{ 'countdown_scripts.js' | asset_url }}"></script>
-			<script type="lazyload2" data-src="{{ 'deepdream-script.js' | asset_url }}"></script>
-		{% endif %}  
-		<script type="lazyload2" data-src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="lifelystore.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}"></script>
+			<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+			<script defer src="{{ 'lifelycountdown.js' | asset_url }}"></script>
+			<script defer src="{{ 'countdown_scripts.js' | asset_url }}"></script>
+			<script defer src="{{ 'deepdream-script.js' | asset_url }}"></script>
+		{% endif %}
+		<script async src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="lifelystore.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}"></script>
 		{% if template != 'index' %}
-			<script type="lazyload2" data-src="https://static.zipmoney.com.au/lib/js/zm-widget-js/dist/zip-widget.min.js"></script> 
+			<script src="https://static.zipmoney.com.au/lib/js/zm-widget-js/dist/zip-widget.min.js"></script> 
 		{% endif %}
 		{% include 'shopify-ajax-add-to-cart' %}
 		<!--begin-boost-pfs-js-->
@@ -403,15 +376,15 @@
 		<!-- /spurit_isr-added -->
 		{% if template contains 'cart' %}
 			{% render 'shipping-calculator-script' %}
-		{% endif %}   
+		{% endif %}
 		<!-- CRITEO START -->
 		{% render 'criteo-tracking' %}
 		<!-- CRITEO END -->
-		<script type="lazyload2" data-src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
-		<script type="lazyload2" data-src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JpMMCg"></script>
+		<script src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+		<script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JpMMCg"></script>
 		{% if template == 'product' %}
-			<script type="lazyload2" data-src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
-			<script type="lazyload2">
+			<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+			<script>
 				var klaviyo = klaviyo || [];
 				klaviyo.init({
     				account: "JpMMCg",
@@ -459,10 +432,10 @@
 			</script>
 		{% endif %}
 		<!--Gorgias Chat Widget Start-->
-		<script id="gorgias-chat-widget-install-v2" type="lazyload2" data-src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=17817"></script>
+		<script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=17817"></script>
 		<script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});</script><!--Gorgias Chat Widget End-->
-		<div class="gorg-custom-chatbox"><a class="chatbox-open"><span class="chat-img"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ 'Union.png' | asset_url }}"></span> <span class="chat-text">Chat with us</span></a></div>
-		<script type="lazyload2">
+		<div class="gorg-custom-chatbox"><a class="chatbox-open"><span class="chat-img"><img src="{{ 'Union.png' | asset_url }}"></span> <span class="chat-text">Chat with us</span></a></div>
+		<script>
 			setTimeout(function() {
     			$(document).on('click', '.gorg-custom-chatbox .chatbox-open', function() {
     				$(this).removeClass('chatbox-open');
@@ -478,13 +451,13 @@
     			});
 			});
 		</script>
-    	<script type="lazyload2" data-src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="lifelystore.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}" ></script>
+    	<script async src="https://zooomyapps.com/wishlist/ZooomyColl.js" data-shop-id="lifelystore.myshopify.com" data-cus-id="{{customer.id}}" data-cus-email="{{customer.email}}" data-cus-name="{{customer.first_name}} {{customer.last_name}}" data-page="{{template}}" ></script>
         {% include 'appikon-discounts' %}
         {% if settings.ss_enable %}
         	{% render 'ss-intellisuggest' %}
         {% endif %} 
         {% if template contains 'product' %}   
-            <script type="lazyload2">
+            <script>
                 Shopify.Products.recordRecentlyViewed();
             </script> 
         {% endif %}
@@ -494,9 +467,8 @@
         {% if product %}
              {% render 'klaviyo_add_to_cart_event' %}
         {% endif %}  
-        {% render 'footer-app-block' %}
-        <script type="lazyload2">setTimeout(zooomyColl);</script>
-        
+        <script>setTimeout(zooomyColl);</script>
+        {% comment %}
         <script>
             if(document.querySelector('#Details-menu-drawer-container') != null ){
               var w3_menuclicked = 0;
@@ -509,7 +481,9 @@
               });
             }
         </script>
+        {% endcomment %}
         {% render 'klaviyo_view_product' %}
-		{{ 'wnw-optimization.js' | asset_url | script_tag }}
-    {% if content_for_header contains "dev.giftkart.app" %}{% include "giftkart_script.cart" %}{% endif %}</body>
+        {% if content_for_header contains "dev.giftkart.app" %}{% include "giftkart_script.cart" %}{% endif %}
+        {{ 'wnw-optimization.js' | asset_url | script_tag }}
+    </body>
 </html>

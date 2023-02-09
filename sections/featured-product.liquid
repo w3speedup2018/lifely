@@ -143,7 +143,7 @@
                 </quantity-input>
               </div>
             {%- when 'share' -%}
-              <script type="lazyload2" data-src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+              <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
               <share-button id="Share-{{ section.id }}" class="share-button" {{ block.shopify_attributes }}>
                 <button class="share-button__button hidden">
                   {% render 'icon-share' %}
@@ -376,7 +376,7 @@
   </div>
 </section>
 
-<script type="lazyload2">
+<script>
   if (!customElements.get('product-modal')) {
     customElements.define('product-modal', class ProductModal extends ModalDialog {
       constructor() {
@@ -412,12 +412,12 @@
     });
   }
 </script>
-<script type="lazyload2" data-src="{{ 'product-form.js' | asset_url }}" ></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
 {%- if first_3d_model -%}
   <script type="application/json" id="ProductJSON-{{ product.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
-  <script type="lazyload2" data-src="{{ 'product-model.js' | asset_url }}" ></script>
+  <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
 
 {%- liquid
@@ -489,7 +489,7 @@
 </script>
 
 {% if product.media.size > 0 %}
-  <script type="lazyload2" data-src="{{ 'media-gallery.js' | asset_url }}" ></script>
+  <script src="{{ 'media-gallery.js' | asset_url }}" defer></script>
 {% endif %}
 
 {% schema %}

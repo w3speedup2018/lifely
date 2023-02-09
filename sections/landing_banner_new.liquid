@@ -1,5 +1,5 @@
 {% if section.settings.banner_heading != blank or section.settings.banner_image != blank %}
-  <style type="lazyload2">
+  <style>
     .landing_banner{
       background:url({{section.settings.banner_image | img_url:'master'}});
       padding-top: 37%;
@@ -197,7 +197,7 @@
           		<div class="landing_banner_content_new">
                     <div class="landing-heading-grid">
                 		{% if section.settings.banner_heading != blank %}
-                    		<h1 class="landing_page_banner_heading">{{ section.settings.banner_heading }}<sup><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ 'str-ylw.png' | asset_url }}" alt=""></sup></h1>
+                    		<h1 class="landing_page_banner_heading">{{ section.settings.banner_heading }}<sup><img src="{{ 'str-ylw.png' | asset_url }}" alt=""></sup></h1>
                       {% endif %}
                       {% if section.settings.banner_subheading != blank %}
                     		<h4 class="landing_page_banner_heading">{{ section.settings.banner_subheading }}</h4>

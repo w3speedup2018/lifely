@@ -262,10 +262,6 @@ function load_all_js() {
 	} else {
 		console.log("Yes-optimization");
 		setTimeout(function() {
-			wnwAnalytics();		
-			wnwBoomerang();
-	  	},100);
-		setTimeout(function() {
 			var wnw_load_event = document.createEvent("Event");
 			wnw_load_event.initEvent("wnw_load", true, true);
 			window.document.dispatchEvent(wnw_load_event);
@@ -293,9 +289,6 @@ function load_all_js() {
 }
 
 function fullJSLoadedCB() {
-	setTimeout(function() {
-        if(w3_menuclicked){
-            jQuery('#Details-menu-drawer-container').click();
-        }
-	});
+	
+  
 }

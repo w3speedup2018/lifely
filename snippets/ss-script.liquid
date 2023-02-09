@@ -30,12 +30,7 @@
 	format = "{{ shop.money_format }}";
 {% endcapture %}
 
-{% if template contains "collection" %}
+
    <script src="https://snapui.searchspring.io/{{ settings.ss_site_id }}/bundle.js" id="searchspring-context"{{ ss_defer_config }}>
 	{{ ss_shopper_config }}{{ ss_collection_config }}{{ ss_tags_config }}{{ ss_template_config }}{{ ss_money_config }}
-</script> 	
-{% else %}
-    <script type="lazyload2" data-src="https://snapui.searchspring.io/{{ settings.ss_site_id }}/bundle.js" id="searchspring-context"{{ ss_defer_config }}>
-	{{ ss_shopper_config }}{{ ss_collection_config }}{{ ss_tags_config }}{{ ss_template_config }}{{ ss_money_config }}
-</script>	
-{% endif %}
+    </script> 	

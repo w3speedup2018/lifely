@@ -31,7 +31,7 @@
                           	<div class="resources-col">
                            	 {% if block.settings.icon_image != blank %}
                               	<div class="resources-image">
-                                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid lazy2 lazy3" />
+                                  <img src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid" />
                               	</div>  
 							 {% endif %}
                              {% if block.settings.block_heading != blank or block.settings.block_sub_heading != blank %} 

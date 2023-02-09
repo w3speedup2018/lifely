@@ -50,7 +50,7 @@
                         {%- for block in section.blocks -%}
                           {% if block.settings.icon_image != blank %}
 								<div class="image_slide">
-                                  <a href="{{ block.settings.icon_image_url }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid lazy2 lazy3" /></a>
+                                  <a href="{{ block.settings.icon_image_url }}"><img src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid" /></a>
                         		</div>  
                            {% endif %}	
                         {% endfor %}
@@ -117,8 +117,4 @@
   }
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
+                                  

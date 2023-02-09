@@ -40,6 +40,21 @@
             z-index: 9999999;
             display:none;
         }
+
+  @media only screen and (max-width:479px){
+
+ .clearance_breadcrumbs {
+    display: none;
+}
+
+.clearance_banner_content { display:block !important;  }
+
+.clearance_banner_container .banner_heading_section {     margin-top: 0; }
+
+
+}
+
+  
   </style> 
 		<div class="mobile_collection_breadcrumb collection-breadcrumb">
         <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
@@ -144,9 +159,17 @@
               	<div class="clearance_banner_content">
                   	<div class="banner_heading_section">
                       {% if collection.title != blank and collection.title != 'Products' %}
-                      	<h1>{{- collection.title | escape -}} {% if section.settings.heding_image != blank %}<sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup>{% endif %}</h1>
+                      	<h1>{{- collection.title | escape -}} 
+                        
+<!--                         {% if section.settings.heding_image != blank %}<sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup>{% endif %} -->
+                        
+                        </h1>
                       {% else %}
-                      	 <h1>{{ section.settings.banner_heading }} {% if section.settings.heding_image != blank %}<sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup>{% endif %}</h1>
+                      	 <h1>{{ section.settings.banner_heading }} 
+                        
+<!--                         {% if section.settings.heding_image != blank %}<sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup>{% endif %} -->
+                        
+                         </h1>
                       {% endif %}                      
                       <p>{{ section.settings.banner_subheading }}</p>
                   	</div>

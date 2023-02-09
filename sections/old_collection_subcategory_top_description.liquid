@@ -16,8 +16,8 @@
         </div>
 {%- endif -%}
 
-<script type="lazyload2">
-  setTimeout(function() {
+<script>
+  (function() {
     jQuery('.collection_subcategory_description_inner .top_content_item .desc-half .read-more-content').on('click', function(){
         jQuery(this).closest('.top_content_item').find('.desc-half').hide();
         jQuery(this).closest('.top_content_item').find('.desc-full').show();

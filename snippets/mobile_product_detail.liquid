@@ -30,15 +30,15 @@
   				{% endif %}
   				<div class="desktop_dimension">
   				  {% if product.metafields.arena.dimension_image != blank %}
-  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+  				  <img src="{{product.metafields.arena.dimension_image}}">
   				  {% endif %}
   				</div>
   				<div class="mobile_dimension" style="display:none;">  
   				  {% if product.metafields.arena_mobile.mobile_dimension_image != blank %}
-  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
+  				  <img src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
   				  {% else %}
   				  {% if product.metafields.arena.dimension_image != blank %}
-  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+  				  <img src="{{product.metafields.arena.dimension_image}}">
   				  {% endif %}
   				  {% endif %}  
   				  {% if product.metafields.mobile_dimension.content != blank %}
@@ -60,7 +60,7 @@
 					  <div class="panel-heading" role="tab" id="heading0">
 						<h4 class="panel-title">
 						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading0" aria-expanded="false" aria-controls="collapseheading0">
-							Specifications <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+							Specifications <span class="icon-plus-toggle"><img src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img src="{{'Minus.png' | asset_url}}"></span>
 						  </a>
 						</h4>
 					  </div>
@@ -75,7 +75,7 @@
 					  <div class="panel-heading" role="tab" id="heading1">
 						<h4 class="panel-title">
 						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading1" aria-expanded="false" aria-controls="collapseheading1">
-							Assembly & Care <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+							Assembly & Care <span class="icon-plus-toggle"><img src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img src="{{'Minus.png' | asset_url}}"></span>
 						  </a>
 						</h4>
 					  </div>
@@ -91,7 +91,7 @@
 					  <div class="panel-heading" role="tab" id="heading2">
 						<h4 class="panel-title">
 						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading2" aria-expanded="false" aria-controls="collapseheading2">
-							Product Dimensions <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+							Product Dimensions <span class="icon-plus-toggle"><img src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img src="{{'Minus.png' | asset_url}}"></span>
 						  </a>
 						</h4>
 					  </div>
@@ -107,7 +107,7 @@
 					  <div class="panel-heading" role="tab" id="heading3">
 						<h4 class="panel-title">
 						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading3" aria-expanded="false" aria-controls="collapseheading3">
-							Delivery & Return <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+							Delivery & Return <span class="icon-plus-toggle"><img src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img src="{{'Minus.png' | asset_url}}"></span>
 						  </a>
 						</h4>
 					  </div>
