@@ -1,0 +1,27 @@
+{% if section.settings.klarna_body_content != blank %}
+<div class="klarna-main-wrap">
+  <div class="page-width">
+    {{ section.settings.klarna_body_content }}
+  </div>
+</div>  
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Klarna Content",
+    "settings": [
+		 {
+            "id": "klarna_body_content",
+            "type": "html",
+            "label": "Klarna Content"
+		 }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

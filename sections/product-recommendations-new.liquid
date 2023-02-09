@@ -1,0 +1,250 @@
+<div class="related_cart_item">
+<div class="cart_you_may_also_like" {% if product.metafields.crosssell.products == blank %}style="display:none;"{% endif %}>  
+    <div class="cart_you_may_also_like_inner">
+      {% assign heading = 'Buy more, save more' %}
+      {% if product.metafields.crosssell.products != blank %}
+      <h2>{{ heading }}</h2>
+      {% endif %}
+      {% assign limit = 10 %}
+      {% if product.metafields.crosssell.products != blank %}
+        
+      {% assign cross_sell_array =  product.metafields.crosssell.products | split: "|" %}  
+       
+      {% assign newcounter = 0 %}
+      <div class="also_like_slider cart_page active">	
+        {% for cross_sell in cross_sell_array %}    
+          
+        {% assign card_product = all_products[cross_sell] %} 
+			{{ all_products | json }}
+        <div class="bestseller_product  {{ cross_sell }}">
+         
+            <div class="bestseller_product_inner">		
+
+              {%- if card_product.featured_media -%}
+              <div class="bestseller_product_image">                     
+                <img srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                             {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                             {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                             {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                             {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                             {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                             {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                     src="{{ card_product.featured_media | img_url: '533x' }}"
+                     sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                     alt="{{ card_product.featured_media.alt | escape }}"
+                     class="motion-reduce"
+                     {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                     width="{{ card_product.featured_media.width }}"
+                     height="{{ card_product.featured_media.height }}"
+                    >                            
+              </div>
+              {%- endif -%}
+               {% assign productTags = card_product.tags | join: ', ' %}
+                <div class="custom_product_wishlist">
+                  {% render 'ZooomyListWishlistColl', product: card_product %}
+                </div> 
+                {%  if card_product.metafields.product_discount.label != blank %}
+                <div class="best_seller_discount_bar">
+                  <span>{{ card_product.metafields.product_discount.label }}</span>
+                </div>
+                {% elsif productTags contains 'New Arrivals' %}
+                <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                {% elsif productTags contains 'Sale' %}
+                <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                {% endif %}	
+                <div class="bestseller_card__content">
+                  <div class="card__information">
+                    <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                      <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                        {{ card_product.title | escape }}
+                      </a>
+                    </h3>
+                    <div class="card-information">
+                      {%- if card_product.metafields.reviews.rating.value != blank -%}
+                      {% liquid
+                                      assign rating_decimal = 0
+                                      assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                                      if decimal >= 0.3 and decimal <= 0.7
+                                        assign rating_decimal = 0.5
+                                      elsif decimal > 0.7
+                                        assign rating_decimal = 1
+                                      endif
+                                    %}
+                      <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                        <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                      </div>
+                      <p class="rating-text caption">
+                        <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+                      </p>
+                      <p class="rating-count caption">
+                        <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                        <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                      </p>
+                      {%- endif -%}
+
+                      {% render 'bestseller-price', product: card_product, price_class: '' %}
+                    </div>
+                  </div>
+                  {% assign color_active = false %}
+                  {% for option in card_product.options %}
+                    {% if option == 'Color' %}
+                       {% assign color_active = true %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if card_product.variants.size > 1 and color_active == true %}
+                    <div class="collection_product_color_swatches">
+                      <ul>
+                      {% for option in card_product.options %}
+                         {% if option == 'Color' %}
+                           {% assign index = forloop.index0 %}
+                           {% assign colorlist = '' %}
+                            {% assign color = '' %}
+                           {% for variant in card_product.variants %}
+                               {% capture color %}
+                               {{ variant.options[index] }}
+                               {% endcapture %}
+
+                                {% unless colorlist contains color %} 
+                                     <li class="Swatches-Color {{color | strip}}" value="{{color | strip}}" data-img="{%- if variant.featured_media != null -%} {{ variant.featured_media | img_url:'master' }} {% endif %}" data-orignel="{%- if card_product.featured_image != null -%}{{ card_product.featured_media | img_url: 'master' }}{% endif %}"><span></span></li>	
+                                  {% assign colorlist = tempList %}
+                               {% endunless %}
+                            {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                      </ul>  
+                    </div> 
+                  {% endif %}
+                  <div class="upsell_add_to_cart_product">
+                    <form method="post" action="/cart/add" class="col-button">
+                      <input type="hidden" name="id" value="{{ card_product.variants.first.id }}" />
+                      <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                      <input type="submit" value="Add to cart" class="btn" />
+                    </form>
+                  </div>  
+                </div>
+          </div>
+
+        </div> 
+        {% assign newcounter = newcounter | plus: 1 %}
+        {% endfor %}
+      </div>
+      {% endif %}
+ 	 </div> 
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.product-recommendations.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.product-recommendations.settings.paragraph__1.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "You may also like",
+      "label": "t:sections.product-recommendations.settings.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.product-recommendations.settings.header__2.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.product-recommendations.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.product-recommendations.settings.show_rating.label",
+      "info": "t:sections.product-recommendations.settings.show_rating.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

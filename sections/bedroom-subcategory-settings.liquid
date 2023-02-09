@@ -1,0 +1,1138 @@
+{% if current_tags.first != blank and section.blocks %}
+  {%- liquid
+  	  assign results = collection
+      assign sort_by = collection.sort_by | default: results.default_sort_by
+      assign total_active_values = 0
+      if results.url
+        assign results_url = collection.url
+      else 
+        assign terms = collection.terms | escape
+        assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+      endif
+ -%}
+
+
+{%- liquid
+	assign all_color_tag = ''
+	assign all_color = '' 
+    
+    assign all_size_tag = ''
+	assign all_size = ''
+    
+    assign all_style_tag = ''
+	assign all_style = ''
+    
+    assign all_material_tag = ''
+	assign all_material = ''
+    
+    assign all_storage_tag = ''
+	assign all_storage = '' 
+    
+    assign all_feature_tag = ''
+	assign all_feature = ''
+    
+    assign all_seating_tag = ''
+	assign all_seating = ''
+
+	assign all_upholstery_material_tag = ''
+	assign all_upholstery_material = ''
+    
+    assign all_motion_tag = ''
+	assign all_motion = '' 
+    
+    assign all_reclining_tag = ''
+	assign all_reclining = ''
+    
+    assign all_capacity_tag = ''
+	assign all_capacity = ''
+
+  	for product in collection.products
+		if product.tags contains current_tags.first
+          assign all_tags = product.tags
+          for tag in all_tags  
+             if tag contains 'color_'
+                 assign all_color = all_color | append: ',' | append: tag
+              endif 
+
+              if tag contains 'size_'
+                 assign all_size = all_size | append: ',' | append: tag
+              endif
+
+              if tag contains 'style_'
+                 assign all_style = all_style | append: ',' | append: tag
+              endif
+
+              if tag contains 'material_'
+                 assign all_material = all_material | append: ',' | append: tag
+              endif
+
+              if tag contains 'storage_'
+                 assign all_storage = all_storage | append: ',' | append: tag
+              endif
+
+              if tag contains 'feature_'
+                 assign all_feature = all_feature | append: ',' | append: tag
+              endif
+
+              if tag contains 'seating_'
+                 assign all_seating = all_seating | append: ',' | append: tag
+              endif
+
+               if tag contains 'material_'
+                 assign all_upholstery_material = all_upholstery_material | append: ',' | append: tag
+              endif
+
+              if tag contains 'storage_'
+                 assign all_motion = all_motion | append: ',' | append: tag
+              endif
+
+              if tag contains 'feature_'
+                 assign all_reclining = all_reclining | append: ',' | append: tag
+              endif
+
+              if tag contains 'seating_'
+                 assign all_capacity = all_capacity | append: ',' | append: tag
+              endif
+
+           endfor
+         endif
+ 	 endfor
+     
+  	assign all_color = all_color | remove_first: ' ,' | split: ','
+   	assign all_color_tag = all_color_tag | concat: all_color
+	assign all_color_tag = all_color_tag | uniq | compact 
+    
+    assign all_size = all_size | remove_first: ' ,' | split: ','
+   	assign all_size_tag = all_size_tag | concat: all_size
+	assign all_size_tag = all_size_tag | uniq | compact 
+    
+    assign all_style = all_style | remove_first: ' ,' | split: ','
+   	assign all_style_tag = all_style_tag | concat: all_style
+	assign all_style_tag = all_style_tag | uniq | compact 
+    
+    assign all_material = all_material | remove_first: ' ,' | split: ','
+   	assign all_material_tag = all_material_tag | concat: all_material
+	assign all_material_tag = all_material_tag | uniq | compact 
+   
+    assign all_storage = all_storage | remove_first: ' ,' | split: ','    
+   	assign all_storage_tag = all_storage_tag | concat: all_storage
+	assign all_storage_tag = all_storage_tag | uniq | compact 
+    
+    assign all_feature = all_feature | remove_first: ' ,' | split: ','
+   	assign all_feature_tag = all_feature_tag | concat: all_feature
+	assign all_feature_tag = all_feature_tag | uniq | compact 
+    
+    assign all_seating = all_seating | remove_first: ' ,' | split: ','
+   	assign all_seating_tag = all_seating_tag | concat: all_seating
+	assign all_seating_tag = all_seating_tag | uniq | compact 
+     
+    assign all_upholstery_material = all_upholstery_material | remove_first: ' ,' | split: ','
+   	assign all_upholstery_material_tag = all_upholstery_material_tag | concat: all_upholstery_material
+	assign all_upholstery_material_tag = all_upholstery_material_tag | uniq | compact 
+   
+    assign all_motion = all_motion | remove_first: ' ,' | split: ','    
+   	assign all_motion_tag = all_motion_tag | concat: all_motion
+	assign all_motion_tag = all_motion_tag | uniq | compact 
+    
+    assign all_reclining = all_reclining | remove_first: ' ,' | split: ','
+   	assign all_reclining_tag = all_reclining_tag | concat: all_reclining
+	assign all_reclining_tag = all_reclining_tag | uniq | compact 
+    
+    assign all_capacity = all_capacity | remove_first: ' ,' | split: ','
+   	assign all_capacity_tag = all_capacity_tag | concat: all_capacity
+	assign all_capacity_tag = all_capacity_tag | uniq | compact 
+-%}
+
+  
+  {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'facets_custom.js' | asset_url }}" defer="defer"></script>
+  <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+    {% if section.blocks.size > 0  %}
+    	{% for block in section.blocks %}
+    		{% if block.settings.sub_category == current_tags.first %}
+    			<div class="custom_facets-container filter_parent_page">
+                      <form id="custom_FacetFiltersForm_Item" {% if current_tags.first != blank %}data-default="{{ current_tags.first | handle }}"{% endif %} class="facets__form {% if current_tags.first != blank %}child_collection_filter{% endif %}" data-action="{{ shop.secure_url }}{{ collection.url }}/{% if current_tags.first != blank %}{{ current_tags.first | handle }}+{% endif %}">
+                        <div id="FacetsWrapperDesktop" class="facets__wrapper">
+                          {% if block.settings.specail-offers-tags != blank %}		 
+                              <details id="Details-offer-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Special Offers</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-offer-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">
+                                    {% assign special_array = block.settings.specail-offers-tags | split: '|' %}	
+                                    {% assign newcounter = 0 %}           
+                                    {% for secial_offer_filter in special_array %}  
+                                    {% assign secial_offer = secial_offer_filter | strip %}  
+                                    {% for tag in collection.all_tags %}
+                                    {% if tag contains secial_offer %}                      				
+                                    <li class="list-menu__item facets__item">
+                                      <label for="Filter-special_offers-{{newcounter}}" class="facet-checkbox ">
+                                        <input type="checkbox"
+                                               name="special_offer"
+                                               value="{{ tag | handle }}"
+                                               id="Filter-special_offers-{{newcounter}}">
+
+                                        <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                          <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                        </svg>
+
+                                        <svg class="icon icon-checkmark"
+                                             width="1.1rem"
+                                             height="0.7rem"
+                                             viewBox="0 0 11 7"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+
+                                          <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                        {{ tag | replace: '-', ' '  }}
+                                      </label>
+                                    </li>
+                                    {% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}
+                                    {% endfor %}        
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+
+                          {% endif %}
+                          
+                          {% if block.settings.categories != blank %}		 
+                          <details id="Details-category-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                            <summary class="facets__summary caption-large focus-offset">
+                              <div>
+                                <span>Categories</span>
+                                {% render 'icon-caret' %}
+                              </div>
+                            </summary>
+                            <div id="Facet-category-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                              <div class="facets__header">
+                                <span class="facets__selected no-js-hidden">0 selected</span>
+                                <facet-remove>
+                                  <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                    {{ 'products.facets.reset' | t }}
+                                  </a>
+                                </facet-remove>
+                              </div>
+
+                              <ul class="facets__list list-unstyled" role="list">
+                                {% assign special_array = block.settings.categories | split: '|' %}	
+                                {% assign newcounter = 0 %}           
+                                {% for secial_offer_filter in special_array %}  
+                                {% assign secial_offer = secial_offer_filter | strip %}  
+                                {% for tag in collection.all_tags %}
+                                {% if tag contains secial_offer %}                      				
+                                <li class="list-menu__item facets__item">
+                                  <label for="Filter-category-{{newcounter}}" class="facet-checkbox ">
+                                    <input type="checkbox"
+                                           name="category"
+                                           value="{{ tag | handle }}"
+                                           id="Filter-category-{{newcounter}}">
+
+                                    <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                      <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                    </svg>
+
+                                    <svg class="icon icon-checkmark"
+                                         width="1.1rem"
+                                         height="0.7rem"
+                                         viewBox="0 0 11 7"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+
+                                      <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                            stroke="currentColor"
+                                            stroke-width="1.75"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                    {{ tag }}
+                                  </label>
+                                </li>
+                                {% assign newcounter = newcounter | plus: 1 %}	
+                                {% endif %}
+                                {% endfor %}        
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </details>
+
+                          {% endif %}
+                          
+                          {% if block.settings.price != blank %}		 
+                          <details id="Details-Price-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                            <summary class="facets__summary caption-large focus-offset">
+                              <div>
+                                <span>Price</span>
+                                {% render 'icon-caret' %}
+                              </div>
+                            </summary>
+                            <div id="Facet-price-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                              <div class="facets__header">
+                                <span class="facets__selected no-js-hidden">0 selected</span>
+                                <facet-remove>
+                                  <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                    {{ 'products.facets.reset' | t }}
+                                  </a>
+                                </facet-remove>
+                              </div>
+
+                              <ul class="facets__list list-unstyled" role="list">
+                                {% assign special_array = block.settings.price | split: '|' %}	
+                                {% assign newcounter = 0 %}           
+                                {% for price_filter in special_array %}  
+                                {% assign price_tag = price_filter | strip %}
+                                {% assign label_price = price_tag | replace: 'price_', '' %}
+                                <li class="list-menu__item facets__item">
+                                  <label for="Filter-price-{{newcounter}}" class="facet-checkbox ">
+                                    <input type="checkbox"
+                                           name="price"
+                                           value="{{ price_tag }}"
+                                           id="Filter-price-{{newcounter}}">
+
+                                    <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                      <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                    </svg>
+
+                                    <svg class="icon icon-checkmark"
+                                         width="1.1rem"
+                                         height="0.7rem"
+                                         viewBox="0 0 11 7"
+                                         fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+
+                                      <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                            stroke="currentColor"
+                                            stroke-width="1.75"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                    Price {{ label_price  }}
+                                  </label>
+                                </li>
+                                {% assign newcounter = newcounter | plus: 1 %}	       
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </details>
+
+                          {% endif %}
+                          
+                          {% if block.settings.color != blank and all_color_tag.size > 1 %}		 
+                          <details id="Details-color-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                            <summary class="facets__summary caption-large focus-offset">
+                              <div>
+                                <span>Color</span>
+                                {% render 'icon-caret' %}
+                              </div>
+                            </summary>
+                            <div id="Facet-color-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                              <div class="facets__header">
+                                <span class="facets__selected no-js-hidden">0 selected</span>
+                                <facet-remove>
+                                  <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                    {{ 'products.facets.reset' | t }}
+                                  </a>
+                                </facet-remove>
+                              </div>
+
+                              <ul class="facets__list list-unstyled" role="list">                       	
+                                {% assign newcounter = 0 %}           
+                                {% for tag in all_color_tag %}                                                    				
+                                   {% if tag != blank %}
+                                	<li class="list-menu__item facets__item">
+                                      <label for="Filter-color-{{newcounter}}" class="facet-checkbox ">
+                                        <input type="checkbox"
+                                               name="color"
+                                               value="{{ tag | handle }}"
+                                               id="Filter-color-{{newcounter}}">
+
+                                        <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                          <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                        </svg>
+
+                                        <svg class="icon icon-checkmark"
+                                             width="1.1rem"
+                                             height="0.7rem"
+                                             viewBox="0 0 11 7"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+
+                                          <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                        {{ tag | replace: 'color_', ''  }}
+                                      </label>
+                                    </li>
+                           			{% assign newcounter = newcounter | plus: 1 %}
+                                	{% endif %}
+                                {% endfor %}                        
+                              </ul>
+                            </div>
+                          </details>
+
+                          {% endif %}  
+                           {% if block.settings.style != blank and all_style_tag.size > 1 %}
+                          <details id="Details-style-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                            <summary class="facets__summary caption-large focus-offset">
+                              <div>
+                                <span>Style</span>
+                                {% render 'icon-caret' %}
+                              </div>
+                            </summary>
+                            <div id="Facet-style-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                              <div class="facets__header">
+                                <span class="facets__selected no-js-hidden">0 selected</span>
+                                <facet-remove>
+                                  <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                    {{ 'products.facets.reset' | t }}
+                                  </a>
+                                </facet-remove>
+                              </div>
+
+                              <ul class="facets__list list-unstyled" role="list">                               
+                                {% assign newcounter = 0 %} 
+                                {% for tag in all_style_tag %}
+                                {% if tag != blank %}                      				
+                                    <li class="list-menu__item facets__item">
+                                      <label for="Filter-style-{{newcounter}}" class="facet-checkbox ">
+                                        <input type="checkbox"
+                                               name="style"
+                                               value="{{ tag | handle }}"
+                                               id="Filter-style-{{newcounter}}">
+
+                                        <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                          <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                        </svg>
+
+                                        <svg class="icon icon-checkmark"
+                                             width="1.1rem"
+                                             height="0.7rem"
+                                             viewBox="0 0 11 7"
+                                             fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+
+                                          <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                        {{ tag | replace: 'style_', ''  }}
+                                      </label>
+                                    </li>
+                                	{% assign newcounter = newcounter | plus: 1 %}	
+                                {% endif %}
+                                {% endfor %}                        
+                              </ul>
+                            </div>
+                          </details>
+
+                          {% endif %} 
+                          
+                          {% if block.settings.material != blank and all_material_tag.size > 1 %}		 
+                              <details id="Details-material-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Material</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-material-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">
+                                    
+                                    {% assign newcounter = 0 %}           
+                                  
+                                    {% for tag in all_material_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-material-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="material"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-material-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'material_', ''  }}
+                                          </label>
+                                        </li>
+                                        {% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}                               
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %} 
+                          	{% if block.settings.size != blank and all_size_tag.size > 1 %}		 
+                              <details id="Details-size-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Size</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-size-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">
+                                    {% assign special_array = block.settings.size | split: '|' %}	
+                                    {% assign newcounter = 0 %}           
+                                    {% for tag in all_size_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-size-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="size"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-size-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'size_', ''  }}
+                                          </label>
+                                        </li>
+                                    	{% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}                           
+                                    {% endfor %}                        
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	{% if block.settings.storage != blank and all_storage_tag.size > 1 %}		 
+                              <details id="Details-storage-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Storage</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-storage-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">
+                                    
+                                    {% assign newcounter = 0 %}           
+                                  
+                                    {% for tag in all_storage_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-storage-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="storage"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-storage-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'storage_', ''  }}
+                                          </label>
+                                        </li>
+                                    {% assign newcounter = newcounter | plus: 1 %}
+                                    {% endif %}
+                                    {% endfor %}                        
+                                    	       
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	{% if block.settings.feature != blank and all_feature_tag.size > 1%}		 
+                              <details id="Details-feature-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Feature</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-feature-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">
+                                    
+                                    {% assign newcounter = 0 %}           
+                                   
+                                    {% for tag in all_feature_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-feature-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="feature"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-feature-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'feature_', ''  }}
+                                          </label>
+                                        </li>
+                                        {% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}                           
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	 {% if block.settings.seating != blank and all_seating_tag.size > 1 %}		 
+                              <details id="Details-seating-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Seating Capacity</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-seating-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">                                    
+                                    {% assign newcounter = 0 %}           
+                                   
+                                    {% for tag in all_seating_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-seating-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="seating"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-seating-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'seating_', ''  }}
+                                          </label>
+                                        </li>
+                                    {% assign newcounter = newcounter | plus: 1 %}	  
+                                    {% endif %}                           
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                            {% if block.settings.upholstery_material != blank and all_upholstery_material_tag.size > 1 %}		 
+                              <details id="Details-upholstery_material-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Upholstery Material</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-upholstery_material-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">	
+                                    {% assign newcounter = 0 %}           
+
+                                    {% for tag in all_upholstery_material_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-upholstery_material-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="upholstery_material"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-upholstery_material-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'upholstery_material_', ''  }}
+                                          </label>
+                                        </li>
+                                    	{% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}                             
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	 {% if block.settings.motion != blank and all_motion_tag.size > 1%}		 
+                              <details id="Details-motion-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Motion</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-motion-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">                                    
+                                    {% assign newcounter = 0 %} 
+                                    {% for tag in all_motion_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-motion-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="motion"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-motion-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'motion_', ''  }}
+                                          </label>
+                                        </li>
+                                    	{% assign newcounter = newcounter | plus: 1 %}	
+                                    {% endif %}
+                                    {% endfor %}                               
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	 {% if block.settings.reclining != blank and all_reclining_tag > 1 %}		 
+                              <details id="Details-reclining-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Reclining Mechanism</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-reclining-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">                                    
+                                    {% assign newcounter = 0 %}           
+                                    {% for tag in all_reclining_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-reclining-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="reclining"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-reclining-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'reclining_', ''  }}
+                                          </label>
+                                        </li>
+                                      {% assign newcounter = newcounter | plus: 1 %}
+                                    {% endif %}                     
+                                	       
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                          	{% if block.settings.show_capacity != blank and all_capacity_tag.siz > 1 %}		 
+                              <details id="Details-show_capacity-{{ forloop.index }}-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                                <summary class="facets__summary caption-large focus-offset">
+                                  <div>
+                                    <span>Shoe Capacity</span>
+                                    {% render 'icon-caret' %}
+                                  </div>
+                                </summary>
+                                <div id="Facet-show_capacity-{{ forloop.index }}-{{ section.id }}" class="facets__display">
+                                  <div class="facets__header">
+                                    <span class="facets__selected no-js-hidden">0 selected</span>
+                                    <facet-remove>
+                                      <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                                        {{ 'products.facets.reset' | t }}
+                                      </a>
+                                    </facet-remove>
+                                  </div>
+
+                                  <ul class="facets__list list-unstyled" role="list">                                   
+                                    {% assign newcounter = 0 %} 
+                                    {% for tag in all_capacity_tag %}
+                                    {% if tag != blank %}                      				
+                                        <li class="list-menu__item facets__item">
+                                          <label for="Filter-show_capacity-{{newcounter}}" class="facet-checkbox ">
+                                            <input type="checkbox"
+                                                   name="show_capacity"
+                                                   value="{{ tag | handle }}"
+                                                   id="Filter-show_capacity-{{newcounter}}">
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                                 width="1.1rem"
+                                                 height="0.7rem"
+                                                 viewBox="0 0 11 7"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.75"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | replace: 'show_capacity_', ''  }}
+                                          </label>
+                                        </li>
+                                    {% assign newcounter = newcounter | plus: 1 %}
+                                    {% endif %}
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </details>
+                            {% endif %}
+                        </div> 
+
+
+                        <div class="filter_right">
+                          <div class="product-count light" role="status">
+                            <h2 class="product-count__text text-body">
+                              <span id="ProductCountDesktop">
+                                {%- if results.results_count -%}
+                                {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+                                {%- elsif results.products_count == results.all_products_count -%}
+                                {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+                                {%- else -%}
+                                {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
+                                {%- endif -%}
+                              </span>
+                            </h2>
+                            <div class="loading-overlay__spinner">
+                              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                              </svg>
+                            </div>
+                          </div>
+
+                          <div class="facet-filters sorting caption">
+                            <div class="facet-filters__field">
+                              <h2 class="facet-filters__label caption-large text-body">
+                                <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                              </h2>
+                              <div class="select">
+                                {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+                                <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                                  {%- for option in results.sort_options -%}
+                                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                                  {%- endfor -%}
+                                </select>
+                                {% render 'icon-caret' %}
+                              </div>
+                            </div>
+
+                            <noscript>
+                              <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
+                            </noscript>
+                          </div>
+
+                        </div>   	
+                      </form> 
+                      <div id="slected_fiters">
+
+                      </div>  
+        		</div> 
+    		{% endif %}
+    	{% endfor %}
+    {% endif %}  
+  </div>
+{% endif %}
+
+
+{% assign products_array = products_list | split: '::'%}
+
+{% schema %}
+  {
+    "name": "Sub Category Filter",
+	"blocks": [
+        {
+          "type": "sub-cat",
+          "name": "Add Sub Category Settings",
+          "settings": [
+            {
+              "type": "text",
+              "id": "sub_category",
+              "label": "Subcategory Title"
+            },
+			{
+              "type": "textarea",
+              "id": "specail-offers-tags",
+              "label": "Special Offers",
+			  "info": "Please add tag with separate by | this symbol"	
+            },
+			{
+              "type": "textarea",
+              "id": "categories",
+              "label": "Categories",
+			  "info": "Please add tag with separate by | this symbol"	
+            },
+			{
+              "type": "textarea",
+              "id": "price",
+              "label": "Price",
+			  "info": "Please add tag with separate by | this symbol"	
+            },
+			{
+              "type": "checkbox",
+              "id": "color",
+              "label": "Color"
+            },
+			{
+              "type": "checkbox",
+              "id": "style",
+              "label": "Style"
+            },
+			{
+              "type": "checkbox",
+              "id": "material",
+              "label": "Material"
+            },
+			{
+              "type": "checkbox",
+              "id": "size",
+              "label": "Size Filter"	
+            },
+			{
+              "type": "checkbox",
+              "id": "storage",
+              "label": "Storage"	
+            },
+			{
+              "type": "checkbox",
+              "id": "feature",
+              "label": "Feature"	
+            },
+			{
+              "type": "checkbox",
+              "id": "seating",
+              "label": "Seating Capacity"	
+            },
+			{
+              "type": "checkbox",
+              "id": "upholstery_material",
+              "label": "Upholstery Material"	
+            },
+			{
+              "type": "checkbox",
+              "id": "motion",
+              "label": "Motion"	
+            },
+			{
+              "type": "checkbox",
+              "id": "reclining",
+              "label": "Show Reclining Mechanism"
+            },
+			{
+              "type": "checkbox",
+              "id": "show_capacity",
+              "label": "Shoe Capacity"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

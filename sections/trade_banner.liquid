@@ -1,0 +1,145 @@
+{% if section.settings.banner_heading != blank %}
+
+	{% if section.settings.banner_heading != blank %}
+		{% assign bg_color = section.settings.background %} 
+	{% else %}
+		{% assign bg_color = '#fff' %} 
+    {% endif %}
+	<style>
+      .trade_banner {
+      		padding: 50px 0;
+      }
+      	.trade_banner .banner_heading_section h1 {
+			font-size: 66px;
+          	line-height: 82px;
+          	font-weight: 700;
+          	font-family: 'Gellix';
+			font-style: normal;
+          	color: #FFFFFF;
+          	padding-bottom: 20px;
+		}
+      .trade_banner .banner_heading_section p {
+      		font-family: 'Gellix';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 40px;
+			line-height: 45px;
+        	color: #FFFFFF;
+        	padding-bottom: 10px;
+      }
+      .trade_banner .banner_text_section p {
+      		font-family: 'Gellix';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+        	color: #FFFFFF;
+      }
+    </style>
+	<section class="trade_banner_main">
+      <div class="page-width">
+        <div class="row">
+           <div class="trade_breadcrumbs tbreadcrumb-mobile hide-on-desktop">
+              <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                <ol class="breadcrumbs__list">
+                  <li class="breadcrumbs__item">
+                    <a class="breadcrumbs__link" href="/">Home</a>
+                  </li>
+                  <li class="breadcrumbs__item">
+                    <span class="curent_page">{{ section.settings.banner_heading }}</span>
+                  </li>                        
+                </ol>
+              </nav>
+            </div>
+          </div>
+      </div>
+      <div class="trade_banner" style="background:{{bg_color}}">
+          <div class="page-width">
+              <div class="container">
+                  <div class="row">
+                    <div class="trade_breadcrumbs hide-on-mobile">
+                      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                          <ol class="breadcrumbs__list">
+                            <li class="breadcrumbs__item">
+                              <a class="breadcrumbs__link" href="/">Home</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                              <span class="curent_page">{{ section.settings.banner_heading }}</span>
+                            </li>                        
+                          </ol>
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                           <h2 class="hide-on-desktop">{{ section.settings.banner_heading }} <sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup></h1>
+                          <div class="tr-banner-img">
+                              {% if section.settings.banner_image != blank %}
+                                  <img src="{{ section.settings.banner_image | img_url: '1500x' }}" class="img-fluid" alt="trade program">
+                              {% endif %}
+                          </div>
+                      </div>
+                      <div class="col-md-8">
+                          <div class="trade-banner-content">
+                              <div class="banner_heading_section">
+                                <h1 class="hide-on-mobile">{{ section.settings.banner_heading }} <sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup></h1>
+                                <p>{{ section.settings.banner_subheading }}</p>
+                              </div>
+                              <div class="banner_text_section">
+                                {% if section.settings.banner_content != blank %}
+                                  <p>{{ section.settings.banner_content }}</p>
+                                {% endif %}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+			"type":"image_picker",
+			"id":"banner_image",
+			"label":"Banner Image"
+        },
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"textarea",
+			"id":"banner_content",
+			"label":"Content"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"image_picker",
+			"id":"heding_image",
+			"label":"Icon After Heading"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

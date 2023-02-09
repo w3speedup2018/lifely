@@ -1,0 +1,464 @@
+{% style %}
+    .gallery_thumb_with_3d.ar_modal_view_active .product_3d_view {
+        display: block;
+    }
+    .product_main_thumb_grid_sec .gallery_thumb_with_3d div.slider-mobile-gutter {
+      max-width: 80% !important;
+      flex: 80% !important;
+    }
+    .product_main_thumb_grid_sec .gallery_thumb_with_3d.ar_modal_view_hide div.slider-mobile-gutter {
+      max-width: 100% !important;
+      flex: 100% !important;
+    }
+    .gallery_thumb_with_3d.deep_dream_gallery_thumb.ar_modal_view_active {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+    .gallery_thumb_with_3d.deep_dream_gallery_thumb.ar_modal_view_active #productSliderThumbs li img.gallery-thumb {
+        width: 102px !important;
+        height: 102px !important;
+        OBJECT-FIT: cover;
+    }
+    .moving-image-grid.show_moving {
+        visibility: visible;
+        max-height: 700px;
+        opacity: 1;
+        padding-bottom:27px;
+    }
+    .moving-image-grid {
+        transition-timing-function: cubic-bezier(0,1,.5,1);
+        visibility: hidden;
+        max-height: 0;
+        opacity: 0;
+        position: relative;
+    }
+    .gallery_thumb_with_3d.ar_modal_view_active {
+        padding: 0 20px !important;
+    }
+    .moving-image-grid .moving-close {
+        position: absolute;
+        top: -6px;
+        right: 0;
+        z-index: 9;
+        cursor: pointer;
+    }
+    .moving-close .fa {
+        font-size: 18px;
+        color: #2c474b;
+    }
+    .default-extend-panel .extend-list li .extend-icon-box .iconfont-viewer {
+        color: #2c474b !important;
+    }
+    .display_3d{
+        display:none !important;
+    }
+    section#View_in_chair h2 {
+        z-index: 22;
+    }
+    .single-product-content-area.mb-50 {
+        opacity: 1 !important;
+    }
+    #_3dviewertoolbar {
+        display: inline-block;
+        float: right;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+    .default-extend-panel .extend-list li.hidden {
+        display: none;
+    }
+    .default-extend-panel .extend-list li._subview:hover,
+    .default-extend-panel .extend-list li._subview.active {
+        border: 2px solid #ccc;
+        border-radius: 6px;
+    }
+  
+    ._coohom_container {
+        position: relative;
+    }
+  
+  
+    .default-extend-panel .extend-list li._subview:hover .extend-icon-box svg,
+    .default-extend-panel .extend-list li._subview.active .extend-icon-box svg {
+        background: #f3f4f4;
+    }
+  
+    .default-extend-panel .extend-list li:hover .extend-icon-box svg,
+    .default-extend-panel .extend-list li.active .extend-icon-box svg {
+        background-color: #dddedf;
+    }
+  
+    .default-extend-panel .extend-list {
+        display: flex;
+        margin-bottom: 0;
+        padding: 4px 0 4px 4px;
+        background-color: #f3f4f4;
+        border-radius: 8px;
+        padding-right: 10px;
+    }
+  
+    .default-extend-panel .extend-list li {
+        border-radius: 6px;
+        border: 2px solid #f3f4f4;
+        list-style-type: none;
+        display: flex;
+        flex-grow: 0;
+        align-items: center;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-left: 10px;
+        width: 40px;
+    }
+  
+    .default-extend-panel .extend-list li .extend-icon-box .iconfont-viewer {
+        font-size: 22px;
+        color: #4b4f54;
+    }
+  
+    .default-extend-panel .extend-list li .extend-icon-box svg {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: #f3f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+    }
+    .dialog-type-lightbox{
+        z-index: 99999;
+    }
+    single-product-content-area{
+        display: none;
+    }
+    #wpadminbar{
+        display:none;
+    }
+    .wlb-added {
+        display: none;
+    }
+    body.product_.product #productSliderThumbs li img.gallery-thumb {
+        width: 122px!important;
+        height: 117px!important;
+        object-fit: fill;
+        max-width: 96%;
+    }
+    @media only screen and (max-width: 1400px){
+      body.product_.product #productSliderThumbs li img.gallery-thumb {
+          height: 105px!important;
+      }
+    }
+    @media only screen and (max-width: 1360px){
+      body.product_.product #productSliderThumbs li img.gallery-thumb {
+          height: 100px!important;
+      }
+    }
+    @media only screen and (max-width: 1200px){
+      .product_main_thumb_grid_sec .gallery_thumb_with_3d div.slider-mobile-gutter {
+          max-width: 100% !important;
+          flex: 100% !important;
+      }
+    }
+    @media only screen and (max-width: 767px){
+        .product_main_thumb_grid_sec .gallery_thumb_with_3d div.slider-mobile-gutter {
+          max-width: 100% !important;
+          flex: 100% !important;
+        } 
+        body.product_.product main#MainContent > div:first-child{
+          background:#F8F8F8;
+        }
+         .product_3d_view li.animate-view-buttons {
+            justify-content: center !important;
+        }
+        ._coohom_container .default-extend-panel.mobile {
+            bottom: 20px !important;
+            right: 36px;
+            top: unset;
+            transform: unset !important;
+        }
+        ._coohom_container .default-extend-panel.mobile .extend-list { 
+            flex-direction: column;
+            border-radius: 8px;
+            padding: 4px 4px 0 4px;
+            position: static;
+        }
+        .qr_msk .qr_close {
+            right: 0;
+            top: 0;
+        }
+        .zoomContainer{
+            display: none !important;
+        }
+        .mobile-gallery img {
+            height: 18px;
+            margin-right: 5px;
+            width: auto;
+        }
+        ._coohom_container > .row {
+            margin: 0 !important;
+        }
+        .desktop-gallery-view .mobile-gallery a:disabled {
+            opacity: 0.6;
+        }
+        .moving-image-grid .moving-close { 
+            top: 6px;
+          right: 6px;
+        }
+        div#_3dviewer_container {
+            padding: 0 !important;
+        }
+    }
+    @media only screen and (max-width: 480px){
+        .default-extend-panel .extend-list {
+            display: flex !important;
+            position: static !important;
+            flex-direction: row !important;
+        }
+        ._coohom_container .ant-popover-placement-leftTop > .ant-popover-content > .ant-popover-arrow{
+            display:none;
+        }
+        ._coohom_container .ant-popover.default-viewer-camara-panel.ant-popover-placement-leftTop{
+            left:-150px;
+        } 
+        ._coohom_container .ant-popover.default-viewer-camara-panel.ant-popover-placement-leftTop .camara-list .camara-item {
+            display: flex;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            width: 36px;
+            height: 40px;
+            margin: 0 3px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .default-extend-panel .extend-list {
+            display: inline-block; 
+            margin-bottom: 0;
+            padding: 4px 0 4px 4px;			
+            border-radius: 8px;
+            padding-right: 0px;
+            background-color: transparent;
+            text-align: right;
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+        }
+        #_3dviewertoolbar {
+            display: inline-block;
+            float: right;
+            position: absolute;
+            bottom: unset;			
+            right: -9px;
+            bottom: 0px;
+            top:9px;  
+        }
+        .default-extend-panel .extend-list li .extend-icon-box svg{
+            background-color:transparent;
+        }
+        .default-extend-panel .extend-list li{
+            margin-bottom: 6px;
+            border:none;  
+        }
+        .default-extend-panel .extend-list li {
+            margin-bottom: 6px;
+            border: none;
+            position: static;
+            margin: 0 !important;
+            display: inline-block;
+        }
+        #_3dviewertoolbar {
+            position: static;
+            order: 1;
+        }
+        ._coohom_container canvas {
+            margin: 30px 0;
+        }
+        #_3dviewertoolbar {
+            width: 100%;
+        }
+    }
+    @media only screen and (max-width: 450px){
+        #qrcode_text1 img {
+            width: 100px !important;
+            right: -70px;
+            top: -25px;
+        }
+        #qrcode1 img {
+            width: 150px;
+        }
+    }
+    @media only screen and (max-width: 375px){
+        #qrcode_text1 {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 10px;
+        }
+        #qrcode_text1 img {
+            right: 0;
+            top: -75px;
+            left: 33%;
+            
+        }
+    }
+    @media only screen and (max-width: 335px){
+        #qrcode_text1 {
+            font-size: 13px;
+        }
+    }
+{% endstyle %} 
+
+<div class="moving-image-grid" id="moving-image-grid">
+    <div class="moving-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+     <div class="single-product-content-area mb-50"> 
+        <div class="container1"> 
+            <div class="row1">
+                <div class="col-md-12" id="_3dviewer_container" style="margin:0 auto;">
+                    <div class="_coohom_container">
+                        <div id="3dviewer" class="row"> 								
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<script type="lazyload2">    
+  jQuery(document).ready(function ($) {
+      $("#3dviewer").height(500); 
+      var window_width = $(window).width();
+      $("#_3dviewer_container").css("min-width:", "600px !important");
+      if ($(".single-product-content-area .container1").width() > 1000) {
+          $("#_3dviewer_container").width(600);
+          $("#3dviewer").width(600); 
+          console.log('mishi1');
+      }else if ($(".single-product-content-area .container1").width() < 680 && ($(".single-product-content-area .container1").width()) > 545) {
+          $("#_3dviewer_container").width(500);
+          $("#3dviewer").width(500);
+          console.log('mishi2');
+          $("#_3dviewer_container").css("min-width:", "500px !important");
+      }else if ($(".single-product-content-area .container1").width() < 545 && ($(".single-product-content-area .container1").width()) > 425) {
+          $("#_3dviewer_container").width(window_width);
+          $("#3dviewer").width(window_width);
+          $("#_3dviewer_container").css("min-width:", "500px !important");
+          console.log('mishi3');
+      }else if ($(".single-product-content-area .container1").width() < 425) {
+          $("#_3dviewer_container").width(window_width);
+          $("#3dviewer").width(window_width);
+          $("#_3dviewer_container").css("min-width:", "500px !important");
+          console.log('mishi4');
+      }
+      var ios_v = iOSversion();
+      if(ios_v != null && ios_v != 'undefiend' && ios_v != ''){
+        if (ios_v[0] > 12) {
+          var coohomModelId = '{{ product.metafields.productmodad3d.product3dmodalid }}';
+          if (coohomModelId == null || coohomModelId == '') {
+              alert('coohom model id is not filled');
+          } else { 
+                  var coohomModelId = '{{ product.metafields.productmodad3d.product3dmodalid }}';
+                  var viewer = new koolViewer.ViewerUISDK({
+                        mount: document.getElementById('3dviewer'),
+                        modelId: coohomModelId,
+                        locale: 'en_US',
+                        autoRotate: false,
+                        CameraView:'left',
+                        enablePanel: false,
+                        enableShareIcon:false,
+                        mobileToolbarPosition:'bottomRight',
+                        afterDidMount() {
+                          //var components = viewer.getComponents();
+                        }
+                  });
+          }
+        }else{
+          $('.gallery_thumb_with_3d.ar_modal_view_active').removeClass('ar_modal_view_active');
+          $('.gallery_thumb_with_3d').addClass('ar_modal_view_hide');
+        }
+      }else{
+        // 3d viewer
+        var coohomModelId = '{{ product.metafields.productmodad3d.product3dmodalid }}';
+        if (coohomModelId == null || coohomModelId == '') {
+            alert('coohom model id is not filled');
+        } else { 
+                var coohomModelId = '{{ product.metafields.productmodad3d.product3dmodalid }}';
+                var viewer = new koolViewer.ViewerUISDK({
+                      mount: document.getElementById('3dviewer'),
+                      modelId: coohomModelId,
+                      locale: 'en_US',
+                      autoRotate: false,
+                      CameraView:'left',
+                      enablePanel: false,
+                      enableShareIcon:false,
+                      mobileToolbarPosition:'bottomRight',
+                      afterDidMount() {
+                        //var components = viewer.getComponents();
+                      }
+                });
+        }
+      }
+      
+
+    jQuery(".product_3d_view li.animate-view-buttons button.three-d-view").on("click", function (o) {
+        if(!jQuery(this).hasClass('disabled')){
+            o.preventDefault();
+            $("#3diframe-desktop").height(600);
+            $(".qr-grid").hide();
+            $("#3diframe-desktop").contents().find(".single-product-content-area.mb-50").css("opacity", "1");
+            $("#3diframe-desktop").contents().find("._coohom_container").removeClass("hide_container");
+            jQuery(".moving-image-grid").addClass("show_moving");
+            jQuery(".no_moving_grid").addClass("no_moving");
+            jQuery(".product_gallery_slider_sec").hide();
+            jQuery(".moving-close").show();
+             if($(window).width() < 768){
+              $('.gallery_thumb_with_3d.ar_modal_view_active ul#productSliderThumbs').hide();
+            }
+        }
+    });
+    jQuery(".moving-close").on("click", function (e) {
+        jQuery(".moving-image-grid").removeClass("show_moving");
+        jQuery(".no_moving_grid").removeClass("no_moving");
+        jQuery(".product_gallery_slider_sec").show();
+        jQuery("ul#productSliderThumbs .slick-slide.slick-current.slick-active").trigger('click');
+        if($(window).width() < 768){
+            $('.gallery_thumb_with_3d.ar_modal_view_active ul#productSliderThumbs').show();
+        }
+    });
+
+    jQuery(".product_3d_view .animate-view-buttons button.view-home").on("click", function (e) {
+        e.preventDefault();
+        if(!jQuery(this).hasClass('disabled')){
+           $("#3diframe-desktop").height(600);
+            $(".qr-grid").hide();
+            $("#3diframe-desktop").contents().find(".single-product-content-area.mb-50").css("opacity", "1");
+            $("#3diframe-desktop").contents().find("._coohom_container").removeClass("hide_container");
+            jQuery(".moving-image-grid").addClass("show_moving");
+            jQuery(".no_moving_grid").addClass("no_moving");
+            jQuery(".product_gallery_slider_sec").hide();
+            jQuery(".moving-close").show();
+            if($(window).width() < 768){
+              $('.gallery_thumb_with_3d.ar_modal_view_active ul#productSliderThumbs').hide();
+            }
+            setTimeout(function(){                
+                let button =  jQuery('._coohom_container ul.extend-list li:nth-child(3) .extend-icon-box');                  
+                button.trigger("click");
+            },1000);
+        }
+    });
+
+    function iOSversion() {
+		if (/iP(hone|od|ad)/.test(navigator.platform)) {
+			// supports iOS 2.0 and later: <https://bit.ly/TJjs1V>
+			var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+			return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+		}
+	}
+  });
+</script>

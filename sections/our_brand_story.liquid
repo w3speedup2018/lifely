@@ -1,0 +1,94 @@
+{% if section.settings and section.settings != blank %}
+	<section class="brand_story hide-on-mobile">
+		<div class="container-fluid">
+      		<div class="row">
+          		<div class="col-md-7 media-col">
+              		{% if section.settings.desktop_img != blank %}
+                  		<img src="{{ section.settings.desktop_img | img_url: 'master'}}" class="img-fluid" alt="{{ section.settings.desktop_img.alt }}">
+                  	{% endif %}
+              	</div>
+              	<div class="col-md-5 text-col">
+                  <div class="story-cn">
+                  	{% if section.settings.heading != blank %}
+                    	<h2>{{ section.settings.heading }}</h2>
+                    {% endif %}
+                    {% if section.settings.content != blank %}
+                    	<p>{{ section.settings.content }}</p>
+                    {% endif %}
+                    {% if section.settings.btn_label != blank %}
+                    	<a href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>
+                    {% endif %}
+                  </div>
+              	</div>
+          	</div>
+      	</div>
+	</section>
+
+	<section class="brand_story_mobile hide-on-desktop">
+		<div class="container-fluid">
+          	{% if section.settings.heading != blank %}
+              <div class="brand_story_head">
+				<h2>{{ section.settings.heading }}</h2>
+              </div>
+          	{% endif %}
+            
+            {% if section.settings.mobile_img != blank or section.settings.content != blank or section.settings.btn_label != blank %}
+                <div class="brand_story_content">
+                  {% if section.settings.mobile_img != blank %}
+                  <img src="{{ section.settings.mobile_img | img_url: 'master'}}" class="img-fluid" alt="{{ section.settings.mobile_img.alt }}">
+                  {% endif %}
+                  {% if section.settings.content != blank %}
+                 	 <p>{{ section.settings.content }}</p>
+                  {% endif %}
+                  {% if section.settings.btn_label != blank %}
+                  <a href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>
+                  {% endif %}
+                </div>
+          	{% endif %}
+      	</div>
+	</section>
+
+{% endif %}
+{% schema %}
+  {
+    "name": "Our Brand Story",
+    "settings": [
+		{
+			"id": "desktop_img",
+			"type": "image_picker",
+			"label": "Image for Desktop"
+		},
+		{
+			"id": "mobile_img",
+			"type": "image_picker",
+			"label": "Image for Mobile"
+		},
+		{
+			"id": "heading",
+			"type": "text",
+			"label": "Heading"
+		},
+		{
+			"id": "content",
+			"type": "textarea",
+			"label": "Content"
+		},
+		{
+			"id": "btn_label",
+			"type": "text",
+			"label": "Button Label"
+		},
+		{
+			"id": "btn_link",
+			"type": "text",
+			"label": "Button Link"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

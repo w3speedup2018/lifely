@@ -1,0 +1,111 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="icon_box_section landing_icon_box" style="background-color:{{section.settings.section_bg}}">
+      	<div class="container-custom">
+     		{% if section.settings.icon_grid_heading != blank  %}
+         	 	<h2> {{ section.settings.icon_grid_heading }} </h2>
+          	{% endif %}
+          	<div class="row">
+          		{% for block in section.blocks %}
+              		{% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.subheading != blank %}
+                      <div class="col-md-3">
+							<div class="icon_grid_box">
+                        		 {% if block.settings.grid_image != blank %}
+                              			<div class="icon_box_">
+                              				<img class="img-fluid desktop_icon lazyloaded lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}"/>
+                                            <img class="img-fluid mobile_icon lazyloaded lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.mobile_grid_image | img_url: 'master' }}" alt="{{ block.settings.mobile_grid_image.alt }}"/>
+                              			</div>                                       
+                                  {% endif %}
+                              		
+                              	  {% if block.settings.img_heading != blank or block.settings.subheading != blank %}
+                                      <div class="left_grid_box_inner">
+                                        {% if block.settings.img_heading != blank %}
+                                        <h3>{{ block.settings.img_heading}}</h3>
+                                        {% endif %}  
+                                        {% if block.settings.subheading != blank %}
+                                        <p>{{ block.settings.subheading}}</p>
+                                        {% endif %}  
+                                      </div>
+                              	  {% endif %}
+                        	</div> 
+                      </div>  
+              		{% endif %}	
+              	{% endfor %}
+          	</div> 
+          	 {% if section.settings.section_button_link != blank and section.settings.section_button_label != blank %}
+              	<div class="icon-box-learnmore">	
+          			<a  href="{{ section.settings.section_button_link }}">{{ section.settings.section_button_label }}</a>	
+          		</div>
+              {% endif %}
+      	</div>  
+	</section>  
+{% endif %}
+<div class="row">
+  {% for product in collection.products %}
+   
+  {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Icon Box",
+     "settings": [
+		 {
+            "id": "icon_grid_heading",
+            "type": "text",
+            "label": "Section Heading"
+		 },
+		 {
+            "id": "section_button_label",
+            "type": "text",
+            "label": "Section Button Label"
+		 },
+		 {
+            "id": "section_button_link",
+            "type": "text",
+            "label": "Section Button Link"
+		 },
+		 {
+            "id": "section_bg",
+            "type": "color",
+            "label": "Section Background Color",
+            "default":"#fff"
+		 }
+	],
+	"blocks": [
+    {
+      "type": "item",
+      "name": "Icon Box",
+      "settings": [
+        {
+		  "type": "text",	
+          "id": "img_heading",
+          "label": "Heading"
+        },
+		{
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Subheading"
+        },
+		 {
+          "type": "image_picker",
+          "id": "grid_image",
+          "label": "Image"    
+         },
+		 {
+          "type": "image_picker",
+          "id": "mobile_grid_image",
+          "label": "Mobile Image"    
+         }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon box",
+      "blocks": [
+       
+      ]
+    }
+  ]
+  }
+{% endschema %}
+

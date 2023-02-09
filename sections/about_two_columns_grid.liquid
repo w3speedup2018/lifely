@@ -1,0 +1,197 @@
+{% if section.settings.column_left_image != blank or section.settings.column_left_content != blank and section.settings.column_right_heading != blank %}
+<div class="about_two_column_grid">
+	<div class="container">
+        <div class="hide-on-mobile">
+    		<div class="about_col-inner" style="background-color:{{ section.settings.column_bgcolor }}">
+    			<div class="d-flex">
+    			   <div class="flex-grid6">
+    				  <div class="about_two_column_grid_left">
+    					  {% if section.settings.column_left_image != blank %}
+    						<img src="{{section.settings.column_left_image | img_url: 'master'}}" alt="image">
+    					  {% endif %} 
+    					  <div class="about-left-grid-content">
+    						{% if section.settings.column_left_content != blank %}
+    						  <h2>{{ section.settings.column_left_content }}</h2>
+    						{% endif %}
+    					  </div>
+    				  </div>
+    			  </div>
+    			  <div class="flex-grid6">
+    				  <div class="about_two_column_grid_right">
+    					{% if section.settings.column_right_image != blank %}
+    					  <div class="image-on-bg text-center">
+    						<img class="text-center" src="{{ section.settings.column_right_image | img_url: 'master' }}" alt="image">
+    					  </div>
+    					{% endif %}
+    
+    					{% if section.settings.column_right_heading != blank or section.settings.column_right_btn_text != blank %}
+    						<div class="right-con-grid">
+    						  {% if section.settings.column_right_heading != blank %}
+    							<h2>{{ section.settings.column_right_heading }}</h2>
+    						  {% endif %}     
+    
+    						  {% if section.settings.column_right_btn_text != blank %}
+    							<a href="{{ section.settings.column_right_btn_url }}">{{ section.settings.column_right_btn_text }}</a>
+    						  {% endif %}   
+    						  
+    						</div>
+    					{% endif  %}
+    				  </div>
+    			  </div>
+    			</div>
+    		</div>
+    		{% if section.blocks.size > 0%}
+    			<div class="about-col-benefits-wrap">
+    				<div class="benefits-container">
+    					<ul class="blist">
+    						{% for block in section.blocks %}
+    							{% if block.settings.benefit_heading != blank or block.settings.benefit_subheading != blank %}
+    								<li>
+    								{% if block.settings.benefit_heading != blank %}
+    									<h3>{{ block.settings.benefit_heading }}</h3>
+    								{% endif %}
+    								
+    								{% if block.settings.benefit_subheading != blank %}
+    									<p>{{ block.settings.benefit_subheading }}</p>
+    								{% endif %}
+    								</li>
+    							{% endif %}
+    						{% endfor %}
+    					</ul>
+    				</div>		
+    			</div>
+    		{% endif%}
+    	</div>
+    
+     <div class="hide-on-desktop">
+        <div class="two_cols_mobile_wrap">
+            {% if section.settings.column_left_content != blank or section.settings.column_right_heading != blank %}
+              <div class="two_cols_title">
+                {% if section.settings.column_left_content != blank %}
+                  <h2>{{ section.settings.column_left_content }}</h2>
+                {% endif %}
+
+                 {% if section.settings.column_right_heading != blank %}
+                  <p>{{ section.settings.column_right_heading }}</p>
+                {% endif %} 
+                
+              </div>
+            {% endif %}
+  
+        {% if section.blocks.size > 0%}
+            <div class="mobile-product-description-section deep_dream_mobile_product_description collectionpage_product_feture about">	 
+        		<div class="container">
+                  	<div class="about-page-slider">
+                  		{% assign i = 0 %}
+                      	 {% for block in section.blocks %}
+                      		
+                      	{% assign index = forloop.index0 %}
+                          <div class="description-slide">
+                               {% if block.settings.benefit_heading != blank %}
+                                  <div class="desc-head">
+    								<h3>{{ block.settings.benefit_heading }}</h3>
+                                  </div>
+                                {% endif %}
+                               {% if block.settings.benefit_subheading != blank %}
+                                  <div class="desc-content">
+    								<p>{{ block.settings.benefit_subheading }}</p>
+                                  </div>
+                                {% endif %}
+                          </div>  
+                        {% endfor %}
+                  	</div>  
+                  	{% if section.blocks.size > 0 %}          		
+                      <div class="progress_bar_count_sec">
+                          <div class="progres_col">	
+                            <div class="progress" data-total="{{section.blocks.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                              <span class="slider__label sr-only"></span>
+                            </div>
+                          </div>  
+                          <div class="progres_count_col">	
+                            <span class="curent_slide_active_p">1</span> of {{section.blocks.size}}
+                          </div> 
+                  	  </div>   
+                   {% endif %}
+              	</div>
+        	</div>  
+        {% endif%}
+          
+          
+            {% if section.settings.column_left_image != blank  %}
+              <div class="two_cols_img">
+                  <img src="{{ section.settings.column_left_image | img_url: 'master' }}" alt="image">
+              </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}  
+
+{% schema %}
+  {
+    "name": "Two Columns Grid",
+    "settings": [
+        {
+			"type":"color",
+			"id":"column_bgcolor",
+			"label":"Background Color"
+        },
+		{
+			"type":"image_picker",
+			"id": "column_left_image",
+			"label":"Left Image"
+        },
+        {
+			"type":"text",
+			"id":"column_left_content",
+			"label":"Left Heading"
+        },
+		{
+			"type":"image_picker",
+			"id":"column_right_image",
+			"label":"Right Image"
+        },
+        {
+			"type":"text",
+			"id":"column_right_heading",
+			"label":"Right Heading"
+        },
+        {
+			"type":"text",
+			"id":"column_right_btn_text",
+			"label":"Link Text"
+        },
+        {
+			"type":"text",
+			"id":"column_right_btn_url",
+			"label":"Link Url"
+        }
+	],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Benefits",
+        "settings": [
+          {
+            "type": "text",	
+            "id": "benefit_heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "benefit_subheading", 
+            "label": "Content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

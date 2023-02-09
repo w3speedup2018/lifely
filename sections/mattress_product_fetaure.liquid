@@ -1,0 +1,129 @@
+{% if section.blocks != blank and section.blocks %}
+	<div class="product-description container deepdream_product_feature collectionpage_product_feture">
+      	{% if section.settings.heading != blank %}
+          <div class="sechead">
+            <h3 class="text-center"><span>{{section.settings.heading}}</span></h3>  
+          </div>
+      	{% endif %}
+      	<div class="additional-desc-con row align-items-center">
+          {% for block in section.blocks %}
+            {% assign index = forloop.index0 %}
+          	{%assign m = index | modulo: 2 %}
+          	{% if m == 0 %}
+                <div class="col-md-6 col-sm-6">
+                  {% if block.settings.featured_image != blank %}
+                  	<div class="desc-image">
+                      	<img src="{{block.settings.featured_image | img_url:"master"}}" alt="image">
+                    </div>
+                  {% endif %}
+                </div>
+          		<div class="col-md-6 col-sm-6">
+                  {% if block.settings.slide_title != blank or block.settings.slide-content != blank %}
+                  	<div class="desc-content">
+                      	<h4>{{block.settings.slide_title}}</h4>  
+                      <p>{{block.settings.slide-content}}</p>
+                  	</div>
+                  {% endif %}
+          		</div>
+            {% elsif m == 1 %}
+          		<div class="col-md-6 col-sm-6">
+                  {% if block.settings.slide_title != blank or block.settings.slide-content != blank %}
+                  	<div class="desc-content">
+                      	<h4>{{block.settings.slide_title}}</h4>  
+                      <p>{{block.settings.slide-content}}</p>
+                  	</div>
+                  {% endif %}
+                </div>
+          		<div class="col-md-6 col-sm-6">
+                  {% if block.settings.featured_image != blank %}
+                  	<div class="desc-image">
+                      	<img src="{{block.settings.featured_image | img_url:"master"}}" alt="image">
+                    </div>
+                  {% endif %}
+          		</div>
+          	{% endif %}
+          {% endfor %}
+       </div>
+	</div>
+ 
+	<div class="mobile-product-description-section deep_dream_mobile_product_description collectionpage_product_feture">	 
+		<div class="container">
+      		  <div class="sechead">
+                  <h3 class="text-center">Feature</h3>  
+              </div>
+          	<div class="mobile-product-description-slider">
+          		{% assign i = 0 %}
+              	 {% for block in section.blocks %}
+              		
+              	{% assign index = forloop.index0 %}
+                  <div class="description-slide">
+                       {% if block.settings.featured_image != blank %}
+                          <div class="desc-image">
+                              <img src="{{block.settings.featured_image | img_url:"master"}}" alt="image">
+                          </div>
+                        {% endif %}
+                       {% if block.settings.slide_title != blank or block.settings.slide-content != blank %}
+                          <div class="desc-content">
+                              <h4>{{block.settings.slide_title}}</h4>  
+                            <p>{{block.settings.slide-content}}</p>
+                          </div>
+                        {% endif %}
+                  </div>  
+                {% endfor %}
+          	</div>  
+          	{% if section.blocks.size > 0 %}          		
+              <div class="progress_bar_count_sec">
+                  <div class="progres_col">	
+                    <div class="progress" data-total="{{section.blocks.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                      <span class="slider__label sr-only"></span>
+                    </div>
+                  </div>  
+                  <div class="progres_count_col">	
+                    <span class="curent_slide_active_p">1</span> of {{section.blocks.size}}
+                  </div> 
+          	  </div>   
+           {% endif %}
+      	</div>
+	</div>  
+{% endif %}	
+{% schema %}
+  {
+    "name": "Mattress Product Feature",
+    "settings": [
+		{
+          "type":"text",
+          "id":"heading",
+          "label":"Section Heading"
+        }
+	],
+	"blocks": [
+        {
+          "type": "product_feature",
+          "name": "Product Feature Item",
+          "settings": [
+            {
+              "type": "text",
+              "id": "slide_title",
+              "label": "Title"
+            },
+			{
+              "type": "richtext",
+              "id": "slide-content",
+              "label": "Description"
+            },
+			{
+              "type": "image_picker",
+              "id": "featured_image",
+              "label": "Featured Image"
+            }
+          ]
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

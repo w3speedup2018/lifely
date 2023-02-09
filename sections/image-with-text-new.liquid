@@ -1,0 +1,153 @@
+<link rel="stylesheet" data-href="{{ 'component-image-with-text.css' | asset_url }}" media="all">
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% if current_tags.first == blank or current_tags.first == 'Mattresses'%}
+  {% if section.blocks.size > 0 %}
+    <div class="product-icons-grid {{section.settings.section_class}}" style="background:{{section.settings.color_bg}};">
+        <div class="page-width">
+          <div class="product-icons-inner">
+              <div class="d-flex justify-content-between">
+                {%- if section.settings.layout == 'image_left' -%}
+                  {%- for block in section.blocks -%}
+                      {%- if block.settings.icon_text != blank and block.settings.icon_image != blank -%}
+                          <div class="icon-box">
+                            <div class="d-flex align-items-baseline">                             
+                              {%- if block.settings.icon_image != blank  and block.settings.mobile_grid_image != blank -%}	
+                                <div class="image-grid">                                  
+                                    <img class="desktop_icon lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.icon_image | img_url: 'master'}}" alt="icon">
+                                    <img class="mobile_icon lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.mobile_grid_image | img_url: 'master' }}" alt="{{ block.settings.mobile_grid_image.alt }}" />
+                                </div>
+                              {% else %}
+                              	 <div class="image-grid">                                  
+                                    <img class="lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.icon_image | img_url: 'master'}}" alt="icon">                                    
+                                </div>
+                              {%- endif-%}
+                              <div class="content-grid">
+                                {%- if block.settings.icon_text != blank -%}
+                                   <h3>{{block.settings.icon_text}}</h3>
+                                {%- endif -%}
+                                {%- if block.settings.icon_subtext != blank -%}
+                                  {{block.settings.icon_subtext}}
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          </div>
+                      {%- endif -%}
+                  {%- endfor -%}	
+                {%- elsif section.settings.layout == 'image_right' -%}
+                  {%- for block in section.blocks -%}
+                      {%- if block.settings.icon_text != blank and block.settings.icon_image != blank -%}
+                          <div class="icon-box">
+                            <div class="d-flex align-items-baseline">
+                              <div class="content-grid">
+                                {%- if block.settings.icon_text != blank -%}
+                                   <h3>{{block.settings.icon_text}}</h3>
+                                {%- endif -%}
+                                {%- if block.settings.icon_subtext != blank -%}
+                                  {{block.settings.icon_subtext}}
+                                {%- endif -%}
+                              </div>
+                              {%- if block.settings.icon_image != blank  and block.settings.mobile_grid_image != blank -%}	
+                                <div class="image-grid">                                  
+                                    <img class="desktop_icon lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.icon_image | img_url: 'master'}}" alt="icon">
+                                    <img class="mobile_icon lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.mobile_grid_image | img_url: 'master' }}" alt="{{ block.settings.mobile_grid_image.alt }}" />
+                                </div>
+                              {% else %}
+                              	 <div class="image-grid">                                  
+                                    <img class="lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{block.settings.icon_image | img_url: 'master'}}" alt="icon">                                    
+                                </div>
+                              {%- endif-%}
+                            </div>
+                          </div>
+                      {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+            </div>
+          </div>
+        </div>
+    </div>
+  {% endif %}
+{% endif %}
+{% schema %}
+{
+  "name": "Icon Grid",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "image_left",
+          "label": "Image Left"
+        },
+        {
+          "value": "image_right",
+          "label": "Image Right"
+        }
+      ],
+      "default": "image_left",
+      "label": "Image Left"
+    },
+	{
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+	{
+      "type": "text",
+      "id": "section_class",
+      "label": "section class"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Icon Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },	
+		{
+          "type": "text",
+          "id": "icon_text",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "icon_subtext",
+          "label": "Subheading"
+        },
+		 {
+          "type": "image_picker",
+          "id": "mobile_grid_image",
+          "label": "Mobile Image"    
+         }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

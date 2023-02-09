@@ -1,0 +1,60 @@
+{% if section.settings.left_heading != blank %}
+<div class="about_image_right_main">
+  <div class="container">
+      <div class="row">
+         <div class="col-md-7">
+            <div class="about-content-main-right">
+                {% if section.settings.left_heading != blank %}
+                  <h2>{{ section.settings.left_heading }}</h2>
+                {% endif %}
+  
+                 {% if section.settings.right_image != blank %}
+                  <img class="hide-on-desktop" src="{{ section.settings.right_image | img_url: 'master' }}" alt="image">
+                {% endif %}
+  
+                {% if section.settings.left_content != blank %}
+                  {{ section.settings.left_content }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="about-head-main-right">
+              {% if section.settings.right_image != blank %}
+                <img class="hide-on-mobile" src="{{ section.settings.right_image | img_url: 'master' }}" alt="image">
+              {% endif %}
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endif %}  
+
+{% schema %}
+  {
+    "name": "Image Right Content Left",
+    "settings": [
+		{
+			"type":"text",
+			"id": "left_heading",
+			"label":"Heading"
+        },
+        {
+			"type":"richtext",
+			"id":"left_content",
+			"label":"Content"
+        },
+		{
+			"type":"image_picker",
+			"id":"right_image",
+			"label":"Image"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

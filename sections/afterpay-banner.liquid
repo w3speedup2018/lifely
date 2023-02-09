@@ -1,0 +1,30 @@
+{% if section.settings.logo_image != blank%}
+
+<div class="afterpay-banner-grid">
+  <div class="container">
+    <div class="alogo">
+      <img src="{{section.settings.logo_image | img_url: 'master'}}" alt="logo">
+    </div>
+  </div>
+</div>
+
+{% endif%}
+
+{% schema %}
+  {
+    "name": "After Pay Logo",
+    "settings": [
+		 {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"    
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

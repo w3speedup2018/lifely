@@ -1,0 +1,159 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="lifely_reward_section landing_homegrid">
+		<div class="container">
+      		<div class="row">
+          		{% for block in section.blocks %}
+                  {% if block.type == 'grid-with-bg-image' %}
+              			{% if block.settings.bg_image != blank or block.settings.grid-title != blank or block.settings.grid-content != blank %}
+                            <div class="col-md-4">
+                                <div class="image_grid_bg_box">
+                                  {% if block.settings.bg_image != blank %}
+                                      <img src="{{ block.settings.bg_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" class="lazyload"/>
+                                  {% endif %}
+                                  <div class="image_grid_bg_content">
+                                    <div class="image_grid_bg_inner">
+                                        <div class="image_grid_bg_inner_head">
+                                          {% if block.settings.grid-title != blank %}
+                                            <h2>{{ block.settings.grid-title}}</h2>
+                                          {% endif %}  
+                                           {% if block.settings.grid-content != blank %}
+                                            <p>{{ block.settings.grid-content}}</p>
+                                          {% endif %} 
+                                      	</div> 
+                                      	{% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                                      		<a href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
+                                      	{% endif %}
+                                    </div>
+                                  </div> 
+                                </div>
+                            </div> 
+              			{% endif %}
+              			{% elsif block.type == 'grid-with-right-image' %}
+              				{% if block.settings.bg_image != blank or block.settings.grid-title != blank or block.settings.grid-content != blank %}
+                            <div class="col-md-8">
+                                <div class="right_image_grid_box">                                 
+                                  <div class="right_image_grid_content">
+                                    <div class="right_image_grid_inner">
+                                        {% if block.settings.grid-title != blank %}
+                                          <h2>{{ block.settings.grid-title}}</h2>
+                                        {% endif %}  
+                                        {% if block.settings.grid-subheading != blank %}
+                                      		<h4>{{ block.settings.grid-subheading }}</h4>	
+                                      	{% endif %}
+                                      	{% if block.settings.grid-content != blank %}
+                                          <p>{{ block.settings.grid-content}}</p>
+                                        {% endif %} 
+                                      	{% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                                      		<a href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
+                                      	{% endif %}
+                                    </div>
+                                  </div>
+                                  {% if block.settings.bg_image != blank %}
+                                  		{% style %}
+                                            @media only screen and (min-width:768px){
+                                                section.lifely_reward_section.landing_homegrid .right_image_grid_box {
+                                                    background: url({{ block.settings.bg_image | img_url: 'master' }});
+                                                    background-repeat: no-repeat;
+                                                    background-size: cover;
+                                                    background-position: 59%;
+                                                }
+                                                section.lifely_reward_section.landing_homegrid .right_image_grid_box .right_image_box img {
+                                                    display: none;
+                                                }
+                                            }
+                                        {% endstyle %}
+                                      <div class="right_image_box">
+                                        <img src="{{ block.settings.bg_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" class="lazyload" />
+                                      </div>
+                                	{% endif %}
+                                </div>
+                            </div> 
+              			{% endif %}
+                  {% endif %}
+                 
+                {% endfor %}
+          	</div>  
+      	</div>
+	</section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Home Grid",
+	"max_blocks": 10,
+	"blocks": [
+        {
+          "type": "grid-with-bg-image",
+          "name": "Content With Background",
+          "settings": [
+            {
+              "type": "text",
+              "id": "grid-title",
+              "label": "Title"
+            },
+			{
+              "type": "textarea",
+              "id": "grid-content",
+              "label": "Description"
+            },
+			{
+              "type": "image_picker",
+              "id": "bg_image",
+              "label": "Background Image"
+            },
+			{
+              "type": "text",
+              "id": "button_label",
+              "label": "Label"
+            },
+			{
+              "type": "text",
+              "id": "button_link",
+              "label": "Link"
+            }
+          ]
+        },
+		{
+          "type": "grid-with-right-image",
+          "name": "Content With Right Image",
+          "settings": [
+            {
+              "type": "text",
+              "id": "grid-title",
+              "label": "Title"
+            },
+			{
+              "type": "text",
+              "id": "grid-subheading",
+              "label": "Subheading"
+            },
+			{
+              "type": "textarea",
+              "id": "grid-content",
+              "label": "Description"
+            },
+			{
+              "type": "image_picker",
+              "id": "bg_image",
+              "label": "Background Image"
+            },
+			{
+              "type": "text",
+              "id": "button_label",
+              "label": "Label"
+            },
+			{
+              "type": "text",
+              "id": "button_link",
+              "label": "Link"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

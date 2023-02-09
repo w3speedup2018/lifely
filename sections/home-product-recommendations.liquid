@@ -1,0 +1,44 @@
+<div class="search_products">
+<div class="container">
+
+   {% if section.settings.heading != blank %}
+  <header class="heading_sec"><h2>
+    
+   {{ section.settings.heading }} 
+  
+  </h2></header>
+    {% endif %}
+ <script type="searchspring/personalized-recommendations" profile="similar">seed = "{{ product.variants[0].sku }}";</script>
+</div>
+</div>
+<style>
+
+  .search_products {
+  background: #FCF9F4;
+  padding: 26px 0;
+}
+  
+</style>
+
+ <!--  <script type="searchspring/personalized-recommendations" profile="recently-viewed"></script> -->
+<!--  <script type="searchspring/personalized-recommendations" profile="cross-sell">seed = "{{ product.variants[0].sku }}";</script> -->
+
+
+{% schema %}
+{
+"name": "Product Recommendations",
+"class":"product-detail-page-review-section home___ss",
+"settings": [
+	 {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+		 }
+],
+"presets": [
+{
+"name": "Product Recommendations"
+}
+]
+}
+{% endschema %}

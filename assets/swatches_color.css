@@ -1,0 +1,377 @@
+/***** White ******/
+variant-radios .product-form__input input[value="White"] + label {
+	background: #AFBAA1;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="White"]:checked+label,variant-radios .product-form__input input[value="White"]:hover+label{
+	background: #AFBAA1;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="White"]{
+	background: #AFBAA1;
+}
+
+/***** Natural ******/
+variant-radios .product-form__input input[value="Natural"] + label {
+	background: #caa472;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Natural"]:checked+label,variant-radios .product-form__input input[value="Natural"]:hover+label{
+	background: #caa472;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Natural"]{
+	background: #caa472;
+}
+/***** Black ******/
+variant-radios .product-form__input input[value="Black"] + label {
+	background: #000;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Black"]:checked+label,variant-radios .product-form__input input[value="Black"]:hover+label{
+	background: #000;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Black"]{
+	background: #000;
+}
+
+/***** Blue ******/
+variant-radios .product-form__input input[value="Blue"] + label {
+	background: #0000FF;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Blue"]:checked+label,variant-radios .product-form__input input[value="Blue"]:hover+label{
+	background: #0000FF;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Blue"]{
+	background: #0000FF;
+}
+
+/***** Dark Wood ******/
+variant-radios .product-form__input input[value="Dark Wood"] + label {
+	background: #855E42;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Dark Wood"]:checked+label,variant-radios .product-form__input input[value="Dark Wood"]:hover+label{
+	background: #855E42;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Dark Wood"]{
+	background: #855E42;
+}
+
+
+/***** Gold ******/
+variant-radios .product-form__input input[value="Gold"] + label {
+	background: #D4AF37;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Gold"]:checked+label,variant-radios .product-form__input input[value="Gold"]:hover+label{
+	background: #D4AF37;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Gold"]{
+	background: #D4AF37;
+}
+/***** Green ******/
+variant-radios .product-form__input input[value="Green"] + label {
+	background: #36aa34;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Green"]:checked+label,variant-radios .product-form__input input[value="Green"]:hover+label{
+	background: #36aa34;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Green"]{
+	background: #36aa34;
+}
+/***** Gray ******/
+variant-radios .product-form__input input[value="Gray"] + label {
+	background: #808080;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Gray"]:checked+label,variant-radios .product-form__input input[value="Gray"]:hover+label{
+	background: #808080;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Gray"]{
+	background: #808080;
+}
+
+/***** Grey ******/
+variant-radios .product-form__input input[value="Grey"] + label {
+	background: #808080;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Grey"]:checked+label,variant-radios .product-form__input input[value="Grey"]:hover+label{
+	background: #808080;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Grey"]{
+	background: #808080;
+}
+
+/***** Beige ******/
+variant-radios .product-form__input input[value="Beige"] + label {
+	background: #808080;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Beige"]:checked+label,variant-radios .product-form__input input[value="Beige"]:hover+label{
+	background: #808080;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Beige"]{
+	background: #808080;
+}
+/***** Orange ******/
+variant-radios .product-form__input input[value="Orange"] + label {
+	background: #FFA500;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Orange"]:checked+label,variant-radios .product-form__input input[value="Orange"]:hover+label{
+	background: #FFA500;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Orange"]{
+	background: #FFA500;
+}
+/***** Pink ******/
+variant-radios .product-form__input input[value="Pink"] + label {
+	background: #FFC0CB;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Pink"]:checked+label,variant-radios .product-form__input input[value="Pink"]:hover+label{
+	background: #FFC0CB;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Pink"]{
+	background: #FFC0CB;
+}
+/***** Purple ******/
+variant-radios .product-form__input input[value="Purple"] + label {
+	background: #800080;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Purple"]:checked+label,variant-radios .product-form__input input[value="Purple"]:hover+label{
+	background: #800080;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Purple"]{
+	background: #800080;
+}
+/***** Red ******/
+variant-radios .product-form__input input[value="Red"] + label {
+	background: #FF0000;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Red"]:checked+label,variant-radios .product-form__input input[value="Red"]:hover+label{
+	background: #FF0000;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Red"]{
+	background: #FF0000;
+}
+/***** Yellow ******/
+variant-radios .product-form__input input[value="Yellow"] + label {
+	background: #efc301;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Yellow"]:checked+label,variant-radios .product-form__input input[value="Yellow"]:hover+label{
+	background: #efc301;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Yellow"]{
+	background: #efc301;
+}
+/***** Yellow ******/
+variant-radios .product-form__input input[value="Brown"] + label {
+	background: #A52A2A;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="Brown"]:checked+label,variant-radios .product-form__input input[value="Brown"]:hover+label{
+	background: #A52A2A;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="Brown"]{
+	background: #A52A2A;
+}
+/***** Yellow ******/
+variant-radios .product-form__input input[value="White Washed Wood"] + label {
+	background: #f2f1cc;
+    color: transparent;
+    width: 36px !important;
+    height: 35px;
+    border-radius: 50px;
+    min-width: 11px;
+    overflow: hidden;
+    padding: 0;
+	border: 5px solid #fff;
+}
+variant-radios .product-form__input input[value="White Washed Wood"]:checked+label,variant-radios .product-form__input input[value="White Washed Wood"]:hover+label{
+	background: #f2f1cc;
+	outline: 1px solid #282828;
+	border: 5px solid #fff;
+    color: transparent;
+}
+li.Swatches-Color[value="White Washed Wood"]{
+	background: #f2f1cc;
+}
+
+variant-radios .product-form__input legend.form__label {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282828;
+    text-transform: capitalize;
+}
+variant-radios .product-form__input legend.form__label span.color_slected {
+    font-weight: 500;
+}

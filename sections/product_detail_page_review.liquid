@@ -1,0 +1,23 @@
+<div class="search_products">
+ 
+ <script type="searchspring/personalized-recommendations" profile="similar">seed = "{{ product.variants[0].sku }}";</script>
+
+</div>
+<style>
+
+  .search_products {
+  background: #FCF9F4;
+  padding: 26px 0;
+}
+  
+</style>
+
+<div class="page-width">{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}</div>
+<!--  <script type="searchspring/personalized-recommendations" profile="recently-viewed"></script> -->
+<!--  <script type="searchspring/personalized-recommendations" profile="cross-sell">seed = "{{ product.variants[0].sku }}";</script> -->
+{% schema %}
+  {
+    "name": "Product Review",
+    "class": "product-detail-page-review-section"
+  }
+{% endschema %}

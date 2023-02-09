@@ -1,0 +1,479 @@
+{% style %}
+    #closer_like_slider_section {
+        background: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_188.png?v=1654511896);
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        padding: 66px 0 30px;
+    }
+    .deep_dream_new_slider_section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .deepdream_crausel_image {
+        position: relative;
+    }
+    #closer_like_slider_section .content-closer-slide>div {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+    .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 55%;
+        max-width: 55%;
+    }
+    .deep_dream_new_slider_section > div {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+      a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 17px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 22px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 14px;
+    	 cursor: pointer;
+    }
+    .deepdream_crausel_image img {
+        width: 100%;
+        width: 419px;
+    }
+    a.slider_arrow_count {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        cursor: unset;
+        top: 0;
+        right: 92px;
+        transition: unset;
+    }
+    .new_deep_dream_closer_look_slider h2.closer_slider_heading {
+        margin-bottom: 65px;
+    }
+    .new_deep_dream_closer_look_slider div.right_sec h2 {
+        font-family: Gellix;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+    a.slider_arrow_count span.slider_line {
+        width: 110px;
+        background: #ffffff9e;
+        height: 2px;
+        margin-right: 3px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 52px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 88px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 121px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 156px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 191px;
+    }
+    a.slider_arrow_count.active span {
+        background: #2c474b;
+        color: #fff;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 140px;
+    }
+    a.slider_arrow_count.active {
+        right: 61px;
+    }
+    @media screen and (max-width: 1199px) {  
+      .deepdream_crausel_image img {
+          width: 100%;
+          width: 348px;
+      }
+      a.slider_arrow_count.active span.slider_line {
+          width: 118px;
+      }
+      a.slider_arrow_count span.slider_line {
+          width: 85px;
+      }
+      a.slider_arrow_count.slider_arrow_6 {
+          top: 163px;
+      }
+      a.slider_arrow_count.active {
+          right: 37px;
+      }
+      a.slider_arrow_count.slider_arrow_2 {
+          top: 44px;
+      }
+      a.slider_arrow_count.slider_arrow_3 {
+          top: 75px;
+      }
+      a.slider_arrow_count.slider_arrow_4 {
+          top: 106px;
+      }
+      a.slider_arrow_count.slider_arrow_5 {
+          top: 134px;
+      }
+      a.slider_arrow_count {
+          top: 0;
+          right: 80px;
+      }
+    }
+   @media screen and (max-width: 991px) {  
+    .deepdream_crausel_image img {
+        width: 100%;
+        width: 258px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 15px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 9px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width:75px;
+    }
+    a.slider_arrow_count {
+        top: 0;
+        right: 63px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 96px;
+    }
+    a.slider_arrow_count.active {
+        right: 37px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 34px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 57px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 80px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 101px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 124px;
+    }
+   }
+   @media screen and (max-width: 767px) {
+     .deep_dream_new_slider_section {
+          flex-wrap: wrap;
+      }
+     .deep_dream_new_slider_section > div.deepdream_crausel_image {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+      .deep_dream_new_slider_section > div {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+      a.slider_arrow_count span.slider_line {
+          height: 2px;
+          width: 75px;
+      }
+     .deepdream_crausel_image img {
+          width: 367px;
+      }
+      a.slider_arrow_count.active span.slider_line {
+          width: 102px;
+      }
+      a.slider_arrow_count.slider_arrow_1 {
+          top: 17px;
+      }
+      a.slider_arrow_count.slider_arrow_2 {
+        top: 47px;
+      }  
+      a.slider_arrow_count.slider_arrow_3 {
+          top: 76px;
+      } 
+      a.slider_arrow_count.slider_arrow_4 {
+          top: 105px;
+      }
+      a.slider_arrow_count.slider_arrow_5 {
+          top: 136px;
+      }
+      a.slider_arrow_count.slider_arrow_6 {
+          top: 165px;
+      }     
+      span.slider_count {
+          background: #fff;
+          border-radius: 50px;
+          width: 23px;
+          height: 23px;
+          text-align: center;
+          line-height: 21px;
+          text-decoration: unset !important;
+          color: #2c474b;
+          font-weight: 600;
+          font-size: 13px;
+          cursor: pointer;
+      }
+      .new_deep_dream_closer_look_slider div#closer_like_slider_section {
+          padding-bottom: 64px;
+      }
+      .new_deep_dream_closer_look_slider div.right_sec h2 {
+          margin-top: 16px;
+      }
+   }
+
+  @media screen and (max-width: 575px) {
+    .deepdream_crausel_image img {
+        width: 276px;
+    }
+   .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 100%;
+        max-width: 375px;
+        width: 28px !important;
+        margin: 0 auto;
+    }         
+    a.slider_arrow_count.active {
+        right: -2px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 59px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 34px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 84px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 106px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 127px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 102px;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width: 75px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        line-height: 18px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count {
+        right: 24px;
+    }            
+  }
+
+   @media screen and (max-width: 400px) {
+    .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 100%;
+        max-width: 300px;
+        width: 28px !important;
+        margin: 0 auto;
+    }
+    .deepdream_crausel_image img {
+        width: 221px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width: 62px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 9px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 29px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 49px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 68px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 87px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 106px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 87px;
+    }
+  }
+        
+{% endstyle %}  
+<div id="closer_like_slider_section">
+    <div class="container">
+        <h2 class="closer_slider_heading">Let’s take a closer look</h2>
+        <div class="deep_dream_new_slider_section">
+            <div class="deepdream_crausel_image">
+                <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/slider_image.png?v=1661769675" alt="dsf">
+                <a class="slider_arrow_count slider_arrow_1 active" data-id="1" href="#"><span class="slider_line"></span> <span class="slider_count">1</span></a>
+                <a class="slider_arrow_count slider_arrow_2" data-id="2"  href="#"><span class="slider_line"></span> <span class="slider_count">2</span></a>
+                <a class="slider_arrow_count slider_arrow_3" data-id="3"  href="#"><span class="slider_line"></span> <span class="slider_count">3</span></a>
+                <a class="slider_arrow_count slider_arrow_4" data-id="4"  href="#"><span class="slider_line"></span> <span class="slider_count">4</span></a>
+                <a class="slider_arrow_count slider_arrow_5" data-id="5"  href="#"><span class="slider_line"></span> <span class="slider_count">5</span></a>
+                <a class="slider_arrow_count slider_arrow_6" data-id="6"  href="#"><span class="slider_line"></span> <span class="slider_count">6</span></a>
+            </div>
+            <div class="deepdream_crausel_slick">
+                <div class="slick-carousel-custom">
+                        <div class="right_sec" data-slide="1">
+                            <h2>1. Organic Cotton Cover </h2>
+                            <div class="content-closer-slide">
+                              <div class="content_p">
+                                <p>The cover of our mattress is made using OEKO-TEX Certified organic cotton. It was designed to be highly breathable with a subtle stretch and soft touch to keep you cool and comfortable.</p>
+                              </div>  
+                            </div>                             
+                        </div>
+                        <div class="right_sec"  data-slide="2">
+                            <h2>2. Convoluted Foam</h2>
+                            <div class="content-closer-slide">
+                              <div class="content_p">
+                                    <p>Our Convoluted Foam is made from soft, strong premium quality foam with an innovative convolution egg crate design to provide comfort and to reduce stress and pressure points in your back, whilst offering increased air flow and enhanced ventilation.</p>
+                              </div>  
+                            </div>                             
+                        </div>
+                        <div class="right_sec"  data-slide="3">
+                          <h2>3. Cool Gel Memory Foam</h2>
+                            <div class="content-closer-slide">
+                              <div class="content_p">
+                                <p>A special Deep Dream blend, our cool gel memory foam layer is designed to keep your body temperature down by directing heat away and offer pressure relief. </p>
+                              </div>  
+                            </div>                             
+                        </div>
+                        <div class="right_sec"  data-slide="4">
+                            <h2>4. Convoluted Foam</h2>
+                            <div class="content-closer-slide">
+                              <div class="content_p">
+                                <p>A second layer of Convoluted Foam provide extra cusioning and is a transitional layer for comfort and supportive feel</p>
+                              </div>  
+                            </div>                             
+                        </div>
+                        <div class="right_sec"  data-slide="5">
+                          <h2>5. Deep Dream Dynamic Foam</h2>
+                            <div class="content-closer-slide">
+                              <div class="content_p">
+                                <p>The Deep Dream Dynamic Foam acts as the supportive foam layer that helps to prevent from sinking and sagging while providing spine and body support. </p>
+                              </div>  
+                            </div>                             
+                        </div>
+                        <div class="right_sec"  data-slide="6">
+                          <h2>6. 5 Zone Pocket Springs</h2>                          
+                            <div class="content-closer-slide">                              
+                              <div class="content_p">
+                                <p>5 zones of hundreds individual wrapped pocket springs help to cradle your body and provide ergonomic spinal alignment with back pressure relief support while also limiting motion transfer. Additionally, the reinforced perimeter coils provide best in edge support to help you get in and out of bed easily, without sinking over time. </p>
+                              </div>  
+                            </div>   
+                        </div>
+                </div>
+            </div>
+        </div>	
+    </div>		
+</div>
+	<script type="lazyload2">
+		setTimeout(function() {
+			$('.slick-carousel-custom').slick({
+				infinite: true,
+				autoplay:true,
+				slidesToShow: 1, 
+				slidesToScroll: 1,
+				arrows: false, 
+				fade: true,
+				dots: false,
+                responsive: [
+                  {
+                    breakpoint: 767,
+                    settings: {
+                     adaptiveHeight:true
+                    }
+                  }
+                ]
+			});
+			$('.deep_dream_new_slider_section a.slider_arrow_count').click(function(e){
+				e.preventDefault();
+			});
+			$('.deep_dream_new_slider_section a.slider_arrow_count .slider_count').click(function(e){
+				e.preventDefault();
+				var slideno = $(this).closest('a').data('id');
+				$('.slick-carousel-custom').slick('slickGoTo', slideno - 1);
+				//$('a.slider_arrow_count.active').removeClass('active');
+				//$(this).closest('a').addClass('active');
+			});
+			
+			$('.slick-carousel-custom').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+			    var curent_slide = parseInt(nextSlide)+1;
+				$('a.slider_arrow_count.active').removeClass('active');
+				$('a.slider_arrow_count[data-id="'+curent_slide+'"]').addClass('active');
+			});
+		});
+		
+	</script>
+{% schema %}
+  {
+    "name": "Closer_look_slider",
+    "class":"new_deep_dream_closer_look_slider",
+    "settings": [
+        {
+			"type":"text",
+			"id":"section_heading",
+			"label":"Heading"
+        },
+        {
+			"type":"image_picker",
+			"id":"left_image",
+			"label":"Left Image"
+        }
+    ]
+  }
+{% endschema %}

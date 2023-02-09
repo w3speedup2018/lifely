@@ -1,0 +1,150 @@
+{% if collection.metafields.collectionnewbottom.newbottomheading != blank or collection.metafields.newcollectionbottom.newcollectionbottomdescription != blank %}
+  <div class="collection_new_bottom_description">
+      <div class="page-width">
+          {% if collection.metafields.collectionnewbottom.newbottomheading != blank %}
+              <div class="bootom_description_inner_container">
+                  <div class="row">
+                      <div class="col-md-6">
+                         {% for heading in collection.metafields.collectionnewbottom.newbottomheading %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod == 0 %}
+                             {% if heading != blank or  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                               <div class="col-inner">
+                                 <h3>{{ heading }}</h3>
+                                 {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %}  
+                      </div>
+                       <div class="col-md-6">
+                          {% for heading in collection.metafields.collectionnewbottom.newbottomheading %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod != 0 %}
+                             {% if heading != blank or  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                               <div class="col-inner">
+                                 <h3>{{ heading }}</h3>
+                                 {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %} 
+                      </div>                  
+                  </div>  
+              </div>  
+           {% else %}
+              <div class="bootom_description_inner_container">
+                  <div class="row">
+                      <div class="col-md-6">
+                         {% for heading in collection.metafields.newcollectionbottom.newcollectionbottomdescription %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod == 0 %}
+                             {% if  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                               <div class="col-inner">                                 
+                                 {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %}  
+                      </div>
+                       <div class="col-md-6">
+                          {% for heading in collection.metafields.newcollectionbottom.newcollectionbottomdescription %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod != 0 %}
+                             {% if heading != blank %} 
+                               <div class="col-inner">                      
+                                 {{  heading }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %} 
+                      </div>                  
+                  </div>  
+              </div>
+           {% endif %} 
+      </div>  
+  </div>  
+{% else %} 
+  {% assign description = collection.description %}
+  {% assign title = collection.title %}
+  {% assign image = collection.featured_image %}
+  
+  {% if current_tags.first == blank %}
+    {% if collection.metafields.bottom_desc.image != blank or collection.metafields.bottom.description != blank or collection.metafields.bottom_desc.heading != blank %}
+        <div class="collection_bootom_description" style="background:{{section.settings.color_code}}">
+            <div class="page-width">
+                <div class="collection_bootom_description_inner">
+                    {% if collection.metafields.bottom_desc.image != blank %}
+                        <div class="bootom_content_img">
+                            <img class="lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ collection.metafields.bottom_desc.image }}" alt=""/>
+                        </div>  
+                    {% endif %}
+                    {% if collection.metafields.bottom.description != blank or collection.metafields.bottom_desc.heading != blank %}
+                        <div class="bootom_content_item">
+                            {% if collection.metafields.bottom_desc.heading != blank %}
+                                <h2> {{ collection.metafields.bottom_desc.heading }}</h2>
+                            {% endif %} 
+                            <div class="desc-half">{{ collection.metafields.bottom.description | truncatewords: 36, "..."}} <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+                            <div class="desc-full" style="display:none;">{{ collection.metafields.bottom.description }} <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+                        </div>  
+                    {% endif %}
+                </div>  
+            </div>  
+        </div>  
+  	{% else %}
+        {% if description != blank and title != blank and image != blank %}
+           <div class="collection_bootom_description" style="background:{{section.settings.color_code}}">
+                <div class="page-width">
+                    <div class="collection_bootom_description_inner">
+                        {% if image != blank %}
+                            <div class="bootom_content_img">
+                                <img class="lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ image | img_url: 'large' }}" alt=""/>
+                            </div>  
+                        {% endif %}
+                        {% if description != blank %}
+                            <div class="bootom_content_item">
+                                {% if title != blank %}
+                                    <h2> {{ title }}</h2>
+                                {% endif %} 
+                                <div class="desc-half">{{ description | truncatewords: 36, "..." }} <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+                                <div class="desc-full" style="display:none;">{{ description }} <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+                            </div>  
+                        {% endif %}
+                    </div>  
+                </div>  
+            </div> 
+      	{% endif %}
+  
+    {% endif %}
+  {% endif %}
+  <script type="lazyload2">
+    setTimeout(function() {
+      jQuery('.collection_bootom_description .bootom_content_item .desc-half .read-more-content').on('click', function(){
+          jQuery(this).closest('.bootom_content_item').find('.desc-half').hide();
+          jQuery(this).closest('.bootom_content_item').find('.desc-full').show();
+      })
+  
+      jQuery('.collection_bootom_description .bootom_content_item .desc-full .read-less-content').on('click', function(){
+          jQuery(this).closest('.bootom_content_item').find('.desc-full').hide();
+          jQuery(this).closest('.bootom_content_item').find('.desc-half').show();
+      })
+    })
+  </script>
+{% endif %}
+{% schema %}
+  {
+    "name": "Bottom Description",
+    "settings": [
+		{
+          "id": "color_code",
+          "type": "color",
+		  "default": "#ffffff",	
+          "label": "Background Color"
+        }
+	]
+  }
+{% endschema %}

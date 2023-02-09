@@ -1,0 +1,194 @@
+{% if section.settings.warranty_content != blank %}
+<div class="warranty-wrap">
+  <div class="page-width">
+    <div class="warranty-inner">
+      {{ section.settings.warranty_content }}
+    </div>
+    {% if section.blocks != blank %}
+      <div class="warranty-box-content">
+        <div class="page-width">
+            <div class="warranty-box-inner">
+              <div class="warranty-row">
+                {% if section.settings.nti_image != blank %}
+                  <div class="wcol">
+                    <div class="wnt-image">
+                      <img src="{{ section.settings.nti_image | img_url: 'master' }}" alt="">
+                    </div>
+                  </div>
+                {% endif %}
+                {% for block in section.blocks %}
+                  {% assign box_icon = block.settings.wicon_image %}
+                  {% assign box_title = block.settings.box_title %}
+                  {% assign box_content = block.settings.box_content %}
+                  {% if box_icon != blank or box_title != blank or box_content != blank %}
+                    <div class="wcol">
+                      <div class="icon_box_inner">
+                        {% if box_icon != blank %}
+                          <div class="box_img">
+                            <img src="{{ box_icon | img_url: 'master' }}">
+                          </div>
+                        {% endif %}
+                        {% if box_title != blank or box_content != blank %}
+                          <div class="box_content">
+                             {% if box_title != blank %} 
+                               <h4>{{ box_title }}</h4>
+                             {% endif %}
+                             {% if box_content != blank %} 
+                               <p>{{ box_content }}</p>
+                             {% endif %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>  
+<style>
+  .warranty-wrap .warranty-inner-content p {
+    font-size: 16px;
+  }
+  .warranty-wrap {
+    padding: 30px 0;
+  }
+  .warranty-wrap .heading-main {
+      margin-bottom: 30px;
+      font-weight: bold;
+  }
+  .warranty-wrap .warranty-inner-content ul li {
+      font-size: 14px;
+  }
+  .warranty-wrap .warranty-inner-content ul {
+      padding-left: 10px;
+  }  
+  .warranty-box-content .warranty-box-inner .icon_box_inner {
+      box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+      padding: 20px;
+      min-height: 300px;
+  }
+  .warranty-box-content .warranty-box-inner .icon_box_inner .box_content h4 {
+      font-family: 'Gellix';
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 30px;
+      margin-bottom: 20px;
+  }
+  .warranty-box-content .warranty-box-inner .icon_box_inner .box_content p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+  }
+  .warranty-box-content .warranty-box-inner .icon_box_inner .box_img {
+      margin-bottom: 20px;
+  }
+  .warranty-box-content .warranty-box-inner {
+      padding-top: 60px;
+      padding-bottom: 30px;
+  }
+  .warranty-box-content .warranty-box-inner .wnt-image img {
+      width: 100%;
+  }
+  .warranty-box-content .warranty-box-inner .warranty-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .warranty-box-content .warranty-box-inner .warranty-row .wcol {
+      flex: 0 0 24%;
+      max-width: 24%;
+  }
+  @media only screen and (max-width: 1024px){
+    .warranty-box-content .warranty-box-inner .icon_box_inner {
+        padding: 20px 10px;
+    }
+    .warranty-box-content .warranty-box-inner .icon_box_inner .box_content h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .warranty-box-content .warranty-box-inner .icon_box_inner .box_content p {
+        font-size: 14px;
+    }
+  }
+  @media only screen and (max-width: 767px){
+    .warranty-box-content .warranty-box-inner .warranty-row .wcol {
+        flex: 0 0 48%;
+        max-width: 48%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+  }
+  @media only screen and (max-width: 480px){
+    .warranty-box-content .warranty-box-inner .warranty-row .wcol {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .warranty-box-content .warranty-box-inner .icon_box_inner {
+        min-height: auto;
+        padding: 20px;
+    }
+    .warranty-box-content .warranty-box-inner .icon_box_inner .box_content h4 {
+        font-size: 20px;
+    }
+    .warranty-box-content .warranty-box-inner .icon_box_inner .box_content p {
+        font-size: 16px;
+    }
+    .warranty-box-content .warranty-box-inner {
+        padding-top: 30px;
+    }
+  }
+</style>
+
+{% endif %}  
+
+{% schema %}
+	{
+		"name": "Warranty Content",
+		"settings": [
+			{
+				"id": "warranty_content",
+				"type": "html",
+				"label": "Warranty Content"
+			},
+            {
+				"id": "nti_image",
+				"type": "image_picker",
+				"label": "NTI Image"
+			}
+		],
+        "blocks": [
+          {
+            "type": "warranty_grid",
+            "name": "Warranty Content Grid",
+            "settings": 
+            [
+              {
+                "type": "image_picker",	
+                "id": "wicon_image",
+                "label": "Image"
+              },
+              {
+                "type": "text",  
+                "id": "box_title",
+                "label": "Title"
+              },
+              {
+                "type": "textarea",
+                "id": "box_content",
+                "label": "Box Content"    
+              }
+            ]
+          }
+        ]
+	}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

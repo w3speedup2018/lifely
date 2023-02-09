@@ -1,0 +1,69 @@
+{% assign description = collection.description %}
+{% assign title = collection.title %}
+{% assign image = collection.featured_image %}
+{% comment %}
+{% if description != blank and title != blank %}
+   <div class="collection_top_description" style="background:{{section.settings.color_code}}">
+        <div class="page-width">
+            <div class="collection_top_description_inner">
+                {% if description != blank %}
+                    <div class="top_content_item for__desktop">                         
+                       <div class="desc-half">{{ description | truncatewords: 17, "..." }} <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+                       <div class="desc-full collection_description" style="display:none;">{{ description }} <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+                    </div> 
+                    <div class="top_content_item for__mobile"> 
+                        <div class="desc-half">{{ description | truncatewords: 12, "..." }} <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+                        <div class="desc-full collection_description" style="display:none;">{{ description }} <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+                    </div>  
+
+                {% endif %}
+            </div>  
+        </div>  
+    </div> 
+{% endif %}
+{% endcomment %}
+{% if description != blank and title != blank %}
+   <div class="collection_top_description" style="background:{{section.settings.color_code}}">
+        <div class="page-width">
+            <div class="collection_top_description_inner">
+                {% if description != blank %}
+                    <div class="top_content_item for__desktop">                         
+                       <div class="desc-half">{{ description }}</div>                      
+                    </div> 
+                    <div class="top_content_item for__mobile"> 
+                        <div class="desc-half">{{ description | truncatewords: 12, "..." }} <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+                        <div class="desc-full collection_description" style="display:none;">{{ description }} <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+                    </div>  
+
+                {% endif %}
+            </div>  
+        </div>  
+    </div> 
+{% endif %}
+<script type="lazyload2" >
+  setTimeout(function(){
+    $('.collection_top_description .top_content_item .desc-half .read-more-content').on('click', function(){
+        $(this).closest('.top_content_item').find('.desc-half').hide();
+        $(this).closest('.top_content_item').find('.desc-full').show();
+    })
+
+    $('.collection_top_description .top_content_item .desc-full .read-less-content').on('click', function(){
+        $(this).closest('.top_content_item').find('.desc-full').hide();
+        $(this).closest('.top_content_item').find('.desc-half').show();
+    })
+  })
+</script>
+{% schema %}
+  {
+    "name": "Top Description",
+    "settings": [
+		{
+          "id": "color_code",
+          "type": "color",
+		  "default": "#eceeea",	
+          "label": "Background Color"
+        }
+	]
+  }
+{% endschema %}
+

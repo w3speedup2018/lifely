@@ -1,0 +1,31 @@
+{% assign collection_subcat_name = collection.metafields.arena.subcategory_name %}
+{% assign collection_subcat_img = collection.metafields.arena.subcategory_image %}
+{% assign collection_subcat_link = collection.metafields.arena.subcategory_link %}
+
+
+{% if collection_subcat_name != blank and collection_subcat_img != blank and current_tags.first == blank %} 
+   <div class="shop_category_slide">
+	   <div class="page-width">
+            <!-- <h2 class="mobile_heading">Shop furniture by category</h2> -->
+      		<div class="shop_cat_slider_inner">
+              <div class="shop_cat_slider">
+                  {% for t in collection_subcat_name %}
+                     {% assign index = forloop.index0 %}
+                	 {% if collection_subcat_img[index] != blank and collection_subcat_name[index] != blank %}
+                        <div class="slide_item">
+                            <a href="{{ collection_subcat_link[index] }}">
+                                <div class="category_slider_image">
+                                  <img src="{{ collection_subcat_img[index] }}" alt="{{ collection_subcat_name[index] }}"/>
+                                 </div>  
+                                <h3>{{ collection_subcat_name[index] }}</h3>
+                            </a>    
+                        </div> 
+                    {% endif %}
+                  {% endfor %} 
+              </div>  
+           </div> 
+      	</div>  
+   </div> 
+
+	
+{% endif %}	

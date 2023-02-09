@@ -1,0 +1,121 @@
+{% if section.blocks.size > 0 %}
+	{% style %}
+		.return_icon_box h2 {
+            font-family: 'Gellix';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 28px;
+            color: #64765D;
+            margin-top: 13px;
+        }
+        .return_icon_box p {
+            font-family: 'Gellix';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
+            color: #282828;
+        }
+		.return_icon_box{
+			text-align:center;
+		}
+		.return_col.return_col_content {
+            flex: 0 0 20%;
+            max-width: 20%;
+            padding: 9px;
+        }
+		.return_col.return_col_image {
+            flex: 0 0 40%;
+			 max-width: 40%;
+        }
+		.return_row {
+            display: flex;
+        }
+		.return_row .shiiping_icon {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+		.return_grid_icon_box {
+            padding: 45px 0px;
+        }
+    {% endstyle %}
+	<div class="container">
+		<div class="return_row">
+      		{% for block in section.blocks %}
+          		{%- case block.type -%}
+                {%- when 'logo' -%}
+          			<div class="return_col return_col_image">
+          				<div class="shiiping_icon">
+                      		{% if block.settings.logo_img != blank %}
+                          		<img src="{{ block.settings.logo_img | img_url:'master'}}"/>
+                            {% endif %}
+                      	</div>  
+          			</div>  
+          		{%- when 'icon_box' -%}
+          			<div class="return_col return_col_content">
+          				<div class="return_icon_box">
+                      		{% if block.settings.logo_img != blank %}	
+                          		<div><img src="{{ block.settings.logo_img | img_url:'master'}}"/></div>
+                            {% endif %}
+                          	<div>
+                              {% if block.settings.heading != blank %}
+                                  <h2>{{ block.settings.heading }}</h2> 
+                              {% endif  %}                          	
+                              {{ block.settings.description }}
+                         	</div>  
+                      	</div>  
+          			</div> 
+          		{%- endcase -%}
+          	{% endfor %}
+      	</div>  
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Grid Icon Box",
+    "class":"return_grid_icon_box",
+    "blocks": [
+        {
+          "type": "logo",
+          "name": "Logo",
+          "settings": [
+            {
+              "type":"image_picker",
+              "id":"logo_img",
+              "label":"Image"    
+            }
+          ]
+        },
+		{
+          "type": "icon_box",
+          "name": "Icon Grid",
+          "settings": [
+            {
+              "type":"image_picker",
+              "id":"logo_img",
+              "label":"Icon"    
+            },
+			{
+              "type":"text",
+              "id":"heading",
+              "label":"Heading"    
+            },
+			{
+              "type":"richtext",
+              "id":"description",
+              "label":"Description"    
+            }
+		
+          ]
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

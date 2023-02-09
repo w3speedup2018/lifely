@@ -1,0 +1,40 @@
+ 
+
+{% if product.metafields.mattress_scale.image != blank or product.metafields.mattres_scale.heading != blank or product.metafields.mattress_scale.subheading != blank %}
+{% if product.metafields.mattress_scale.subheading != blank or product.metafields.mattres_scale.heading != blank %}
+{% assign dimension_class = 'dimension_heading_with_content'  %}
+{% else %}
+{% assign dimension_class = ''  %}
+{% endif %}	
+<div class="mattres_scale_image {{ dimension_class }}">
+<div class="container">
+{% if product.metafields.mattres_scale.heading != blank %}
+<h2>{{product.metafields.mattres_scale.heading}}</h2>
+{% endif %}
+{% if product.metafields.mattress_scale.subheading != blank %}
+<div class="mattres_scale_subheading">
+{{product.metafields.mattress_scale.subheading}}
+</div>    	
+{% endif %}
+{% if product.metafields.mattress_scale.image != blank %}
+<img src="{{product.metafields.mattress_scale.image}}">
+{% endif %}
+</div> 
+</div>
+{% endif %}
+
+
+{% schema %}
+{
+"name": "Mattress Scale",
+"settings": [
+
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

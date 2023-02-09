@@ -1,0 +1,1113 @@
+{% if product.metafields.lifely_closer_look.slider_main_image != blank and product.metafields.new_closer_look.heading != blank %}
+  <style type="lazyload2">
+    #closer_like_slider_section {
+        background: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_188.png?v=1654511896);
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        padding: 66px 0 30px;
+    }
+  </style>
+  {% style %}
+    .deep_dream_new_slider_section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .deepdream_crausel_image {
+        position: relative;
+    }
+    #closer_like_slider_section .content-closer-slide>div {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+    .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 55%;
+        max-width: 55%;
+    }
+    .deep_dream_new_slider_section > div {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+      a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 17px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 22px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 14px;
+    	 cursor: pointer;
+    }
+    .deepdream_crausel_image img {
+        width: 100%;
+        width: 419px;
+    }
+    a.slider_arrow_count {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        cursor: unset;
+        top: 0;
+        right: 92px;
+        transition: unset;
+    }
+    .new_deep_dream_closer_look_slider h2.closer_slider_heading {
+        margin-bottom: 65px;
+    }
+    .new_deep_dream_closer_look_slider div.right_sec h2 {
+        font-family: Gellix;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+    a.slider_arrow_count span.slider_line {
+        width: 110px;
+        background: #ffffff9e;
+        height: 2px;
+        margin-right: 3px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 52px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 88px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 121px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 156px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 191px;
+    }
+    a.slider_arrow_count.active span {
+        background: #2c474b;
+        color: #fff;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 140px;
+    }
+    a.slider_arrow_count.active {
+        right: 61px;
+    }
+    
+/*     div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 47px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 84px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 122px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 159px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 195px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 230px;
+    } */
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 90px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 124px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 158px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 193px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 227px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 260px;
+    }
+
+    div#closer_like_slider_section.deep-dream-charcoal-mattress .deepdream_crausel_image img { margin-top:30px; }
+    
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 67px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+        top:95px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+        top:126px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+        top:156px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+        top:185px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 249px;
+    }
+
+    div#closer_like_slider_section.deep-dream-essential-mattress .deepdream_crausel_image img { margin-top:37px; }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 135px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 65px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 101px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 167px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 198px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 62px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 100px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 134px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 170px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 205px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 234px;
+    }
+    .product_deepdream_new_design .shopify-section.new_deep_dream_closer_look_slider div#closer_like_slider_section{
+        display: none;
+    }
+    @media screen and (max-width: 1199px) {  
+      .deepdream_crausel_image img {
+          width: 100%;
+          width: 348px;
+      }
+      a.slider_arrow_count.active span.slider_line {
+          width: 118px;
+      }
+      a.slider_arrow_count span.slider_line {
+          width: 85px;
+      }
+      a.slider_arrow_count.slider_arrow_6 {
+          top: 163px;
+      }
+      a.slider_arrow_count.active {
+          right: 37px;
+      }
+      a.slider_arrow_count.slider_arrow_2 {
+          top: 44px;
+      }
+      a.slider_arrow_count.slider_arrow_3 {
+          top: 75px;
+      }
+      a.slider_arrow_count.slider_arrow_4 {
+          top: 106px;
+      }
+      a.slider_arrow_count.slider_arrow_5 {
+          top: 134px;
+      }
+      a.slider_arrow_count {
+          top: 0;
+          right: 80px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 157px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 184px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 128px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 98px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 68px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 36px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.active {
+          right: 47px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 70px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 98px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 127px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 155px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 184px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 213px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.active {
+          right: 47px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 52px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 84px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 114px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 144px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 174px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 205px;
+      }
+      
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.active {
+          right: 47px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 111px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 50px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 82px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 139px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 167px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.active {
+          right: 47px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 49px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 79px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 109px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 139px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 168px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 196px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.active {
+          right: 47px;
+      }
+    }
+   @media screen and (max-width: 991px) {  
+    .deepdream_crausel_image img {
+        width: 100%;
+        width: 258px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 15px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 9px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width:75px;
+    }
+    a.slider_arrow_count {
+        top: 0;
+        right: 63px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 96px;
+    }
+    a.slider_arrow_count.active {
+        right: 37px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 34px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 57px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 80px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 101px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 124px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 32px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.active {
+        right: 41px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 122px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 57px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 80px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 101px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 143px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 55px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 77px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 100px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 122px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 145px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 165px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.active {
+        right: 42px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 44px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 69px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 92px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 114px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 136px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+        top:160px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.active {
+        right: 42px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 38px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 63px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 87px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 108px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 129px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress  a.slider_arrow_count.active {
+        right: 42px;
+    }
+     div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.active {
+          right: 42px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 40px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 64px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 86px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 110px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 132px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 151px;
+      } 
+   }
+   @media screen and (max-width: 767px) {
+     .product_deepdream_new_design .shopify-section.new_deep_dream_closer_look_slider div#closer_like_slider_section {
+          display: block;
+      }
+     .deep_dream_new_slider_section {
+          flex-wrap: wrap;
+      }
+     .deep_dream_new_slider_section > div.deepdream_crausel_image {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+      .deep_dream_new_slider_section > div {
+          flex: 0 0 100%;
+          max-width: 100%;
+      }
+      a.slider_arrow_count span.slider_line {
+          height: 2px;
+          width: 75px;
+      }
+     .deepdream_crausel_image img {
+          width: 367px;
+      }
+      a.slider_arrow_count.active span.slider_line {
+          width: 102px;
+      }
+      a.slider_arrow_count.slider_arrow_1 {
+          top: 17px;
+      }
+      a.slider_arrow_count.slider_arrow_2 {
+        top: 47px;
+      }  
+      a.slider_arrow_count.slider_arrow_3 {
+          top: 76px;
+      } 
+      a.slider_arrow_count.slider_arrow_4 {
+          top: 105px;
+      }
+      a.slider_arrow_count.slider_arrow_5 {
+          top: 136px;
+      }
+      a.slider_arrow_count.slider_arrow_6 {
+          top: 165px;
+      }     
+      span.slider_count {
+          background: #fff;
+          border-radius: 50px;
+          width: 23px;
+          height: 23px;
+          text-align: center;
+          line-height: 21px;
+          text-decoration: unset !important;
+          color: #2c474b;
+          font-weight: 600;
+          font-size: 13px;
+          cursor: pointer;
+      }
+      .new_deep_dream_closer_look_slider div#closer_like_slider_section {
+          padding-bottom: 64px;
+      }
+      .new_deep_dream_closer_look_slider div.right_sec h2 {
+          margin-top: 16px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.active {
+          right: 37px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 191px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 162px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 133px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 105px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.active {
+          right: 37px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 41px;
+      }
+      div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 73px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 75px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 105px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 134px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 163px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 192px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 220px;
+      }
+      div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.active {
+          right: 37px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 57px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 89px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 121px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 154px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 184px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 212px;
+      }
+      div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.active {
+          right: 36px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 50px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 84px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 115px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 144px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 171px;
+      }
+      div#closer_like_slider_section.deep-dream-essential-mattress  a.slider_arrow_count.active {
+          right: 36px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+          top: 115px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+          top: 85px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+          position: absolute;
+          top: 50px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+          top: 146px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+          top: 175px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+          top: 203px;
+      }
+      div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.active {
+          right: 36px;
+      }
+   }
+
+  @media screen and (max-width: 575px) {
+    .deepdream_crausel_image img {
+        width: 276px;
+    }
+   .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 100%;
+        max-width: 375px;
+        width: 28px !important;
+        margin: 0 auto;
+    }         
+    a.slider_arrow_count.active {
+        right: -2px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 59px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 34px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 84px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 106px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 127px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 102px;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width: 75px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        line-height: 18px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count {
+        right: 24px;
+    } 
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+        top: 31px;
+    } 
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 55px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 79px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 102px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 124px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 146px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.active {
+        right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 56px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 80px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 102px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 125px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 146px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 167px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.active {
+        right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 163px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 140px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 117px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 92px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 67px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 43px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.active {
+        right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 132px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress  a.slider_arrow_count.active {
+        right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 110px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 87px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 63px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 36px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.active {
+          right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 154px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 133px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 110px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 87px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 64px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 39px;
+    }
+
+     div#closer_like_slider_section.deep-dream-green-tea-mattress .deepdream_crausel_image img { margin-top:15px; }
+
+            div#closer_like_slider_section.deep-dream-essential-mattress .deepdream_crausel_image img { margin-top:20px; }
+
+  }
+
+   @media screen and (max-width: 400px) {
+    .deep_dream_new_slider_section > div.deepdream_crausel_image {
+        flex: 0 0 100%;
+        max-width: 300px;
+        width: 28px !important;
+        margin: 0 auto;
+    }
+    .deepdream_crausel_image img {
+        width: 221px;
+    }
+    a.slider_arrow_count.slider_arrow_1 {
+        top: 9px;
+    }
+    a.slider_arrow_count span.slider_line {
+        height: 1px;
+        width: 62px;
+    }
+    span.slider_count {
+        background: #fff;
+        border-radius: 50px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 16px;
+        text-decoration: unset !important;
+        color: #2c474b;
+        font-weight: 600;
+        font-size: 9px;
+        cursor: pointer;
+    }
+    a.slider_arrow_count.slider_arrow_2 {
+        top: 29px;
+    }
+    a.slider_arrow_count.slider_arrow_3 {
+        top: 49px;
+    }
+    a.slider_arrow_count.slider_arrow_4 {
+        top: 68px;
+    }
+    a.slider_arrow_count.slider_arrow_5 {
+        top: 87px;
+    }
+    a.slider_arrow_count.slider_arrow_6 {
+        top: 106px;
+    }
+    a.slider_arrow_count.active span.slider_line {
+        width: 87px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_1 {
+        top: 24px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 44px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 64px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 83px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 101px;
+    }
+    div#closer_like_slider_section.deep-dream-green-tea-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 119px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top:43px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 63px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 81px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 100px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 119px;
+    }
+    div#closer_like_slider_section.deep-dream-plush-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 137px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 133px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 114px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 95px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 75px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 55px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 34px;
+    }
+    div#closer_like_slider_section.deep-dream-charcoal-mattress a.slider_arrow_count.active {
+          right: -2px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 52px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 30px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 71px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 89px;
+    }
+    div#closer_like_slider_section.deep-dream-essential-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 108px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_1 {
+        position: absolute;
+        top: 28px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_2 {
+        top: 50px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_3 {
+        top: 69px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_4 {
+        top: 89px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_5 {
+        top: 107px;
+    }
+    div#closer_like_slider_section.deep-dream-basic-mattress a.slider_arrow_count.slider_arrow_6 {
+        top: 125px;
+    } 
+  }
+        
+{% endstyle %}  
+<div id="closer_like_slider_section" class="{{ product.handle }}">
+    <div class="container">
+        {% if section.settings.section_heading != blank %}
+            <h2 class="closer_slider_heading">{{ section.settings.section_heading }}</h2>
+        {% endif %} 
+        <div class="deep_dream_new_slider_section">
+            <div class="deepdream_crausel_image">
+                <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.lifely_closer_look.slider_main_image }}" alt="dsf">
+                {% for detail in product.metafields.new_closer_look.heading %}                  
+                  <a class="slider_arrow_count slider_arrow_{{ forloop.index }} {% if forloop.index == 1 %}active{% endif %}" data-id="{{ forloop.index }}" href="#"><span class="slider_line"></span> <span class="slider_count">{{ forloop.index }}</span></a>              
+                {% endfor %}   
+            </div>
+            <div class="deepdream_crausel_slick">
+                <div class="slick-carousel-custom">
+                       {% for detail in product.metafields.new_closer_look.heading %}
+                           <div class="right_sec" data-slide="1">
+                                <h2>{{ detail }}</h2>
+                                {% if product.metafields.new_closer_look.sub_heading[forloop.index0] != blank %}
+                                   <div class="content-closer-slide">
+                                    <div class="content_p">
+                                      <p>{{ product.metafields.new_closer_look.sub_heading[forloop.index0] }}</p>
+                                    </div>  
+                                  </div>   
+                                {% endif %}  
+                            </div>
+                       {% endfor %}  
+                </div>
+            </div>
+        </div>	
+    </div>		
+</div>
+<script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script type="lazyload2">
+    setTimeout(function() {
+        $('.slick-carousel-custom').slick({
+            infinite: true,
+            autoplay:true,
+            slidesToShow: 1, 
+            slidesToScroll: 1,
+            arrows: false, 
+            fade: true,
+            dots: false,
+            responsive: [
+              {
+                breakpoint: 767,
+                settings: {
+                 adaptiveHeight:true
+                }
+              }
+            ]
+        });
+        $('.deep_dream_new_slider_section a.slider_arrow_count').click(function(e){
+            e.preventDefault();
+        });
+        $('.deep_dream_new_slider_section a.slider_arrow_count .slider_count').click(function(e){
+            e.preventDefault();
+            var slideno = $(this).closest('a').data('id');
+            $('.slick-carousel-custom').slick('slickGoTo', slideno - 1);
+            //$('a.slider_arrow_count.active').removeClass('active');
+            //$(this).closest('a').addClass('active');
+        });
+        
+        $('.slick-carousel-custom').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            var curent_slide = parseInt(nextSlide)+1;
+            $('a.slider_arrow_count.active').removeClass('active');
+            $('a.slider_arrow_count[data-id="'+curent_slide+'"]').addClass('active');
+        });
+    });
+</script>
+{% else %}
+  {% if product.metafields.slider_main.image != blank %}
+    <div class="closer_like_slider_section">
+        <div class="container">
+            {% if section.settings.section_heading != blank %}
+                 <h2 class="closer_slider_heading">{{ section.settings.section_heading }}</h2>
+            {% endif %} 
+            <div class="closer_like_slider">
+                {% for closer_slide_image in product.metafields.slider_main.image %}
+                    {% assign index = forloop.index0 %}
+                    {% if product.metafields.slider_main.image[index] != blank and product.metafields.closer_look.heading[index] != blank %}
+                       <div class="closer_like_slide">
+                         <div class="left_sec">
+                            <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.slider_main.image[index]}}"/>
+                         </div> 
+                          <div class="right_sec">
+                            <h2>{{ product.metafields.closer_look.heading[index] }}</h2>
+                            {% if product.metafields.cloder_look.content[index] != blank %}
+                              <div class="content-closer-slide">
+                                {% comment %}
+                                  <div class="image">
+                                      <img src="{{ product.metafields.closer_look.left_image[index] }}"/>
+                                  </div>
+                                {% endcomment %}
+                                <div class="content_p">
+                                  <p>{{product.metafields.cloder_look.content[index]}}</p>
+                                </div>  
+                              </div>                             
+                            {% endif %}
+                          </div> 
+                      </div>  
+                   {% endif %}
+               {% endfor %}             
+            </div>  
+        </div>  
+    </div>
+  {% endif %}
+ {% endif %} 
+{% schema %}
+  {
+    "name": "Section name",
+    "class":"new_deep_dream_closer_look_slider",
+    "settings": [
+		{
+		  "type":"text",
+          "id":"section_heading",
+          "label":"Heading",
+          "default":"Let’s take a closer look"
+		}
+	]
+  }
+{% endschema %}

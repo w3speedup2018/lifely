@@ -1,0 +1,137 @@
+{% assign free_gift_over_price_40 = 75000 %} 
+{% assign variant_id = '40490780426282' %}
+
+  <script>
+  (function($) {
+ 
+    var cartItems = {{ cart.items | json }},
+        qtyInTheCart = 0,
+        productprce = 250,
+        cartOrigenal = {{ cart.original_total_price }},
+        cartTotal = {{ cart.total_price }};
+    for(var i=0; i<cartItems.length; i++) {
+        if (cartItems[i].id === {{ variant_id }} ) {
+          qtyInTheCart = cartItems[i].quantity;
+          break;
+        }
+    }
+
+    
+    if ( ( cartItems.length === 1 ) && ( qtyInTheCart > 0 ) ) {
+       var cartUpdates = { {{ variant_id }}: 0 }
+         var params = {
+          type: 'POST',
+          url: '/cart/update.js',
+          data: { updates: cartUpdates },
+          dataType: 'json',
+          success: function(stuff) { 
+            window.location.href = '/cart';
+          }
+        };
+        $.ajax(params); 
+    }else if(( cartItems.length >= 1 ) && ( qtyInTheCart === 0 ) && (cartTotal >= {{ free_gift_over_price_40 }} )) {
+        var cartUpdates = { {{ variant_id }}: 1 }
+         var params = {
+          type: 'POST',
+          url: '/cart/update.js',
+          data: { updates: cartUpdates },
+          dataType: 'json',
+          success: function(stuff) { 
+            window.location.href = '/cart';
+          }
+        };
+        $.ajax(params); 
+    }else if(( cartItems.length >= 1 ) && ( qtyInTheCart > 0 ) && (cartTotal > {{ free_gift_over_price_40 }} )) {
+          var exact_price = parseFloat(cartOrigenal) - parseFloat(25900);
+          if(exact_price < {{ free_gift_over_price_40 }}){
+          var cartUpdates = { {{ variant_id }}: 0 }
+           var params = {
+            type: 'POST',
+            url: '/cart/update.js',
+            data: { updates: cartUpdates },
+            dataType: 'json',
+            success: function(stuff) { 
+              window.location.href = '/cart';
+            }
+          }; 
+          $.ajax(params); 
+        }
+    }else {
+       return;
+    }
+  
+   $(document).on('change','.cart-item__quantity-wrapper quantity-input.quantity input.quantity__input',function(){
+      setTimeout(function(){
+          $.ajax({
+              type: 'GET',
+              url: '/cart.js',
+              dataType: 'json',
+              success: function(cart) {   
+                 check_free_product(cart);
+                  //console.log(cart);
+              }, 
+          });
+      },2500);  
+    });
+   
+    function check_free_product(cart){
+          var variation_id = 40490780426282;
+        var cartItems = cart.items,
+        qtyInTheCart = 0,
+        cartOrigenal = cart.original_total_price,
+        cartTotal = cart.total_price;
+    
+         var free_gift_over_price_40 = 75000;
+          if (cart.item_count > 0) {
+            for(var i=0; i<cartItems.length; i++) {
+                if (cartItems[i].id === variation_id ) {
+                  qtyInTheCart = cartItems[i].quantity;
+                  break;
+                }
+            }
+            if ( ( cartItems.length === 1 ) && ( qtyInTheCart > 0 ) ) {
+                cartUpdates = { '40490780426282': 0 }
+                 var params = {
+                  type: 'POST',
+                  url: '/cart/update.js',
+                  data: { updates: cartUpdates },
+                  dataType: 'json',
+                  success: function(stuff) { 
+                    window.location.href = '/cart';
+                  }
+                };
+                $.ajax(params); 
+            }else if(( cartItems.length >= 1 ) && ( qtyInTheCart === 0 ) && (cartTotal >= free_gift_over_price_40 )) {
+                cartUpdates = { '40490780426282' : 1 }
+                 var params = {
+                  type: 'POST',
+                  url: '/cart/update.js',
+                  data: { updates: cartUpdates },
+                  dataType: 'json',
+                  success: function(stuff) { 
+                     window.location.href = '/cart';
+                  }
+                };
+                $.ajax(params); 
+            }else if(( cartItems.length >= 1 ) && ( qtyInTheCart > 0 ) && (cartTotal > free_gift_over_price_40 )) {
+                cartUpdates = { '40490780426282': 0 }
+                 var exact_price = parseFloat(cartOrigenal) - parseFloat(25900);
+                  console.log(exact_price);
+                 if(exact_price < free_gift_over_price_40){
+                      cartUpdates = { '40490780426282': 0 }
+                       var params = {
+                        type: 'POST',
+                        url: '/cart/update.js',
+                        data: { updates: cartUpdates },
+                        dataType: 'json',
+                        success: function(stuff) { 
+                          window.location.href = '/cart';
+                        }
+                    };
+                    $.ajax(params); 
+                }
+            }
+          }
+      }
+  })(jQuery);
+  </script>

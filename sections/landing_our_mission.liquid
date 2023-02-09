@@ -1,0 +1,122 @@
+{% if section.settings.heading != blank or section.settings.sub_heading != blank %}
+   <style type="lazyload2">
+	{% if section.settings.half_image != blank %}
+      .landing_our_mission{
+          background:url({{section.settings.half_image | img_url:'master'}});
+      } 
+     {% endif %}
+    .landing_our_mission_content{
+     	background:url({{section.settings.icon_image | img_url:'master'}});
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 117px;
+        padding: 60px;
+     }
+  </style>
+  <style>
+      .landing_our_mission{
+          background-size: cover;
+          background-repeat: no-repeat;
+          position:relative;
+           padding: 50px 0;
+         background-position: center;
+          margin-top: 35px;
+      } 
+     .landing_our_mission_inner {
+          background: {{section.settings.box_color}};
+          max-width: 500px;
+          margin: 0 0 0 auto;
+      }
+     
+     .landing_our_mission_content h4 {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 54px;
+        line-height: 64px;
+        color: #574E40;
+        margin-bottom: 20px;
+    }
+    .landing_our_mission_content a {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px; text-decoration: underline;
+        line-height: 24px;
+        color: #574E40;
+        margin-bottom: 20px;
+    }
+    .landing_our_mission_content p {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #574E40;
+        margin-bottom: 20px;
+    }
+   </style>  
+	<section class="landing_our_mission">
+      <div class="page-width">
+        <div class="landing_our_mission_inner">
+          <div class="landing_our_mission_content">
+              {% if section.settings.heading != blank %}
+              <h4>{{section.settings.heading}}</h4>
+              {% endif %}
+              {% if section.settings.sub_heading != blank %}
+              {{section.settings.sub_heading}}		
+              {% endif %}
+              {% if section.settings.button_link != blank and section.settings.button_label != blank %}
+              <a  class="red-artcle" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>	
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </section> 
+{% endif %}
+{% schema %}
+  {
+    "name": "Our Mission",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"    
+         },
+		 {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+		 },
+		 {
+            "id": "sub_heading",
+            "type": "richtext",
+            "label": "Add Content",
+            "default": "<p>Add your text here</p>"
+         },
+		 {
+            "id": "button_label",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Shop Now"
+         },
+		 {
+            "id": "button_link",
+            "type": "text",
+            "label": "Button Link"
+         },
+		 {
+          "type": "image_picker",
+          "id": "half_image",
+          "label": "Background Image"    
+         },
+		{
+          "type": "color",
+          "id": "box_color",
+          "label": "Box Background Color",
+          "default": "#000"
+         }
+	]
+  }
+{% endschema %}
+

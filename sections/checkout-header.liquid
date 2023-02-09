@@ -1,0 +1,40 @@
+{% if section.settings.checkout_clogo != blank %}
+  <section class="checkout-top">
+    <div class="c-top-inner">
+      <div clas="logo-chk">
+        <a class="logo logo--left" href="https://lifely.com.au/"><img src="{{section.settings.checkout_clogo | img_url: 'large' }}" alt="Logo"></a>
+      </div>
+      {% if section.settings.contact_number != blank %}
+         <div class="checkot_contact_number">
+            <a href="tel:{{section.settings.contact_number | strip }}"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 1V25.5C6 26.4283 6.35558 27.3185 6.98851 27.9749C7.62145 28.6313 8.47989 29 9.375 29H20.625C21.5201 29 22.3786 28.6313 23.0115 27.9749C23.6444 27.3185 24 26.4283 24 25.5V1H6ZM16.1306 26.6842H13.8671V24.3333H16.1306V26.6842ZM9.375 22V4.5H20.625V22H9.375Z" fill="#fff"/>
+            </svg> {{section.settings.contact_number }}</a>
+         </div> 
+       {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Checkout Settings",
+    "settings": [
+     	 {
+          "type": "image_picker",
+          "id": "checkout_clogo",
+          "label": "Logo"
+         },
+          {
+          "type": "text",
+          "id": "contact_number",
+          "label": "Phone Number"
+         }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

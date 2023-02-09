@@ -1,0 +1,26 @@
+{% assign popular_cat_name = collection.metafields.arena.popular_subcat_name %}
+{% assign popular_cat_link = collection.metafields.arena.popular_subcat_link %}
+
+
+{% if popular_cat_name != blank %}
+  <div class="popular-category-main">
+    <div class="container">
+      <div class="popular-cat-inner">
+        {% if collection.metafields.arena.popular_product_heading != blank %}
+          <h3 class="desktop_heading_cat">{{collection.metafields.arena.popular_product_heading}}</h3> 
+          <h3 class="mobile_heading_cat" style="display:none">Other Category</h3> 
+        {% endif %}
+        <div class="d-flex justify-content-center popular-cat-slider-mobile">
+            {% for t in popular_cat_name %}
+          		{% assign index = forloop.index0 %}
+          		{% if popular_cat_name[index] != blank %}	
+                  <span class="popular-cat-tags">
+                    <a href="{{popular_cat_link[index]}}">{{popular_cat_name[index]}}</a>
+                  </span>
+          		{% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}	

@@ -1,0 +1,475 @@
+<link rel="stylesheet" data-href="{{ 'component-collection-hero.css' | asset_url }}">
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+
+{% if current_tags.first and collection.metafields.subcategory.tag != blank %} 
+  {% for subcat in collection.metafields.subcategory.tag %}
+		{% assign count = forloop.index0 %}
+		{% if collection.metafields.subcategory.tag[count] == current_tags.first %}
+           {% assign  subcategory_banner = collection.metafields.subcategory.banner[count] %}
+		   {% assign child_cat_desc = collection.metafields.subcategory.description[count] %}	 
+			{% comment %}
+		  {% for tag in collection.all_tags %}			
+              {% if tag contains current_tags.first %}	
+              {% endif %}
+          {% endfor %}
+		  {% endcomment %}	
+		{% endif %}
+  {% endfor %}
+{% endif %}
+
+
+{% if current_tags.first %}
+	{% if current_tags.first != 'Mattresses' %}
+	<div class="mobile_collection_breadcrumb collection-breadcrumb">
+        <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="/">Home</a>
+            </li>
+            {%- case t -%}
+            {%- when 'page' -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+            </li>
+            {%- when 'product' -%}
+
+            {% assign product_collection = product.collections.first %}
+            {% if product_collection %}
+            {% for c in product.collections %}
+            {% if c.title != 'Best Seller' %}
+            {%- if c.url -%}
+            <li class="breadcrumbs__item">
+              {{ c.title | link_to: c.url }}
+            </li>
+            {%- endif -%}
+            {% endif %}
+            {% endfor %}			
+
+            {% endif %}
+
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+            </li>
+            {%- when 'collection' and collection.handle -%}
+            {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              {{ collection.title | link_to: collection.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+            </li>
+            {%- endif -%}
+            {%- when 'blog' -%}
+            {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              {{ blog.title | link_to: blog.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+            </li>
+            {%- endif -%}
+            {%- when 'article' -%}
+            <li class="breadcrumbs__item">
+              {{ blog.title | link_to: blog.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+            </li>
+            <li class="breadcrumbs__item">                                  
+              <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ current_tags.first | downcase }}</a>
+            </li>
+            {%- endcase -%}
+          </ol>
+        </nav>
+  </div>
+	<div class="collection-hero">
+      <div class="{% if section.settings.banner_style== 'halfwidth' %}{{"collection-hero__inner page-width"}}{% elsif section.settings.banner_style == 'fullwidth'%}{{"collection-hero__fullwidth"}}{%endif%}">
+        {% if section.settings.banner_style == 'halfwidth' %}
+          <div class="collection-hero__text-wrapper">
+            <h1 class="collection-hero__title">              
+              {{- collection.title | escape -}} 
+            </h1>
+
+            {%- if section.settings.show_collection_description -%}
+              <div class="collection-hero__description rte">{{ collection.description }}</div>
+            {%- endif -%}
+          </div>
+
+        {%- if section.settings.show_collection_image and collection.image -%}
+            <div class="collection-hero__image-container media gradient">
+              <img
+                srcset="{%- if collection.image.width >= 165 -%}{{ collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                  {%- if collection.image.width >= 360 -%}{{ collection.image | img_url: '360x' }} 360w,{%- endif -%}
+                  {%- if collection.image.width >= 535 -%}{{ collection.image | img_url: '535x' }} 535w,{%- endif -%}
+                  {%- if collection.image.width >= 750 -%}{{ collection.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if collection.image.width >= 1070 -%}{{ collection.image | img_url: '1070x' }} 1070w,{%- endif -%}
+                  {%- if collection.image.width >= 1500 -%}{{ collection.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {{ collection.image | img_url: 'master' }} {{ collection.image.width }}w"
+                src="{{ collection.image | img_url: '750x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+                alt="{{ collection.title | escape }}"
+                width="{{ collection.image.width }}"
+                height="{{ collection.image.height }}"
+              >
+            </div>
+        {%- endif -%}
+        {% elsif section.settings.banner_style == "fullwidth" %}
+            <div class="collection-hero__text-wrapper child_cartegory_banner {{current_tags.first}}" style="background-image:url({{subcategory_banner}});background-size: cover;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+                    <h1 class="collection-hero__title">                      
+                      {{- current_tags.first | escape -}} <sup><img src="//cdn.shopify.com/s/files/1/0562/7569/7706/files/star_icon_7560b4d0-1836-4922-aa32-ac044f252861.png?v=1649319299" alt=""></sup>
+                    </h1>
+
+                    <div class="collection-breadcrumb">
+                      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                        <ol class="breadcrumbs__list">
+                          <li class="breadcrumbs__item">
+                            <a class="breadcrumbs__link" href="/">Home</a>
+                          </li>
+                          {%- case t -%}
+                            {%- when 'page' -%}
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+                              </li>
+                            {%- when 'product' -%}
+
+                              {% assign product_collection = product.collections.first %}
+                                {% if product_collection %}
+                                    {% for c in product.collections %}
+                                        {% if c.title != 'Best Seller' %}
+                                            {%- if c.url -%}
+                                              <li class="breadcrumbs__item">
+                                                {{ c.title | link_to: c.url }}
+                                              </li>
+                                            {%- endif -%}
+                                        {% endif %}
+                                    {% endfor %}			
+
+                                {% endif %}
+
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+                              </li>
+                            {%- when 'collection' and collection.handle -%}
+                              {%- if current_tags -%}
+                                <li class="breadcrumbs__item">
+                                  {{ collection.title | link_to: collection.url }}
+                                </li>
+                                <li class="breadcrumbs__item">
+                                  {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+                                  <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+                                </li>
+                              {%- else -%}
+                                <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+                                </li>
+                              {%- endif -%}
+                            {%- when 'blog' -%}
+                              {%- if current_tags -%}
+                                <li class="breadcrumbs__item">
+                                  {{ blog.title | link_to: blog.url }}
+                                </li>
+                                <li class="breadcrumbs__item">
+                                  {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+                                  <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+                                </li>
+                              {%- else -%}
+                                <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+                                </li>
+                              {%- endif -%}
+                            {%- when 'article' -%}
+                              <li class="breadcrumbs__item">
+                                {{ blog.title | link_to: blog.url }}
+                              </li>
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+                              </li>
+                            {%- else -%}
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+                              </li>
+                          		<li class="breadcrumbs__item">                                  
+                                  <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ current_tags.first | downcase }}</a>
+                                </li>
+                          {%- endcase -%}
+                        </ol>
+                      </nav>
+                    </div>
+                    
+                </div>
+            </div>
+        {% endif %}
+      </div>
+  	</div>
+	{% endif %}
+{% else %}
+	<div class="mobile_collection_breadcrumb collection-breadcrumb">
+      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="/">Home</a>
+          </li>
+          {%- case t -%}
+          {%- when 'page' -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+          </li>
+          {%- when 'product' -%}
+
+          {% assign product_collection = product.collections.first %}
+          {% if product_collection %}
+          {% for c in product.collections %}
+          {% if c.title != 'Best Seller' %}
+          {%- if c.url -%}
+          <li class="breadcrumbs__item">
+            {{ c.title | link_to: c.url }}
+          </li>
+          {%- endif -%}
+          {% endif %}
+          {% endfor %}			
+
+          {% endif %}
+
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+          </li>
+          {%- when 'collection' and collection.handle -%}
+          {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+          </li>
+          {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+          </li>
+          {%- endif -%}
+          {%- when 'blog' -%}
+          {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+          </li>
+          {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+          </li>
+          {%- endif -%}
+          {%- when 'article' -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+          </li>
+          {%- else -%}
+           {% if collection %}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+            </li>
+            {% else %}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+            </li>
+           {% endif %}
+          {%- endcase -%}
+        </ol>
+      </nav>
+</div>
+	<div class="collection-hero">
+      <div class="{% if section.settings.banner_style== 'halfwidth' %}{{"collection-hero__inner page-width"}}{% elsif section.settings.banner_style == 'fullwidth'%}{{"collection-hero__fullwidth"}}{%endif%}">
+        {% if section.settings.banner_style == 'halfwidth' %}
+          <div class="collection-hero__text-wrapper">
+            <h1 class="collection-hero__title">              
+              {{- collection.title | escape -}}
+            </h1>
+
+            {%- if section.settings.show_collection_description -%}
+              <div class="collection-hero__description rte">{{ collection.description }}</div>
+            {%- endif -%}
+          </div>
+
+        {%- if section.settings.show_collection_image and collection.image -%}
+            <div class="collection-hero__image-container media gradient">
+              <img
+                srcset="{%- if collection.image.width >= 165 -%}{{ collection.image | img_url: '165x' }} 165w,{%- endif -%}
+                  {%- if collection.image.width >= 360 -%}{{ collection.image | img_url: '360x' }} 360w,{%- endif -%}
+                  {%- if collection.image.width >= 535 -%}{{ collection.image | img_url: '535x' }} 535w,{%- endif -%}
+                  {%- if collection.image.width >= 750 -%}{{ collection.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if collection.image.width >= 1070 -%}{{ collection.image | img_url: '1070x' }} 1070w,{%- endif -%}
+                  {%- if collection.image.width >= 1500 -%}{{ collection.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {{ collection.image | img_url: 'master' }} {{ collection.image.width }}w"
+                src="{{ collection.image | img_url: '750x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+                alt="{{ collection.title | escape }}"
+                width="{{ collection.image.width }}"
+                height="{{ collection.image.height }}"
+              >
+            </div>
+        {%- endif -%}
+        {% elsif section.settings.banner_style == "fullwidth" %}
+            <div class="collection-hero__text-wrapper" style="background-image:linear-gradient(to right,#0000004a, #0000004a),url({{collection.image | img_url: 'master'}});background-size: cover;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+                    <h1 class="collection-hero__title">                      
+                      {{- collection.title | escape -}} <sup><img src="//cdn.shopify.com/s/files/1/0562/7569/7706/files/star_icon_7560b4d0-1836-4922-aa32-ac044f252861.png?v=1649319299" alt=""></sup>
+                    </h1>
+
+                    <div class="collection-breadcrumb">
+                      <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                        <ol class="breadcrumbs__list">
+                          <li class="breadcrumbs__item">
+                            <a class="breadcrumbs__link" href="/">Home</a>
+                          </li>
+                          {%- case t -%}
+                            {%- when 'page' -%}
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+                              </li>
+                            {%- when 'product' -%}
+
+                              {% assign product_collection = product.collections.first %}
+                                {% if product_collection %}
+                                    {% for c in product.collections %}
+                                        {% if c.title != 'Best Seller' %}
+                                            {%- if c.url -%}
+                                              <li class="breadcrumbs__item">
+                                                {{ c.title | link_to: c.url }}
+                                              </li>
+                                            {%- endif -%}
+                                        {% endif %}
+                                    {% endfor %}			
+
+                                {% endif %}
+
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+                              </li>
+                            {%- when 'collection' and collection.handle -%}
+                              {%- if current_tags -%}
+                                <li class="breadcrumbs__item">
+                                  {{ collection.title | link_to: collection.url }}
+                                </li>
+                                <li class="breadcrumbs__item">
+                                  {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+                                  <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+                                </li>
+                              {%- else -%}
+                                <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+                                </li>
+                              {%- endif -%}
+                            {%- when 'blog' -%}
+                              {%- if current_tags -%}
+                                <li class="breadcrumbs__item">
+                                  {{ blog.title | link_to: blog.url }}
+                                </li>
+                                <li class="breadcrumbs__item">
+                                  {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+                                  <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+                                </li>
+                              {%- else -%}
+                                <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+                                </li>
+                              {%- endif -%}
+                            {%- when 'article' -%}
+                              <li class="breadcrumbs__item">
+                                {{ blog.title | link_to: blog.url }}
+                              </li>
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+                              </li>
+                            {%- else -%}
+                             {% if collection %}
+                                <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+                                </li>
+                         	 {% else %}
+                          	    <li class="breadcrumbs__item">
+                                  <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+                                </li>
+                            {% endif %}
+                          {%- endcase -%}
+                        </ol>
+                      </nav>
+                    </div>
+
+                    {%- if section.settings.show_collection_description -%}
+                    <div class="collection-hero__description rte">{{ collection.description }}</div>
+                    {%- endif -%}
+                </div>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "select",
+      "id": "banner_style",
+      "options": [
+        {
+          "value": "halfwidth",
+          "label": "Halfwidth"
+        },
+		{
+          "value": "fullwidth",
+          "label": "Fullwidth"
+        }
+      ],
+      "default": "fullwidth",
+      "label": "Fullwidth"
+    }
+  ]
+}
+{% endschema %}

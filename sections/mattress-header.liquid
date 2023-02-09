@@ -1,0 +1,179 @@
+<link rel="stylesheet" data-href="{{ 'component-collection-hero.css' | asset_url }}">
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+
+
+
+<div class="m-h-top" style="{% if section.settings.banner_background_color != blank %}background-color:{{section.settings.banner_background_color}}{% endif %}">
+<div class="container">
+{% if section.settings.child_banner_logo != blank %}
+<img src="{{section.settings.child_banner_logo | img_url: "master"}}" alt="logo">
+{% endif %}
+
+{% if section.settings.banner_heading_content != blank %}
+ <h2> {{ section.settings.banner_heading_content }}  </h2>
+{% endif %}
+</div>
+  
+</div>
+
+  
+{%- if section.settings.child_banner_image != blank -%}
+
+<div class="m-h-b" style=" background-image:url( {{section.settings.child_banner_image | img_url: "master"}} ); ">
+
+  
+  
+  {% else %}
+  
+<div class="m-h-b">
+
+{%- endif -%}
+
+  
+<div class="container">
+
+
+<div class="text">
+<div class="collection-breadcrumb">
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+<ol class="breadcrumbs__list">
+<li class="breadcrumbs__item">
+<a class="breadcrumbs__link" href="/">Home</a>
+</li>
+<li class="breadcrumbs__item">
+<a class="breadcrumbs__link" href="/collections">Collection</a>
+</li>
+
+
+
+<li class="breadcrumbs__item">
+<a class="breadcrumbs__link" href=" " aria-current="page">Mattress</a>
+</li>           
+
+</ol>
+</nav>
+</div>
+
+  {% if section.settings.title != blank %}
+ <h2> {{ section.settings.title }}  </h2>
+{% endif %}
+
+  {% if section.settings.content != blank %}
+                    <div class="top_content_item for__desktop">                         
+  {{ section.settings.content }}    </div>
+{% endif %}
+
+<div class="top_content_item for__mobile"> 
+
+  <div class="desc-half"> We've revolutionised the sleeping experience for all types of sleepers. So whether you're...  <span style="cursor:pointer;" class="read-more-content">[Read More]</span></div>
+
+  <div class="desc-full collection_description" style="display:none;">                         
+  {{ section.settings.content }}  <span style="cursor:pointer;" class="read-less-content">[Read Less]</span></div>
+</div>  
+
+
+  
+
+{% if section.settings.btn-url != blank %}  
+<a href="{{ section.settings.btn-url }}" class="btn">
+ {{ section.settings.btn }}
+</a>
+{% endif %}	
+  <br />
+{% if section.settings.trust-logo != blank %}
+<img src="{{section.settings.trust-logo | img_url: "large"}}" class="trust-logos" alt="logo">
+{% endif %}
+  
+
+</div>
+  
+</div>
+
+     <img class="mobile" src="{{section.settings.child_banner_image1 | img_url: "large"}} " />
+
+
+  
+</div>  
+<script type="lazyload2" >
+  setTimeout(function(){
+    $('.top_content_item .desc-half .read-more-content').on('click', function(){
+        $(this).closest('.top_content_item').find('.desc-half').hide();
+        $(this).closest('.top_content_item').find('.desc-full').show();
+    })
+
+    $('.top_content_item .desc-full .read-less-content').on('click', function(){
+        $(this).closest('.top_content_item').find('.desc-full').hide();
+        $(this).closest('.top_content_item').find('.desc-half').show();
+    })
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Mattress Banner",
+  "class": "mattress-h",
+  "settings": [
+    {
+	  "id": "child_banner_logo",	
+      "type": "image_picker",
+      "label": "Banner logo"
+    },
+	{
+		"type": "color",
+		"id": "banner_background_color",
+		"label": "Background Color"
+	},
+    {
+      "type": "text",
+      "id": "banner_heading_content",
+      "default": "Banner Heading",
+      "label": "Banner Heading"
+    },
+	 
+	{
+	  "id": "child_banner_image",	
+      "type": "image_picker",
+      "label": "Banner Image"
+    },
+    {
+	  "id": "child_banner_image1",	
+      "type": "image_picker",
+      "label": "Mobile Banner Image"
+    },
+  {
+      "type": "text",
+      "id": "title",
+      "default": "Banner Heading",
+      "label": "Banner Heading"
+    },
+
+  {
+      "type": "richtext",
+      "id": "content",
+      "label": "Banner Content" 
+    },
+     {
+      "type": "text",
+      "id": "btn",
+      "label": "Banner Button text" 
+    },
+      {
+      "type": "url",
+      "id": "btn-url",
+      "label": "Banner Button URL" 
+    },
+     {
+	  "id": "trust-logo",	
+      "type": "image_picker",
+      "label": "Trust logos"
+    }
+  ]
+}
+{% endschema %}

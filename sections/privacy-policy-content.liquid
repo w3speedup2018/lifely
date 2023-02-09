@@ -1,0 +1,41 @@
+{% if section.settings.privacy_content != blank %}
+<div class="privacy-policy-wrap">
+<div class="page-width">
+<div class="privacy-inner">
+  {{ section.settings.privacy_content }}
+</div>
+</div>
+</div>  
+<style>
+  .privacy-policy-wrap .privacy-inner-content p {
+    font-size: 16px;
+  }
+  .privacy-policy-wrap {
+    padding: 30px 0;
+  }
+  .privacy-policy-wrap .heading-main {
+      margin-bottom: 30px;
+      font-weight: bold;
+  }
+</style>
+
+{% endif %}  
+
+{% schema %}
+	{
+		"name": "Privacy Content",
+		"settings": [
+			{
+				"id": "privacy_content",
+				"type": "html",
+				"label": "Privacy Content"
+			}
+		]
+	}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

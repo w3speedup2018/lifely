@@ -1,0 +1,98 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="shop-room">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="shp-dlt">
+                          {% if section.settings.title != blank or section.settings.subheading != blank %}	
+                                <div class="shop-cont">
+                                    <h3>Shop by room</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                    <a href=""class="viwe-btn">View all</a>
+                                </div>
+                          {% endif %}
+                          {% if section.blocks and section.blocks != blank %}
+							<div class="shop-cagy">
+                                  {%- for block in section.blocks -%}
+                              		{% if block.settings.collection_image != blank and block.settings.room_title != blank %}
+                                        <div class="slick-slideshow__slide">
+                                            <div class="catg-iner">
+                                                {% if block.settings.collection_image != blank %}
+                                              		<span><img src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid" alt="{{ block.settings.collection_image.alt }}" /></span>
+                                              	{% endif %}
+                                              	{%- if block.settings.room_title != blank -%}
+                                                    <p>{{- block.settings.room_title | escape -}}</p>
+                                               {%- endif -%}
+                                            </div>
+                                        </div>
+                              		{% endif %}
+                               {% endfor %}								
+							</div>
+                          {% endif %}
+						</div>
+					</div>
+				</div>	
+			</div>
+		</section>	
+{% endif %}
+{% schema %}
+  {
+    "name": "Room Slider",
+	"max_blocks": 10,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Shop by room",
+        "label": "Section heading"
+      },
+ 	  {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_label",
+        "default": "View all",
+        "label": "Button Label"
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_link",
+        "default": "#",
+        "label": "Button Link"
+      }
+	],
+	"blocks": [
+        {
+          "type": "rooms",
+          "name": "Room",
+          "settings": [
+            {
+              "type": "text",
+              "id": "room_title",
+              "label": "Title"
+            },
+			{
+              "type": "image_picker",
+              "id": "collection_image",
+              "label": "Room Image"
+            },
+			{
+              "type": "text",
+              "id": "room_link",
+              "label": "Link"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

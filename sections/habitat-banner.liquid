@@ -1,0 +1,32 @@
+{% if section.settings.heading != blank and section.settings.banner_image != blank %}
+	<div class="banner_habitat" style="background:url({{ section.settings.banner_image | img_url:'master'}});background-size:cover;background-position:center;background-repeat:no-repeat;">
+		<div class="habitat_banner_inner">	
+              <div class="habitat_banner_content page-width">
+                  <h1>{{ section.settings.heading }}<sup><img src="//cdn.shopify.com/s/files/1/0562/7569/7706/files/star_icon_7560b4d0-1836-4922-aa32-ac044f252861.png?v=1649319299" alt=""></sup></h1>
+              </div>  
+      	</div>  
+	</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+			"type":"text",
+			"id":"heading",
+            "label":"Heading"
+		},
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image"    
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

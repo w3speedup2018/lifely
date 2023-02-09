@@ -1,0 +1,232 @@
+{% if section.settings.banner_heading != blank %}
+	
+	{% if section.settings.banner_heading != blank %}
+		{% assign bg_color = section.settings.background %} 
+	{% else %}
+		{% assign bg_color = '#fff' %} 
+    {% endif %}
+	<style>
+	{% if section.settings.heding_bg_image != blank %}
+		.banner_heading_section{
+		position:relative;
+	}             
+	{% endif %}      	  
+	.clearance_banner {
+		color: {{ section.settings.banner_font}};
+		font-family: 'Gellix';
+	} 
+	{% if section.settings.banner_background_image != blank %}
+	.clearance-banner-main{
+		background-image:url({{ section.settings.banner_background_image | img_url: 'master' }});
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 500px;  
+	}
+	{% endif %}
+
+	.heading-mobile{
+		display:none;
+	}	
+	.clearance_banner_content_new {
+		text-align: center;
+		padding: 6% 0 0 0;
+	}
+	.clearance_banner_content_new .banner_heading_section h1 {
+		font-family: 'Gellix';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 68px;
+		line-height: 82px;
+		color: #FFFFFF;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+	}  
+	.clearance_banner_content_new p {
+		font-family: 'Gellix';
+		font-style: normal;
+		font-weight: 600 !important;
+		font-size: 32px !important;
+		line-height: 40px !important;
+		color: #FFFFFF;
+	}   
+	.clearance_banner_content_new .about_banner_logo {
+		text-align: left;
+		margin-left: 15px;
+	}     
+	.clearance_banner_content_new .about_banner_logo img {
+		width: 80%;
+	}      
+    .hide-image-desktop{
+        display: none;
+    }
+    @media only screen and (max-width: 767px){
+      .clearance_banner .banner_heading_section {
+          padding-bottom: 15px !important;
+        }
+    }
+	@media only screen and (max-width: 480px){
+		.clearance-banner-main{
+			background-image: unset;
+			height: auto;
+		}
+		.clearance_banner_content_new {
+			text-align: left;
+			padding: 0;
+		}
+		.clearance_banner_content_new .mobile-image-section img {
+			width: 100%;
+		}
+		.clearance_banner_content_new .banner_heading_section h1{
+			margin: 0;
+			justify-content: flex-start;
+		}
+		.clearance_banner_content_new .clearance-bnr-text-content {
+			background: #8A9B75;
+		}
+		.heading-desktop{
+			display:none !important;
+		}
+		.heading-mobile{
+			display:block;
+		}
+		.clearance-banner-main .clearance_banner_content_new .banner_heading_section h2 {
+			font-family: 'Gellix';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 28px;
+			line-height: 32px;
+			color: #FFFFFF;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		.clearance-banner-main .clearance_banner_content_new p{
+			font-weight: 500 !important;
+			font-size: 16px !important;
+			line-height: 20px !important;
+		}
+        .hide-image-desktop{
+            display: block;
+        }
+	}
+  </style> 
+  <section class="clearance-banner-main">
+      <div class="page-width">
+        <div class="clearance_breadcrumbs breadcrumb-mobile hide-on-desktop">
+          <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+            <ol class="breadcrumbs__list">
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="/">Home</a>
+              </li>
+              <li class="breadcrumbs__item">
+                <span class="curent_page">{{ page.title }}</span>
+              </li>                        
+            </ol>
+          </nav>
+        </div>	
+      </div>
+      <div class="clearance_banner about_page_banner">
+          <div class="clearance_banner_container">
+              <div class="container">
+                  <div class="clearance_breadcrumbs hide-on-mobile">
+                    <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                        <ol class="breadcrumbs__list">
+                          <li class="breadcrumbs__item">
+                            <a class="breadcrumbs__link" href="/">Home</a>
+                          </li>
+                          <li class="breadcrumbs__item">
+                            <span class="curent_page">{{ page.title }}</span>
+                          </li>                        
+                        </ol>
+                      </nav>
+                  </div>
+              </div> 
+			  <div class="clearance_banner_content_new">
+				  {% if section.settings.banner_background_image_mobile != blank %}
+					<div class="mobile-image-section hide-image-desktop">
+						<img src="{{ section.settings.banner_background_image_mobile | img_url: 'master' }}" alt="Image">
+					</div>
+				  {% endif %}
+                  <div class="clearance-bnr-text-content">
+    				  <div class="container">
+    					<div class="banner_heading_section">     
+    					  <h1 class="heading-desktop">{{ section.settings.banner_heading }} 
+    						{% if section.settings.logo != blank %}
+    						  <span class="about_banner_logo"><img src="{{ section.settings.logo | img_url:"master" }}" /></span> 
+    						{% endif %}
+    					  </h1>
+                          {% if section.settings.banner_heading_mobile != blank  %}
+                              <h2 class="heading-mobile">{{ section.settings.banner_heading_mobile }}</h2>
+                          {% endif  %}
+    					  <h2 class="hide-on-desktop mobile-heading">{{ section.settings.banner_mobile_heading }}</h2>
+    					  <p>{{ section.settings.banner_subheading }}</p>
+    					</div>
+    					{% if section.settings.right_image != blank %}
+    					  <div class="banner_image_section">
+    						{% if section.settings.right_image != blank %}
+    							 <img src="{{ section.settings.right_image | img_url:'master' }}" />
+    						{% endif %}                         
+    					  </div>  
+    				   {% endif %}
+    				  </div>
+                  </div>
+			  </div>
+          </div>  
+      </div> 
+  </section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+        {
+			"type":"image_picker",
+			"id":"banner_background_image",
+			"label":"Banner Background Image"
+        },
+        {
+			"type":"image_picker",
+			"id":"banner_background_image_mobile",
+			"label":"Banner Background Image Mobile"
+        },
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        },
+        {
+			"type":"text",
+			"id":"banner_heading_mobile",
+			"label":"Heading Mobile"
+        },
+        {
+			"type":"text",
+			"id":"banner_subheading_mobile",
+			"label":"Sub heading Mobile"
+        },
+        {
+			"type":"image_picker",
+			"id":"logo",
+			"label":"Logo Image"
+        },
+		{
+			"type":"color",
+			"id":"banner_font",
+			"label":"Banner Font Color",
+			"default":"#000"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

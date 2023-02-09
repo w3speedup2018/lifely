@@ -1,0 +1,59 @@
+{% if section.settings.banner_heading != blank or section.settings.banner_image != blank  %}
+  <section class="home_banner" {% if section.settings.banner_image != blank %}style="background:url({{ section.settings.banner_image | img_url: 'master' }}) no-repeat right center;background-size:cover;"{% endif %}>
+	 <div class="container">
+     	{% if section.settings.banner_heading != blank or section.settings.banner_sub_heading != blank  or section.settings.banner_button_link != blank %}
+            <div class="banner_content">
+				{% if section.settings.banner_heading != blank %}
+              		<h1>{{section.settings.banner_heading}}</h1>
+              	{% endif %}
+                {% if section.settings.banner_sub_heading != blank %}
+             		{{section.settings.banner_sub_heading}}		
+              	{% endif %}
+              	{% if section.settings.banner_button_link != blank and section.settings.banner_button_label != blank %}
+              		<a href="{{ section.settings.banner_button_link }}">{{ section.settings.banner_button_label }}</a>	
+              	{% endif %}
+            </div>  
+       {% endif %}
+     </div>  
+  </section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		 {
+            "id": "banner_heading",
+            "type": "text",
+            "label": "Heading"
+		 },
+		 {
+            "id": "banner_sub_heading",
+            "type": "richtext",
+            "label": "Add Banner Content",
+            "default": "<p>Add your text here</p>"
+         },
+		 {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image"    
+         },
+		 {
+            "id": "banner_button_label",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Shop Now"
+         },
+		 {
+            "id": "banner_button_link",
+            "type": "text",
+            "label": "Button Link"
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

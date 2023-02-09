@@ -1,0 +1,86 @@
+{% if section.blocks != blank or section.settings.section_headding != blank %}
+<div class="collection-faq">
+  <div class="page-width">
+    <div class="collection_faq_main">
+      <div class="faq_sectio_deatail">
+        {% if section.settings.section_headding != blank %}
+        <h2>{{ section.settings.section_headding }}</h2>
+        {% endif %}
+        {% if section.settings.section_description != blank %}
+        {{ section.settings.section_description }}
+        {% endif %}
+      </div>                  
+      <div class="faq_section_accordian">
+        {% if section.blocks != blank %}
+        <div id="faq_fourth_accordion">
+          {% assign ppp = 0 %}
+          {% for block in  section.blocks %}
+          {% if block.settings.title != blank and  block.settings.description != blank %}
+          		{% assign ppp = ppp | plus:1 %}
+              <div class="card">
+                <div class="card-header" id="heading{{ forloop.index }}">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link {% if ppp != 1 %}collapsed{% endif %}" data-toggle="collapse" data-target="#faq_fourth_collapse{{ forloop.index }}" aria-expanded="{% if ppp == 1 %}true{%else%}false{% endif %}" aria-controls="collapseOne">
+                      {{ block.settings.title }}  <i class="fas {% if ppp != 1 %}fa-plus{%else%}fa-minus{%endif%}"></i>
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="faq_fourth_collapse{{ forloop.index }}" class="collapse {% if ppp == 1 %}show{% endif %}" aria-labelledby="heading{{ forloop.index }}" data-parent="#faq_fourth_accordion">
+                  <div class="card-body">
+                    {{ block.settings.description }}
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div> 
+    </div> 
+  </div>  
+</div> 
+{% endif %}
+{% schema %}
+  {
+    "name": "Faq Fourth Section",
+    "class":"faq_fourth_section",
+    "settings": [
+		{
+          "type": "text",
+           "id": "section_headding",
+           "label": "Section Heading"
+		},
+		{
+          "type": "richtext",
+           "id": "section_description",
+           "label": "Section Description"
+		}
+	],
+	
+	"blocks": [
+        {
+          "type": "faq-items",
+          "name": "Faq",
+          "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title"    
+            },
+			{
+            "type": "html",
+            "id": "description",
+            "label": "Description"    
+            }
+          ]
+        }
+    ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

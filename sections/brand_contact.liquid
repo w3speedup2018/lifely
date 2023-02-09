@@ -1,0 +1,94 @@
+{% style %}
+    .trade_klaviyo_form_section button.needsclick:last-child{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 16px !important;
+      gap: 10px;
+      width: 226px !important;
+      background: #2C474B !important;
+      border-radius: 100px !important;
+      font-style: normal !important;
+      font-weight: 600 !important;
+      font-size: 18px !important;
+      text-align: center;
+      color: #FFFFFF !important;
+      margin: auto;
+      text-transform: capitalize;
+      padding: 0 !important;
+  }
+  
+  .trade_klaviyo_form_section p span {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #282828;
+  }
+  .trade_klaviyo_form_section p{
+  	 text-align: center !important;
+  }
+  .trade_klaviyo_form_section {
+      max-width: 950px;
+      margin: 0 auto;
+  }
+{% endstyle %} 
+<section class="trade-contact-grid" style="background:{% if section.settings.background != blank %}{{section.settings.background}}{% endif %}">
+  <div class="contact-inner">
+    <div class="container">
+      {% if section.settings.contact_form_heading != blank or section.settings.contact_form_subheading != blank %}
+        <div class="contact-head">
+          {% if section.settings.contact_form_heading != blank %}
+       	  	<h3>{{section.settings.contact_form_heading}}</h3>
+          {% endif %}
+          {% if section.settings.contact_form_subheading != blank %}
+          	 <div class="hide-on-mobile">{{section.settings.contact_form_subheading}}</div>
+          {% endif %}
+          {% if section.settings.contact_form_subheading_mobile != blank %}
+        	  <div class="hide-on-desktop">{{section.settings.contact_form_subheading_mobile}} </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="trade-form">        
+          <div class="trade_klaviyo_form_section"><div class="klaviyo-form-VgTg9n"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Trade Contact Form",
+    "settings": [
+		{
+			"type":"text",
+			"id":"contact_form_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"richtext",
+			"id":"contact_form_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"richtext",
+			"id":"contact_form_subheading_mobile",
+			"label":"Sub heading"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

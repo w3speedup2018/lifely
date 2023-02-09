@@ -1,0 +1,253 @@
+{% if section.settings.banner_heading != blank or section.settings.banner_image != blank %}
+  <style type="lazyload2">
+    .landing_banner{
+      background:url({{section.settings.banner_image | img_url:'master'}});
+      padding-top: 37%;
+      background-repeat: no-repeat;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+    section.landing_banner h1 {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-size: 75px;
+      line-height: 82px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #5C684C;
+  }
+  .landing_banner .landing_banner_content_new {
+      padding-left: 17%;
+      height: 100%;
+      padding-top: 6%;
+  }
+  section.landing_banner h4 {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-size: 24px;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      color: #758068;
+      padding: 12px 0;
+  }
+  section.landing_banner .landing-heading-grid {
+      margin-bottom: 40px;
+  }
+  section.landing_banner .landing-button-grid a {
+    background: #CF7244;
+    border: 1px solid #CF7244;
+    border-radius: 100px;
+    display: inline;
+    padding: 8px 16px 12px 16px;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: #FCF9F4;
+    line-height: 18px;
+  }
+  section.landing_banner .landing-button-grid a:hover {
+      background: #fff;
+      color: #CF7244;
+  }      
+  .landing_banner_inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .landing_banner_inner a {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .landing_banner_content h1 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 75px;
+    line-height: 82px;
+    color: #fff;
+    position:relative;
+  }
+  .landing_banner_content {
+      padding: 0 30px;
+      text-align: center;
+  }
+  .landing_banner_content a {
+    background: #CF7244 !important;
+    display: inline-block;
+    border-radius: 39px;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    line-height: 18px;
+    padding: 9px 25px 15px;
+    text-align: center;
+    margin-top: 13px;
+  }
+  .landing_banner_content h1 sup {
+      top: -45px;
+  }
+  
+  @media only screen and (max-width: 1100px){
+    section.landing_banner h1 {
+      font-size: 65px;
+    }
+    section.landing_banner h4 {
+      font-size: 20px;
+      line-height: 40px;
+    }
+    section.landing_banner .landing-button-grid a {
+        font-size: 15px;
+    }
+  }
+  @media only screen and (max-width: 991px){
+    section.landing_banner h1 {
+      font-size: 55px;
+      line-height: 70px;
+    }
+    section.landing_banner h4 {
+        font-size: 17px;
+        line-height: 30px;
+    }
+  }
+  @media screen and (max-width:768px) {
+    .landing_banner{
+      background:url({{section.settings.m_banner_image | img_url:'master'}});
+      background-repeat: no-repeat; background-size:100% 100%;
+    }
+    section.landing_banner h1 {
+      font-size: 60px;
+      line-height: 70px;
+      justify-content: center;
+      width: 500px !important;
+      margin: 0 auto;
+      font-weight: 600;
+    }
+    section.landing_banner h4 {
+      font-size: 22px;
+      line-height: 40px;
+      width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .landing_banner .landing_banner_content_new {
+        padding-left: 0;
+    }    
+    .landing_banner .landing-button-grid {
+        text-align: center;
+    }    
+  }
+  @media only screen and (max-width: 575px){
+    section.landing_banner h1 {
+      font-size: 40px;
+      line-height: 46px;
+      width: 320px !important;
+    }
+    section.landing_banner h1 sup {
+      left: -30px;
+      top: 10px;
+    }
+    section.landing_banner h4 {
+      line-height: 25px;
+      padding-top: 15px;
+    }
+    .landing_banner .landing_banner_content_new {
+        padding-top: 10%;
+    }
+    section.landing_banner .landing-button-grid a {
+        font-size: 18px;
+    }
+  }
+  @media only screen and (max-width: 480px){
+    section.landing_banner h4 {
+      font-size: 16px;
+      line-height: 21px;
+      width: 300px;
+    }
+    section.landing_banner h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+  }  
+  @media only screen and (max-width: 375px){
+    section.landing_banner h1 sup {
+      left: -18px;
+    }
+    .landing_banner .landing_banner_content_new {
+        padding-top: 15%;
+    }
+    section.landing_banner h4 {
+        line-height: 23px;
+    }
+  }  
+
+  </style> 
+	<section class="landing_banner new_landing_banner_page">
+		<div class="page-width">
+      		<div class="landing_banner_inner">
+          		<div class="landing_banner_content_new">
+                    <div class="landing-heading-grid">
+                		{% if section.settings.banner_heading != blank %}
+                    		<h1 class="landing_page_banner_heading">{{ section.settings.banner_heading }}<sup><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ 'str-ylw.png' | asset_url }}" alt=""></sup></h1>
+                      {% endif %}
+                      {% if section.settings.banner_subheading != blank %}
+                    		<h4 class="landing_page_banner_heading">{{ section.settings.banner_subheading }}</h4>
+                      {% endif %}
+                    </div>
+                    {% if section.settings.banner_button_label != blank and section.settings.banner_button_link %}
+                      <div class="landing-button-grid">
+                  		<a href="{{ section.settings.banner_button_link }}">{{ section.settings.banner_button_label }}</a>
+                      </div>
+                    {% endif %}
+              	</div>  
+          	</div>  
+      	</div>  
+	</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+          "id": "banner_heading",
+          "type": "text",
+          "label": "Heading"
+		},
+        {
+          "id": "banner_subheading",
+          "type": "text",
+          "label": "Sub Heading"
+		},
+		{
+            "id": "banner_button_label",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Shop Now"
+        },
+		{
+            "id": "banner_button_link",
+            "type": "url",
+            "label": "Button Link"
+		},
+		{
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Desktop Banner Image"    
+        },
+        {
+          "type": "image_picker",
+          "id": "m_banner_image",
+          "label": "Mobile Banner Image"    
+        }
+	]
+  }
+{% endschema %}

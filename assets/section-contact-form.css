@@ -1,0 +1,141 @@
+.contact img {
+  max-width: 100%;
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 1.5rem;
+}
+.contact_us_map_iframe iframe {
+    width: 100%;
+    height:380px;
+} 
+.contact-address-col .address_col_inner {
+    height: 100%;
+    padding-left: 52px;
+}
+.contact-address-col .address_col_inner .address_inner_row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.contact-address-col .address_col_inner .address_inner_row h4 {
+    font-size: 19px;
+    margin-bottom: 16px;
+    font-family: 'Gellix';
+    font-weight: 600;
+}
+.contact-address-col .address_col_inner .address_inner_row p {
+    font-size: 16px;
+    font-family: 'Gellix';
+}
+.contact-address-col .address_col_inner h3 {
+    font-size: 28px;
+    font-family: 'Gellix';
+    font-weight: 600;
+    color: #2c474b;
+}
+.contact-address-col .address_col_inner .address_inner_row a {
+    background: #2c474b;
+    COLOR: #FFF;
+    PADDING: 9px 25px 11px;
+    DISPLAY: INLINE-BLOCK;
+    font-size: 16px;
+    font-family: 'Gellix';
+    margin-top: 10px;
+    border-radius: 7px;
+}
+.contact-address-col .address_col_inner .address_inner_row .address_inner_col {
+    flex: 0 0 47%;
+    max-width:47%;
+}
+h2.map_sec_heading {
+    text-align: center;
+    margin-bottom: 46px;
+    font-size: 46px;
+    font-family: fangsong;
+    font-family: 'Gellix';
+    font-weight: 600;
+}
+@media screen and (max-width: 1200px) {
+  .contact-address-with-map .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 30px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .contact_us_map_iframe iframe {
+      height:480px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .contact_address_row {
+      flex-wrap: wrap;
+  }
+  .contact_address_row .contact-address-col{
+    flex: 0 0 100%;
+    max-width:100%;
+  }
+  .contact-address-col .address_col_inner {
+      padding-left: 0px;
+      padding-top: 30px;
+  }
+   h2.map_sec_heading {
+      font-size: 38px;
+      font-weight: 700;
+  }
+}
+@media screen and (max-width: 575px) {
+  .contact-address-col .address_col_inner .address_inner_row a {
+      background: #2c474b;
+      COLOR: #FFF;
+      PADDING: 9px 14px 11px;
+      DISPLAY: INLINE-BLOCK;
+      font-size: 14px;
+      font-family: 'Gellix';
+      margin-top: 10px;
+      border-radius: 7px;
+  }  
+  .contact_us_map_iframe iframe {
+      height: 320px;
+  }
+  .shopify-section.contact-address-with-map {
+      padding: 40px 0px 50px;
+  }
+}
+@media screen and (min-width: 750px) {
+  .contact .field {
+    margin-bottom: 2rem;
+  
+}
+
+.contact__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .contact__button {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+}
+
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

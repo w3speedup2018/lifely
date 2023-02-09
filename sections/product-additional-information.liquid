@@ -1,0 +1,217 @@
+
+{% assign product_desc_heading = product.metafields.arena.product_desc_heading %}
+{% assign desc_image = product.metafields.lifely.new_product_desc_img  %}
+{% assign desc_title = product.metafields.lifely.new_product_desc_title %}
+{% assign desc_content = product.metafields.lifely.new_product_desc_content %}
+
+{% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+	<div class="product-description container">
+      	{% if product_desc_heading != blank %}
+          <div class="sechead">
+              <h3 class="text-center">{{product_desc_heading}}</h3>  
+          </div>
+      	{% else %}
+      		<div class="sechead">
+              <h3 class="text-center">Product Description</h3>  
+         	</div>
+      	{% endif %}
+      	<div class="additional-desc-con row align-items-center">
+          {% for t in desc_title %}
+            {% assign index = forloop.index0 %}
+          	{%assign m = index | modulo: 2 %}
+          	{% if m == 0 %}
+                <div class="col-md-6 col-sm-6">
+                  {% if desc_image != blank %}
+                  	<div class="desc-image">
+                      	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index] }}" alt="image">
+                    </div>
+                  {% endif %}
+                </div>
+          		<div class="col-md-6 col-sm-6">
+                  {% if desc_title != blank or desc_content != blank %}
+                  	<div class="desc-content">
+                      	<h4>{{t}}</h4>  
+                      <p>{{desc_content[index]}}</p>
+                  	</div>
+                  {% endif %}
+          		</div>
+            {% elsif m == 1 %}
+          		<div class="col-md-6 col-sm-6">
+                  {% if desc_title != blank or desc_content != blank %}
+                  	<div class="desc-content">
+                      	<h4>{{t}}</h4>  
+                     	<p>{{desc_content[index]}}</p>
+                  	</div>
+                  {% endif %}
+                </div>
+          		<div class="col-md-6 col-sm-6">
+                  {% if desc_image != blank %}
+                  	<div class="desc-image">
+                      	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                    </div>
+                  {% endif %}
+          		</div>
+          	{% endif %}
+          {% endfor %}
+       </div>
+	</div>
+
+	<div class="mobile-product-description-section">	
+		<div class="mob-pro-desc-inner">
+      		{% if product_desc_heading != blank %}
+              <div class="sechead">
+                    <h3 class="text-center">Description</h3>  
+              </div>
+            {% else %}
+              <div class="sechead">
+                  <h3 class="text-center">Description</h3>  
+              </div>
+            {% endif %}
+          	<div class="mob-desc-content">
+                <div class="container">
+                  <div class="mobile-product-description-slider">
+                    {% assign i = 0 %}
+                    {% for t in desc_title %}
+                        
+                    {% assign index = forloop.index0 %}
+                      <div class="description-slide">
+                          {% if desc_image != blank %}
+                            <div class="desc-image">
+                                <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            </div>
+                          {% endif %}
+                          {% if desc_title != blank or desc_content != blank %}
+                          <div class="desc-content">
+                              <h4>{{t}}</h4>  
+                            <p>{{desc_content[index]}}</p>
+                          </div>
+                         {% endif %}
+                      </div>  
+                    {% endfor %}
+                  </div>
+                  {% if desc_title.size > 0 %}          		
+                    <div class="progress_bar_count_sec">
+                      <div class="progres_col">	
+                        <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                          <span class="slider__label sr-only"></span>
+                        </div>
+                      </div>  
+                      <div class="progres_count_col">	
+                        <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                      </div> 
+                    </div>   
+                  {% endif %}
+                </div>
+          	</div>  
+      	</div>
+	</div> 
+{% else %}  
+    {% assign product_desc_heading = product.metafields.arena.product_desc_heading %}
+    {% assign desc_image = product.metafields.arena.desc_image  %}
+    {% assign desc_title = product.metafields.arena.desc_title %}
+    {% assign desc_content = product.metafields.arena.desc_content %}
+    
+    {% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+    	<div class="product-description container">
+          	{% if product_desc_heading != blank %}
+              <div class="sechead">
+                  <h3 class="text-center">{{product_desc_heading}}</h3>  
+              </div>
+          	{% else %}
+          		<div class="sechead">
+                  <h3 class="text-center">Product Description</h3>  
+             	</div>
+          	{% endif %}
+          	<div class="additional-desc-con row align-items-center">
+              {% for t in desc_title %}
+                {% assign index = forloop.index0 %}
+              	{%assign m = index | modulo: 2 %}
+              	{% if m == 0 %}
+                    <div class="col-md-6 col-sm-6">
+                      {% if desc_image != blank %}
+                      	<div class="desc-image">
+                          	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index] }}" alt="image">
+                        </div>
+                      {% endif %}
+                    </div>
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_title != blank or desc_content != blank %}
+                      	<div class="desc-content">
+                          	<h4>{{t}}</h4>  
+                          <p>{{desc_content[index]}}</p>
+                      	</div>
+                      {% endif %}
+              		</div>
+                {% elsif m == 1 %}
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_title != blank or desc_content != blank %}
+                      	<div class="desc-content">
+                          	<h4>{{t}}</h4>  
+                         	<p>{{desc_content[index]}}</p>
+                      	</div>
+                      {% endif %}
+                    </div>
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_image != blank %}
+                      	<div class="desc-image">
+                          	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                        </div>
+                      {% endif %}
+              		</div>
+              	{% endif %}
+              {% endfor %}
+           </div>
+    	</div>
+    
+    	<div class="mobile-product-description-section">	
+    		<div class="mob-pro-desc-inner">
+          		{% if product_desc_heading != blank %}
+                  <div class="sechead">
+                        <h3 class="text-center">Description</h3>  
+                  </div>
+                {% else %}
+                  <div class="sechead">
+                      <h3 class="text-center">Description</h3>  
+                  </div>
+                {% endif %}
+              	<div class="mob-desc-content">
+                    <div class="container">
+                      <div class="mobile-product-description-slider">
+                        {% assign i = 0 %}
+                        {% for t in desc_title %}
+                            
+                        {% assign index = forloop.index0 %}
+                          <div class="description-slide">
+                              {% if desc_image != blank %}
+                                <div class="desc-image">
+                                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                </div>
+                              {% endif %}
+                              {% if desc_title != blank or desc_content != blank %}
+                              <div class="desc-content">
+                                  <h4>{{t}}</h4>  
+                                <p>{{desc_content[index]}}</p>
+                              </div>
+                             {% endif %}
+                          </div>  
+                        {% endfor %}
+                      </div>
+                      {% if desc_title.size > 0 %}          		
+                        <div class="progress_bar_count_sec">
+                          <div class="progres_col">	
+                            <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                              <span class="slider__label sr-only"></span>
+                            </div>
+                          </div>  
+                          <div class="progres_count_col">	
+                            <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                          </div> 
+                        </div>   
+                      {% endif %}
+                    </div>
+              	</div>  
+          	</div>
+    	</div>
+     {% endif %}
+{% endif %}	
+

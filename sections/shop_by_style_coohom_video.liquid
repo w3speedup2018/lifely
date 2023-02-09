@@ -1,0 +1,23 @@
+{% if collection.metafields.coohom_video.heading != blank or collection.metafields.coohom_video.description != blank %}
+	<div class="header_cohhom_video">
+      <div class="page-width">
+          {% if collection.metafields.coohom_video.heading != blank %}
+                  <h2>{{ collection.metafields.coohom_video.heading }}</h2>
+          {% endif %}
+          {{ collection.metafields.coohom_video.description }}
+      </div> 
+	</div>  
+	{{collection.metafields.coohom_video.iframe}}
+{% endif %}
+{% schema %}
+  {
+    "name": "Coohom Video Iframe",
+	"class":"coohom_video_iframe"
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

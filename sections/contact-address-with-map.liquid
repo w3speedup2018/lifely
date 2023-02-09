@@ -1,0 +1,82 @@
+{% if section.settings.map != blank %}
+<div class="container">
+{% if section.settings.heading != blank %}
+      <h2 class="map_sec_heading">{{ section.settings.heading }}</h2>  
+{% endif %}
+<div class="contact_address_row">
+  <div class="contact-address-col">
+        {% if section.settings.map != blank %}
+    		<div class="contact_us_map_iframe">{{ section.settings.map }}</div>  
+    	{% endif %}	
+  </div>  
+  <div class="contact-address-col">
+       <div class="address_col_inner">
+            {% if section.settings.address-heading != blank %}
+               <h3>{{ section.settings.address-heading }}</h3>
+             {% endif  %}
+            <div class="address_inner_row">
+                <div class="address_inner_col">
+                    {% if section.settings.address != blank %}
+                      <h4>Address</h4>
+                      {{ section.settings.address  }} 
+                    {% endif %}
+                    {% if section.settings.direction_link != blank %}
+                      <a href="{{ section.settings.direction_link }}" target="_blank">Get directions</a>
+                    {% endif %}
+                </div> 
+                 <div class="address_inner_col">
+                   {% if section.settings.business_hours != blank %}
+                       <h4>Business Hours</h4>
+                      {{ section.settings.business_hours  }}
+                   {% endif %}
+                </div> 
+            </div>  
+       </div>  
+   </div> 
+</div>  
+</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Address",
+    "class":"contact-address-with-map",
+    "settings": [
+        {
+          "type": "text",
+          "id": "heading",          
+          "label": "Section Heading"
+        },
+        {
+          "type": "html",
+          "id": "map",
+          "label": "Google map embed Code"
+        },
+        {
+          "type": "text",
+          "id": "address-heading",
+          "label": "Address Top Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "text",
+          "id": "direction_link",
+          "label": "Direction Link"
+        },
+        {
+          "type": "richtext",
+          "id": "business_hours",
+          "label": "Business Hours"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,303 @@
+{% if section.settings.bg_image != blank or section.settings.title != blank or section.settings.first_content != blank %}
+
+<style type="text/css">
+  
+  {% if section.settings.bg_image != blank %}
+    .page-404-section{
+      background:url({{ section.settings.bg_image | img_url:'master'}} );
+      background-size:cover;
+      background-position:center;
+    }
+  {% endif %}
+  .page-404-section {
+      background-color: #2c474b;
+      padding: 150px 0px;
+  }
+  .page-404-section{
+  	 color:#fff;
+     
+  }
+ .page-404-section h1{
+  	font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 96px;
+    line-height: 82px;
+    color:inherit;
+    margin: 0;
+  }
+  .page-404-section h2 {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 45px;
+      color: inherit;
+  }
+  .page-404-section p{
+  	font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color:inherit;
+  }
+  .page-404-section .template-404 {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin-left: 164px;
+  }
+  .error_404_content_1 {
+      max-width: 665px;
+  }
+  .error_404_content_2 {
+      max-width: 450px;
+      margin-top: 53px;
+  }
+  .link_404_page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .link_404_page a {
+      background: #F9F1E5;
+      border-radius: 50px;
+      border: none !important;
+      box-shadow: none !important;
+      color: #2c474b;
+      font-family: 'Gellix';
+      font-weight: 600;
+      font-size: 16px;
+      display: block;
+      height: auto !important;
+      line-height: 16px;
+      padding: 0px;
+      min-height: auto;
+      text-align: center;
+      padding: 13px 16px 15px;
+      flex: 0 0 31%;
+  }
+  .link_404_page a:before, .link_404_page a:after {
+      display: none;
+  }
+  .error_404_content_1 {
+      max-width: 665px;
+      margin-top: 19px;
+  }
+  @media screen and (max-width: 1024px) {
+  	 .page-404-section .template-404 {
+          margin-left: 0;
+          padding: 0px 40px !important;
+      }
+  }
+  
+  @media screen and (min-width: 750px) {
+    .template-404 .title + * {
+      margin-top: 2rem;
+    }
+  }
+   @media screen and (max-width: 767px) {
+      .page-404-section {
+            background-position: 20%;
+        }
+   }
+   @media screen and (max-width:680px) {
+      .page-404-section .template-404 {
+     		padding: 0 16px !important;	
+      }
+   }
+   @media screen and (max-width: 575px) {
+    .page-404-section {
+        background-position: 26%;
+        height:560px;
+        padding:50px 0px;
+        
+    }
+   .page-404-section p {
+        font-size: 17px;
+        line-height: 24px;
+        text-align: center;
+     	margin: 0 auto;
+ 	    max-width: 449px;
+    }
+    .page-404-section h2 {
+          font-family: 'Gellix';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 28px;
+          color: inherit;
+          text-align: center;
+          max-width: 449px;
+          margin: 0 auto;
+     }
+    .page-404-section h1 {
+          font-size: 40px;
+          line-height: 52px;
+          text-align: center;
+      }
+    .link_404_page a {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 12px 11px;
+        flex: 0 0 31%;
+    }
+    .page-404-inner-section {
+          margin: 0 auto;
+      }
+    {% if section.settings.mobile_bg_image != blank %} 
+      	 .page-404-section{
+          background:url({{ section.settings.mobile_bg_image | img_url:'master'}} );
+          background-size:cover;
+          background-position:center;
+        }
+    {% endif %} 
+    .error_404_content_2 {
+        display: none;
+    } 
+    .page-404-section .template-404 {
+        align-items: flex-start;
+    }
+  }
+   @media screen and (max-width: 390px) {
+      .link_404_page {
+        column-gap: 3px;
+    }
+    .link_404_page a {
+        font-size: 13px;
+        line-height: 16px;
+        padding: 10px 8px;
+        flex: 0 0 32%;
+        min-width: auto;
+    }
+  }
+   @media screen and (max-width: 335px) {
+      .link_404_page a {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 10px 7px;
+        flex: 0 0 32%;
+        min-width: auto;
+    }
+   }
+</style> 
+<div class="page-404-section">
+  <div class="template-404">
+    <div class="page-404-inner-section">
+        {% if section.settings.title != blank %}
+          <h1 class="title">
+            {{ section.settings.title }}
+          </h1>
+         {% endif %}
+      	 {% if section.settings.subtitle != blank %}
+          <h2>
+            {{ section.settings.subtitle }}
+          </h2>
+         {% endif %}
+      	{% if section.settings.first_content != blank %}
+          <div class="error_404_content_1">
+            <p>{{ section.settings.first_content }}</p>
+          </div> 
+        {% endif %}
+      	<div class="error_404_content_2">
+      		{% if section.settings.second_content != blank %}	
+          		<p>{{ section.settings.second_content }}</p>
+            {% endif %}
+          	<div class="link_404_page">
+              {% if section.settings.first_button_label != blank and section.settings.first_button_link != blank %}
+                  <a href="{{ section.settings.first_button_link }}" class="button">
+                    {{ section.settings.first_button_label }}
+                  </a>
+              {% endif %}
+               {% if section.settings.second_button_label != blank and section.settings.second_button_link != blank %}
+                  <a href="{{ section.settings.second_button_link }}" class="button">
+                     {{ section.settings.second_button_label }}
+                  </a>
+              {% endif %}
+              {% if section.settings.third_button_label != blank and section.settings.third_button_link != blank %}
+                  <a href="{{ section.settings.third_button_link }}" class="button">
+                    	{{section.settings.third_button_label }}
+                  </a>
+              {% endif %}
+          	</div>  
+      	</div>  
+    </div>  
+  </div>
+</div>  
+  <script type="searchspring/personalized-recommendations" profile="404"></script>
+{% endif %}
+{% schema %}
+  {
+    "name": "Main 404",
+	"settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Heading",
+			  "default": "404"	
+            },
+			{
+              "type": "text",
+              "id": "subtitle",
+              "label": "Subheading"
+            },
+			{
+              "type": "textarea",
+              "id": "first_content",
+              "label": "Description"	
+            },
+			{
+              "type": "textarea",
+              "id": "second_content",
+              "label": "Second Description"	
+            },
+			{
+              "type": "text",
+              "id": "first_button_label",
+              "label": "First Button Label"
+            },
+			{
+              "type": "url",
+              "id": "first_button_link",
+              "label": "First Button Link"
+            },
+			{
+              "type": "text",
+              "id": "second_button_label",
+              "label": "Second Button Label"
+            },
+			{
+              "type": "url",
+              "id": "second_button_link",
+              "label": "Second Button Link"
+            },
+			{
+              "type": "text",
+              "id": "third_button_label",
+              "label": "Third Button Label"
+            },
+			{
+              "type": "url",
+              "id": "third_button_link",
+              "label": "Third Button Link"
+            },
+			{
+              "type": "image_picker",
+              "id": "bg_image",
+              "label": "Background image"
+            },
+			{
+              "type": "image_picker",
+              "id": "mobile_bg_image",
+              "label": "Mobile Background image"
+            }
+	 ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

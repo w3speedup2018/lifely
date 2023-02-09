@@ -1,0 +1,150 @@
+{% assign material_certificate = product.metafields.arena.material-certification %}
+{% assign assembly_care = product.metafields.arena.assembly-care %}
+{% assign product_dimension = product.metafields.arena.product-dimension %}
+{% assign delivery_return = product.metafields.arena.delivery-return %}
+
+
+<div class="produt_mobile_detail_section">
+	<div class="sechead">
+		<h3>Product details</h3>  
+	</div>
+	{% assign heading = product.metafields.arena.additional_heading  %}
+	{% assign content = product.metafields.arena.content %}
+	{% assign icon = product.metafields.arena.heading_icon %}
+	 {% assign mobileheading = product.metafields.mobile.heading %}
+	  {% if product.metafields.arena.dimension_image != blank or product.metafields.dimension_heading.dimension_heading != blank or product.metafields.dimension_subheading.dimension_subheading != blank %}
+    	  {% if product.metafields.dimension_heading.dimension_heading != blank or product.metafields.dimension_subheading.dimension_subheading != blank %}
+        	  {% assign dimension_class = 'dimension_heading_with_content'  %}
+    	  {% else %}
+        	  {% assign dimension_class = ''  %}
+    	  {% endif %}	
+    	  <div class="dimension-image {{ dimension_class }}">
+  			<div class="container-fluid">
+  				{% if product.metafields.dimension_heading.dimension_heading != blank %}
+    				<h2>{{ product.metafields.dimension_heading.dimension_heading }}</h2>
+  				{% endif %}
+  				{% if product.metafields.dimension_subheading.dimension_subheading != blank %}
+  				<div class="dimension_subheading">
+  				  {{ product.metafields.dimension_subheading.dimension_subheading }}
+  				</div>    	
+  				{% endif %}
+  				<div class="desktop_dimension">
+  				  {% if product.metafields.arena.dimension_image != blank %}
+  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+  				  {% endif %}
+  				</div>
+  				<div class="mobile_dimension" style="display:none;">  
+  				  {% if product.metafields.arena_mobile.mobile_dimension_image != blank %}
+  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
+  				  {% else %}
+  				  {% if product.metafields.arena.dimension_image != blank %}
+  				  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+  				  {% endif %}
+  				  {% endif %}  
+  				  {% if product.metafields.mobile_dimension.content != blank %}
+  				  <div class="dimension_mobile_content">
+  					{{product.metafields.mobile_dimension.content}}
+  				  </div>  
+  				  {% endif %}
+  				</div>   
+  			</div>	
+    	</div>
+  	{% endif %}
+
+	{% if heading != blank or material_certificate != blank or assembly_care != blank or product_dimension != blank or delivery_return != blank %}
+		<div class="product-additional-info mob-prod-detail">
+			<div class="container">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  {% if material_certificate != blank %}
+					<div class="panel panel-default">
+					  <div class="panel-heading" role="tab" id="heading0">
+						<h4 class="panel-title">
+						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading0" aria-expanded="false" aria-controls="collapseheading0">
+							Specifications <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseheading0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingheading0">
+						<div class="panel-body">{{material_certificate}}</div>
+					  </div>
+					</div>
+				  {% endif %}
+				  
+				  {% if assembly_care != blank %}
+					<div class="panel panel-default">
+					  <div class="panel-heading" role="tab" id="heading1">
+						<h4 class="panel-title">
+						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading1" aria-expanded="false" aria-controls="collapseheading1">
+							Assembly & Care <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseheading1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingheading1">
+						<div class="panel-body">{{assembly_care}}</div>
+					  </div>
+					</div>
+				  {% endif %}
+				  
+				  
+				  {% if product_dimension != blank %}
+					<div class="panel panel-default">
+					  <div class="panel-heading" role="tab" id="heading2">
+						<h4 class="panel-title">
+						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading2" aria-expanded="false" aria-controls="collapseheading2">
+							Product Dimensions <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseheading2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingheading2">
+						<div class="panel-body">{{product_dimension}}</div>
+					  </div>
+					</div>
+				  {% endif %}
+				  
+				  
+				   {% if delivery_return != blank %}
+					<div class="panel panel-default">
+					  <div class="panel-heading" role="tab" id="heading3">
+						<h4 class="panel-title">
+						  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading3" aria-expanded="false" aria-controls="collapseheading3">
+							Delivery & Return <span class="icon-plus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{'Minus.png' | asset_url}}"></span>
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapseheading3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingheading3">
+						<div class="panel-body">{{delivery_return}}</div>
+					  </div>
+					</div>
+				  {% endif %}
+				  
+				  
+				 {% comment %} 
+				 {% for h in heading %}
+					  {% assign index = forloop.index0 %} 
+					  <div class="panel panel-default">
+						  <div class="panel-heading" role="tab" id="heading{{index}}">
+							<h4 class="panel-title">
+							  <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseheading{{index}}" aria-expanded="false" aria-controls="collapseheading{{index}}">
+								{% if mobileheading[index] != blank %}  
+								  {{ mobileheading[index] }}
+								{% else %}
+									{{h}}
+								{% endif %}
+								<span class="icon-plus-toggle"><img src="{{'Plus.png' | asset_url}}"></span> <span class="icon-minus-toggle"><img src="{{'Minus.png' | asset_url}}"></span>
+							  </a>
+							</h4>
+							
+						  </div>
+						  <div id="collapseheading{{index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingheading{{index}}">
+							  <div class="panel-body">{{content[index]}}</div>
+						  </div>
+					  </div>
+				  {% endfor %}  
+				  
+				  {% endcomment %}
+				</div>
+			</div>	
+		</div>
+	{% endif %}	
+</div>    
+

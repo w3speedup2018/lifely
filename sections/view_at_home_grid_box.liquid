@@ -1,0 +1,146 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="view_at_home_grid_section" {% if section.settings.grid_bg_color != blank %} style="background:{{section.settings.grid_bg_color}};" {% endif %}>
+      	<div class="page-width">
+     		{% if section.settings.grid_heading != blank  %}
+         	 	<h2> {{ section.settings.grid_heading }} </h2>
+          	{% endif %}
+          	<div class="row hide-on-mobile">
+          		{% for block in section.blocks %}
+              		{% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.subheading != blank %}
+                      <div class="col-md-4">
+							<div class="view_at_home_grid_box">
+                        		 {% if block.settings.grid_image != blank %}
+                              			<div class="view_at_home_grid_image">
+                              				<img src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
+                              			</div>                                       
+                                  {% endif %}
+                              	  {% if block.settings.img_heading != blank or block.settings.subheading != blank %}
+                                      <div class="view_at_home_grid_box_inner">
+                                        {% if block.settings.img_heading != blank %}
+                                        <h3>{{ block.settings.img_heading}}</h3>
+                                        {% endif %}  
+                                        {% if block.settings.subheading != blank %}
+                                        <p>{{ block.settings.subheading}}</p>
+                                        {% endif %}  
+                                      </div>
+                              	  {% endif %}
+                        	</div> 
+                      </div>  
+              		{% endif %}	
+              	{% endfor %}
+          	</div>  
+          	<div class="hide-on-desktop">
+              <div class="view_at_home_grid_mobile">
+                <div class="view_at_home_flex_row">
+                {% for block in section.blocks %}
+                  {% assign counter = forloop.index %}
+                  	
+                  {% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.subheading != blank %}
+  
+                  	{% if counter == 5 %}
+                      <div class="flex-col-12">
+                        <div class="view_at_home_grid_box">
+                          {% if block.settings.grid_image != blank %}
+                          <div class="view_at_home_grid_image">
+                            <img src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
+                          </div>                                       
+                          {% endif %}
+                          {% if block.settings.img_heading != blank or block.settings.subheading != blank %}
+                          <div class="view_at_home_grid_box_inner">
+                            {% if block.settings.img_mob_heading != blank %}
+                            <h3>{{ block.settings.img_mob_heading}}</h3>
+                            {% endif %}  
+                            {% if block.settings.mobile_subheading != blank %}
+                            <p>{{ block.settings.mobile_subheading}}</p>
+                            {% endif %}  
+                          </div>
+                          {% endif %}
+                        </div> 
+                      </div> 
+                  	{% elsif counter < 5 %}
+                      <div class="flex-col-6">
+                        <div class="view_at_home_grid_box">
+                          {% if block.settings.grid_image != blank %}
+                          <div class="view_at_home_grid_image">
+                            <img src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
+                          </div>                                       
+                          {% endif %}
+                          {% if block.settings.img_mob_heading != blank or block.settings.subheading != blank %}
+                          <div class="view_at_home_grid_box_inner">
+                            <h4>Step {{counter}}</h4>
+                            {% if block.settings.img_mob_heading != blank %}
+                           	 <h3>{{ block.settings.img_mob_heading}}</h3>
+                            {% endif %}  
+                            {% if block.settings.mobile_subheading != blank %}
+                            <p>{{ block.settings.mobile_subheading}}</p>
+                            {% endif %}  
+                          </div>
+                          {% endif %}
+                        </div> 
+                      </div>  
+                  	{% endif %}
+                
+                  {% endif %}	
+                {% endfor %}
+                </div>
+              </div>
+          	</div>  
+      	</div>  
+	</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Grid Box",
+     "settings": [
+        {
+       	 "id": "grid_heading",
+       	 "type": "text",
+       	 "label": "Section Heading"
+        },
+        {
+       	 "id": "grid_bg_color",
+       	 "type": "color",
+       	 "label": "Background Color"
+        }
+	],
+	"blocks": [
+    {
+      "type": "grid_box",
+      "name": "Grid Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "grid_image",
+          "label": "Image"    
+         },
+		{
+		  "type": "text",	
+          "id": "img_heading",
+          "label": "Heading"
+        },
+		{
+		  "type": "text",	
+          "id": "img_mob_heading",
+          "label": "Heading Mobile"
+        },
+		{
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Subheading"
+        },
+		{
+		  "type": "textarea",	
+          "id": "mobile_subheading",
+          "label": "Subheading Mobile"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

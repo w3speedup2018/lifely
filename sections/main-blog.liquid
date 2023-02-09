@@ -1,0 +1,189 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- paginate blog.articles by 7 -%}
+	
+	{%- for article in blog.articles -%}
+        {% if forloop.index  == 1 %}
+        <section class="total-sec total-sec-without_slider blog-half-banner">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 main-sprng d-flex align-items-center">
+                 {% if article.image.src != blank %}
+                      <div class="total-imge">
+                        <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ block.settings.half_image.alt }}" class="img-fluid"/>
+                      </div>                                       
+                  {% endif %}
+                  <div class="totl-contet">
+                    <div class="slide-swec_without_slider">
+                      <div class="slide">
+                        {% if article.title != blank %}
+                            <h4>{{ article.title | truncate: 50 | escape }}</h4>
+                        {% endif %}
+
+                        {%- if article.excerpt.size > 0 -%}
+                          <p class="article-cardsort_desc"> {{ article.excerpt }} </p>
+                         {%- else -%}
+                              <p class="article-cardsort_desc"> {{ article.content | strip_html | truncatewords: 30 }} </p>                  			
+                        {%- endif -%}
+                        
+                        {% if article.author != blank %}
+                        <p><span class="author-info">By <a href="{{article.url}}">{{article.author}}</a></span> | <span class="blog-date">{{ article.published_at | date: '%b %d, %Y' }}</span></p>
+                        {% endif %}
+                        
+                        <a  class="red-artcle" href="{{ article.url }}">Read article</a>	
+                      </div>
+                    </div>							
+                  </div>	
+              </div>
+            </div>
+          </div>
+        </section> 
+      {% endif %}
+    {% endfor %}
+	<div class="main-blog blog_page_main_section page-width section-{{ section.id }}-padding">
+      <div class="container">
+        <h1 class="title--primary">{{ blog.title | escape }}</h1>
+
+        <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+          {%- for article in blog.articles -%}
+          		{% if forloop.index  != 1 %}
+                    <div class="blog-articles__article article">
+                      {%- render 'article-card',
+                        article: article,
+                        media_height: section.settings.image_height,
+                        media_aspect_ratio: article.image.aspect_ratio,
+                        show_image: section.settings.show_image,
+                        show_date: section.settings.show_date,
+                        show_author: section.settings.show_author,
+                        show_excerpt: true 
+                      -%}
+                    </div>
+              {% endif %} 
+          {%- endfor -%}
+        </div>
+
+      {%- if paginate.pages > 1 -%}
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    </div>
+  </div>    
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

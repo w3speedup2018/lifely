@@ -1,0 +1,339 @@
+{% if section.settings.banner_image != blank %}
+
+{% if section.settings.banner_heading != blank %}
+{% assign bg_color = section.settings.background %} 
+{% else %}
+{% assign bg_color = '#fff' %} 
+{% endif %}
+{% style %}
+{% if section.settings.heding_bg_image != blank %}
+.banner_heading_section{
+position:relative;
+}
+.banner_heading_section:after {
+content: "";
+background: url({{ section.settings.heding_bg_image | img_url:'master' }});
+height: 100%;
+width: 227px;
+position: absolute;
+bottom: 0;
+right: -15%;
+background-repeat: no-repeat;
+background-size: contain;
+}
+{% endif %}
+.clearance_banner_bar {  display:block !important;
+padding: 13px 0px;
+background: {{  section.settings.bar_background }};
+font-family: 'Gellix';
+color: {{ section.settings.bar_font}};
+}
+.clearance_banner {
+color: {{ section.settings.banner_font}};
+font-family: 'Gellix';
+} 
+.sticky_clearance_banner_bar_active .clearance_banner_bar {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 9999999;
+display:none;
+}
+.shopify-section.master_banner .clearance_banner_container {
+width: 100%;
+max-width: 100%;
+}
+.shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img {
+width: 100%;
+}
+.banner_heading_section {
+position: relative;
+}
+.banner_heading_section .banner-btn-wrap a {
+background: #000;
+border-radius: 29px; 
+font-family: 'Gellix';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+text-align: center;
+color: #fff;
+display:inline-block; 
+line-height:30px;
+padding: 5px 20px 8px 20px;
+}
+
+  
+.banner_heading_section .content { top:50%; left:50%;
+transform: translate(-50%, -50%);
+-webkit-transform: translate(-50%, -50%);
+-moz-transform: translate(-50%, -50%);
+-o-transform: translate(-50%, -50%);
+position:absolute; max-width:1230px; width:100%; padding:0 50px;  text-align:center; }
+
+.banner_heading_section .content .afterpay { max-width:250px; display:inline-block;  }
+
+.banner_heading_section .content .box { max-width:330px;  }
+
+.banner_heading_section img { max-width:100%; height:auto; }
+
+.banner_heading_section h4 { font-size:80px; font-weight: 700; text-transform:uppercase;  color:#fff; }
+
+.banner_heading_section h4 span { font-size:44px; font-weight:400; display:block; }
+
+.banner_heading_section .code { border:2px solid #fff; padding:5px 20px; font-size:25px; display:block; margin:20px 0 30px 0; color:#fff;  }
+.banner_heading_section .code  span {  font-weight: 700;text-transform:uppercase;  }
+
+
+.banner_heading_section .code span { text-transform:uppercase;  font-weight: 700; }
+
+.banner_heading_section .term { position:absolute; bottom:0px; right:0px; padding:20px; color:#fff;  }
+
+.banner_heading_section .term p { font-size:13px; }
+
+
+@media only screen and (max-width:991px){
+  
+.shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img { 
+    min-height: 500px;
+    object-fit: cover;
+}
+
+}
+
+
+@media only screen and (max-width:767px){
+
+.shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img { display:none; }
+.master-clearance_banner_content img.mobile_banner_img { display:block; width:100%; }
+
+  .banner_heading_section .content { padding:0 15px; }
+
+  .banner_heading_section .content .box {
+    max-width: 100%;
+}
+
+  .banner_heading_section .code { font-size:18px; display:inline-block; }
+  .banner_heading_section h4 span {
+    font-size: 30px; }
+  .banner_heading_section h4  {
+    font-size: 70px; }
+  .banner_heading_section .term p { display:block; }
+  .banner_heading_section .term { 
+    padding: 10px;
+     
+    text-align: center; }
+
+ .clearance_banner_bar .clearance_BannerBar_Heading { text-align:center !important; }
+  
+}
+ 
+
+{% endstyle %} 
+
+
+
+<div class="clearance_banner" style="background:{{bg_color}}">
+<div class="page-width-banner">
+<div class="clearance_banner_container">  
+<div class="master-clearance_banner_content">
+
+
+<div class="banner_heading_section">
+<img class="desktop_banner_img" src="{{ section.settings.banner_image | img_url:"master"}}" alt="">
+
+<div class="content">
+  <div class="box">
+{%  if section.settings.afterpay != blank %}
+<span class="afterpay">  	<img src="{{ section.settings.afterpay | img_url:"large"}}" alt="After pay" />  </span>
+{% endif %}
+{%  if section.settings.text-2 != blank %}
+<h4> {{ section.settings.text-1 }} <span> {{ section.settings.text-2 }} </span>  </h4>
+{% endif %}
+{%  if section.settings.text-3 != blank %}
+<div class="code"> Use Code:  <span> {{ section.settings.text-3 }} </span> </div>
+{% endif %}
+
+  {%  if section.settings.banner_button_text != blank %}
+<div class="banner-btn-wrap">
+<a href="{{ section.settings.banner_button_url }}">{{ section.settings.banner_button_text }}</a>
+</div>
+{% endif %}
+
+  
+</div>
+</div>
+
+  {%  if section.settings.terms-text != blank %}
+<div class="term">  <p> {{ section.settings.terms-text }} </p> </div>
+{% endif %}
+
+{% if section.settings.mobile_banner_image != blank  %}  
+<img class="mobile_banner_img" src="{{ section.settings.mobile_banner_image | img_url:"master"}}" alt="">
+{% endif %}
+
+</div>  
+
+</div>
+</div>  
+</div>  
+</div> 
+
+<div class="master-top-bar">
+<div class="page-width"><p>{{ section.settings.top_banner_heading }}</p></div>
+</div>  
+
+{% if section.settings.banner_bar_heading != blank and section.settings.bar_sale_end_date != blank %}
+<div class="clearance_banner_bar">
+<div class="page-width">
+<div class="clearance_bar_inner">
+
+<div class="clearance_BannerBar_Heading" style="flex: 0 0 66.333333%; text-align:right;"><h3>{{ section.settings.banner_bar_heading }}</h3></div> 
+<div class="clearance_BannerBar_Timmer">
+{% if section.settings.bar_sale_end_date != blank %} 	
+<span id="countdownClearance_bar" data-date="{{section.settings.bar_sale_end_date}}">
+<span class="ctime eliving-day"><span class="days">00</span> days</span> 
+<span class="ctime"><span class="hours">00</span> hrs</span> 
+<span class="ctime"><span class="minutes">00</span> min</span> 
+<span class="ctime"><span class="seconds">00</span> secs</span> 
+</span>    
+{% endif %}
+</div> 
+</div>  
+</div>  
+</div> 
+{% if section.settings.sale_heading != blank or  section.settings.sale_end_date != blank %}
+<div class="banner_counter_section">
+{% if section.settings.sale_heading != blank %}
+<h3>{{ section.settings.sale_heading }}</h3>
+{% endif %}
+{% if section.settings.sale_end_date != blank %}
+<span id="countdownEliving" data-date="{{section.settings.sale_end_date}}">
+<span class="ctime eliving-day"><span class="days">00</span> days</span> 
+<span class="ctime"><span class="hours">00</span> hrs</span> 
+<span class="ctime"><span class="minutes">00</span> min</span> 
+<span class="ctime"><span class="seconds">00</span> secs</span> 
+</span>
+{% endif %}
+</div>  
+{% endif %}	
+<script>
+jQuery(document).ready(function($){
+$(window).scroll(function() {
+var hT = $('.clearance_banner').offset().top,
+hH = $('.clearance_banner').outerHeight(),
+wH = $(window).height(),
+wS = $(this).scrollTop();
+if (wS > (hT+hH+50)){
+$('body').addClass('sticky_clearance_banner_bar_active');
+$('.clearance_banner_bar').show();
+}else{
+$('body').removeClass('sticky_clearance_banner_bar_active');
+$('.clearance_banner_bar').hide();
+}
+});
+});
+</script>  
+{% endif %}
+
+{% endif %}
+{% schema %}
+{
+"name": "Banner",
+"class":"master_banner",
+"settings": [
+{
+"type":"text",
+"id":"top_banner_heading",
+"label":"Top Bar Heading"
+},
+{
+"type":"image_picker",
+"id":"banner_image",
+"label":"Banner Image"
+},
+{
+"type":"image_picker",
+"id":"afterpay",
+"label":"Logo Image"
+},
+{
+"type":"text",
+"id":"text-1",
+"label":"Text"
+},
+{
+"type":"text",
+"id":"text-2",
+"label":"Text"
+},
+{
+"type":"text",
+"id":"text-3",
+"label":"Coupon code"
+},
+{
+"type":"text",
+"id":"banner_button_text",
+"label":"Banner Button Text"
+},
+{
+"type":"text",
+"id":"banner_button_url",
+"label":"Banner Button URL"
+},
+{
+"type":"textarea",
+"id":"terms-text",
+"label":"T&C text"
+},
+{
+"type":"image_picker",
+"id":"mobile_banner_image",
+"label":"Mobile Banner Image"
+},
+{
+"type":"text",
+"id":"sale_end_date",
+"label":"Sale end date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"banner_font",
+"label":"Banner Font Color",
+"default":"#000"
+},
+{
+"type":"text",
+"id":"banner_bar_heading",
+"label":"Bar Heading"
+},
+{
+"type":"text",
+"id":"bar_sale_end_date",
+"label":"Bar date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"bar_background",
+"label":"Bar Background Color",
+"default":"#fff"
+},
+{
+"type":"color",
+"id":"bar_font",
+"label":"Bar Font Color",
+"default":"#000"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

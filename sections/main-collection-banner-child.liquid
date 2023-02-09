@@ -1,0 +1,253 @@
+<link rel="stylesheet" data-href="{{ 'component-collection-hero.css' | asset_url }}">
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+
+
+	<div class="mobile_collection_breadcrumb collection-breadcrumb {{current_tags.first}}">
+        <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+          <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="/">Home</a>
+            </li>
+            {%- case t -%}
+            {%- when 'page' -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+            </li>
+            {%- when 'product' -%}
+
+            {% assign product_collection = product.collections.first %}
+            {% if product_collection %}
+            {% for c in product.collections %}
+            {% if c.title != 'Best Seller' %}
+            {%- if c.url -%}
+            <li class="breadcrumbs__item">
+              {{ c.title | link_to: c.url }}
+            </li>
+            {%- endif -%}
+            {% endif %}
+            {% endfor %}			
+
+            {% endif %}
+
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+            </li>
+            {%- when 'collection' and collection.handle -%}
+            {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              {{ collection.title | link_to: collection.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+            </li>
+            {%- endif -%}
+            {%- when 'blog' -%}
+            {%- if current_tags -%}
+            <li class="breadcrumbs__item">
+              {{ blog.title | link_to: blog.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+            </li>
+            {%- endif -%}
+            {%- when 'article' -%}
+            <li class="breadcrumbs__item">
+              {{ blog.title | link_to: blog.url }}
+            </li>
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+            </li>
+            {%- else -%}
+            <li class="breadcrumbs__item">
+               <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">Mattress</a>
+            </li>           
+            {%- endcase -%}
+          </ol>
+        </nav>
+  </div>
+  <div class="collection-hero__main {{current_tags.first}}">
+    <div class="sub-collection-hero" style="{% if section.settings.banner_background_color != blank %}background-color:{{section.settings.banner_background_color}}{% endif %}">
+        <div class="{% if section.settings.child_banner_style== 'halfwidth' %}{{"collection-hero__inner page-width"}}{% elsif section.settings.child_banner_style == 'fullwidth'%}{{"collection-hero__fullwidth"}}{%endif%}">
+          {% if section.settings.child_banner_style == 'halfwidth' %}
+            <div class="collection-hero__text-wrapper">
+              {% if section.settings.child_banner_logo != blank %}
+                  <img src="{{section.settings.child_banner_logo | img_url: "master"}}" alt="logo">
+              {% endif %}
+            </div>
+
+          {%- if section.settings.child_banner_image != blank -%}
+              <div class="collection-hero__image-container media gradient">
+                <img src="{{section.settings.child_banner_image | img_url: "master"}}" alt="Image">
+              </div>
+          {%- endif -%}
+
+          {% elsif section.settings.child_banner_style == "fullwidth" %}
+
+                <div class="collection-hero__text-wrapper child_cartegory_banner {{current_tags.first}}" style="background-color:{% if section.settings.banner_background_color != blank %}{{section.settings.banner_background_color}}{% endif %}">
+                    <div class="container">
+                        <div class="collection-breadcrumb">
+                          <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                            <ol class="breadcrumbs__list">
+                              <li class="breadcrumbs__item">
+                                <a class="breadcrumbs__link" href="/">Home</a>
+                              </li>
+                              {%- case t -%}
+                                {%- when 'page' -%}
+                                  <li class="breadcrumbs__item">
+                                    <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+                                  </li>
+                                {%- when 'product' -%}
+
+                                  {% assign product_collection = product.collections.first %}
+                                    {% if product_collection %}
+                                        {% for c in product.collections %}
+                                            {% if c.title != 'Best Seller' %}
+                                                {%- if c.url -%}
+                                                  <li class="breadcrumbs__item">
+                                                    {{ c.title | link_to: c.url }}
+                                                  </li>
+                                                {%- endif -%}
+                                            {% endif %}
+                                        {% endfor %}			
+
+                                    {% endif %}
+
+                                  <li class="breadcrumbs__item">
+                                    <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+                                  </li>
+                                {%- when 'collection' and collection.handle -%}
+                                  {%- if current_tags -%}
+                                    <li class="breadcrumbs__item">
+                                      {{ collection.title | link_to: collection.url }}
+                                    </li>
+                                    <li class="breadcrumbs__item">
+                                      {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+                                      <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+                                    </li>
+                                  {%- else -%}
+                                    <li class="breadcrumbs__item">
+                                      <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+                                    </li>
+                                  {%- endif -%}
+                                {%- when 'blog' -%}
+                                  {%- if current_tags -%}
+                                    <li class="breadcrumbs__item">
+                                      {{ blog.title | link_to: blog.url }}
+                                    </li>
+                                    <li class="breadcrumbs__item">
+                                      {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+                                      <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+                                    </li>
+                                  {%- else -%}
+                                    <li class="breadcrumbs__item">
+                                      <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+                                    </li>
+                                  {%- endif -%}
+                                {%- when 'article' -%}
+                                  <li class="breadcrumbs__item">
+                                    {{ blog.title | link_to: blog.url }}
+                                  </li>
+                                  <li class="breadcrumbs__item">
+                                    <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+                                  </li>
+                                {%- else -%}
+                                  <li class="breadcrumbs__item">
+                                    <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">Mattress</a>
+                                  </li>                         
+                              {%- endcase -%}
+                            </ol>
+                          </nav>
+                        </div>
+                        {% if section.settings.child_banner_logo != blank %}
+                            <div class="banner_logo text-center">
+                                <img src="{{section.settings.child_banner_logo | img_url: "master"}}" alt="logo">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+          {% endif %}
+      </div>
+      {% if section.settings.banner_heading_content != blank %}
+        <div class="collection__banner-head" style="background-color:{% if section.settings.heading_background_color != blank %}{{section.settings.heading_background_color}}{% endif%}">
+          <div class="container">
+            <div class="banner-head-inner">
+              <h2 class="text-center">{{section.settings.banner_heading_content}}</h2>
+            </div>
+          </div>
+        </div>
+      {% endif %}	
+      {% if section.settings.child_banner_image != blank %}
+    	<div class="collection__banner-img">
+    		<img src="{{section.settings.child_banner_image | img_url: "master"}}">
+    	</div>
+      {% endif %}	
+  </div>	
+
+{% schema %}
+{
+  "name": "Subcategory Banner",
+  "class": "section",
+  "settings": [
+    {
+	  "id": "child_banner_logo",	
+      "type": "image_picker",
+      "label": "Banner logo"
+    },
+	{
+		"type": "color",
+		"id": "banner_background_color",
+		"label": "Background Color"
+	},
+    {
+      "type": "text",
+      "id": "banner_heading_content",
+      "default": "Banner Heading",
+      "label": "Banner Heading"
+    },
+	{
+		"type": "color",
+		"id": "heading_background_color",
+		"label": "Heading Background Color"
+	},
+	{
+	  "id": "child_banner_image",	
+      "type": "image_picker",
+      "label": "Banner Image"
+    },
+    {
+      "type": "select",
+      "id": "child_banner_style",
+      "options": [
+        {
+          "value": "halfwidth",
+          "label": "Halfwidth"
+        },
+		{
+          "value": "fullwidth",
+          "label": "Fullwidth"
+        }
+      ],
+      "default": "fullwidth",
+      "label": "Fullwidth"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="icon_left_grid_section landing_icon_left_grid_section">
+      	<div class="page-width"> 
+     		{% if section.settings.icon_grid_heading != blank  %}
+         	 	<h2> {{ section.settings.icon_grid_heading }} </h2>
+          	{% endif %}
+          	<div class="row">
+          		{% for block in section.blocks %}
+              		{% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.subheading != blank %}
+                      <div class="col-md-3">
+							<div class="left_icon_grid_box">
+                        		 {% if block.settings.grid_image != blank %}
+                              			<div class="icon_box_">
+                              				<img class="desktop_icon lazyloaded lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.grid_image | img_url: 'master' }}" alt="{{ block.settings.grid_image.alt }}" />
+                              				<img class="mobile_icon lazyloaded lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.mobile_grid_image | img_url: 'master' }}" alt="{{ block.settings.mobile_grid_image.alt }}" />
+                              			</div>                                       
+                                  {% endif %}
+                              	  {% if block.settings.img_heading != blank or block.settings.subheading != blank %}
+                                      <div class="left_grid_box_inner">
+                                        {% if block.settings.img_heading != blank %}
+                                        <h2>{{ block.settings.img_heading}}</h2>
+                                        {% endif %}  
+                                        {% if block.settings.subheading != blank %}
+                                        <p>{{ block.settings.subheading}}</p>
+                                        {% endif %}  
+                                      </div>
+                              	  {% endif %}
+                        	</div> 
+                      </div>  
+              		{% endif %}	
+              	{% endfor %}
+          	</div>  
+      	</div>  
+	</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Icon Left Grid Box",
+     "settings": [
+		 {
+            "id": "icon_grid_heading",
+            "type": "text",
+            "label": "Section Heading"
+		 }
+	],
+	"blocks": [
+    {
+      "type": "icon_left",
+      "name": "Icon Left Content Right",
+      "settings": [
+        {
+		  "type": "text",	
+          "id": "img_heading",
+          "label": "Heading"
+        },
+		{
+          "id": "subheading",
+          "type": "textarea",
+          "label": "Subheading"
+        },
+		 {
+          "type": "image_picker",
+          "id": "grid_image",
+          "label": "Image"    
+         },
+		 {
+          "type": "image_picker",
+          "id": "mobile_grid_image",
+          "label": "Mobile Image"    
+         }	
+      ]
+    }
+  ]
+  }
+{% endschema %}
+

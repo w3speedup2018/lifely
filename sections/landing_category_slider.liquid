@@ -1,0 +1,110 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="landing_category_slider">
+      	<div class="page-width">
+      	  {% if section.settings.title != blank or section.settings.subheading != blank %}	
+          	<div class="heading_sec desktop_heading_sec">
+          		 {% if section.settings.title != blank %}
+              		<h2>{{ section.settings.title }}</h2>
+              	 {% endif %}
+              	 {% if section.settings.subheading != blank %}
+              		<p>{{ section.settings.subheading }}</p>
+              	 {% endif %}	
+          	</div>  
+          {% endif %}
+          {% if section.settings.mobile_title != blank or section.settings.mobile_subheading != blank %}	
+          	<div class="heading_sec mobile_heading_sec">
+          		 {% if section.settings.mobile_title != blank %}
+              		<h2>{{ section.settings.mobile_title }}</h2>
+              	 {% endif %}
+              	 {% if section.settings.mobile_subheading != blank %}
+              		<p>{{ section.settings.mobile_subheading }}</p>
+              	 {% endif %}	
+          	</div>  
+          {% endif %}
+          		<div class="landing_cat_slider">              	
+                  {%- for block in section.blocks -%}
+                    {% if block.settings.collection != blank and  block.settings.collection_image != blank and block.settings.catlink != blank %}
+                           <div class="landing_cat_slider_slide">
+                               <a href="{{ block.settings.catlink }}" class="collection_link"> 
+                                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="lazyloaded lazy2 lazy3">                             
+                                  <div class="landing_cat_slider_heading"><h3>{{- block.settings.collection | escape -}}</h3></div>                     	
+                               </a> 
+                           </div>
+                    {% endif %}	
+                  {%- endfor -%}
+             	 </div>  
+
+          	{% if section.settings.view_all_button_label != blank or section.settings.view_all_button_link != blank %}	
+          		<div class="view_all_collection">
+                  <a href="{{section.settings.view_all_button_link}}">{{ section.settings.view_all_button_label }}</a>
+          		</div>  
+          	{% endif %}
+      	</div>  
+	</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Category Slider",
+    "settings": [
+	   {
+        "type": "text",
+        "id": "title",
+        "default": "Category",
+        "label": "Desktop heading"
+      },
+ 	  {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Desktop Subheading"
+      },
+	  {
+        "type": "text",
+        "id": "mobile_title",
+        "default": "Shop By Category",
+        "label": "Mobile heading"
+      },
+ 	  {
+        "type": "textarea",
+        "id": "mobile_subheading",
+        "label": "Mobile Subheading",
+		"default":"Lorem ipsum dolor sit amet."
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_label",
+        "default": "View collection",
+        "label": "Button Label"
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_link",
+        "default": "#",
+        "label": "Button Link"
+      }
+	],
+	"blocks": [
+        {
+          "type": "collections_grid",
+          "name": "collectionss_grid",
+          "settings": [
+            {
+              "type": "text",
+              "id": "collection",
+              "label": "Title"
+            },
+			{
+              "type": "image_picker",
+              "id": "collection_image",
+              "label": "Category Image"
+            },
+			{
+              "type": "url",
+              "id": "catlink",
+              "label": "Category Link"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+

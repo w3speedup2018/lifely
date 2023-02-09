@@ -1,0 +1,171 @@
+{% if section.blocks != blank or section.settings.section_headding != blank %}
+<style>
+  .faq_section_accordian .card-header:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f068";
+    float: right; 
+  }
+  .faq_section_accordian .card-header.collapsed:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f067";
+  }
+  .collection_faq_main {
+    display: flex;
+    justify-content: space-between;
+  }
+  .collection_faq_main .faq_sectio_deatail {
+    max-width: 25%;
+  }
+  .collection_faq_main  .faq_section_accordian {
+    flex: 0 0 65%;
+  }
+  .collection_faq_main div.faq_section_accordian .card {
+    border-bottom: 1px solid #CFCFD0;
+  }	
+  .faq_sectio_deatail h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #000;
+  }
+  .faq_sectio_deatail p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282828;
+  }
+  .collection_faq_main div.faq_section_accordian .card-header h5 button {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: unset !important;
+    padding: 8px 0 0 0;
+  }
+  .collection_faq_main .faq_section_accordian .card-header {
+    background: transparent;
+    padding: 0 !important;
+  }
+  .collection_faq_main .faq_section_accordian .card-body {
+    padding: 0 !important;
+    /* padding-top: 0 !important; */
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 0px !important;
+  }
+  .collection-faq {
+    padding: 51px 19px;
+  }
+</style>  
+<div class="collection-faq">
+  <div class="page-width">
+    <div class="collection_faq_main">
+      <div class="faq_sectio_deatail">
+        {% if section.settings.section_headding != blank %}
+        <h2>{{ section.settings.section_headding }}</h2>
+        {% endif %}
+        <div class="mobile_section_faq">
+          {% if section.settings.section_description != blank %}
+          	{{ section.settings.section_description }}
+          	{% if section.settings.more_description != blank %}
+          		<div class="more_content">
+         			{{ section.settings.more_description}}
+          		</div>  
+          		<button class="read_more_description" style="display:none;">Read More</button>
+          	{% endif %}
+          {% endif %}
+        </div>  
+      </div>                  
+      <div class="faq_section_accordian">
+        {% if section.blocks != blank %}
+        <div id="accordion"> 
+          {% assign qqqq = 0 %}
+          {% for block in  section.blocks %}
+          {% if block.settings.title != blank and  block.settings.description != blank %}  
+          {% assign qqqq = qqqq | plus:1 %}
+          <div class="card">
+            <div class="card-header" id="heading{{ forloop.index }}">
+              <h5 class="mb-0">
+                <button class="btn btn-link {% if qqqq != 1 %}collapsed{% endif %}" data-toggle="collapse" data-target="#collapse{{ forloop.index }}" aria-expanded="{% if qqqq == 1 %}true{%else%}false{% endif %}" aria-controls="collapseOne">
+                  {{ block.settings.title }}  <i class="fas {% if qqqq != 1 %}fa-plus{%else%}fa-minus{%endif%}"></i>
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapse{{ forloop.index }}" class="collapse {% if qqqq == 1 %}show{% endif %}" aria-labelledby="heading{{ forloop.index }}" data-parent="#accordion">
+              <div class="card-body">
+                {{ block.settings.description }}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div> 
+    </div> 
+  </div>  
+</div> 
+{% endif %}
+{% schema %}
+  {
+    "name": "Return Faq",
+    "class":"return_faq_section",
+    "settings": [
+		{
+          "type": "text",
+           "id": "section_headding",
+           "label": "Section Heading"
+		},
+		{
+          "type": "richtext",
+           "id": "section_description",
+           "label": "Description"
+		},
+		{
+          "type": "richtext",
+           "id": "more_description",
+           "label": "More Description"
+		}
+	],
+	
+	"blocks": [
+        {
+          "type": "faq-items",
+          "name": "Faq",
+          "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title"    
+            },
+			{
+            "type": "html",
+            "id": "description",
+            "label": "Description"    
+            }
+          ]
+        }
+    ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

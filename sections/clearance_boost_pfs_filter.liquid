@@ -1,0 +1,364 @@
+{% if template contains 'clearance' %}
+  {% if section.settings.collection_title %}
+  <div class="shop-cont">
+      <h3>{{section.settings.collection_title}}</h3>
+  </div>
+  {% endif %}
+	{% assign collection = section.settings.collection %}
+{% endif %}
+{%- assign boost_settings = shop.metafields.bc-sf-filter.settings -%}
+{%- assign boost_in_collection_search = boost_settings | split: 'enableCollectionSearch":' | last | split: ',"' | first | strip -%}
+
+{%- assign filter_tree_horizontal_style = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'filterTreeHorizontalStyle":"' | last | split: '","' | first | strip -%}
+{%- assign enable_filter_sticky_d = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnDesktop":' | last | split: ',' | first | strip -%}
+{%- assign enable_filter_sticky_m = shop.metafields.bc-sf-filter.settings | split: 'general":' | last | split: 'stickyFilterOnMobile":' | last | split: ',' | first |  split: '}}' | first | strip -%}
+
+{%- assign enable_filter_tree_button_desktop_h = false -%}
+{%- if filter_tree_horizontal_style == 'style-expand' -%}
+  {%- assign enable_filter_tree_button_desktop_h = true -%}
+{%- endif -%}
+
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+{%- paginate collection.products by section.settings.products_per_page -%}
+<div class="page-width collection-filters {% if current_tags.first != blank %}child_collection_cat {{ current_tags.first | handle }}{% else %}parentcollection_cat{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
+  <div class="boost-pfs-container-default boost-pfs-filter-wrapper-page facets facets-container">
+    {%- comment -%} TOOLBAR TOP MOBILE {%- endcomment -%}
+    {% if boost_in_collection_search == 'true' %}
+      <div class="boost-pfs-in-collection-search">
+        {% render 'boost-pfs-filter-skeleton', width: 4 %}
+      </div>
+    {% endif %}
+    <div class="facets__form {% if enable_filter_sticky_d and enable_filter_tree_button_desktop_h  %} boost-pfs-filter-tree-desktop-button-sticky-wrapper {% endif %}">
+      {%- if section.settings.enable_sorting -%}
+        <div class="facet-filters sorting caption">
+          <div class="facet-filters__field">
+            <label class="facet-filters__label caption-large" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+            <div class="select boost-pfs-filter-custom-sorting boost-pfs-filter-top-sorting">
+              {%- render 'boost-pfs-filter-skeleton' -%}
+            </div>
+          </div>
+          <div class="product-count light" role="status">
+            <p class="product-count__text boost-pfs-filter-total-product">
+              {%- render 'boost-pfs-filter-skeleton' -%}
+            </p>
+          </div>
+        </div>
+      {%- endif -%}
+      <div class="facets__wrapper">
+        {%- if enable_filter_tree_button_desktop_h -%}
+          <div class="boost-pfs-filter-tree-desktop-button">{%- render 'boost-pfs-filter-skeleton', type: 'button' -%}</div>
+        {%- endif -%}
+        {%- unless enable_filter_tree_button_desktop_h -%}
+          <div class="boost-pfs-filter-tree boost-pfs-filter-tree-h" data-is-desktop>
+            {% comment %} Include placeholder template {% endcomment %}
+            {%- unless enable_filter_tree_button_desktop_h -%}
+              {% render 'boost-pfs-filter-skeleton', type: 'filter-tree-h' %}
+            {%- endunless -%}
+          </div>
+        {%- endunless -%}
+      </div>
+    </div>
+    {%- if enable_filter_tree_button_desktop_h -%}
+      <div class="boost-pfs-filter-tree-h-wrapper">
+        <div class="boost-pfs-filter-tree boost-pfs-filter-tree-h" data-is-desktop></div>
+      </div>
+    {%- endif -%}
+    <div class="boost-pfs-filter-toolbar-top-mobile">
+      <div class="boost-pfs-filter-tree-mobile-button">
+        {%- include 'boost-pfs-filter-skeleton', type: 'button' -%}
+      </div>
+    </div>
+    <div class="boost-pfs-filter-tree boost-pfs-filter-tree-v" data-is-mobile></div>
+    {%- comment -%} END TOOLBAR TOP MOBILE {%- endcomment -%}
+  </div>
+</div>
+<div id="CollectionProductGrid">
+  <div class="collection page-width">
+    <div class="boost-pfs-filter-refine-by-wrapper-h"></div>
+    <ul id="main-collection-product-grid" data-id="{{ section.id }}" class=" negative-margin boost-pfs-filter-products grid grid--2-col
+      {% if collection.products_count < 4 %} grid--{{collection.products_count}}-col-tablet{% else %}
+      {% if collection.products_count == 4 %} grid--4-col-desktop{% else %} grid--3-col-tablet grid--one-third-max grid--4-col-desktop grid--quarter-max{% endif %}
+      {% endif %}"
+    >
+      {%- for product in collection.products -%}
+        <li class="grid__item">
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: section.settings.image_ratio,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating,
+            lazy_load: lazy_load
+          %}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+<div class="boost-pfs-filter-load-more"></div>
+<link rel="stylesheet" href="{{ 'component-pagination.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="boost-pfs-filter-bottom-pagination"></div>
+{%- endpaginate -%}
+
+
+{% capture 'product_swatches' %}
+   {% assign color_active = false %}
+    {% for option in products.product.options %}
+    {% if option == 'Color' %}
+    {% assign color_active = true %}
+    {% endif %}
+    {% endfor %}
+    {% if products.product.variants.size > 1 and color_active == true %}
+        <div class="collection_product_color_swatches">
+          <ul>
+            {% for option in products.product.options %}
+            {% if option == 'Color' %}
+            {% assign index = forloop.index0 %}
+            {% assign colorlist = '' %}
+            {% assign color = '' %}
+            {% for variant in products.product.variants %}
+            {% capture color %}
+            {{ variant.options[index] }}
+            {% endcapture %}
+
+            {% unless colorlist contains color %} 
+            <li class="Swatches-Color {{color | strip}}" value="{{color | strip}}" data-img="{%- if variant.featured_image != null -%} {{ variant.featured_image | img_url:'master' }} {% endif %}" data-orignel="{%- if card_product.featured_image != null -%}{{ card_product.featured_media | img_url: 'master' }}{% endif %}"><span></span></li>	
+            {% assign colorlist = tempList %}
+            {% endunless %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+          </ul>  
+        </div> 
+    {% endif %}
+{% endcapture %}
+<script>
+// Declare boostPFSThemeConfig variable
+var boostPFSThemeConfig = {
+  label: {
+    sale: {{ 'products.product.on_sale' | t | default: '' | json }},
+    sale_price: {{ 'products.product.sale_price' | t | default: '' | json }},
+    sold_out: {{ 'products.product.sold_out' | t | default: '' | json }},
+    vendor: {{ 'products.product.vendor' | t |default: '' | json }},
+    regular_price: {{ 'products.product.price.regular_price' | t | default: '' | json }},
+    from_price_html: {{ 'products.product.price.from_price_html' | t | default: '' | json }},
+    current_page: {{ 'general.pagination.current_page' | t | json }},
+    unit_price: {{ 'products.product.price.unit_price' | t | json }},
+    selected_or_first_unit_price: {{ 'products.product.price.unit_price' | t | json }},
+    unit_price_separator: {{ 'accessibility.unit_price_separator' | t | default: '' | json }},
+    star_reviews_info: {{ 'accessibility.star_reviews_info' | t | json }},
+    total_reviews: {{ "accessibility.total_reviews" | t | json }},
+  },
+  custom: {
+    show_vendor: {% if section.settings.show_vendor %} {{ section.settings.show_vendor | json }} {% else %} false {% endif %},
+    add_image_padding: {% if section.settings.add_image_padding %} {{ section.settings.add_image_padding | json }} {% else %} false {% endif %},
+    media_size: {% if section.settings.image_ratio %} {{ section.settings.image_ratio | json }} {% else %} '' {% endif %},
+    sold_out_badge_color_scheme: {% if settings.sold_out_badge_color_scheme %} {{ settings.sold_out_badge_color_scheme | json }} {% else %} '' {% endif %},
+    sale_badge_color_scheme: {% if settings.sale_badge_color_scheme %} {{ settings.sale_badge_color_scheme | json }} {% else %} '' {% endif %},
+    products_per_page: {% if section.settings.products_per_page %} {{ section.settings.products_per_page | json }} {% else %} 24 {% endif %},
+    products_per_row: {% if products_per_row %} {{ products_per_row }} {% else %} 4 {% endif %},
+    show_image_outline: {% if section.settings.show_image_outline %} {{ section.settings.show_image_outline | json }} {% else %} false {% endif %},
+    show_secondary_image: {% if section.settings.show_secondary_image %} {{ section.settings.show_secondary_image | json }} {% else %} false {% endif %},
+    accent_icons: {% if settings.accent_icons %} {{ settings.accent_icons | json }} {% else  %} '' {% endif %},
+    currency_code_enabled: {% if settings.currency_code_enabled %} {{ settings.currency_code_enabled | json }} {% else %} false {% endif %},
+    card_style: {% if settings.card_style %} {{ settings.card_style | json }} {% else %} '' {% endif %},
+    card_color_scheme: {% if settings.card_color_scheme %} {{ settings.card_color_scheme | json }} {% else %} '' {% endif %},
+    badge_position: {% if settings.badge_position %} {{ settings.badge_position | json}} {% else %} '' {% endif %},
+    description: {% if block.settings.description %} {{ block.settings.description | json}} {% else %} '' {% endif %},
+  },
+
+  general: {   
+	  file_url: "{{ '' | file_url }}",
+      asset_url: "{{ 'boost-pfs.js' | asset_url }}",
+      collection_id: {{ collection.id | default: 0 }},
+      collection_handle: "{{ collection.handle }}",
+      collection_product_count: {{ collection.products_count | default: 0 }},  
+	  theme_id: {{ theme.id | default: 0 }},
+      collection_tags: {{ current_tags | json }},
+      current_tags: {{ current_tags | json }},
+      default_sort_by: "{{ collection.default_sort_by }}",
+      swatch_extension: "png",
+      no_image_url: "{{ 'boost-pfs-no-image.gif' | asset_url }}",
+      search_term: "{{ search.terms | default: '' | url_encode }}",
+      template: "{{ template }}",
+      {%- comment -%} Get currencies {%- endcomment -%}
+      currencies: [
+        {%- for currency in shop.enabled_currencies -%}
+        {{- currency.iso_code | json -}}{%- if forloop.last != true -%},{%- endif -%}
+        {%- endfor -%}
+      ],
+      current_currency: {{- cart.currency.iso_code | json -}},
+      {%- comment -%} Get locales {%- endcomment -%}
+      published_locales: {
+        {%- for locale in shop.published_locales -%}
+        {{- locale.iso_code | json -}}:{{- locale.primary | json -}}{%- if forloop.last != true -%},{%- endif -%}
+        {%- endfor -%}
+      },
+      current_locale: {{- request.locale.iso_code | json -}},
+      isInitFilter: true
+  }
+  
+};
+
+// Declare Templates
+var boostPFSTemplate = {
+  'soldOutLabelHtml': {%- render 'boost-pfs-filter-html', layout: 'soldOutLabelHtml' -%},
+  'saleLabelHtml': {%- render 'boost-pfs-filter-html', layout: 'saleLabelHtml' -%},
+  'vendorHtml': {%- render 'boost-pfs-filter-html', layout: 'vendorHtml' -%},
+  // Grid Template
+  'productGridItemHtml': {%- render 'boost-pfs-filter-html', layout: 'productGridItemHtml' -%},
+  // Pagination Template
+  'previousActiveHtml': {%- render 'boost-pfs-filter-html', layout: 'previousActiveHtml' -%},
+  'nextActiveHtml': {%- render 'boost-pfs-filter-html', layout: 'nextActiveHtml' -%},
+  'pageItemHtml': {%- render 'boost-pfs-filter-html', layout: 'pageItemHtml' -%},
+  'pageItemSelectedHtml': {%- render 'boost-pfs-filter-html', layout: 'pageItemSelectedHtml' -%},
+  'pageItemRemainHtml': {%- render 'boost-pfs-filter-html', layout: 'pageItemRemainHtml' -%},
+  'paginateHtml': {%- render 'boost-pfs-filter-html', layout: 'paginateHtml' -%},
+  // Sorting Template
+  'sortingHtml': {%- render 'boost-pfs-filter-html', layout: 'sortingHtml' -%}
+};
+</script>
+{% schema %}
+
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Filter on Home Page"
+    },
+	{
+      "type": "text",
+      "id": "collection_title",
+      "label": "Collection Title"
+    },
+	{
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+	{
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_on_larger_devices",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+     {
+       "name": "Clearance Boost PFS Filter"
+	 }
+   ]
+}
+{% endschema %}

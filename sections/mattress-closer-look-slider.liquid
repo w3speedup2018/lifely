@@ -1,0 +1,128 @@
+{% if section.blocks and section.blocks != blank %}
+  <div class="closer_like_slider_section">
+      <div class="container">
+          {% if section.settings.sec_heading != blank %}
+               <h2 class="closer_slider_heading">{{ section.settings.sec_heading }}</h2>
+          {% endif %} 
+          <div class="closer_like_slider">
+              {% for block in section.blocks %}
+                  {% if block.settings.mattress_image != blank and block.settings.slide_title != blank %}
+                     <div class="closer_like_slide">
+                       <div class="left_sec">
+                          <img src="{{ block.settings.mattress_image | img_url:"master"}}" alt=""/>
+                       </div> 
+                        <div class="right_sec">
+                          <h2>{{ block.settings.slide_title }}</h2>
+                          {% if block.settings.content_image != blank and block.settings.slide-content != blank %}
+                            <div class="content-closer-slide">
+                              <div class="image">
+                                  <img src="{{ block.settings.content_image | img_url:"master"}}"/>
+                              </div>
+                              <div class="content_p">
+                                <p>{{block.settings.slide-content}}</p>
+                              </div>  
+                            </div>                             
+                          {% endif %}
+                        </div> 
+                    </div>  
+                 {% endif %}
+             {% endfor %}             
+          </div>  
+      </div>  
+  </div>
+  
+  
+  <div class="closer_like_slider_section mobile_closer_section">  
+    <div class="container_f">
+       {% if section.settings.sec_heading != blank %}
+              <h2 class="closer_slider_heading">{{ section.settings.sec_heading }}</h2>
+       {% endif %} 
+      <div class="mcloser_like_slider">
+        {% for block in section.blocks %}
+        {% assign index = forloop.index0 %}
+        {% if block.settings.mattress_image != blank and block.settings.slide_title != blank %}
+        <div class="closer_like_slide">
+          <div class="left_sec">
+            <img src="{{ block.settings.mattress_image | img_url:"master"}}"/>
+          </div> 
+          <div class="right_sec page-width">
+            <h2>{{ block.settings.slide_title }}</h2>
+            {% if block.settings.content_image != blank and block.settings.slide-content != blank %}
+            <div class="content-closer-slide">
+              <div class="image">
+                <img src="{{ block.settings.content_image | img_url:"master"}}"/>
+              </div>
+              <div class="content_p">
+                <p>{{block.settings.slide-content}}</p>
+              </div>  
+            </div>                             
+            {% endif %}
+          </div> 
+        </div>  
+        {% endif %}
+        {% endfor %}             
+      </div>
+      {% if section.blocks.size > 0 %}          		
+      <div class="progress_bar_count_sec">
+        <div class="progres_col">	
+          <div class="progress" data-total="{{section.blocks.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+            <span class="slider__label sr-only"></span>
+          </div>
+        </div>  
+        <div class="progres_count_col">	
+          <span class="curent_slide_active_p">1</span> of {{section.blocks.size}}
+        </div> 
+      </div>   
+      {% endif %}
+    </div>  
+  </div>
+  
+
+{% endif %}
+{% schema %}
+  {
+    "name": "Mattress closer look",
+    "settings": [
+		{
+			"type":"text",
+            "id":"sec_heading",
+            "label":"Section Heading",
+            "default":"Let’s take a closer look"
+		}
+	],
+	"blocks": [
+        {
+          "type": "slide_item",
+          "name": "Slide Item",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "mattress_image",
+              "label": "Mattress Image"
+            },
+			{
+              "type": "text",
+              "id": "slide_title",
+              "label": "Title"
+            },
+			{
+              "type": "textarea",
+              "id": "slide-content",
+              "label": "Description"
+            },
+			{
+              "type": "image_picker",
+              "id": "content_image",
+              "label": "Content Image"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

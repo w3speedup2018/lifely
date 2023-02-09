@@ -1,0 +1,54 @@
+{% if section.settings.sound_heading != blank or section.settings.sound_content != blank %}
+  <div class="sounds_like_wrap">
+    <div class="container">
+      {% if section.settings.sound_heading != blank %}
+          <h2>{{ section.settings.sound_heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.sound_content != blank %}
+          <h5>{{ section.settings.sound_content }}</h5>
+      {% endif %}
+
+      {% if section.settings.sound_btn_label != blank %}
+          <div class="sound_btn_grid">
+              <a href="{{ section.settings.sound_btn_link }}">{{ section.settings.sound_btn_label }}</a>
+          </div>
+      {% endif %}
+      
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Sounds Like Grid",
+    "settings": [
+		{
+			"type":"text",
+			"id":"sound_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"textarea",
+			"id":"sound_content",
+			"label":"Content"
+        },
+		{
+			"type":"text",
+			"id":"sound_btn_label",
+			"label":"Button Label"
+        },
+		{
+			"type":"text",
+			"id":"sound_btn_link",
+			"label":"Button Link"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,67 @@
+{% if section.settings.heading != blank %}
+	<div id="signup" class="master_sign_form_grid">
+        <div class="container">
+    		<div class="page-width">
+            	<h2>{{ section.settings.heading  }}</h2>
+              <div class="klaviyo-form-grid">
+              	{{ section.settings.formcode }}
+              </div>
+        	</div>  
+        </div>
+	</div>  
+   <style>
+     .master_sign_form_grid h2 {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 31px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #2C474B;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        padding: 40px 0;
+    }
+    .master_sign_form_grid {
+      padding-bottom: 50px;
+    }
+    @media only screen and (max-width: 575px){
+      .master_sign_form_grid h2 {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 23px;
+        padding: 30px 0;
+      }
+    }
+     
+   </style>
+{% endif %}
+{% schema %}
+  {
+    "name": "Klaviyo Form Grid",
+    "class":"discount_form_heading",
+    "settings": [
+		{
+			"type":"text",
+			"id":"heading",
+			"label":"Heading"
+		},
+		{
+			"type":"html",
+			"id":"formcode",
+			"label":"Form Code"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

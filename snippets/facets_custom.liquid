@@ -1,0 +1,577 @@
+{% comment %}
+    Renders facets (filtering and sorting)
+
+    Accepts:
+    - results: {Object} Collection or Search object
+    - enable_filtering: {Boolean} Show filtering when true
+    - enable_sorting: {Boolean} Show sorting when true
+    - collapse_on_larger_devices: {Boolean} Collapse filtering/sorting into menu on larger devices when true
+
+    Usage:
+    {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, collapse_on_larger_devices: false %}
+{% endcomment %}
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+  if results.url
+    assign results_url = results.url
+  else 
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+-%}
+
+ 
+
+
+{% comment %}
+{% assign customProducts = collection.products  | sort: 'price' | reverse %}
+{% for pproduct in customProducts %} 
+   {{ pproduct.price | divided_by: 100 }}
+{% endfor %}
+{% endcomment %}
+
+
+<div class="custom_facets-container">
+  <form id="custom_FacetFiltersForm_Item" {% if current_tags.first != blank %}data-default="{{ current_tags.first | handle }}"{% endif %} class="facets__form {% if current_tags.first != blank %}child_collection_filter{% endif %}" data-action="{{ shop.secure_url }}{{ collection.url }}/{% if current_tags.first != blank %}{{ current_tags.first | handle }}+{% endif %}">
+  		<div id="FacetsWrapperDesktop" class="facets__wrapper">
+    		{% if collection.metafields.specail.offers != blank %}
+ 
+          		<details id="Details-0-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                  <summary class="facets__summary caption-large focus-offset">
+                    <div>
+                      <span>Special Offers</span>
+                      {% render 'icon-caret' %}
+                    </div>
+                  </summary>
+                  <div id="Facet-0-{{ section.id }}" class="facets__display">
+                    <div class="facets__header">
+                      <span class="facets__selected no-js-hidden">0 selected</span>
+                      <facet-remove>
+                        <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                          {{ 'products.facets.reset' | t }}
+                        </a>
+                      </facet-remove>
+                    </div>
+
+                    <ul class="facets__list list-unstyled" role="list">
+                 		{% assign special_array = collection.metafields.specail.offers | split: '|' %}	
+                          {% assign newcounter = 0 %}           
+                          {% for secial_offer in special_array %}      
+                              {% for tag in collection.all_tags %}
+                                  {% if tag contains secial_offer %}                      				
+                      				<li class="list-menu__item facets__item">
+                                        <label for="Filter-special_offers-{{newcounter}}" class="facet-checkbox ">
+                                          <input type="checkbox"
+                                                 name="special_offer"
+                                                 value="{{ tag | handle }}"
+                                                 id="Filter-special_offers-{{newcounter}}">
+
+                                                <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                                  <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                                </svg>
+
+                                                <svg class="icon icon-checkmark"
+                                                     width="1.1rem"
+                                                     height="0.7rem"
+                                                     viewBox="0 0 11 7"
+                                                     fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+
+                                                  <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.75"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                                 {{ tag | replace: '-', ' '  }}
+                                        </label>
+                      				</li>
+                      				{% assign newcounter = newcounter | plus: 1 %}	
+                                  {% endif %}
+                              {% endfor %}        
+                         {% endfor %}
+                    </ul>
+                  </div>
+                 </details>
+          	
+          	{% endif %}
+          
+          	{% if collection.metafields.categories.filter != blank %}
+ 
+          		<details id="Details-1-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                  <summary class="facets__summary caption-large focus-offset">
+                    <div>
+                      <span>Categories</span>
+                      {% render 'icon-caret' %}
+                    </div>
+                  </summary>
+                  <div id="Facet-1-{{ section.id }}" class="facets__display">
+                    <div class="facets__header">
+                      <span class="facets__selected no-js-hidden">0 selected</span>
+                      <facet-remove>
+                        <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                          {{ 'products.facets.reset' | t }}
+                        </a>
+                      </facet-remove>
+                    </div>
+
+                    <ul class="facets__list list-unstyled" role="list">
+                 		{% assign cat_array = collection.metafields.categories.filter | split: '|' %}	
+                          {% assign newcatcounter = 0 %}           
+                          {% for cat_filter in cat_array %}      
+                              {% for tag in collection.all_tags %}
+                                  {% if tag contains cat_filter %} 
+                      				{% if current_tags.first == blank or current_tags.first !=  tag %}
+                      				<li class="list-menu__item facets__item">
+                                        <label for="Filter-cat_tag-{{newcatcounter}}" class="facet-checkbox ">
+                                          <input type="checkbox"
+                                                 name="category_tags"
+                                                 value="{{ tag | handle }}"
+                                                 id="Filter-cat_tag-{{newcatcounter}}">
+
+                                                <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                                  <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                                </svg>
+
+                                                <svg class="icon icon-checkmark"
+                                                     width="1.1rem"
+                                                     height="0.7rem"
+                                                     viewBox="0 0 11 7"
+                                                     fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+
+                                                  <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.75"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                                 {{ tag | replace: '-', ' '  }}
+                                        </label>
+                      				</li>
+                      				{% assign newcatcounter = newcatcounter | plus: 1 %}	
+                      				{% endif %}
+                                  {% endif %}
+                              {% endfor %}        
+                         {% endfor %}
+                    </ul>
+                  </div>
+                 </details>
+          	
+          	{% endif %}
+          	
+          	
+          	{% if collection.metafields.hide.price_filter != true %}
+          		<details id="Details-31-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="{{ forloop.index }}">
+                  <summary class="facets__summary caption-large focus-offset">
+                    <div>
+                      <span>Price</span>
+                      {% render 'icon-caret' %}
+                    </div>
+                  </summary>
+                  <div id="Facet-31-{{ section.id }}" class="facets__display">
+                    <div class="facets__header">
+                      <span class="facets__selected no-js-hidden"></span>
+                      <facet-remove>
+                        <a href="" class="facets__reset link underlined-link">
+                          Reset
+                        </a>
+                      </facet-remove>
+                    </div>
+
+                    <ul class="facets__list list-unstyled" role="list">
+                        <li class="list-menu__item facets__item">
+                          <label for="collection-Filter-price-1" class="facet-checkbox">
+                            <input type="checkbox"
+                                   name="product_color_filter"
+                                   value="price_0-100"
+                                   id="collection-Filter-price-1"                                                                           
+                                   >
+
+                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                            </svg>
+
+                            <svg class="icon icon-checkmark"
+                                 width="1.1rem"
+                                 height="0.7rem"
+                                 viewBox="0 0 11 7"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                    stroke="currentColor"
+                                    stroke-width="1.75"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Price 0-100
+                          </label>
+                        </li>
+                      	<li class="list-menu__item facets__item">
+                          <label for="collection-Filter-price-2" class="facet-checkbox">
+                            <input type="checkbox"
+                                   name="product_color_filter"
+                                   value="price_100-200"
+                                   id="collection-Filter-price-2"                                                                           
+                                   >
+
+                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                            </svg>
+
+                            <svg class="icon icon-checkmark"
+                                 width="1.1rem"
+                                 height="0.7rem"
+                                 viewBox="0 0 11 7"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                    stroke="currentColor"
+                                    stroke-width="1.75"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Price 100-200
+                          </label>
+                        </li>
+                      	<li class="list-menu__item facets__item">
+                          <label for="collection-Filter-price-3" class="facet-checkbox">
+                            <input type="checkbox"
+                                   name="product_color_filter"
+                                   value="price_200-300"
+                                   id="collection-Filter-price-3"                                                                           
+                                   >
+
+                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                            </svg>
+
+                            <svg class="icon icon-checkmark"
+                                 width="1.1rem"
+                                 height="0.7rem"
+                                 viewBox="0 0 11 7"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                    stroke="currentColor"
+                                    stroke-width="1.75"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Price 200-300
+                          </label>
+                        </li>
+                      	<li class="list-menu__item facets__item">
+                          <label for="collection-Filter-price-4" class="facet-checkbox">
+                            <input type="checkbox"
+                                   name="product_color_filter"
+                                   value="price_300-400"
+                                   id="collection-Filter-price-4"                                                                           
+                                   >
+
+                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                            </svg>
+
+                            <svg class="icon icon-checkmark"
+                                 width="1.1rem"
+                                 height="0.7rem"
+                                 viewBox="0 0 11 7"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                    stroke="currentColor"
+                                    stroke-width="1.75"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Price 300-400
+                          </label>
+                        </li>
+                      	<li class="list-menu__item facets__item">
+                          <label for="collection-Filter-price-5" class="facet-checkbox">
+                            <input type="checkbox"
+                                   name="product_color_filter"
+                                   value="price_400-500"
+                                   id="collection-Filter-price-5"                                                                           
+                                   >
+
+                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                            </svg>
+
+                            <svg class="icon icon-checkmark"
+                                 width="1.1rem"
+                                 height="0.7rem"
+                                 viewBox="0 0 11 7"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                    stroke="currentColor"
+                                    stroke-width="1.75"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            Price 400-500
+                          </label>
+                        </li>
+                    </ul>
+                  </div>
+          </details>            	
+          	{% endif %}
+          	
+          	{% if collection.metafields.hide.color_filter != true %} 
+          		{% assign newcatcounter = 1 %}
+                {% assign found_color = 1 %}
+          		{% for tag in collection.all_tags %}
+          			{% if tag contains 'color_' %}
+          				{% assign found_color = 2 %}
+                    {% endif %}
+          		{% endfor %}
+          		{% if found_color == 2%}
+          			   <details id="Details-4-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="{{ forloop.index }}">
+                         <summary class="facets__summary caption-large focus-offset">
+                           <div>
+                             <span>Color</span>
+                             {% render 'icon-caret' %}
+                           </div>
+                         </summary>
+                         <div id="Facet-4-{{ section.id }}" class="facets__display">
+                           <div class="facets__header">
+                             <span class="facets__selected no-js-hidden">0</span>
+                             <facet-remove>
+                               <a href="" class="facets__reset link underlined-link">
+                                 Reset
+                               </a>
+                             </facet-remove>
+                           </div>
+
+                           <ul class="facets__list list-unstyled" role="list">
+          						{% for tag in collection.all_tags %}
+                       				 {% if tag contains 'color_' %}
+                            
+                                        <li class="list-menu__item facets__item">
+                                          <label for="collection-Filter-color-{{ forloop.index }}" class="facet-checkbox">
+                                            <input type="checkbox"
+                                              name="product_color_filter"
+                                              value="{{ tag | handle }}"
+                                              id="collection-Filter-color-{{ forloop.index }}"                                                                           
+                                            >
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                              width="1.1rem"
+                                              height="0.7rem"
+                                              viewBox="0 0 11 7"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | remove: 'color_'| replace: '-', ' '  }}
+                                          </label>
+                                        </li>                    	
+                        			{% endif %}
+          						{% endfor %}
+          				</ul>
+                     </div>
+                    </details>
+          			{% endif %}
+          		{% endif %}
+          	{% if collection.metafields.hide.size_filter == blank %}
+                {% assign found_size = 1 %}
+          		{% for tag in collection.all_tags %}
+          			{% if tag contains 'size_' %}
+          				{% assign found_size = 2 %}
+                    {% endif %}
+          		{% endfor %}
+          		{% if found_size == 2%}
+          			   <details id="Details-5-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="{{ forloop.index }}">
+                         <summary class="facets__summary caption-large focus-offset">
+                           <div>
+                             <span>Size</span>
+                             {% render 'icon-caret' %}
+                           </div>
+                         </summary>
+                         <div id="Facet-5-{{ section.id }}" class="facets__display">
+                           <div class="facets__header">
+                             <span class="facets__selected no-js-hidden">0</span>
+                             <facet-remove>
+                               <a href="" class="facets__reset link underlined-link">
+                                 Reset
+                               </a>
+                             </facet-remove>
+                           </div>
+
+                           <ul class="facets__list list-unstyled" role="list">
+          						{% for tag in collection.all_tags %}
+                       				 {% if tag contains 'size_' %}
+                            
+                                        <li class="list-menu__item facets__item">
+                                          <label for="collection-Filter-size-{{ forloop.index }}" class="facet-checkbox">
+                                            <input type="checkbox"
+                                              name="product_size_filter"
+                                              value="{{ tag | handle }}"
+                                              id="collection-Filter-size-{{ forloop.index }}"                                                                           
+                                            >
+
+                                            <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                              <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                            </svg>
+
+                                            <svg class="icon icon-checkmark"
+                                              width="1.1rem"
+                                              height="0.7rem"
+                                              viewBox="0 0 11 7"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+
+                                              <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            </svg>
+
+                                            {{ tag | remove: 'size_'| replace: '-', ' '  }}
+                                          </label>
+                                        </li>                    	
+                        			{% endif %}
+          						{% endfor %}
+          				</ul>
+                     </div>
+                    </details>
+          			{% endif %}
+          	{% endif %}     
+  			{% if collection.metafields.style.filter != blank %}
+          		<details id="Details-6-{{ section.id }}" class="disclosure-has-popup facets__disclosure js-filter" data-index="0">
+                  <summary class="facets__summary caption-large focus-offset">
+                    <div>
+                      <span>Style</span>
+                      {% render 'icon-caret' %}
+                    </div>
+                  </summary>
+                  <div id="Facet-6-{{ section.id }}" class="facets__display">
+                    <div class="facets__header">
+                      <span class="facets__selected no-js-hidden">0 selected</span>
+                      <facet-remove>
+                        <a href="{{ filter.url_to_remove }}" class="facets__reset link underlined-link">
+                          {{ 'products.facets.reset' | t }}
+                        </a>
+                      </facet-remove>
+                    </div>
+
+                    <ul class="facets__list list-unstyled" role="list">
+                 		{% assign special_array = collection.metafields.style.filter | split: '|' %}	
+                          {% assign newcounter = 0 %}           
+                          {% for secial_offer in special_array %}      
+                              {% for tag in collection.all_tags %}
+                                  {% if tag contains secial_offer %}                                    
+                      				<li class="list-menu__item facets__item">
+                                        <label for="Collection-Filter-style-{{newcounter}}" class="facet-checkbox ">
+                                          <input type="checkbox"
+                                                 name="collection_style"
+                                                 value="{{ tag | handle }}"
+                                                 id="Collection-Filter-style-{{newcounter}}">
+
+                                                <svg width="1.6rem" height="1.6rem" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                                  <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                                                </svg>
+
+                                                <svg class="icon icon-checkmark"
+                                                     width="1.1rem"
+                                                     height="0.7rem"
+                                                     viewBox="0 0 11 7"
+                                                     fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+
+                                                  <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.75"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+
+                                                 {{ tag | replace: '-', ' '  }}
+                                        </label>
+                      				</li>
+                      				{% assign newcounter = newcounter | plus: 1 %}	
+                                  {% endif %}
+                              {% endfor %}        
+                         {% endfor %}
+                    </ul>
+                  </div>
+                 </details>
+          	{% endif %}
+    	</div> 
+    
+    	
+    	<div class="filter_right">
+          	<div class="product-count light" role="status">
+              <h2 class="product-count__text text-body">
+                <span id="ProductCountDesktop">
+                  {%- if results.results_count -%}
+                    {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+                  {%- elsif results.products_count == results.all_products_count -%}
+                    {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+                  {%- else -%}
+                    {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
+                  {%- endif -%}
+                </span>
+              </h2>
+              <div class="loading-overlay__spinner">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
+            </div>
+            
+              <div class="facet-filters sorting caption">
+                <div class="facet-filters__field">
+                  <h2 class="facet-filters__label caption-large text-body">
+                    <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                  </h2>
+                  <div class="select">
+                    {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+                    <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                      {%- for option in results.sort_options -%}
+                        <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+                </div>
+
+                <noscript>
+                  <button type="submit" class="facets__button-no-js button button--tertiary">{{ 'products.facets.sort_button' | t }}</button>
+                </noscript>
+              </div>
+
+       </div>   	
+  </form> 
+  <div id="slected_fiters">
+  	
+  </div>  
+</div>

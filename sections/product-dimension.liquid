@@ -1,0 +1,45 @@
+{% if product.metafields.arena.dimension_image != blank or product.metafields.dimension_heading.dimension_heading != blank or product.metafields.dimension_subheading.dimension_subheading != blank %}
+  {% if product.metafields.dimension_heading.dimension_heading != blank or product.metafields.dimension_subheading.dimension_subheading != blank %}
+  	 {% assign dimension_class = 'dimension_heading_with_content'  %}
+  {% else %}
+	 {% assign dimension_class = ''  %}
+  {% endif %}	
+	<div class="dimension-image {{ dimension_class }}">
+      <div class="container">
+      {% if product.metafields.dimension_heading.dimension_heading != blank %}
+          <h2>{{ product.metafields.dimension_heading.dimension_heading }}</h2>
+      {% endif %}
+      {% if product.metafields.dimension_subheading.dimension_subheading != blank %}
+          <div class="dimension_subheading">
+              {{ product.metafields.dimension_subheading.dimension_subheading }}
+          </div>    	
+      {% endif %}
+      <div class="desktop_dimension">
+          {% if product.metafields.arena.dimension_image != blank %}
+              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+          {% endif %}
+      </div>
+      <div class="mobile_dimension" style="display:none;">  
+          {% if product.metafields.arena_mobile.mobile_dimension_image != blank %}
+              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena_mobile.mobile_dimension_image}}">
+          {% else %}
+               {% if product.metafields.arena.dimension_image != blank %}
+                  <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.arena.dimension_image}}">
+              {% endif %}
+          {% endif %}  
+          {% if product.metafields.mobile_dimension.content != blank %}
+              <div class="dimension_mobile_content">
+                  {{product.metafields.mobile_dimension.content}}
+              </div>  
+          {% endif %}
+        </div>     
+
+    </div>  
+  </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Product Dimension",
+    "settings": []
+  }
+{% endschema %}

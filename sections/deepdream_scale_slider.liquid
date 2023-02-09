@@ -1,0 +1,57 @@
+
+{% if product.metafields.scale.heading != blank and product.metafields.mattress.image != blank and product.metafields.mattress.scale_image != blank %}
+<div class="mattresses_scale_slider_sec">
+<div class="page-width">
+<h2>{{ section.settings.scale_slider_heading  }}</h2>
+<div class="scale_slider">
+{% for sale_heading in product.metafields.scale.heading %}
+{% assign index = forloop.index0 %}
+{% if product.metafields.scale.heading[index] != blank and product.metafields.mattress.image[index] != blank and product.metafields.mattress.scale_image[index] != blank %} 	
+<div class="scale_slide_item">
+
+{% if product.metafields.scale.product-url[index] != blank %}
+<a href="{{ product.metafields.scale.product-url[index] }}">
+{% endif %} 
+
+
+<h3>{{ product.metafields.scale.heading[index] }}</h3>
+{% if product.metafields.scale.subheading[index] != blank %}
+<p>{{ product.metafields.scale.subheading[index] }}</p>
+{% endif %} 
+<div class="scale_first_image">
+<img src="{{ product.metafields.mattress.image[index] }}" alt=""/>
+</div>  
+<div class="scale_first_image">
+<img src="{{ product.metafields.mattress.scale_image[index] }}" alt=""/>
+</div> 
+  
+{% if product.metafields.scale.product-url[index] != blank %}
+</a>
+{% endif %} 
+
+</div>  
+{% endif %}
+{% endfor %}
+</div> 
+</div>  
+</div>  
+{% endif %}
+{% schema %}
+{
+"name": "Scale slider",
+"settings": [
+{
+"type":"text",
+"id":"scale_slider_heading",
+"label":"Heading",
+"default":"How to choose the right mattress"
+} 
+] 
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

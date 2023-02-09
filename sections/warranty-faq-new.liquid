@@ -1,0 +1,165 @@
+{% if section.blocks != blank or section.settings.section_headding != blank %}
+<div class="warranty-faq-main">  
+  <div class="page-width">
+    <div class="collection-faq">
+      <div class="page-width">
+        <div class="collection_faq_main">
+          <div class="faq_sectio_deatail">
+            {% if section.settings.section_headding != blank %}
+            <h2>{{ section.settings.section_headding }}</h2>
+            {% endif %}
+            <div class="mobile_section_faq">
+              {% if section.settings.section_description != blank %}
+              	{{ section.settings.section_description }}
+              	{% if section.settings.more_description != blank %}
+              		<div class="more_content">
+             			{{ section.settings.more_description}}
+              		</div>  
+              		<button class="read_more_description" style="display:none;">Read More</button>
+              	{% endif %}
+              {% endif %}
+            </div>
+          </div>                  
+          <div class="faq_section_accordian">
+            {% if section.blocks != blank %}
+            <div id="warranty_accordion">
+              {% assign ppp = 0 %}
+              {% for block in  section.blocks %}
+              {% if block.settings.title != blank and  block.settings.description != blank %}
+              		{% assign ppp = ppp | plus:1 %}
+                  <div class="card">
+                    <div class="card-header" id="heading{{ forloop.index }}">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link {% if ppp != 1 %}collapsed{% endif %}" data-toggle="collapse" data-target="#warrantycollapse{{ forloop.index }}" aria-expanded="{% if ppp == 1 %}true{%else%}false{% endif %}" aria-controls="collapseOne">
+                          {{ block.settings.title }}  <i class="fas {% if ppp != 1 %}fa-plus{%else%}fa-minus{%endif%}"></i>
+                        </button>
+                      </h5>
+                    </div>
+    
+                    <div id="warrantycollapse{{ forloop.index }}" class="collapse {% if ppp == 1 %}show{% endif %}" aria-labelledby="heading{{ forloop.index }}" data-parent="#warranty_accordion">
+                      <div class="card-body">
+                        {{ block.settings.description }}
+                      </div>
+                    </div>
+                  </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div> 
+        </div> 
+      </div>  
+      
+    </div> 
+  </div>
+</div>
+<style>
+  .warranty-faq-main .faq_sectio_deatail h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  .warranty-faq-main .mobile_section_faq p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .warranty-faq-main .faq_section_accordian .card {
+    border: 0;
+    background: transparent;
+    border-bottom: 1px solid #cfcfd0;
+    padding: 14px 0;
+  }
+  .warranty-faq-main .faq_section_accordian .card-header {
+    background: transparent;
+    padding: 0 !important;
+}
+.warranty-faq-main .faq_section_accordian h5 button {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: unset !important;
+    padding: 8px 0 8px 0;
+  }
+  .warranty-faq-main .faq_section_accordian .card .card-body {
+    padding: 20px 0 0 0 !important;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 0px !important;
+  }
+  .warranty-faq-main {
+    padding-bottom: 50px;
+    padding-top: 30px;
+  }
+  .warranty-faq-main .faq_section_accordian .card .card-body ul {
+    padding-left: 20px;
+  }
+  .warranty-faq-main .faq_section_accordian .card .card-body h3 {
+    padding-top: 20px;
+    font-weight: bold;
+  }
+</style>
+{% endif %}
+{% schema %}
+  {
+    "name": "Warranty Faq",
+    "class":"warranty_faq_section",
+    "settings": [
+		{
+          "type": "text",
+           "id": "section_headding",
+           "label": "Section Heading"
+		},
+		{
+          "type": "richtext",
+           "id": "section_description",
+           "label": "Section Description"
+		},
+		{
+          "type": "richtext",
+           "id": "more_description",
+           "label": "More Description"
+		}
+	],
+	
+	"blocks": [
+        {
+          "type": "faq-items",
+          "name": "Faq",
+          "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Title"    
+            },
+			{
+            "type": "html",
+            "id": "description",
+            "label": "Description"    
+            }
+          ]
+        }
+    ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

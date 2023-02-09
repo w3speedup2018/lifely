@@ -1,0 +1,91 @@
+{% assign heading = section.settings.heading %}
+{% assign subheading = section.settings.sub_heading %}
+{% assign main_image = section.settings.lookbook_code %}
+{% assign small_image = section.settings.product_image %}
+{% assign product_name = section.settings.product_name %}
+{% assign product_desc = section.settings.product_desc %}
+{% assign product_link = section.settings.product_link %}
+
+
+{% if product_name != blank and main_image != blank and current_tags.first == blank %}
+  <div class="product-featured-main">
+    <div class="container">
+      <div class="product-featured-inner">
+        {% if heading != blank %}
+       	 	<h3>{{heading}}</h3>
+        {% endif %}
+        {% if subheading != blank %}
+       	 	<h4>{{subheading}}</h4>
+        {% endif %}
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="feature-big-image">
+			  {% comment %}	
+              <img src="{{main_image | image_url: "master"}}">
+              {% endcomment %}
+              {{ main_image }}              
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="featured-details text-center">
+              {% if small_image != blank %}
+              	<img src="{{small_image | img_url: "master"}}">
+              {% endif %}
+              {% if product_name != blank %}
+              	<h5>{{product_name}}</h5>
+              {% endif %}
+              {% if product_desc != blank %}
+              	<p>{{product_desc}}</p>
+              {% endif %}
+              <a href="{{product_link}}">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}	
+
+{% schema %}
+  {
+    "name": "Fetured Products",
+    "settings": [
+         {
+            "id": "heading",
+            "type": "text",
+            "label": "Section Heading"
+          },
+          {
+            "id": "sub_heading",
+            "type": "textarea",
+            "label": "Section Subheading",
+            "default": "<p>Add your text here</p>"
+          },
+          {
+            "type": "html",
+            "id": "lookbook_code",
+            "label": "Lookbook Code"    
+          },
+          {
+            "type": "text",
+            "id": "product_name",
+            "label": "Featured Product Name"    
+          },
+          {
+            "type": "text",
+            "id": "product_desc",
+            "label": "Featured Product Description"    
+          },
+          {
+            "type": "url",
+            "id": "product_link",
+            "label": "Product Link"    
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Product Image"    
+          }
+	]
+  }
+{% endschema %}

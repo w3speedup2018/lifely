@@ -1,0 +1,28 @@
+{% if section.settings.show_shop_bar %}
+	<div class="shop_bar_section">
+		<div class="page-width">
+        	<ul class="shop_bar_nav">
+              <li><a href="/">Home</a></li> 
+              <li><span>Shop All</span></li>
+          	</ul> 
+      	</div>  
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Shop Bar",
+    "settings": [
+		{
+		  "type":"checkbox",
+		  "id":"show_shop_bar",
+		  "label":"Show shop bar"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

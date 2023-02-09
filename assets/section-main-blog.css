@@ -1,0 +1,123 @@
+.blog-articles {
+  display: grid;
+  grid-gap: 1rem;
+  column-gap: var(--grid-mobile-horizontal-spacing);
+  row-gap: var(--grid-mobile-vertical-spacing);
+}
+
+.blog-articles .card-wrapper {
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .blog-articles {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px; 
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1),
+  .blog-articles--collage > *:nth-child(3n + 2):last-child {
+    grid-column: span 2;
+    text-align: center;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .card,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .card {
+    text-align: center;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--small .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--small .ratio::before {
+    padding-bottom: 22rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--medium .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--medium .ratio::before {
+    padding-bottom: 44rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--large .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--large .ratio::before {
+    padding-bottom: 66rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--small .ratio .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--small .ratio .ratio::before {
+    padding-bottom: 27.5rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--medium .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--medium .ratio::before {
+    padding-bottom: 55rem;
+  }
+
+  .blog-articles--collage > *:nth-child(3n + 1) .article-card__image--large .ratio::before,
+  .blog-articles--collage > *:nth-child(3n + 2):last-child .article-card__image--large .ratio::before {
+    padding-bottom: 82.5rem;
+  }
+}
+
+.article-card__image-wrapper .article-card__image {
+    padding-bottom: 100% !important;
+}
+@media (min-width: 1200px) {
+    .blog-articles {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .blog-articles > *:first-child, 
+    .blog-articles > *:nth-child(4), 
+    .blog-articles > *:last-child:nth-child(2), 
+    .blog-articles > *:last-child:nth-child(5) {
+        grid-column: span 1;
+    }
+    
+}
+
+.title--primary {
+ display: none; 
+}
+
+.banner__heading {
+  
+ font-family: Gellix;
+ font-style: normal;
+ font-weight: bold;
+ text-align: left;
+ font-size: 40px;
+ line-height: 36px;
+  
+}
+
+.banner__text {
+  
+ font-family: Gellix;
+ font-style: normal;
+ font-weight: normal;
+ text-align: left;
+ font-size: 20px;
+ line-height: 36px;
+  
+}
+
+.banner__box {
+  /* Netural/03 #F9F1E5 */
+background: #F9F1E5;
+/* Hover */
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 10px 20px rgba(0, 0, 0, 0.1);
+  
+}
+
+.button button--secondary {
+  font-family: Gellix;
+  font-style: normal;
+  font-weight: bold;
+  border: 0px;
+  background-color: #F9F1E5;
+  text-align: left;
+  
+}
+
+

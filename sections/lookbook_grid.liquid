@@ -1,0 +1,210 @@
+{% if section.blocks.size > 0 %}
+<section class="living-room-lookbook">
+  <div class="page-width-inner">
+	<div class="lookbook-inner">
+      	{% for block in section.blocks %}
+      		{% if block.settings.select_collection != blank %}
+      			{% assign collection = block.settings.select_collection %}
+      			
+      			{% if block.settings.look_heading != blank or block.settings.look_subheading != blank %}
+                  <div class="look-heading-box">
+                    {% if block.settings.look_heading != blank %}	
+                    <h3>{{block.settings.look_heading}} <sup><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/str.png?v=1657016483"></sup></h3>
+                    {% endif %}
+
+                    {% if block.settings.look_subheading != blank %}
+                    {{block.settings.look_subheading}}
+                    {% endif %}
+                  </div>
+      			{% endif %}	
+      
+      			{% if block.settings.look_book_code != blank %}
+                  <div class="lookbook-body-content">
+                      {{ block.settings.look_book_code }}
+                  </div>
+      			{% endif %}	
+
+                 <div class="collection-slider-grid">
+                    <div class="collection-flex-row">
+                      <div class="collection-left-col">
+                        <div class="collection-content-wrap">
+                          <div class="collection-content-inner">
+                            {% if collection.title != blank %}
+                            <h5>{{collection.title}}</h5>
+                            {% endif %}
+                            {% if collection.description != blank %}
+                               <p>{{collection.description | strip_html | truncate: 252 }}</p>
+                            {% endif %}
+
+                            <div class="collection-btn-grid">
+                              {% if collection.url != blank %}	
+                              <a href="{{collection.url}}" class="collection-link">Shop all</a>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="collection-right-col">
+                        <div class="lookbook_prod_slider">
+                          {% for product in collections[block.settings.select_collection].products limit:10 %}
+                          <div class="bestseller_product">
+                            <div class="bestseller_product_inner">	
+                              {%- if product and product != empty -%}
+                              {%- liquid assign card_product = product -%}
+                              {%- if card_product.featured_media -%}
+                              <div class="bestseller_product_image">
+                                <a href="{{ card_product.url | default: '#' }}">
+                                  <img srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                               {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                               {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                               {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                               {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                               {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                               {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                                       src="{{ card_product.featured_media | img_url: '533x' }}"
+                                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                       alt="{{ card_product.featured_media.alt | escape }}"
+                                       class="motion-reduce"
+                                       {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                       width="{{ card_product.featured_media.width }}"
+                                       height="{{ card_product.featured_media.height }}"
+                                       >   
+                                </a>
+                              </div>
+                              {%- endif -%}
+                              {% assign productTags = card_product.tags | join: ', ' %}
+                              <div class="custom_product_wishlist">
+                                {% render 'ZooomyListWishlistColl', product: product %}
+                              </div> 
+                              {% comment %}
+                              {%  if card_product.metafields.product_discount.label != blank %}
+                              <div class="best_seller_discount_bar">
+                                <span>{{ card_product.metafields.product_discount.label }}</span>
+                              </div>
+                              {% elsif productTags contains 'New Arrivals' %}
+                              <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                              {% elsif productTags contains 'Sale' %}
+                              <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                              {% endif %}	
+                              {% endcomment %}
+
+                              <div class="bestseller_card__content">
+                                <div class="card__information">
+                                  <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                                    <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                                      {{ card_product.title | escape }}
+                                    </a>
+                                  </h3>
+                                  <div class="card-information">
+                                    {%- if card_product.metafields.reviews.rating.value != blank -%}
+                                    {% liquid assign rating_decimal = 0
+                                      assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                                      if decimal >= 0.3 and decimal <= 0.7
+                                        assign rating_decimal = 0.5
+                                      elsif decimal > 0.7
+                                        assign rating_decimal = 1
+                                      endif %}
+                                    <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                                      <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                                    </div>
+                                    <p class="rating-text caption">
+                                      <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+                                    </p>
+                                    <p class="rating-count caption">
+                                      <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                                      <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                                    </p>
+                                    {%- endif -%}
+
+                                    {% render 'bestseller-price', product: card_product, price_class: '' %}
+
+                                    {% assign color_active = false %}
+                                    {% for option in card_product.options %}
+                                    {% if option == 'Color' %}
+                                    {% assign color_active = true %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if card_product.variants.size > 1 and color_active == true %}
+                                    <div class="collection_product_color_swatches">
+                                      <ul>
+                                        {% for option in card_product.options %}
+                                        {% if option == 'Color' %}
+                                        {% assign index = forloop.index0 %}
+                                        {% assign colorlist = '' %}
+                                        {% assign color = '' %}
+                                        {% for variant in card_product.variants %}
+                                        {% capture color %}
+                                        {{ variant.options[index] }}
+                                        {% endcapture %}
+
+                                        {% unless colorlist contains color %} 
+                                        <li class="Swatches-Color {{color | strip}}" value="{{color | strip}}" data-img="{%- if variant.featured_media != null -%} {{ variant.featured_media | img_url:'master' }} {% endif %}" data-orignel="{%- if card_product.featured_image != null -%}{{ card_product.featured_media | img_url: 'master' }}{% endif %}"><span></span></li>	
+                                        {% assign colorlist = tempList %}
+                                        {% endunless %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endfor %}
+                                      </ul>  
+                                    </div> 
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </div>	
+                              {% endif %}
+                            </div>
+                          </div> 
+                          {% endfor%}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      
+      		{% endif %}
+      	{% endfor %}
+      	   
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "LookBook Grid",
+    "class":"shop_by_room_collections_list",
+    "blocks": [
+        {
+          "type": "room_collection_items",
+          "name": "Look Book",
+          "settings": [
+            {
+              "type":"text",
+              "id":"look_heading",
+              "label":"Heading"
+            },
+            {
+              "type":"richtext",
+              "id":"look_subheading",
+              "label":"Sub heading"
+            },
+			{
+              "type":"textarea",
+              "id":"look_book_code",
+              "label":"Look Book Code"
+            },
+            {
+              "type": "collection",
+              "id": "select_collection",
+              "label": "Chose Collection"
+            }	
+          ]
+        }
+    ]	
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

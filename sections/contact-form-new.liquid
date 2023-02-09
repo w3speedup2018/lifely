@@ -1,0 +1,315 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+<div class="mobile_collection_breadcrumb collection-breadcrumb">
+  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="/">Home</a>
+      </li>
+      {%- case t -%}
+      {%- when 'page' -%}
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+      </li>
+      {%- when 'product' -%}
+
+      {% assign product_collection = product.collections.first %}
+      {% if product_collection %}
+      {% for c in product.collections %}
+      {% if c.title != 'Best Seller' %}
+      {%- if c.url -%}
+      <li class="breadcrumbs__item">
+        {{ c.title | link_to: c.url }}
+      </li>
+      {%- endif -%}
+      {% endif %}
+      {% endfor %}			
+
+      {% endif %}
+
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+      </li>
+      {%- when 'collection' and collection.handle -%}
+      {%- if current_tags -%}
+      <li class="breadcrumbs__item">
+        {{ collection.title | link_to: collection.url }}
+      </li>
+      <li class="breadcrumbs__item">
+        {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+        <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+      </li>
+      {%- else -%}
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+      </li>
+      {%- endif -%}
+      {%- when 'blog' -%}
+      {%- if current_tags -%}
+      <li class="breadcrumbs__item">
+        {{ blog.title | link_to: blog.url }}
+      </li>
+      <li class="breadcrumbs__item">
+        {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+        <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+      </li>
+      {%- else -%}
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+      </li>
+      {%- endif -%}
+      {%- when 'article' -%}
+      <li class="breadcrumbs__item">
+        {{ blog.title | link_to: blog.url }}
+      </li>
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+      </li>
+      {%- else -%}
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ page_title | downcase }}</a>
+      </li>
+      {%- endcase -%}
+    </ol>
+  </nav>
+</div>
+<div class="contact_us_page_main">
+   <div class="contact-us-grid">
+      <div class="contact_form_left_section" style="background:{{ section.settings.content_bg }}">
+        	<div class="contact-form-left_section_inner">
+              <div class="clearance_breadcrumbs">
+                  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                    <ol class="breadcrumbs__list">
+                      <li class="breadcrumbs__item">
+                        <a class="breadcrumbs__link" href="/">Home</a>
+                      </li>
+                      <li class="breadcrumbs__item">
+                        <span class="curent_page">{{ page.title | escape }}</span>
+                      </li>                        
+                    </ol>
+                  </nav>
+                </div>
+              <div class="contact_other">
+                <div class="contact-other-inner">
+                  <h1 class="main-page-title page-title h0" style="color:{{section.settings.content_color}}">
+                     {{ page.title | escape }} <sup><svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M26.522 16.2322L17.2473 15.8069L20.9396 20.6981C21.205 21.1707 21.2755 21.7231 21.1368 22.2439C20.9981 22.7648 20.6607 23.2155 20.1923 23.5052C19.7172 23.7573 19.16 23.8229 18.6362 23.6882C18.1125 23.5536 17.6624 23.2292 17.3791 22.7822L15.5769 20.3578C15.5769 22.6546 15.3132 24.9088 15.2253 27.163C15.1374 29.4172 10.8297 29.8 11.0934 27.163C11.3571 24.526 11.4011 20.9533 11.5769 17.8059C9.77473 19.5072 8.06044 21.2085 6.43407 23.0374C6.24182 23.2264 6.01261 23.3765 5.7598 23.479C5.50699 23.5815 5.23564 23.6343 4.96154 23.6343C4.68744 23.6343 4.41609 23.5815 4.16328 23.479C3.91047 23.3765 3.68127 23.2264 3.48901 23.0374C3.11824 22.6328 2.91349 22.1108 2.91349 21.57C2.91349 21.0293 3.11824 20.5072 3.48901 20.1026C5.02747 18.4864 6.56593 16.9127 8.14835 15.339L2.47802 15.0838C-0.159341 15.0838 -0.159341 10.8306 2.47802 10.8306L8.71978 11.1283L5.37912 6.87511C5.14042 6.42885 5.08019 5.9131 5.20995 5.42656C5.33971 4.94002 5.65036 4.51687 6.08242 4.23811C6.56173 3.97294 7.12937 3.90014 7.66353 4.03532C8.19768 4.17049 8.65579 4.50287 8.93956 4.96115L12.0604 9.21438C12.0604 6.79004 12.0604 4.32318 12.4121 1.89884C12.7637 -0.5255 16.8077 -0.738161 16.544 1.89884C16.2802 4.53584 16.3242 6.49232 16.1923 8.78906C18.0824 7.34296 20.0165 5.9394 22.0385 4.53583C22.2709 4.39981 22.5294 4.31052 22.7983 4.27328C23.0673 4.23605 23.3412 4.25165 23.6038 4.31914C23.8664 4.38662 24.1122 4.50462 24.3266 4.66609C24.541 4.82755 24.7196 5.02917 24.8517 5.25889C25.1171 5.73149 25.1875 6.28385 25.0489 6.80472C24.9102 7.3256 24.5727 7.77629 24.1044 8.06602C22.2582 9.34199 20.4121 10.618 18.6538 12.0215L26.522 12.3618C29.1593 12.2767 29.1593 16.3598 26.522 16.2322Z" fill="{{section.settings.content_color}}"/>
+						</svg></sup>
+                  </h1>
+                  <div class="rte" style="color:{{section.settings.content_color}}">
+                    {{ page.content }}
+                  </div>                  
+                  {% if section.settings.contact_number != blank or section.settings.contact_email != blank or section.settings.faq_link != blank %}
+                  <ul class="other-way-list" style="color:{{section.settings.content_color}}">
+                    {% if section.settings.contact_number != blank %}
+                    <li>
+                      <span class="cticon"><a href="tel:{{section.settings.contact_number}}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21.9994 17.5326V20.5326C22.0006 20.8111 21.9435 21.0868 21.832 21.342C21.7204 21.5972 21.5567 21.8262 21.3515 22.0145C21.1463 22.2028 20.904 22.3461 20.6402 22.4354C20.3764 22.5246 20.0968 22.5577 19.8194 22.5326C16.7423 22.1983 13.7864 21.1468 11.1894 19.4626C8.77327 17.9273 6.72478 15.8788 5.18945 13.4626C3.49942 10.8539 2.44769 7.88364 2.11944 4.79265C2.09446 4.51611 2.12732 4.23741 2.21595 3.97427C2.30457 3.71113 2.44702 3.46933 2.63421 3.26427C2.82141 3.0592 3.04925 2.89536 3.30324 2.78317C3.55722 2.67098 3.83179 2.61291 4.10945 2.61265H7.10945C7.59475 2.60787 8.06524 2.77972 8.43321 3.09618C8.80118 3.41263 9.04152 3.85209 9.10944 4.33265C9.23607 5.29271 9.47089 6.23537 9.80945 7.14265C9.94399 7.50057 9.97311 7.88956 9.89335 8.26353C9.8136 8.63749 9.62831 8.98076 9.35944 9.25265L8.08945 10.5226C9.513 13.0262 11.5859 15.0991 14.0894 16.5226L15.3594 15.2526C15.6313 14.9838 15.9746 14.7985 16.3486 14.7187C16.7225 14.639 17.1115 14.6681 17.4694 14.8026C18.3767 15.1412 19.3194 15.376 20.2794 15.5026C20.7652 15.5712 21.2088 15.8159 21.526 16.1901C21.8431 16.5644 22.0116 17.0422 21.9994 17.5326Z" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></a> </span>
+                      <span><a href="tel:{{section.settings.contact_number}}">{{section.settings.contact_number}}</a></span>
+                    </li> 
+                    {% endif %}
+                    {% if section.settings.contact_email != blank %}
+                    <li>  
+                      <span class="cticon"><a href="mailto:{{section.settings.contact_email}}"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 4.61255H20C21.1 4.61255 22 5.51255 22 6.61255V18.6125C22 19.7125 21.1 20.6125 20 20.6125H4C2.9 20.6125 2 19.7125 2 18.6125V6.61255C2 5.51255 2.9 4.61255 4 4.61255Z" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M22 6.61255L12 13.6125L2 6.61255" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></a></span>
+                      <span><a href="mailto:{{section.settings.contact_email}}">{{section.settings.contact_email}}</a></span>
+                    </li>
+                    {% endif %}
+                    <li>
+                      <span  class="cticon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21 12.1126C21.0034 13.4324 20.6951 14.7345 20.1 15.9126C19.3944 17.3243 18.3098 18.5118 16.9674 19.3419C15.6251 20.172 14.0782 20.612 12.5 20.6126C11.1801 20.616 9.87812 20.3076 8.7 19.7126L3 21.6126L4.9 15.9126C4.30493 14.7345 3.99656 13.4324 4 12.1126C4.00061 10.5343 4.44061 8.98743 5.27072 7.64513C6.10083 6.30283 7.28825 5.21814 8.7 4.51258C9.87812 3.91751 11.1801 3.60914 12.5 3.61258H13C15.0843 3.72757 17.053 4.60734 18.5291 6.08344C20.0052 7.55953 20.885 9.52823 21 11.6126V12.1126Z" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></span> <span><a href="{{section.settings.chat_link}}">Live chat</a></span>
+                    </li>
+                    {% if section.settings.faq_link != blank %}	
+                    <li>
+                      <span  class="cticon"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22.6125C17.5228 22.6125 22 18.1354 22 12.6125C22 7.0897 17.5228 2.61255 12 2.61255C6.47715 2.61255 2 7.0897 2 12.6125C2 18.1354 6.47715 22.6125 12 22.6125Z" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.08984 9.61263C9.32495 8.9443 9.789 8.38074 10.3998 8.02176C11.0106 7.66279 11.7287 7.53157 12.427 7.65134C13.1253 7.77112 13.7587 8.13415 14.2149 8.67616C14.6712 9.21816 14.9209 9.90415 14.9198 10.6126C14.9198 12.6126 11.9198 13.6126 11.9198 13.6126" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12 17.6125H12.01" stroke="#F9F1E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg> </span> <span><a href="{{section.settings.faq_link}}">FAQ</a></span>
+                    </li>
+                    {% endif %}
+                  </ul>
+                  {% endif %}
+                </div>
+              </div> 	
+       	 </div>
+      </div>
+       <div class="contact_form_right_section">
+         	<div>
+         	<div class="contact-form-right_section_inner" style="background:{{ section.settings.form_bg }}">	
+              <h2 class="title title-wrapper--no-top-margin">{{ section.settings.heading | escape }}</h2>
+              <h3 class="contact-form-subheading">{{section.settings.subheading}}</h3>
+
+              {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
+              {%- if form.posted_successfully? -%}
+              <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+              {%- elsif form.errors -%}
+              <div class="form__message">
+                <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+              </div>
+              <ul class="form-status-list caption-large" role="list">
+                <li>
+                  <a href="#ContactForm-email" class="link">
+                    {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+                  </a>
+                </li>
+              </ul>
+              {%- endif -%}
+              <div class="contact__fields_">
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group"> 
+                      <label class="control-label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }} <span class="str-red">*</span></label>
+                      <input class="form-control" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Name*" required>
+                    </div>
+                  </div>          
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="control-label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }} <span class="str-red">*</span></label>
+                      <input type="tel" id="ContactForm-phone" class="form-control" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="Phone Number*" required>
+                    </div>
+                  </div>
+                   <div class="col-md-6 col-sm-12">
+                    <div class="form-group field--with-error">
+                      <label class="control-label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span class="str-red">*</span></label>
+                      {%- if form.errors contains 'email' -%}
+                      <small class="contact__field-error" id="ContactForm-email-error">
+                        <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                        <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+                      </small>
+                      {%- endif -%}
+                      <input
+                             autocomplete="email"
+                             type="email"
+                             id="ContactForm-email"
+                             class="form-control"
+                             name="contact[email]"
+                             spellcheck="false"
+                             autocapitalize="off"
+                             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                             aria-required="true"
+                             {% if form.errors contains 'email' %}
+                             aria-invalid="true"
+                             aria-describedby="ContactForm-email-error"
+                             {% endif %}
+                             placeholder="Email*" 
+                             required >
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label class="control-label" for="ContactForm-state">State <span class="str-red">*</span></label>
+                      <input type="text" id="ContactForm-state" class="form-control" autocomplete="state"  name="contact[{{ 'templates.contact.form.state' | t }}]" value="{% if form.state %}{{ form.state }}{% elsif customer %}{{ customer.state }}{% endif %}" placeholder="State*" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label class="control-label" for="ContactForm-subject">Subject <span class="str-red">*</span></label>
+                      <input type="text" id="ContactForm-subject" class="form-control" autocomplete="subject" name="contact[{{ 'templates.contact.form.subject' | t }}]" value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="Subject*" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label class="control-label" for="ContactForm-body">Message <span class="str-red">*</span></label>
+                      <textarea
+                                rows="3"
+                                id="ContactForm-body"
+                                class="text-area form-control"
+                                name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                                placeholder="Message*"
+                                required >
+                        {{- form.body -}}
+                      </textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="contact__button">
+                      <button type="submit" class="button">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%- endform -%}
+         </div>
+         </div> 
+      </div> 	
+   </div> 	
+</div>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Form Heading"
+    },
+	{
+      "type": "text",
+      "id": "subheading",
+      "default": "All required fields are marked by *",
+      "label": "Form Sub Heading"
+    },
+	{
+      "type": "text",
+      "id": "contact_number",
+      "label": "Contact Number"
+    },
+	{
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email"
+    },
+	{
+      "type": "text",
+      "id": "faq_link",
+      "label": "Faq Page Link"
+    },
+	{
+      "type": "text",
+      "id": "chat_link",
+      "label": "Live Chat Link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+	{
+      "type": "color",
+      "id": "content_bg",
+      "label": "Left Section Background"
+	},
+	{
+      "type": "color",
+      "id": "content_color",
+      "label": "Color",
+      "default":"#ffffff"
+    },
+	{
+      "type": "color",
+      "id": "form_bg",
+      "label": "Form Background"
+    },
+    {
+      "type": "html",
+      "id": "map",
+      "label": "Google map embed Code"
+    }
+	
+	
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

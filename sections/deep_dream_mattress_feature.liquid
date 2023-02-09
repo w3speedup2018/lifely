@@ -1,0 +1,77 @@
+{% if section.settings.heading != blank  and section.blocks.size > 0 %}
+  {% style %}
+    .all_deep_dream_fetured_logo_inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .all_deep_dream_fetured_logo_inner img {
+        max-width: 119px;
+    }
+    .all_deep_dream_fetured_logo_inner a:nth-child(3) img {
+        max-width: 180px;
+    }
+    .all_deep_dream_fetured_logo h2 {
+        text-align: center;
+        font-family: 'Gellix';
+        font-size: 20px;
+        color: #2C474B;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    .all_deep_dream_fetured_logo {
+        background: #f6f8f4;
+        padding: 30px;
+    }
+  {% endstyle %}  
+  <div class="container">
+    <div class="all_deep_dream_fetured_logo">
+        <h2>{{ section.settings.heading }}</h2>
+         <div class="all_deep_dream_fetured_logo_inner"> 
+            {% for block in section.blocks %}
+              {% if block.settings.logo != blank %}  
+                <a href="{{ block.settings.logo_link}}"><img src="{{ block.settings.logo | img_url:"master" }}" alt=""/></a>
+               {% endif %}
+            {% endfor %}
+         </div> 
+    </div>  
+  </div>  
+{% endif  %}  
+{% schema %}
+  {
+    "name": "Deep Dream Feture Logo",
+    "class":"all_deep_drams_mattress_feature",
+    "settings": [
+        {
+          "type":"text",
+          "id":"heading",
+          "label":"Section Heading"
+        }
+    ],
+    "blocks": [
+       {
+          "type": "mat-fetured-logo",
+          "name": "Featured Logo",
+          "settings": [
+			{
+              "type": "image_picker",
+              "id": "logo",
+              "label": "Logo"    
+            },
+			{
+              "type": "text",
+              "id": "logo_link",
+              "label": "Logo Link",
+              "default":"#"
+            }
+          ]	
+      }	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

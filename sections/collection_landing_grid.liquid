@@ -1,0 +1,232 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="landing_collection_grid">
+      	<div class="container">
+      	  {% if section.settings.title != blank or section.settings.subheading != blank %}	
+          	<div class="heading_sec">
+          		 {% if section.settings.title != blank %}
+              		<h2>{{ section.settings.title }}</h2>
+              	 {% endif %}
+              	 {% if section.settings.subheading != blank %}
+              		<p>{{ section.settings.subheading }}</p>
+              	 {% endif %}	
+          	</div>  
+          {% endif %}
+          <div class="desktop_collection_grid">
+              {% if section.blocks.size > 0 %}
+                  <div class="landing_collection_grid_slider">
+                      <div class="row">
+                        <div class="col-md-4">
+                          {%- for block in section.blocks -%}
+                            {% if forloop.index == 1 %}
+                                   <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                     
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}	
+                                       </a> 
+                                    </div>
+                            {% endif %}	
+                          {%- endfor -%}
+                         </div>  
+                        <div class="col-md-4">
+                            {%- for block in section.blocks -%}
+                              {% if forloop.index == 2 %}
+                                    <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                                  
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}		
+                                       </a> 
+                                    </div>
+                              {% endif %}	
+                            {%- endfor -%}
+                        </div>  
+                        <div class="col-md-4 landing_collection_grid_box_last">
+                            {%- for block in section.blocks -%}
+                              {% if forloop.index == 3 %}
+                                    <div class="collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                       
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}	
+                                       </a> 
+                                    </div>
+                                {% endif %}
+                              {% endfor %}
+
+                                <div class="landing_collection_small_box">
+                                 {%- for block in section.blocks -%}
+                                      {% if forloop.index == 4 or forloop.index == 5 or forloop.index == 6 %}
+                                        <div class="landing_collection_small_box_col">
+                                          <a href="{{ block.settings.collection.url }}" class="collection_link">                       
+                                            {% if block.settings.collection_image != blank %}
+                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyloaded lazy2" alt="{{ block.settings.collection_image.alt }}" />
+                                            {% endif %}
+                                            {%- if block.settings.collection.title != blank -%}
+                                            <div class="inner_small_col"><h3>{{- block.settings.collection.title | escape -}}</h3></div>
+                                            {%- endif -%}	
+                                          </a>	
+                                        </div>
+                                      {% endif %}                             
+                                   {% endfor %}
+                                </div>
+                         </div>  
+                      </div> 
+                    </div> 
+                {% endif %}
+            	{% if section.blocks.size > 6 %}
+            		<div class="landing_collection_grid_slider">
+                      <div class="row">
+                        <div class="col-md-4">
+                          {%- for block in section.blocks -%}
+                            {% if forloop.index == 7 %}
+                                   <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                     
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}	
+                                       </a> 
+                                    </div>
+                            {% endif %}	
+                          {%- endfor -%}
+                         </div>  
+                        <div class="col-md-4">
+                            {%- for block in section.blocks -%}
+                              {% if forloop.index == 8 %}
+                                    <div class="landing_collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                                  
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}		
+                                       </a> 
+                                    </div>
+                              {% endif %}	
+                            {%- endfor -%}
+                        </div>  
+                        <div class="col-md-4 landing_collection_grid_box_last">
+                            {%- for block in section.blocks -%}
+                              {% if forloop.index == 9 %}
+                                    <div class="collection_grid_box lazybg" data-style="background:url({{ block.settings.collection_image | img_url: 'master' }})">
+                                       <a href="{{ block.settings.collection.url }}" class="collection_link">                       
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          {%- endif -%}	
+                                       </a> 
+                                    </div>
+                                {% endif %}
+                              {% endfor %}
+
+                                <div class="landing_collection_small_box">
+                                 {%- for block in section.blocks -%}
+                                      {% if forloop.index == 10 or forloop.index == 11 or forloop.index == 12 %}
+                                        <div class="landing_collection_small_box_col">
+                                          <a href="{{ block.settings.collection.url }}" class="collection_link">                       
+                                            {% if block.settings.collection_image != blank %}
+                                              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" class="img-fluid lazyloaded lazy2" alt="{{ block.settings.collection_image.alt }}" />
+                                            {% endif %}
+                                            {%- if block.settings.collection.title != blank -%}
+                                            <div class="inner_small_col"><h3>{{- block.settings.collection.title | escape -}}</h3></div>
+                                            {%- endif -%}	
+                                          </a>	
+                                        </div>
+                                      {% endif %}                             
+                                   {% endfor %}
+                                </div>
+                         </div>  
+                      </div> 
+                    </div>
+                {% endif %}
+           </div>
+           <div class="mobile_collection_grid">
+             	<div id="collection_mobile_slider">
+					<div class="collection_mobile_slider_main">
+						{%- for block in section.blocks -%}
+                          {% if forloop.index <= 3 %}                                
+                                   	<div class="slide">
+                                     <a href="{{ block.settings.collection.url }}" class="collection_link">                     
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded lazy2"> 
+                                       	<div class="slide_content">
+                                          {%- if block.settings.collection.title != blank -%}
+                                              <h3>{{- block.settings.collection.title | escape -}}</h3>
+                                          	  <p>{{- block.settings.collection_desc -}}</p>
+                                          {%- endif -%}	
+                                        </div>  
+                                     </a> 
+                                  </div>
+                          {% endif %}	
+                        {%- endfor -%}  
+					</div>
+					<div class="collection_mobile_slider_thmb">
+						{%- for block in section.blocks -%}
+                          {% if forloop.index <= 3 %}                               
+                                   	<div class="slide">
+                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ block.settings.collection_image | img_url: 'master' }}" alt="" class="img-responsive lazyloaded lazy2"> 
+                                    </div>
+                          {% endif %}	
+                        {%- endfor -%} 
+					</div>
+				</div>
+           </div> 
+          	{% if section.settings.view_all_button_label != blank or section.settings.view_all_button_link != blank %}	
+          		<div class="view_all_collection">
+                  <a href="{{section.settings.view_all_button_link}}">{{ section.settings.view_all_button_label }}</a>
+          		</div>  
+          	{% endif %}
+      	</div>  
+	</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Collection Grid",
+	"max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Collections",
+        "label": "heading"
+      },
+ 	  {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_label",
+        "default": "View collection",
+        "label": "Button Label"
+      },
+	  {
+        "type": "text",
+        "id": "view_all_button_link",
+        "default": "#",
+        "label": "Button Link"
+      }
+	],
+	"blocks": [
+        {
+          "type": "collections_grid",
+          "name": "collectionss_grid",
+          "settings": [
+            {
+              "type": "collection",
+              "id": "collection",
+              "label": "Collection"
+            },
+			{
+              "type": "textarea", 
+              "id": "collection_desc",
+              "label": "Collection Description For Mobile"
+            },
+			{
+              "type": "image_picker",
+              "id": "collection_image",
+              "label": "Collection Image"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+

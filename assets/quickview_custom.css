@@ -1,0 +1,383 @@
+#quick-view button {
+    position: absolute;
+    top: 45%;
+    font-size: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background: #f5f5f5;
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+}
+#quick-view button.slick-prev.slick-arrow:before {
+    background: url("https://cdn.shopify.com/s/files/1/0562/7569/7706/t/4/assets/left.png") no-repeat;
+    background-position: 100%;
+    content: "\f100";
+    font-family: "FontAwesome 5 Brands";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+#quick-view button.slick-prev.slick-arrow {
+    left: 13px;
+    z-index: 1;
+}
+#quick-view button.slick-next.slick-arrow {
+    right: 13px;
+    z-index: 1;
+}
+#quick-view button.slick-next.slick-arrow:before {
+    background: url("https://cdn.shopify.com/s/files/1/0562/7569/7706/t/4/assets/right.png") no-repeat;
+    background-position: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+#quick-view button:before {
+    height: 12px;
+    width: 7px;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    z-index: 2;
+    cursor: pointer;
+}
+.quick_view_title_section h3.qv-product-title {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #282828 !important;
+    margin: 0;
+    text-transform: unset!important;
+}
+.quick_view_title_section  span.whislist_icon {
+    position: absolute;
+    top: 6px;
+    right: 1px;
+    border: 1px solid #cfcfd0;
+    display: flex;
+    align-items: center;
+    padding: 16px 0 0;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+.quick_view_title_section {
+    padding-right: 40px;
+    position: relative;
+}
+div#quick-view .preorder_discout_bar p {
+    display: block !important;
+    font-size: 14px;
+    line-height: 14px;
+}
+div#quick-view .preorder_discout_bar {
+    margin-top: 15px;
+}
+#quick-view .qv-product-price span {
+    color: #951e35 !important;
+}
+
+.quick_view_title_section  span.whislist_icon i.fa.fa-heart {
+    color: #2c474b;
+}
+.qv-content .holder h5 {
+    font-size: 27px;
+    margin-top: 13px;
+    font-weight: 600;
+}
+h5.qv-product-original-price span {
+    font-size: 23px;
+    color: #282828b8;
+}
+.qv-add-to-cart span.option {
+    font-size: 17px;
+    text-transform: capitalize !important;
+}
+.qv-add-to-cart select.option {
+    width: 200px;
+    height: 37px;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 0px 5px;
+    outline: unset !important;
+    box-sizing: unset;
+    box-shadow: unset;
+}
+.quick_view_quantity button {
+    background: #f9f1e5!important;
+    border-radius: 100px !important;
+    position: static !important;
+    width: 40px !important;
+    height: 40px !important;
+    text-align: center !important;
+}
+.quick_view_quantity button:before {
+    display: none !important;
+}
+.quick_view_quantity button svg {
+    width: 15px;
+    font-weight: 600;
+}
+.quick_view_quantity input {
+    background: #fff;
+    border: 1px solid #282828;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 80px;
+    margin: 0 10px;
+    text-align: center;
+    font-size: 17px;
+}
+.quick_view_quantity input::-webkit-outer-spin-button,
+.quick_view_quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quick_view_quantity input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.quick_view_quantity {
+    position: relative;
+    display: flex;
+    margin-bottom: 20px;
+}
+input.qv-add-button {
+    padding: 12px 16px;
+    background: #2c474b !important;
+    border-radius: 100px;
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+    text-transform: unset !important;
+}
+.quick_view_quantity {
+    margin-bottom: 20px;
+}
+#quick-view a.view-product {
+    display: inline-block;
+    margin-top: 34px;
+}
+#quick-view .qv-add-to-cart-response.success {
+    border-color: #f9f1e5;
+    color: #2c474b;
+    font-size: 17px;
+    background: #f9f1e5;
+}
+div#quick-view .preorder_discout_bar p {
+    margin-bottom: 0px;
+}
+.quick_view_quantity {
+    margin-top: 21px;
+}
+.qv-content hr {
+   display: none;
+}
+.qv-content .option-selection-color {
+    margin-top: 15px;
+}
+.qv-content .option-selection-size {
+    margin-top: 15px;
+}
+.qv-content .option-selection-options {
+    margin-top: 17px;
+}
+#quick-view .qv-add-button:disabled {
+    opacity: 0.5;
+}
+.fancybox-opened a.fancybox-item.fancybox-close {
+    display: block !important;
+}
+
+.fancybox-skin .quickview-loading {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: hsla(0,0%,100%,.9);
+    z-index: 4;
+}
+.fancybox-skin .quickview-loading span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    transform: translate(-50%,-50%);
+}
+.fancybox-skin .quickview-loading span:before {
+    display: block;
+    text-align: center;
+    content: url(new_loading.svg);
+    z-index: 3;
+    margin-bottom: 15px;
+    transform: scale(2.5);
+}
+.fancybox-skin .quickview-loading.added span:before {
+    font-size: 30px;
+    content: url(quick_view_check.svg);
+    margin-bottom: 15px;
+}
+.fancybox-skin .quickview-loading.error span:before {
+    font-size: 30px;
+    content: url(quick-view-cross-2.svg);
+    margin-bottom: 15px;
+}
+@media only screen and (min-width: 768px) {
+  ul#main-collection-product-grid li.grid__item:hover .quick-view-button {
+      display: block !important;
+      z-index: 111 !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+   .quick_view_title_section h3.qv-product-title {
+        font-size: 28px;
+        line-height: 35px;
+    }
+    .qv-content .holder h5 {
+        font-size: 23px;
+        margin-top: 12px;
+    }
+    h5.qv-product-original-price span {
+       font-size: 19px;
+       color: #282828b8;
+    }
+    .qv-content hr {
+       display: none;
+    }
+    main#MainContent > .shopify-section.section > .mobile_product_filter_count {
+        display: none !important;
+    }
+}
+
+
+@media only screen and (max-width:575px){
+  .fancybox-wrap {
+}
+
+.quick_view_title_section span.whislist_icon {
+    width: 30px;
+    height: 30px;
+    padding-top: 0px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+span.whislist_icon .zoomywishid .fa {
+    font-size: 12px;
+}
+
+.quick_view_title_section span.whislist_icon p {
+    margin: 0px;
+}
+
+.quick_view_title_section span.whislist_icon label {
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.quick_view_title_section span.whislist_icon .zoomywishid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label {}
+
+.quick_view_title_section span.whislist_icon p i {
+    padding: 0px;
+}
+
+.quick_view_title_section {
+    padding-right: 30px;
+}
+
+#quick-view .qv-product-title {
+    padding-right: 5px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.qv-content .holder h5 {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#quick-view .qv-product-original-price {
+    font-size: 14px;
+}
+
+h5.qv-product-original-price span {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+div#quick-view .preorder_discout_bar p {
+    font-size: 12px;
+    padding: 10px;
+}
+
+#quick-view .qv-add-button {
+    font-size: 14px;
+}
+
+.quick_view_quantity input {
+    font-size: 14px;
+}
+
+.quick_view_quantity button {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.quick_view_quantity button svg {
+    width: 13px;
+}
+  #quick-view .qv-content .holder {
+    width: 100%;
+}
+}
+
+
+@media only screen and (max-width:480px){
+.quick_view_quantity input {
+    width: 70px;
+}
+
+#quick-view .qv-content {
+    padding: 0px;
+}
+  #quick-view .qv-product-title {
+    font-size: 15px;
+  }
+  .fancybox-wrap.fancybox-desktop.fancybox-type-inline.fancybox-opened {
+    width: 88% !IMPORTANT;
+    LEFT: 0PX !IMPORTANT;
+    right: 0px !important;
+    margin: auto;
+}
+
+.fancybox-inner {
+    WIDTH: 100% !IMPORTANT;
+}
+}
+
+

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="lds-wave" width="20px" height="20px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="18.5" cy="49.4687" ng-attr-r="{{config.radius}}" fill="#2c474b" r="15">
+	<animate attributeName="cy" values="35;65;35" times="0;0.5;1" dur="1s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"/>
+</circle><circle cx="49.5" cy="36.4718" ng-attr-r="{{config.radius}}" fill="#2c474b" r="15">
+	<animate attributeName="cy" values="35;65;35" times="0;0.5;1" dur="1s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.3333333333333333s" repeatCount="indefinite"/>
+</circle><circle cx="80.5" cy="63.918" ng-attr-r="{{config.radius}}" fill="#2c474b" r="15">
+	<animate attributeName="cy" values="35;65;35" times="0;0.5;1" dur="1s" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.6666666666666666s" repeatCount="indefinite"/>
+</circle></svg>

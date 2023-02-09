@@ -1,0 +1,53 @@
+{% if section.settings.hlaf_image != blank or section.settings.heading != blank or section.settings.content != blank %}
+<div class="view_at_half_image_with_content ar_ready">
+	<div class="container">
+  		<div class="view_at_half_image_with_content_inner">
+      		<div class="view_at_home_hal_inner">
+              {% if section.settings.hlaf_image != blank %}
+                <div class="view_at_home_left_image"> 
+              		<img src="{{ section.settings.hlaf_image | img_url:'master' }}" alt="">
+              	</div> 
+              {% endif %}
+             {% if section.settings.heading != blank or section.settings.content != blank %}
+              <div class="view_at_home_right_content">
+                  {% if section.settings.heading != blank %}
+                	<h2>{{ section.settings.heading  }}</h2>
+                  {% endif %}
+                  {% if section.settings.content != blank %}
+                	{{ section.settings.content  }}
+                  {% endif %}
+              </div> 
+              {% endif %}
+          	</div>  
+      	</div>  
+  	</div>  
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "AR Ready Section",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "hlaf_image",
+          "label": "Left Image"    
+         },
+		{
+            "id": "heading",
+            "type": "text",
+            "label": "Section Heading"
+		 },
+		 {
+            "id": "content",
+            "type": "richtext",
+            "label": "Content"
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

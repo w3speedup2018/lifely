@@ -1,0 +1,202 @@
+{% style %}
+	div#main-collection-filters,div#CollectionProductGrid{
+        display:none;
+    }	
+{% endstyle %}
+<div class="mattress_collection_product_grid_section">
+	<div class="container">
+      {%  if section.settings.mat-heading != blank or section.settings.mat-content != blank %}		
+          <div class="section_heading">
+              {%  if section.settings.mat-heading != blank %}
+            	<h2>{{ section.settings.mat-heading }}</h2>
+              {% endif %}
+              {%  if section.settings.mat-content != blank %}
+             	 <p>{{ section.settings.mat-content }}</p>
+              {% endif %}
+          </div>
+      {% endif %}
+      
+      {% if section.blocks != blank and section.blocks %}
+      		<div class="mattress_products_grid_s">
+      			{% for block in  section.blocks %}
+              		{% assign product_mat = block.settings.mat-product %}
+                    {% assign index = forloop.index %}
+                    <div class="mattress_products_grid_c">
+                      	<div class="mattress_product_mobile_heading" style="display:none;">
+                      	   <a href="{{ product_mat.url }}">  	<h3>{{ product_mat.title }}</h3> </a>
+                      	</div>  
+                      	{% if block.settings.product-image != blank %}
+                             <div class="mattress_product_main_images mattress_product_main_images{{index}}">
+                                <a href="{{ product_mat.url }}"> <img src="{{ block.settings.product-image | img_url: '500x' }}">
+                                {% if block.settings.product-thumb-icon != blank %}
+                                    <span><img src="{{ block.settings.product-thumb-icon  | img_url: 'master' }}" alt=""></span>
+                                {% endif %}  
+                                </a>                                
+                              </div>
+                        {% else %}
+                           <div class="mattress_product_main_images mattress_product_main_images{{index}}">
+                                {% for image in product_mat.images  limit:1 %}
+                                  <a href="{{ product_mat.url }}"> <img src="{{ image.src | product_img_url: '500x' }}">
+                                    {% if block.settings.product-thumb-icon != blank %}
+                                        <span><img src="{{ block.settings.product-thumb-icon | img_url: 'master' }}" alt=""></span>
+                                    {% endif %} 
+                                  </a>
+                                {% endfor %}
+                           </div>
+                        {% endif %}  
+              
+                        {% comment %}
+                      	<div class="mattress_product_thumb_images mattress_product_thumb_images{{index}}">
+                          {% for image in product_mat.images  limit:3 %}
+                            <div class="mattress_product_thumb_images_inner" style="padding-right:10px;"> 
+                          		<img src="{{ image.src | product_img_url: '500x' }}">
+                          	</div>  
+                          {% endfor %}
+                      	</div>
+                        {% endcomment %}    
+                        <div class="mattress_product_con">
+                             <a href="{{ product_mat.url }}">  	<h3>{{ product_mat.title }}</h3> </a>
+                             <div class="product_detail_review"> {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product_mat %}</div>                       
+                          	{% assign price_min = 0 %}    
+                            {% for variant in product_mat.variants %}
+                              {% if price_min == 0 %}
+                                {% assign price_min = variant.price %}                        
+                              {% endif %}                          	
+                              {% if price_min > variant.price %}
+                                {% assign price_min = variant.price %}                              
+                              {% endif %}
+                            {% endfor %}  
+                          
+                          <div class="price_div">
+                            <p class="price_label">Price From </p>
+                             {% assign price_cal = price_min | money %}    
+                            <p class="price_amount">{{ price_cal | replace: ".00", "" }}</p>
+                          </div>
+                           <div class="mattress_product_mobile_price" style="display:none;">
+                      		  <div class="price_sec_p">
+                              	 <p class="price_label">Price From </p>
+                            	 <p class="price_amount">{{ price_cal | replace: ".00", "" }}</p>
+                              </div>
+                              <div class="wishlist_sec_p">
+                              		<div class="custom_product_wishlist">
+                                        {% render 'ZooomyListWishlistColl', product: product_mat %}
+                                    </div> 	
+                                    <div class="cart_link_product">                                     
+                                      <form method="post" action="/cart/add">
+                                        <input type="hidden" name="id" value="{{ product_mat.variants.first.id }}" />
+                                        <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                                        <button type="submit" class="mattress_landing_add_to_cart">{% render 'add_cart_landing_button' %}</button>
+                                      </form>
+                                </div>  
+                              </div>	
+                      	   </div> 
+                          {% if block.settings.product_short_desc != blank %}
+                              <div class="prooduct_short_desc">
+                                <p class="short_description">{{ block.settings.product_short_desc }}</p>             
+                              </div>
+                          {% endif %}
+                          {% if block.settings.product-benefits != blank %} 
+                              <div class="prooduct_benifits">
+                                   {{ block.settings.product-benefits }}       
+                              </div>
+                          {% endif %}
+                          <div class="mattress_product_shop_now">
+                            <a href="{{ product_mat.url }}">Shop Now</a>
+                          </div>  
+						                          
+                      	</div> 
+            
+                        <script>
+                          /*
+                            jQuery(document).ready(function($){ 
+                              var main_slider = '.mattress_product_main_images{{index}}';
+                              var thum_slider = '.mattress_product_thumb_images{{index}}';
+                                $(main_slider).slick({
+                                  slidesToShow: 1,
+                                  slidesToScroll: 1,
+                                  arrows: false,
+                                  fade: true,
+                                  asNavFor: thum_slider
+                                });
+                                $(thum_slider).slick({
+                                  slidesToShow: 3,
+                                  slidesToScroll: 1,
+                                  asNavFor: main_slider,
+                                  arrows: false,
+                                  dots: false,
+                                  cente{}rMode: false,
+                                  focusOnSelect: true
+                                });
+                            }); */
+                         </script>
+           
+             		</div>   
+              	{% endfor %}
+      		</div>  
+      {% endif %}
+  	</div>  
+</div>  
+
+
+{% schema %}
+  {
+    "name": "Mattress Products",
+    "class": "mattresses_product_custom_grid_section",
+    "settings": [
+         {
+            "id": "mat-heading",
+            "type": "text",
+            "label": "Heading"
+          },
+          {
+            "id": "mat-content",
+            "type": "textarea",
+            "label": "Content"
+          },			
+          {
+            "type": "text",
+            "id": "section_class",
+            "label": "section class"
+          }
+	],
+	"blocks": [
+       {
+          "type": "mat-products",
+          "name": "Products",
+          "settings": [
+			{
+              "type": "product",
+              "id": "mat-product",
+              "label": "Mattress Product"    
+            },
+			{
+              "type": "text",
+              "id": "product_short_desc",
+              "label": "Short Description"    
+            },
+			{
+				"type": "html",
+				"id": "product-benefits",
+				"label": "Product Benefits"
+			},
+            {
+				"type": "image_picker",
+				"id": "product-image",
+				"label": "Product Image"
+			 },
+            {
+				"type": "image_picker",
+				"id": "product-thumb-icon",
+				"label": "Bedbuyer Logo"
+			 }
+          ]	
+      }	
+    ]		
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

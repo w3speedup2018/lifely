@@ -1,0 +1,93 @@
+{% if section.settings.banner_heading != blank or section.settings.banner_image != blank  %}
+
+  <section class="blog_banner" {% if section.settings.banner_image != blank %}style="height:334px;background:url({{ section.settings.banner_image | img_url: 'master' }}) no-repeat right center;background-size:cover;"{% endif %}>
+	<div class="blog-breadcrumb">
+     	<div style="padding-left:40px;">
+          <span><a href="/" >Home </a></span> <span> / Blog</span> 
+        </div>
+   	 </div>
+    <div class="blog-inner">
+       <div class="container" style="background:#fcf9f4">   
+         <center>
+          <h1 class="blog-heading">
+              {% if section.settings.banner_heading != blank %}
+                  {{section.settings.banner_heading}}
+              {% endif %}  
+          </h1>
+          <div class="blog-subheading">
+            {% if section.settings.banner_sub_heading != blank %}
+                 {{section.settings.banner_sub_heading}}		
+             {% endif %}
+          </div>
+          <div class="blog-banner-icons blog_banner_tags_tab">
+              <div class="d-flex justify-content-center">
+                <div class="flex-icon-box">
+                  <a class="active" href= "https://lifely.com.au/blogs/{{ blog.handle}}">
+                    <img src="{{ 'all_1.png' | asset_url }}"/>
+                  </a>
+                </div>
+                <div class="flex-icon-box">
+                  <a href= "https://lifely.com.au/blogs/{{ blog.handle}}/tagged/tips">
+                    <img src="{{ 'tips_1.png' | asset_url }}"/>
+                      </a>
+                 </div>
+                 <div class="flex-icon-box">
+                   <a href= "https://lifely.com.au/blogs/{{ blog.handle}}/tagged/design-trends">
+                     <img src="{{ 'design_1.png' | asset_url }}"/>
+                   </a>
+                 </div>
+                 <div class="flex-icon-box">
+                   <a href= "https://lifely.com.au/blogs/{{ blog.handle}}/tagged/style">
+                     <img src="{{ 'style_1.png' | asset_url }}">
+                  </a>
+                 </div>
+              </div>
+          </div>
+          </center>   
+      </div>
+    </div>
+  </section>
+
+
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		 {
+            "id": "banner_heading",
+            "type": "text",
+            "label": "Heading"
+		 },
+		 {
+            "id": "banner_sub_heading",
+            "type": "richtext",
+            "label": "Add Banner Content",
+            "default": "<p>Add your text here</p>"
+         },
+		 {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image"    
+         },
+		 {
+            "id": "banner_button_label",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Shop Now"
+         },
+		 {
+            "id": "banner_button_link",
+            "type": "text",
+            "label": "Button Link"
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

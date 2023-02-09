@@ -1,0 +1,49 @@
+<section class="popular-cat-wrap hide-on-desktop">
+  <div class="container">
+    {% if section.settings.title != blank %}
+  	  <div class="title-head"><h3>{{section.settings.title}}</h3></div>
+    {% endif %}
+    <div class="popular-ct-grid">
+      <ul>
+        {% for block in section.blocks %}
+        	{% if block.settings.category_name != blank %}
+      		  <li><a href="{{block.settings.category_url}}">{{block.settings.category_name}}</a></li>
+			{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Popular Categories",
+  "tag": "section",
+  "class": "popular-cats",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    }
+  ],
+ "blocks": [
+    {
+      "type": "blog_category",
+      "name": "Popular Category",
+      "settings": [
+        {
+          "id": "category_name",
+          "type": "text",
+          "label": "Category Name"
+        },
+        {
+          "id": "category_url",
+          "type": "text",
+          "label": "Category Url"
+        }
+      ]
+    }
+  ]	
+}
+{% endschema %}

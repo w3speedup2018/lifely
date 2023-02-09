@@ -1,0 +1,67 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+
+{%- if blog.articles_count > 0 -%}
+  <div class="blog-main">
+    <div class="container">
+      {% paginate blog.articles by 1 %}
+      {%- for article in blog.articles limit: section.settings.post_limit -%}
+		<div class="story-post-grid">
+        	<div class="story-grid-inner">
+              <div class="story-flex-row">
+                <div class="story-thumb">
+                  <a href="{{ article.url }}">
+                    {%- if article.image -%}
+                      {{ article | img_url: 'large', scale: 2 | img_tag: '' }}
+                    {%- endif -%}
+                  </a>
+                </div>
+                <div class="story-title">
+                  <h2>{{ article.title }}</h2>
+                  <div class="story-small-desc">
+                    {%- if article.excerpt.size > 0 -%}
+                      {{ article.excerpt }}
+                    {%- else -%}
+                      {{ article.content | strip_html | truncate: 150 }}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+              <div class="story-full-description">
+                   {{ article.content }}
+              </div>
+          	</div>
+      	</div>
+      {%- endfor -%}
+      <div class="pagination-custom">
+        {{ paginate | default_pagination: next: '>', previous: '<' }} 
+      </div>
+      {% endpaginate %}
+    </div>
+  </div> 
+{%- endif -%}
+
+
+
+
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "stories-posts",
+  "settings": [
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "label": "Posts",
+      "min": 0,
+      "max": 4,
+	  "default": 4	
+    }
+  ]
+}
+{% endschema %}

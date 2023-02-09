@@ -1,0 +1,130 @@
+/*****************************
+*
+* PLP 
+*
+*****************************/
+.optLLY-002-v-1 .grid__item .price__sale span.price-item.price-item--sale {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    color: #951E35;
+    white-space: nowrap;
+}
+
+.optLLY-002-v-1 .price--on-sale .price__container .price__sale {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.5px;
+    color: #6E6E6E;
+}
+
+.optLLY-002-v-1 .price--on-sale .price__container .price__sale .opt-price-tag {
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .optLLY-002-v-1 .grid__item .price__sale span.price-item.price-item--sale {
+        display: block;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 475px) {
+    .optLLY-002-v-1 .grid__item .price__sale span.price-item.price-item--sale {
+        display: block;
+        white-space: normal;
+    }
+}
+
+
+/*****************************
+*
+* PDP 
+*
+*****************************/
+
+.optLLY-002-v-1 .product__info-wrapper div.no-js-hidden {
+    margin: 20px 0;
+}
+
+.optLLY-002-v-1 .opt-price__wrapper {
+    width: 100%;
+}
+
+.optLLY-002-v-1 .opt-price__comapre-price {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.5px;
+    color: #282828;
+}
+
+.optLLY-002-v-1 .opt-price__compare-from {
+    display: none;
+}
+
+.optLLY-002-v-1 .opt-price__compare-from.active {
+    display: inline;
+}
+
+.optLLY-002-v-1 .opt-price__compare-number {
+    text-decoration: line-through;
+}
+
+.optLLY-002-v-1 .opt-price__current-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 0px;
+}
+
+.optLLY-002-v-1 .opt-price__current-price {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    color: #951E35;
+    margin-top: 10px;
+}
+
+.optLLY-002-v-1 .opt-price__current-fortnight {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .optLLY-002-v-1 .opt-price__current-wrapper {
+        display: block;
+    }
+
+    .optLLY-002-v-1 .opt-price__current-fortnight {
+        background: #ECEEEA;
+        padding: 16px 20px;
+        margin-top: 10px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.5px;
+    }
+}

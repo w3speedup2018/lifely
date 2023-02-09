@@ -1,0 +1,32 @@
+{% assign description = collection.description %}
+{% assign title = collection.title %}
+{% assign image = collection.featured_image %}
+{% if description != blank and title != blank %}
+   <div class="collection_top_description" style="background:{{section.settings.color_code}}">
+        <div class="page-width">
+            <div class="collection_top_description_inner">
+                {% if description != blank %}
+                    <div class="top_content_item for__desktop">                         
+                        <div class="desc-full collection_description">{{ description }}</div>
+                    </div>  
+                    <div class="top_content_item for__mobile">                         
+                        <div class="desc-full collection_description">{{ description }} </div>
+                    </div>  
+                {% endif %}
+            </div>  
+        </div>  
+    </div> 
+{% endif %}
+{% schema %}
+  {
+    "name": "Top Description",
+    "settings": [
+		{
+          "id": "color_code",
+          "type": "color",
+		  "default": "#FCF9F4",	
+          "label": "Background Color"
+        }
+	]
+  }
+{% endschema %}

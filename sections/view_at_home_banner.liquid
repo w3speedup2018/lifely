@@ -1,0 +1,52 @@
+{% if section.settings.banner_image != blank %}
+<style>
+  .view_at_home_banner{
+    background:url({{section.settings.banner_image | img_url:'master' }});
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    padding: 100px 0px;
+  }
+
+</style>  
+<div class="view_at_home_banner">
+	<div class="container">
+  		<div class="view_at_banner_inner">
+      		{% if section.settings.banner_heading != blank %}
+          		<h1>{{ section.settings.banner_heading }}</h1>
+          	{% endif %}
+            {% if section.settings.banner_sub_heading != blank %}
+          		<div class="view_at_banner_content">{{ section.settings.banner_sub_heading }}</div>
+          	{% endif %}
+      	</div>  
+  	</div>  
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+		{
+            "id": "banner_heading",
+            "type": "text",
+            "label": "Heading"
+		 },
+		 {
+            "id": "banner_sub_heading",
+            "type": "richtext",
+            "label": "Add Banner Content"
+         },
+		 {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Background Image"    
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

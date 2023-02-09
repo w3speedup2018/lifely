@@ -1,0 +1,62 @@
+{% assign section_heading = section.settings.section_heading %}
+{% assign blocks = section.blocks %}
+{% if section_heading != blank or blocks.size > 0 %}
+  <div class="popular-category-main">
+    <div class="container">
+      <div class="popular-cat-inner">
+        {% if section_heading != blank %}
+        <h3>{{section_heading}}</h3> 
+        {% endif %}
+        <div class="d-flex justify-content-center popular-cat-slider-mobile">
+            {% for block in blocks %}
+          		{% assign index = forloop.index0 %}
+          		{% if block.settings.cat_name != blank and block.settings.cat_url %}	
+                  <span class="popular-cat-tags">
+                    <a href="{{block.settings.cat_url}}">{{block.settings.cat_name}}</a>
+                  </span>
+          		{% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Mobile Popular Category",
+	"class":"mobile_popular_category",
+    "settings": [
+		{
+			"type":"text",
+			"id":"section_heading",
+			"label":"Heading"	
+		}
+	],
+	"blocks": [
+        {
+          "type": "popular_cat",
+          "name": "Category",
+          "settings": [
+            {
+              "type": "text",
+              "id": "cat_name",
+              "label": "Title"
+            },
+			{
+              "type": "url",
+              "id": "cat_url",
+              "label": "Link"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

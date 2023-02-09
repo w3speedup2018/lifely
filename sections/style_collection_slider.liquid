@@ -1,0 +1,67 @@
+{% style %}
+  	.style_collection_gallery{
+		position:relative;
+	}
+	span.pagingInfo_slider {
+      position: absolute;
+      bottom: 19px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #FFFFFF;
+  }
+  {% if collection.description != blank %}
+	.collection_description {
+        padding: 25px 0 35px;
+    }
+    .collection_description{
+		font-family: 'Gellix';
+     	font-style: normal;
+     	 font-weight: 500;
+     	 font-size: 14px;
+     	 line-height: 20px;
+     	 text-align: center;
+     	 color: #574E40;	
+	}
+  {% else %}
+   .Style_collection_gallery_slider{
+		margin-bottom:40px;
+	}
+  {% endif %}
+{% endstyle %}
+<div class="style_collection_gallery">
+  {% if collection.metafields.shop_by_style.gallery_image != blank %}
+  <div class="shop_by_style_slider_desktop" id="shop_by_style_slider_desktop_{{forloop.index}}" data-id="{{forloop.index}}">
+    {% for image in collection.metafields.shop_by_style.gallery_image %}
+    <img src="{{image}}" alt=""/>
+    {% endfor %}
+  </div> 
+  <span class="pagingInfo_slider" id="pagingInfo_slider_{{forloop.index}}"></span>
+  {% else %}
+    <div class="shop_by_style_slider_desktop" id="shop_by_style_slider_desktop">
+      <img srcset="{{ collection.image | img_url: 'master' }} 1536w,{{ collection.image | img_url: '1200x' }} 1280w,{{ collection.image | img_url: '720x' }} 768w,{{ collection.image | img_url: '360x'}} 320w" alt=""/>
+    </div> 
+  {% endif %} 
+</div>
+{% if collection.description != blank %}
+	<div class="collection_description"> 
+		<div class="page-width">
+      		{{ collection.description }}
+      	</div>  
+	</div>
+      
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Gallery Slider",
+  	"class":"Style_collection_gallery_slider"	
+  }
+{% endschema %}
+

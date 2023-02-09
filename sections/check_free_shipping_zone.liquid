@@ -1,0 +1,61 @@
+{% if section.settings.banner_heading != blank or section.settings.banner_subheading != blank %}
+	<section class="check-delivery-area-grid" style="background:{% if section.settings.background != blank %}{{section.settings.background}}{% endif%}">
+    	 <div class="check-delivery-inner">
+           <div class="container">
+             {% if section.settings.banner_heading != blank %}
+             	<h2>{{section.settings.banner_heading}}</h2>
+             {% endif %}
+
+             <div class="check-area-form-grid">
+                 {% if section.settings.banner_subheading != blank %}
+                	 <h5>{{section.settings.banner_subheading}}</h5>
+                 {% endif %}
+               		
+                 <form id="shipping-area-check" method="post">
+                   	<div class="form-flex-row">
+                      <div class="form-group">
+                          <input type="text" name="postal_code" id="postal_code" class="form-control" placeholder="Enter Postcode">
+                          <input type="submit" name="submit" id="postcode_check" value="Check">	
+                      </div>
+                      <p class="success-message" style="display:none;"><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Group_1839_9d7d5ffd-6871-4fbe-9ea1-be2b8709ae99.png?v=1654861542" alt="Image"> <span class="grn-text">FREE</span> shipping fee</span></p>
+                   	  <p class="error-message" style="display:none;">No Free Shipping Zone, check delivery charge in product page or shopping!</p>	 
+                    </div>
+               	 </form>
+               	
+             </div>
+             
+           </div>
+      	 </div>
+	</section>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Check Delivery Area",
+    "settings": [
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

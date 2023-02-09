@@ -1,0 +1,47 @@
+{% if section.settings.review_code != blank or section.settings.dummy_image != blank %}
+	<div class="page_width">
+		<div class="review_html_inner">
+      		{% if section.settings.review_code != blank %}
+          		{{ section.settings.review_code }}
+  			{% else %}
+          		<img src="{{ section.settings.dummy_image | img_url:"master" }}" alt="" class="review_placeholder"/>
+           	{% endif %}
+      	</div> 
+      	{% if section.settings.mobile_image != blank %}
+          <div class="mobile_bootom_image_review" style="display:none">
+              <div class="page-width">
+				<img src="{{ section.settings.mobile_image | img_url:"master" }}" alt=""/>
+              </div>  
+          </div> 
+       {% endif %}
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Review Html",
+     "class":"review_html_section",
+    "settings": [
+		{
+          "type":"html",
+          "id":"review_code",
+          "label":"Review Code"
+		},
+		{
+          "type":"image_picker",
+          "id":"dummy_image",
+          "label":"Placeholder Image"
+		},
+		{
+          "type":"image_picker",
+          "id":"mobile_image",
+          "label":"Mobile Review Bottom Image"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

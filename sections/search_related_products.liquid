@@ -1,0 +1,244 @@
+{% if section.blocks.size > 0 %}
+    <div class="clearfix"></div>
+    <div class="related_products" data-section-id="{{ section.id }}">
+    
+    {% assign heading = section.settings.related_title %}
+    {% assign same_vendor = false %}
+    {% assign same_type = false %}
+    {% assign exclusions = 'frontpage,all' | split: ',' %}
+
+    {% assign counter = 0 %}  
+    {% if section.blocks != blank %}
+      {% capture related_items %}
+        <div class="related_slider active">	
+          {% for block in section.blocks %}
+           		{% assign card_product = block.settings.product %}
+				{%- case block.type -%}
+                {%- when 'shop_collection' -%}
+					{%- if card_product and card_product != empty -%}
+					<div class="bestseller_product">
+                        {%- if card_product.featured_media -%}
+                         <div class="bestseller_product_image">                     
+                           <img
+                                srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                        {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                        {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                        {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                        {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                        {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                        {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                                src="{{ card_product.featured_media | img_url: '533x' }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                alt="{{ card_product.featured_media.alt | escape }}"
+                                class="motion-reduce"
+                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                width="{{ card_product.featured_media.width }}"
+                                height="{{ card_product.featured_media.height }}"
+                                >                            
+                         </div>
+                         {%- endif -%}
+                         {% assign productTags = card_product.tags | join: ', ' %}
+                         <div class="custom_product_wishlist">
+                           {% render 'ZooomyListWishlistColl', product: card_product %}
+                         </div>
+                         {%  if card_product.metafields.product_discount.label != blank %}
+                         <div class="best_seller_discount_bar">
+                           <span>{{ card_product.metafields.product_discount.label }}</span>
+                         </div>
+                         {% elsif productTags contains 'New Arrivals' %}
+                         <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                         {% elsif productTags contains 'Sale' %}
+                         <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                         {% endif %}	 
+                         <div class="bestseller_card__content">
+                           <div class="card__information">
+                             <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                               <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                                 {{ card_product.title | escape }}
+                               </a>
+                             </h3>
+                             <div class="card-information">
+                               {%- if card_product.metafields.reviews.rating.value != blank -%}
+                               {% liquid
+                                                assign rating_decimal = 0
+                                                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                                                if decimal >= 0.3 and decimal <= 0.7
+                                                  assign rating_decimal = 0.5
+                                                elsif decimal > 0.7
+                                                  assign rating_decimal = 1
+                                                endif
+                                              %}
+                               <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                                 <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                               </div>
+                               <p class="rating-text caption">
+                                 <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+                               </p>
+                               <p class="rating-count caption">
+                                 <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                                 <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                               </p>
+                               {%- endif -%}
+
+                               {% render 'bestseller-price', product: card_product, price_class: '' %}
+                             </div>
+                           </div>
+                         </div>	
+           			</div>  
+					{% endif %}
+           		{% assign counter = counter | plus: 1 %}
+				
+           		{% endcase %}
+          {% endfor %}
+    	</div>
+      {% endcapture %}
+
+      {% endif %}
+
+
+      {% if section.blocks.size > 0 %}
+      <div class="related_product_tab_nav">
+        <ul>         
+          <li><a class="active_tab entire_collection" href="related_products">Shop entire collection</a></li>   
+          <li><a class="also_like_produts" href="also_like_produts">You may also like</a></li>   
+        </ul>
+      </div>  
+      {% endif %}
+
+
+      {% assign related_items = related_items | trim %}
+      {% unless related_items == blank %}    
+           {{ related_items }}
+      {% endunless %}
+
+
+      {% assign heading = 'You may also like' %}
+      {% assign limit = 10 %}
+      {% if section.blocks != blank %}     
+      {% assign newcounter = 0 %}
+       <div class="also_like_slider">	
+          {% for block in section.blocks %}       
+             {% assign card_product = block.settings.product %} 
+                {%- case block.type -%}
+                {%- when 'you_might_like' -%}
+					{%- if card_product and card_product != empty -%}
+					<div class="bestseller_product">
+                        {%- if card_product.featured_media -%}
+                          <div class="bestseller_product_image">                     
+                              <img
+                                srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                  {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                  {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                                src="{{ card_product.featured_media | img_url: '533x' }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                alt="{{ card_product.featured_media.alt | escape }}"
+                                class="motion-reduce"
+                                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                width="{{ card_product.featured_media.width }}"
+                                height="{{ card_product.featured_media.height }}"
+                              >                            
+                          </div>
+                        {%- endif -%}
+                       {% assign productTags = card_product.tags | join: ', ' %}
+                       <div class="custom_product_wishlist">
+                             {% render 'ZooomyListWishlistColl', product: card_product %}
+                        </div>
+                        {%  if card_product.metafields.product_discount.label != blank %}
+                          <div class="best_seller_discount_bar">
+                            <span>{{ card_product.metafields.product_discount.label }}</span>
+                          </div>
+                          {% elsif productTags contains 'New Arrivals' %}
+                          <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                          {% elsif productTags contains 'Sale' %}
+                          <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                        {% endif %}	
+                        <div class="bestseller_card__content">
+                          <div class="card__information">
+                            <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                              <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                                {{ card_product.title | escape }}
+                              </a>
+                            </h3>
+                            <div class="card-information">
+                              {%- if card_product.metafields.reviews.rating.value != blank -%}
+                                {% liquid
+                                  assign rating_decimal = 0
+                                  assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                                  if decimal >= 0.3 and decimal <= 0.7
+                                    assign rating_decimal = 0.5
+                                  elsif decimal > 0.7
+                                    assign rating_decimal = 1
+                                  endif
+                                %}
+                                <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                                  <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                                </div>
+                                <p class="rating-text caption">
+                                  <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+                                </p>
+                                <p class="rating-count caption">
+                                  <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                                  <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                                </p>
+                              {%- endif -%}
+
+                              {% render 'bestseller-price', product: card_product, price_class: '' %}
+                            </div>
+                          </div>
+                        </div>	
+                    </div> 
+					{% endif %}
+                 {% assign newcounter = newcounter | plus: 1 %}
+             {% endcase %}
+         {% endfor %}
+       </div>
+      {% endif %}
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Search Related Product",
+    "settings": [
+		{
+			"type":"text",
+			"id":"related_title",
+            "label":"Section Heading"
+		}
+	],
+	"blocks": [
+		{
+          "type": "shop_collection",
+          "name": "Add Collection Product",
+          "settings": [
+            {
+              "type": "product",
+              "id": "product",
+              "label": "Product"
+            }
+          ]
+        },
+		{
+          "type": "you_might_like",
+          "name": "Add Like Product",
+          "settings": [
+            {
+              "type": "product",
+              "id": "product",
+              "label": "Product"
+            }
+          ]
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

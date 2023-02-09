@@ -1,0 +1,59 @@
+{% if section.settings.heading != blank or section.settings.content != blank or section.settings.email != blank or section.settings.phone_number != blank %}
+	<div class="view_at_home_contact_us">
+		<div class="page-width">
+      		<div class="view_at_home_contact_us_inner">
+         		<div class="heading_sec_view">
+                  {% if section.settings.heading != blank %}
+                      <h2>{{ section.settings.heading }}</h2>
+                  {% endif %}
+                  {% if section.settings.content != blank %}
+                      {{ section.settings.content }}
+                  {% endif %}
+              	</div>
+              	 {% if section.settings.heading != blank %}
+                    <div class="contact_info_view_at">
+                         {% if section.settings.email != blank %}
+                      <h3><span><img src="{{ 'Mail.png' | asset_url }}" alt=""/></span>{{ section.settings.email }}</h3>
+                      {% endif %}
+                      {% if section.settings.phone_number != blank %}
+                      <h3><span><img src="{{ 'Phone.png' | asset_url }}" alt=""/></span>{{ section.settings.phone_number }}</h3>
+                      {% endif  %}
+                    </div>  
+              	{% endif %}
+          	</div>  
+      	</div>  
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Contact Us",
+    "settings": [
+		{
+            "id": "heading",
+            "type": "text",
+            "label": "Section Heading"
+		 },
+		 {
+            "id": "content",
+            "type": "richtext",
+            "label": "Content"
+         },
+		 {
+          "type": "text",
+          "id": "email",
+          "label": "Email Address"    
+         },
+		 {
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone Number"    
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

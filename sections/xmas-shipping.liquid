@@ -1,0 +1,129 @@
+{% if section.settings.heading != blank or section.settings.subheading != blank %}
+  {% style %}
+      .xmas-bar_bar{
+         background: {{section.settings.background_color}};
+         padding:20px 0px;
+         margin-top: 50px;
+      }
+      .xmas-bar h2{
+          font-family: 'Gellix';
+          font-style: normal;
+          font-weight: 500;
+          font-size:30px;
+          line-height:1.4;
+          text-transform: capitalize;
+          color: #fff;
+          margin-bottom: 0;
+      }
+
+    .xmas-bar { background:#F9F1E5; }  
+    .xmas-bar .img__ { padding:40px; }
+    .xmas-bar .mobile_banner_img { display:none; }
+    .xmas-bar .img__ img { max-width:100%; height:auto; }    
+    .xmas-bar h2 img {     max-width: 100px;     vertical-align: top; }
+
+      .xmas-bar h3{
+          font-family: 'Gellix';
+          font-style: normal;
+          font-weight:normal;
+          font-size:16px;
+          line-height:1.4;
+          color: #fff;
+      }
+      @media only screen and (max-width: 991px){
+          .xmas-bar_bar{
+             margin-top: 20px;
+          }
+    
+        .xmas-bar h2 {     font-size: 18px; }
+        .xmas-bar .desk_banner_img { display:none; }
+            .xmas-bar .mobile_banner_img { display:block; }
+
+      }
+  {% endstyle %}
+  <div class="xmas-bar_bar" id="christmas-delivery">
+    <div class="page-width">
+      <div class="text-center">
+        <h2>
+          <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.14285 13.8114H30.8571M11.6676 9.13283V3.64282M23.3248 3.64282V9.13283M8.59523 27.9285H26.4048C27.5856 27.9285 28.7181 27.4328 29.5531 26.5503C30.388 25.6678 30.8571 24.4709 30.8571 23.2228V10.6742C30.8571 9.4262 30.388 8.22928 29.5531 7.34678C28.7181 6.46429 27.5856 5.96851 26.4048 5.96851H8.59523C7.41439 5.96851 6.28191 6.46429 5.44693 7.34678C4.61194 8.22928 4.14285 9.4262 4.14285 10.6742V23.2228C4.14285 24.4709 4.61194 25.6678 5.44693 26.5503C6.28191 27.4328 7.41439 27.9285 8.59523 27.9285Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          {{ section.settings.heading }}
+        </h2>
+        <h3>{{ section.settings.subheading }}</h3>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+{% if section.settings.desk_banner_image != blank %}
+
+              
+              <div class="img__">
+              <div class="page-width">
+
+
+<img class="desk_banner_img" src="{{ section.settings.desk_banner_image | img_url:"master"}}" alt="">
+
+       {% if section.settings.mobile_banner_image != blank %}
+         <img class="mobile_banner_img" src="{{ section.settings.mobile_banner_image | img_url:"master"}}" alt="">
+{% endif %}
+                
+</div>
+</div>
+{% endif %}
+
+
+
+ 
+
+{% schema %}
+{
+  "name": "Xmas Coupon Bar",
+  "class":"xmas-bar",
+  "settings": [
+    {
+      "type":"text",
+      "id":"heading",
+      "label":"Heading"
+    },
+    {
+      "type":"text",
+      "id":"subheading",
+      "label":"Heading"
+    },
+    {
+      "type":"color",
+      "id":"background_color",
+      "label":"Background Color",
+      "default":"#ffffff"
+    },
+
+    {
+"type":"image_picker",
+"id":"desk_banner_image",
+"label":"Desktop Image"
+},
+    
+    {
+"type":"image_picker",
+"id":"mobile_banner_image",
+"label":"Mobile  Image"
+}
+    
+  ],
+"presets": [
+{
+"name": "Xmas Coupon Bar"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

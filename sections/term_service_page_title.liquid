@@ -1,0 +1,37 @@
+<section class="term-service-content-grid" {% if section.settings.background_color != blank %}style="background-color:{{section.settings.background_color}}"{% endif %}>
+  <div class="container"> 
+    <div class="term-service-breadcrub hide-on-desktop">
+      <ol class="breadcrumbs">
+        <li><a href="/">Home</a></li>
+        <li><span>T&C</span></li>
+      </ol>
+    </div>
+    <div class="page_title_sec text-center">
+      <h1>{{page.title}}</h1>
+    </div>
+    <div class="term-service-cnt">
+      {{page.content}}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Page Settings",
+     "settings": [
+        {
+       	 "id": "background_color",
+       	 "type": "color",
+       	 "label": "Background Color"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

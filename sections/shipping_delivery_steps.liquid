@@ -1,0 +1,313 @@
+{% if section.blocks != blank %}
+<section class="shipping-steps-wrap" style="background: {{ section.settings.background }};">
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+        {% assign step_heading = block.settings.step_heading %}
+        {% assign step_subheading = block.settings.step_subheading %}
+        {% assign step_subheading2 = block.settings.step_subheading2 %}
+        {% assign step_content = block.settings.step_content %}
+        {% assign step_img = block.settings.step_image %}
+        {% assign step_button_text = block.settings.button_text %}
+        {% assign step_button_url = block.settings.button_url %}
+
+        {% if step_heading != blank or step_subheading != blank or step_subheading2 != blank or step_content != blank or step_img != blank or step_button_text != blank or step_button_url != blank %}
+          <div class="col-md-4">
+            <div class="step-col-inner">
+              {% if step_heading != blank and step_subheading != blank %}
+              <div class="step-head-desktop">
+              {% if step_heading != blank %}
+               <h2>{{ step_heading }}</h2>
+              {% endif %}
+              {% if step_subheading != blank %}
+               <h3>{{ step_subheading }}</h3>
+              {% endif %}
+              </div>
+              <div class="step-head-mobile">
+                <h2>{{ step_heading }}: {{ step_subheading }}</h2>
+              </div>
+              {% else %}
+                {% if step_heading != blank %}
+                  <h2>{{ step_heading }}</h2>
+                {% endif %}
+                {% if step_subheading != blank %}
+                  <h3>{{ step_subheading }}</h3>
+                {% endif %}
+              {% endif %}
+          
+              {% if step_subheading2 != blank %}
+               <h5>{{ step_subheading2 }}</h5>
+              {% endif %} 
+              {% if step_content != blank %}
+                <div class="step-content">{{ step_content }}</div>
+              {% endif %} 
+              {% if step_img != blank %}
+               <div class="step-image"><img src="{{ step_img | img_url: "master" }}" alt="image"></div>
+              {% endif %} 
+              {% if step_button_text != blank %}
+               <div class="step-btn"><a href="{{ step_button_url }}">{{ step_button_text }}</a></div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      
+      {% endfor %}  
+    </div>
+  </div>
+</section>
+<style>
+    section.shipping-steps-wrap .step-head-mobile{
+      display:none;
+    }
+	section.shipping-steps-wrap .step-col-inner h2 {
+		font-family: 'Gellix';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 18px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #2C474B;
+        margin-bottom: 15px;
+	}
+	section.shipping-steps-wrap .step-col-inner h3 {
+		font-family: 'Gellix';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 18px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #2C474B;
+        margin-bottom: 15px;
+	}
+	section.shipping-steps-wrap .step-col-inner h5 {
+		font-family: 'Gellix';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+		display: flex;
+		align-items: center;
+		color: #282828;
+        margin-bottom: 15px;
+	}
+	section.shipping-steps-wrap .date-table thead th:first-child {
+		border-radius: 6px 0px 0px 0px;
+		overflow: hidden;
+	}
+	section.shipping-steps-wrap .date-table thead th {
+		background-color: #2C474B;
+		border: 0px;
+		border-color: #2C474B;
+	}
+	section.shipping-steps-wrap .date-table .table-1 {
+		background: #E4EFE5;
+	}
+	section.shipping-steps-wrap .date-table {
+		display: flex;
+	}
+	.date-table th {
+		padding: 4px 10px;
+		text-transform: capitalize;
+	}
+	section.shipping-steps-wrap .date-table .table-1, .date-table .table-2, .date-table .table-1 td, .date-table .table-2 td {
+		border: 1px solid #AFBAA1;
+	}
+	section.shipping-steps-wrap .date-table table {
+		border-width: 0px !important;
+		border-collapse: separate;
+		border-spacing: 0;
+		width: 50%;
+		margin-bottom: 25px;
+	}
+	section.shipping-steps-wrap .table-1 thead, .table-2 thead {
+		background: #2C474B;
+		color: #ffffff;
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+	}
+	section.shipping-steps-wrap .date-table thead {
+		border-width: 0px !important;
+	}
+	section.shipping-steps-wrap .date-table tbody {
+		border-radius: 0px 0px 6px 6px;
+		overflow: hidden;
+	}
+    .date-table .table-1 tbody td, .date-table .table-2 tbody td {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 13px;
+      color: #282828;
+      padding: 5px 0px 5px 6px;
+    }
+	.date-table .table-1, .date-table .table-2, .date-table .table-1 td, .date-table .table-2 td {
+		border: 1px solid #AFBAA1;
+	}
+	.date-table .table-2 {
+		height: 100%;
+		margin-left: 10px;
+		width: 100%;
+	}
+	.date-table .table-2 {
+		background: #F6F8F4;
+	}
+    section.shipping-steps-wrap .step-content p {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: #282828;
+    }
+    section.shipping-steps-wrap .step-image {
+      padding-top: 20px;
+    }
+    section.shipping-steps-wrap .step-content {
+      margin-bottom: 20px;
+    }
+    section.shipping-steps-wrap .step-btn a {
+      background: #2C474B;
+      border-radius: 100px;
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      color: #FFFFFF;
+      display: inline-block;
+      padding: 10px 20px;
+    }
+    section.shipping-steps-wrap {
+      padding: 50px 0;
+    }
+    section.shipping-steps-wrap .step-col-inner {
+      background: #FCF9F4;
+      padding: 20px 15px;
+    }
+    section.shipping-steps-wrap .col-md-4:first-child .step-content {
+      margin-bottom: 0;
+    }
+    section.shipping-steps-wrap ul.steps {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+    }
+    section.shipping-steps-wrap ul.steps li {
+      font-size: 14px;
+      font-weight: 500;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    section.shipping-steps-wrap ul.steps li a {
+      color: #282828;
+    }
+    section.shipping-steps-wrap ul.steps i {
+      padding: 0px 15px;
+      font-style: normal;
+    }
+  
+    @media only screen and (max-width:767px){
+      section.shipping-steps-wrap .step-head-desktop{
+        display:none;
+      }
+      section.shipping-steps-wrap .step-head-mobile{
+        display:block;
+      }
+      section.shipping-steps-wrap .step-col-inner {
+        margin-bottom: 30px;
+        border-radius: 10px;
+      }
+    }
+    @media only screen and (max-width: 575px){
+      section.shipping-steps-wrap .step-image img {
+        width: auto;
+      }
+      section.shipping-steps-wrap .step-btn a{
+        font-size: 14px;
+      }
+    }
+    @media only screen and (max-width:360px){
+      section.shipping-steps-wrap .step-col-inner {
+        padding: 20px 10px;
+      }
+      .date-table .table-1 tbody td, .date-table .table-2 tbody td {
+        padding: 2px 0px 2px 3px;
+      }
+      section.shipping-steps-wrap .step-image img {
+        width: 100%;
+      }
+    }
+  
+  
+</style>
+{% endif %}
+  
+{% schema %}
+  {
+    "name": "Shipping Delivery Steps",
+    "settings": [
+      {
+		"type":"color",
+		"id":"background",
+		"label":"Background Color",
+		"default":"#fff"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Steps",
+        "type": "steps",
+        "settings": [
+          {
+            "type": "text",
+            "id": "step_heading",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "step_subheading",
+            "label": "Sub Heading"
+          },
+          {
+            "type": "text",
+            "id": "step_subheading2",
+            "label": "Sub Heading2"
+          },
+          {
+            "type": "textarea",
+            "id": "step_content",
+            "label": "Content"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "text",
+            "id": "button_url",
+            "label": "Button Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "step_image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

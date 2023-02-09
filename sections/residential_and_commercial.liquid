@@ -1,0 +1,107 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="residential_commercial">
+    	<div class="container">
+          <div class="res-desktop hide-on-mobile">	
+      		<div class="row">	
+              {% for block in section.blocks %}
+                {% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.text != blank %}
+                <div class="col-md-7 trade-res-col">
+                    {% if block.settings.grid_image != blank %}
+                    <div class="resd-img">
+                      <img src="{{ block.settings.grid_image | img_url: 'master' }}" class="img-fluid" alt="{{ block.settings.grid_image.alt }}">	
+                    </div>
+                    {% endif %}	
+                </div>
+                <div class="col-md-5 trade-res-col">
+                    {% if block.settings.img_heading != blank or block.settings.text != blank %}
+                    <div class="resd-inner-cn">
+                      {% if block.settings.img_heading != blank %}
+                      <h3>{{ block.settings.img_heading}}</h3>
+                      {% endif %} 
+                      {% if block.settings.text != blank %}
+                      <p>{{ block.settings.text}}</p>
+                      {% endif %} 
+                    </div>
+                    {% endif %}	
+                </div>
+                {% endif %}	
+              {% endfor %}
+          	</div>
+          </div>
+          <div class="res-mobile hide-on-desktop">
+            <div class="residential-tabs">
+              <ul class="nav nav-pills">
+                {% for block in section.blocks %}
+                  {% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.text != blank %}
+                      {% assign counter = forloop.index0 %}
+                      <li><a class="{% if counter == 0%}active{% endif %}" data-toggle="pill" href="#{{block.settings.img_heading}}">{{block.settings.img_heading}}</a></li>
+                  {% endif%}
+                {% endfor %}
+              </ul>
+              <div class="tab-content">
+               {% for block in section.blocks %}
+                  {% if block.settings.grid_image != blank or block.settings.img_heading != blank or block.settings.text != blank %}
+                      {% assign counter1 = forloop.index0 %}
+                      <div id="{{block.settings.img_heading}}" class="tab-pane {% if counter1 == 0 %}in active{% endif%}">
+						{% if block.settings.grid_image != blank %}
+                          <div class="resd-img">
+                            {% if block.settings.grid_image_mobile != blank %}
+                           		<img src="{{ block.settings.grid_image_mobile | img_url: 'master' }}" class="img-fluid" alt="{{ block.settings.grid_image_mobile.alt }}">	
+                        	{% elsif block.settings.grid_image != blank  %}  
+                        	 	<img src="{{ block.settings.grid_image | img_url: 'master' }}" class="img-fluid" alt="{{ block.settings.grid_image.alt }}">	
+                            {% endif %}
+                        </div>
+                        {% endif %}		
+                        
+                        {% if block.settings.text != blank %}
+                      	  <p>{{ block.settings.text}}</p>
+                        {% endif %} 
+                      </div> 
+                  {% endif%}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+      	</div>
+	</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Residential & Commercial",
+	"blocks": [
+    {
+      "type": "grid_box",
+      "name": "Residential & Commercial",
+      "settings": [
+        {
+      	  "type": "image_picker",
+      	  "id": "grid_image",
+      	  "label": "Image"    
+        },
+		{
+      	  "type": "image_picker",
+      	  "id": "grid_image_mobile",
+      	  "label": "Mobile Image"    
+        },
+        {
+         "type": "text",	
+       	 "id": "img_heading",
+       	 "label": "Heading"
+        },
+        {
+      	  "id": "text",
+       	 "type": "textarea",
+       	 "label": "Content"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,88 @@
+{% if section.settings.hlaf_image != blank or section.settings.heading != blank or section.settings.content != blank %}
+<div class="view_at_half_image_with_content three_Dmodal">
+	<div class="container">
+  		<div class="view_at_half_image_with_content_inner">
+            {% if section.settings.heading != blank %}
+           	 	<h2 class="mobile-heading hide-on-desktop"> {% if section.settings.heading_icon != blank %} <span><img src="{{section.settings.heading_icon | img_url: 'master'}}" alt="icon"></span> {% endif %} {{ section.settings.heading  }} </h2>
+            {% endif %} 
+      		<div class="view_at_home_hal_inner">
+               {% if section.settings.heading != blank or section.settings.content != blank %}
+              <div class="view_at_home_right_content">
+                  {% if section.settings.heading != blank %}
+               		 <h2 class="hide-on-mobile">{{ section.settings.heading  }} {% if section.settings.heading_icon != blank %} <span><img src="{{section.settings.heading_icon | img_url: 'master'}}" alt="icon"></span> {% endif %}</h2>
+                  {% endif %} 
+                  {% if section.settings.subheading != blank %}
+                	<h3>{{ section.settings.subheading  }}</h3>
+                  {% endif %}                	
+                  {% if section.settings.content != blank %}
+                	{{ section.settings.content  }}
+                  {% endif %}
+                  {% if section.settings.button_label != blank and section.settings.button_link != blank %}	
+                	<a href="{{ section.settings.button_link}}">{{ section.settings.button_label }}</a>
+                  {% endif %}	
+              </div> 
+              {% endif %}
+              {% if section.settings.hlaf_image != blank or section.settings.modal_script != blank %}
+                <div class="view_at_home_left_image"> 
+              		<img src="{{ section.settings.hlaf_image | img_url:'master' }}" alt="">
+                  	{{ modal_script }}
+              	</div> 
+              {% endif %}
+          	</div>  
+      	</div>  
+  	</div>  
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "3D Modal",
+    "settings": [
+		{
+            "id": "heading",
+            "type": "text",
+            "label": "Section Heading"
+		 },
+		 {
+            "id": "heading_icon",
+            "type": "image_picker",
+            "label": "Heading Icon"
+		 },	
+		 {
+            "id": "subheading",
+            "type": "textarea",
+            "label": "Section Sub Heading"
+		 },
+		 {
+            "id": "content",
+            "type": "richtext",
+            "label": "Content"
+         },
+		 {
+            "id": "button_label",
+            "type": "text",
+            "label": "Button label"
+         },
+		 {
+            "id": "button_link",
+            "type": "text",
+            "label": "Button link"
+         },
+		 {
+          "type": "image_picker",
+          "id": "hlaf_image",
+          "label": "Modal Image"    
+         },
+		 {
+          "type": "html",
+          "id": "modal_script",
+          "label": "Modal Script"    
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

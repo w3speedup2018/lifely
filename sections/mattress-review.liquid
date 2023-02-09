@@ -1,0 +1,143 @@
+<div class="mattress-review__main">
+    <div class="mattress-review__inner" style="background-color:{% if section.settings.review_background_color != blank %}{{section.settings.review_background_color}}{% endif %}">
+        {% if section.settings.review_heading != blank or section.settings.review_subheading != blank %}
+            <div class="mattress-review__head text-center">
+                {% if section.settings.review_heading != blank %}
+                    <h2>{{section.settings.review_heading}}</h2>
+                {% endif %}
+                {% if section.settings.review_subheading != blank %}
+                    <h2>{{section.settings.review_subheading}}</h2>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if section.settings.review_star_count != blank %}
+            <div class="mattress-review__star text-center">
+              <ul>
+                {% if section.settings.review_star_count == 'one'%}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'two' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                {% elsif section.settings.review_star_count == 'three' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'four'%}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'five' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                {% endif %}
+              </ul>
+            </div>
+        {% endif %}
+      
+        {% if section.settings.review_content != blank %}
+            <div class="mattress-review__content text-center">
+              <p>{{section.settings.review_content}}</p>  
+            </div>
+        {% endif %}
+      
+        {% if section.settings.review_image != blank %}
+            <div class="mattress-review__bottom-image text-center">
+                <img src="{{section.settings.review_image | img_url: "master"}}" alt="image">  
+            </div>
+        {% endif %}
+
+        {% comment %}
+          {% if section.settings.review_shop_label != blank and section.settings.review_shop_link != blank %}
+              <div class="mattress-review__bottom-buuton hide_on_desktop text-center">
+                  <a href="{{ section.settings.review_shop_link }}">{{ section.settings.review_shop_label }}</a>
+              </div>
+          {% endif %}
+        {% endcomment %}
+      
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Mattress Review",
+  "class": "section",
+  "settings": [
+	{
+		"type" : "color",
+		"id": "review_background_color",
+		"label": "Background Color"
+	},
+    {
+	  "type": "text",	
+	  "id": "review_heading",	
+      "label": "Review Heading"
+    },
+	{
+		"type": "text",
+		"id": "review_subheading",
+		"label": "Review Subheading"
+	},
+    {
+      "type": "select",
+      "id": "review_star_count",
+      "options": [
+        {
+      	  "value": "one",
+     	  "label": "1"
+        },
+        {
+      	  "value": "two",
+      	  "label": "2"
+        },
+		{
+      	  "value": "three",
+     	  "label": "3"
+        },
+		{
+      	  "value": "four",
+     	  "label": "4"
+        },
+		{
+      	  "value": "five",
+     	  "label": "5"
+        }
+      ],
+      "default": "five",
+      "label": "Review Star Count"
+    },
+	{
+		"type": "text",
+		"id": "review_content",
+		"label": "Review Content"
+	},
+	{
+	  "id": "review_image",	
+      "type": "image_picker",
+      "label": "Review Image"
+    },
+	{
+	  "id": "review_shop_label",	
+      "type": "text",
+      "label": "Mobile Button Label"
+    },
+	{
+	  "id": "review_shop_link",	
+      "type": "url",
+      "label": "Mobile Button Link"
+    }
+  ]
+}
+{% endschema %}

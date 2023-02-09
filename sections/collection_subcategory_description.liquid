@@ -1,0 +1,129 @@
+{% if collection.metafields.collectionnewbottom.newbottomheading != blank or collection.metafields.newcollectionbottom.newcollectionbottomdescription != blank %}
+    <div class="collection_new_bottom_description">
+      <div class="page-width">
+          {% if collection.metafields.collectionnewbottom.newbottomheading != blank %}
+              <div class="bootom_description_inner_container">
+                  <div class="row">
+                     {% if collection.metafields.collectionnewbottom.newbottomheading.size == 1  %}
+                         <div class="col-md-12 subcategory_description_single">
+                           {% for heading in collection.metafields.collectionnewbottom.newbottomheading %}
+                             {% assign count = forloop.index0 %} 
+                               {% if heading != blank or  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                                 <div class="col-inner">
+                                   <h3>{{ heading }}</h3>
+                                   {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                                 </div>  
+                               {% endif %}                             
+                          {% endfor %}  
+                        </div>
+                     {% else %}  
+                        <div class="col-md-6">
+                           {% for heading in collection.metafields.collectionnewbottom.newbottomheading %}
+                             {% assign count = forloop.index0 %}
+                             {% assign mod = count | modulo: 2 %}
+                             {% if mod == 0 %}
+                               {% if heading != blank or  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                                 <div class="col-inner">
+                                   <h3>{{ heading }}</h3>
+                                   {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                                 </div>  
+                               {% endif %} 
+                            {% endif %}
+                          {% endfor %}  
+                        </div>
+                         <div class="col-md-6">
+                            {% for heading in collection.metafields.collectionnewbottom.newbottomheading %}
+                             {% assign count = forloop.index0 %}
+                             {% assign mod = count | modulo: 2 %}
+                             {% if mod != 0 %}
+                               {% if heading != blank or  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                                 <div class="col-inner">
+                                   <h3>{{ heading }}</h3>
+                                   {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                                 </div>  
+                               {% endif %} 
+                            {% endif %}
+                          {% endfor %} 
+                        </div>   
+                    {% endif %}
+                  </div>  
+              </div>  
+           {% else %}
+           
+              <div class="bootom_description_inner_container">
+                  <div class="row">
+                      {% if collection.metafields.newcollectionbottom.newcollectionbottomdescription.size == 1  %}
+                          <div class="col-md-12 subcategory_description_single">
+                             {% for heading in collection.metafields.newcollectionbottom.newcollectionbottomdescription %}
+                               {% assign count = forloop.index0 %}                                   
+                                 {% if  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                                   <div class="col-inner">                                 
+                                     {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                                   </div>  
+                                 {% endif %} 
+                            {% endfor %}  
+                          </div>
+                      {% else %}  
+                      <div class="col-md-6">
+                         {% for heading in collection.metafields.newcollectionbottom.newcollectionbottomdescription %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod == 0 %}
+                             {% if  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] != blank %} 
+                               <div class="col-inner">                                 
+                                 {{  collection.metafields.newcollectionbottom.newcollectionbottomdescription[count] }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %}  
+                      </div>
+                       <div class="col-md-6">
+                          {% for heading in collection.metafields.newcollectionbottom.newcollectionbottomdescription %}
+                           {% assign count = forloop.index0 %}
+                           {% assign mod = count | modulo: 2 %}
+                           {% if mod != 0 %}
+                             {% if heading != blank %} 
+                               <div class="col-inner">                      
+                                 {{  heading }}
+                               </div>  
+                             {% endif %} 
+                          {% endif %}
+                        {% endfor %} 
+                      </div>  
+                    {% endif %}    
+                  </div>  
+              </div>
+             
+           {% endif %} 
+      </div>  
+  </div>
+
+{% endif %}
+
+  
+{% schema %}
+  {
+    "name": "Subcategory Description",
+    "class":"collection_subcategory_bottom_description_sec",
+    "settings": [
+		{
+          "id": "color_code",
+          "type": "color",
+          "label": "Background Color",
+		  "default":"#F9F1E5"
+        },
+		{
+		  "type": "color",	
+          "id": "text_color",
+          "label": "Text Color",
+		  "default":"#2C474B"	
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

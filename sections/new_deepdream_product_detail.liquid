@@ -1,0 +1,70 @@
+{% assign heading = product.metafields.arena.additional_heading  %}
+{% assign content = product.metafields.arena.content %}
+{% assign icon = product.metafields.arena.heading_icon %}
+
+{% assign material_certificate = product.metafields.arena.material-certification %}
+{% assign assembly_care = product.metafields.arena.assembly-care %}
+{% assign product_dimension = product.metafields.arena.product-dimension %}
+{% assign delivery_return = product.metafields.arena.delivery-return %}
+
+{% if heading != blank or material_certificate != blank or assembly_care != blank or product_dimension != blank or delivery_return != blank %}
+	<div class="product-additional-info page-width deepdream-additional-info mattress_deep_dream_pdp_detail">
+      	{% if template.suffix == 'deepdream' or template.suffix == 'deepdream_new' or template.suffix == 'deepdream_new_design' %}
+      		<div class="container">
+      	{% endif %}
+            <div class="additional-info-con row">
+               <div class="col-md-12 col-sm-12"> 
+                  <div class="sechead">
+                      <h3>Specification</h3>   
+                  </div>
+                </div>  
+               <div class="col-md-6 col-sm-12">          
+                  {% if material_certificate != blank %}
+                     <h4><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Layer.png?v=1666012056"></span> Materials</h4>	
+                     {{material_certificate}}	
+                  {% endif %}
+                </div>  
+                <div class="col-md-6 col-sm-12">
+                  {% if product_dimension != blank %}
+                  <h4><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Ruler_d929136a-3992-4195-8c7a-8aea9c3a980a.png?v=1666012066"></span> Product Dimensions </h4>	
+                  {{product_dimension}}		
+                  {% endif %}
+
+                  {% if assembly_care != blank %}
+                      <h4><span><img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Tool_6a27b2ce-94c4-49b1-b1eb-f32c027a43f6.png?v=1666012042"></span> Assembly & Care </h4>	
+                     {{assembly_care}}		
+                  {% endif %}
+                </div>
+              
+              {% comment %}
+              {% for h in heading %}
+                {% assign index = forloop.index0 %}
+
+                {% if index == 0 or index == 2 %}
+                    <div class="col-md-6 col-sm-12">
+                {% endif %}
+                <h4><span><img src="{{icon[index]}}"></span> {{h}}</h4>
+                {{content[index]}}
+                     
+                {% if index == 1 or index == 3 %}
+                    </div>
+                {% endif %}      
+              {% endfor %}
+              
+              {% endcomment %}
+              
+           </div>
+        {% if template.suffix == 'deepdream' or template.suffix == 'deepdream_new'%}
+      		</div>
+      	{% endif %}
+	</div>
+{% endif %}
+ {%- render 'mobile_product_detail' -%}
+{% schema %}
+  {
+    "name": "Product Detail",
+    "settings": []
+  }
+{% endschema %}
+
+

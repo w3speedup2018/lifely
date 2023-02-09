@@ -1,0 +1,101 @@
+{% if section.blocks and section.blocks != blank %}
+	<section class="shipping_values_grid">
+      	<div class="shipping_values-inner" style="background:{% if section.settings.shipping_bg_color != blank %}{{section.settings.shipping_bg_color}}{% endif%}">
+          <div class="container">
+              {% if section.settings.banner_heading != blank  %}
+                  <h2> {{ section.settings.banner_heading }} </h2>
+              {% endif %}
+              {% if section.settings.banner_subheading != blank %}	
+            	<h5>{{section.settings.banner_subheading}}</h5>
+              {% endif %}
+              <div class="row">
+                  {% if section.blocks.size > 3 %}
+                	{% assign class = "col-md-3" %}
+                  {% elsif section.blocks.size == 3 %}	
+                	{% assign class = "col-md-4" %}
+                  {% elsif section.blocks.size < 3%}
+                	{% assign class= "col-md-6" %}      	
+                  {% endif %}	
+                  {% for block in section.blocks %}
+                      {% if block.settings.icon_v != blank or block.settings.icon_vhead != blank or block.settings.icon_vsubhead != blank %}
+                        <div class="{{class}}">
+                          <div class="shipping_icon_grid_box">
+                            {% if block.settings.icon_v != blank %}
+                            <div class="icon_box_">
+                              <img src="{{ block.settings.icon_v | img_url: 'master' }}" alt="{{ block.settings.icon_v.alt }}" />
+                            </div>                                       
+                            {% endif %}
+                            {% if block.settings.icon_vhead != blank or block.settings.icon_vsubhead != blank %}
+                            <div class="shipping_icon_grid_content">
+                              {% if block.settings.icon_vhead != blank %}
+                              <h3>{{ block.settings.icon_vhead}}</h3>
+                              {% endif %}  
+                              {% if block.settings.icon_vsubhead != blank %}
+                              <p>{{ block.settings.icon_vsubhead}}</p>
+                              {% endif %}  
+                            </div>
+                            {% endif %}
+                          </div> 
+                        </div>  
+                      {% endif %}	
+                  {% endfor %}
+              </div>  
+          </div>  
+        </div>
+	</section>
+{% endif %}
+
+
+
+
+{% schema %}
+  {
+    "name": "Shipping Delivery Values",
+    "settings": [
+		{
+			"type":"color",
+			"id":"shipping_bg_color",
+			"label":"Background Color"
+        },
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        }
+	],
+	"blocks": [
+      {
+        "type": "icon_value",
+        "name": "Add Values",
+        "settings": [
+          {
+            "type": "text",	
+            "id": "icon_vhead",
+            "label": "Heading"
+          },
+          {
+			"type": "text",
+            "id": "icon_vsubhead",
+            "label": "Subheading"
+          },
+           {
+            "type": "image_picker",
+            "id": "icon_v",
+            "label": "Image"    
+           }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

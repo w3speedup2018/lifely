@@ -1,0 +1,80 @@
+{% if section.settings.heading != blank or  section.settings.subheading != blank %}
+  {% style %}
+      .master_campaign_coupon_inner_bar{
+         background: {{section.settings.background_color}};
+         padding:20px 0px;
+         margin-top: 50px;
+      }
+      .master_campaign_coupon_inner_bar h2{
+          font-family: 'Gellix';
+          font-style: normal;
+          font-weight: 500;
+          font-size:24px;
+          line-height:1.3px;
+          text-transform: capitalize;
+          color: #2C474B;
+          margin-bottom: 0;
+      }
+    .master_campaign_coupon_inner_bar h2 b { font-family: 'bookmaniabold_italic'; }
+    .master_campaign_coupon_inner_bar h2  path { fill:#2C474B; }
+    .master_campaign_coupon_inner_bar h2 svg {       vertical-align:baseline; }
+    
+      .master_campaign_coupon_inner_bar h3{
+          font-family: 'Gellix';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 40px;
+          line-height: 45px;
+          color: #F9F1E5;
+      }
+
+section.home_image_slider.collection_image_slider { background: #FBF9F3 !important; }
+    
+      @media only screen and (max-width: 991px){
+          .master_campaign_coupon_inner_bar{
+             margin-top: 20px;
+          }
+      }
+  {% endstyle %}  
+  <div class="master_campaign_coupon_inner_bar">
+    <div class="page-width">
+        <div class="text-center">
+            <h2> <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.3716 0.422472L10.7501 0.314802C10.5115 0.311354 10.2851 0.402259 10.1201 0.567744L0.668298 10.0195C0.317047 10.3708 0.125525 10.853 0.135846 11.36C0.146168 11.8671 0.357483 12.3575 0.723329 12.7233L6.80661 18.8066C7.17246 19.1725 7.66285 19.3838 8.16992 19.3941C8.67698 19.4044 9.15918 19.2129 9.51043 18.8616L18.9644 9.40767C19.0469 9.32603 19.1116 9.22803 19.1547 9.11945C19.1977 9.01087 19.2182 8.89388 19.215 8.77538L19.015 3.03934C18.9941 2.35663 18.7047 1.69877 18.2097 1.20876C17.7148 0.718749 17.0542 0.436185 16.3716 0.422472ZM14.8876 5.19406C14.5588 4.98649 14.3022 4.68003 14.157 4.32112C14.0117 3.96221 13.9855 3.57043 14.0825 3.2052C14.1795 2.83997 14.3943 2.5212 14.6944 2.29722C14.9944 2.07324 15.3634 1.95628 15.7453 1.96405C16.1273 1.97183 16.5013 2.10391 16.8107 2.3403C17.1202 2.57668 17.3482 2.90448 17.4601 3.27396C17.572 3.64345 17.5618 4.03448 17.431 4.38776C17.3002 4.74105 17.056 5.03733 16.7353 5.23167C16.4612 5.39775 16.1432 5.4822 15.8168 5.47556C15.4904 5.46891 15.1687 5.37142 14.8876 5.19406Z" fill="white"/>
+</svg>
+ {{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}      <h3>{{ section.settings.subheading }}</h3>  {% endif %}
+        </div>  
+    </div>
+   </div>  
+{% endif %}  
+{% schema %}
+  {
+    "name": "Coupon Bar",
+    "class":"master_campaign_coupon_bar",
+    "settings": [
+      {
+        "type":"textarea",
+        "id":"heading",
+        "label":"Heading"
+      },
+      {
+        "type":"text",
+        "id":"subheading",
+        "label":"Heading"
+      },
+      {
+        "type":"color",
+        "id":"background_color",
+        "label":"Background Color",
+        "default":"#ffffff"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

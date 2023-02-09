@@ -1,0 +1,31 @@
+{% if section.settings.reviews_heading != blank %}
+<div class="cs-wrap">
+  <div class="cs-wrap-inner">
+      <div class="container">
+        {% if section.settings.reviews_heading != blank %}
+			<h2>{{ section.settings.reviews_heading }}</h2>
+		{% endif %}
+      </div>
+  </div> 
+</div>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Content Before Reviews",
+    "settings": [
+        {
+			"type":"text",
+			"id":"reviews_heading",
+			"label":"Heading"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

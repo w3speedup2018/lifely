@@ -1,0 +1,65 @@
+{% if product.metafields.scale.heading != blank and product.metafields.mattress.image != blank and product.metafields.mattress.scale_image != blank %}
+  <div class="mattress_collection_compare_slider_section">
+    <div class="page-width">
+        {% if section.settings.scale_slider_heading != blank %}
+          <div class="section_heading">
+            <h2>{{ section.settings.scale_slider_heading }}</h2>
+          </div>  
+        {% endif %}
+        <div class="mattress_collection_compare_slider">
+          <div class="mattress_compare_left_col">
+              <div class="mattress_compare_image_slider">
+                  {% for sale_heading in product.metafields.scale.heading %}
+                      {% assign index = forloop.index0 %}
+                      {% if product.metafields.scale.heading[index] != blank and product.metafields.mattress.image[index] != blank and product.metafields.mattress.scale_image[index] != blank %}
+                           <div class="mattress_compare_slider_item">
+                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.mattress.image[index] }}" alt=""/>
+                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.mattress.scale_image[index] }}" alt=""/>
+                              {% if product.metafields.scale.product-url[index] != blank %}
+                              <div class="compare_link_button">
+                                <a href="{{ product.metafields.scale.product-url[index] }}">View Product</a> 
+                              </div> 
+                            {% endif %}
+                          </div> 
+                      {% endif %}  
+                  {% endfor %}  
+              </div>  
+          </div>
+          <div class="mattress_compare_right_col">
+              <div class="mattress_compare_content_slider">
+                  {% for sale_heading in product.metafields.scale.heading %}
+                      {% assign index = forloop.index0 %}
+                      {% if product.metafields.scale.heading[index] != blank and product.metafields.mattress.image[index] != blank and product.metafields.mattress.scale_image[index] != blank %}
+                         <div class="mattress_compare_content_item">
+                           <h3>{{ product.metafields.scale.heading[index] }}</h3>
+                            {% if product.metafields.scale.subheading[index] != blank %}
+                            <p>{{ product.metafields.scale.subheading[index] }}</p>
+                            {% endif %}
+                            {% if product.metafields.scale.product-url[index] != blank %}
+                              <div class="compare_link_button">
+                                  <a href="{{ product.metafields.scale.product-url[index] }}">View Product</a> 
+                              </div> 
+                            {% endif %} 
+                         </div>  
+                      {% endif %}
+                  {% endfor %}  
+              </div>
+          </div>  
+        </div>   
+    </div> 
+  </div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Scale slider",
+    "settings": [
+        {
+          "type":"text",
+          "id":"scale_slider_heading",
+          "label":"Heading",
+          "default":"How to choose the right mattress"
+        } 
+    ] 
+  }
+{% endschema %}
+

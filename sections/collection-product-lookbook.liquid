@@ -1,0 +1,80 @@
+{% assign heading = section.settings.lookbook_heading %}
+{% assign subheading = section.settings.lookbook_subheading %}
+{% assign lookbook_code = section.settings.lookbook_custom_liquid %}
+{% assign default_product = all_products[section.settings.default-featured-product] %}
+
+{% if lookbook_code != blank %}
+  <div class="product-lookbook-main">
+    <div class="container">
+      <div class="product-lookbook-inner">
+        {% if heading != blank %}
+       	 	<h3>{{heading}}</h3>
+        {% endif %}
+        {% if subheading != blank %}
+       	 	<h4>{{subheading}}</h4>
+        {% endif %}
+        <div class="row">
+         <div class="col-sm-12 col-md-6">
+           {{lookbook_code}}
+          </div>
+          <div class="col-sm-12 col-md-6">
+            {% if default_product != blank %}
+            	
+            	<div class="featured-details">
+                  {% if default_product.media != blank %}
+                  	<img src="{{default_product.media | img_url: "large" }}" alt="image">
+                  {% endif %}
+                  {% if default_product.title != blank %}
+               	 	 <h3>{{default_product.title}}</h3>
+                  {% endif%}
+                  
+                  {% if default_product.price != blank %}
+                  	<h5>{{default_product.price}}</h5>
+                  {% endif %}
+                  
+            	</div>
+            
+            {% endif%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}	
+
+
+{% schema %}
+{
+  "name": "Look Book",
+  "settings": [
+	{
+      "type": "text",
+      "id": "lookbook_heading",
+      "label": "Heading",
+      "info": "Add heading to display on loobook section"
+    },
+	{
+      "type": "text",
+      "id": "lookbook_subheading",
+      "label": "Sub Heading",
+      "info": "Add sub heading to display on loobook section"
+    },
+    {
+      "type": "liquid",
+      "id": "lookbook_custom_liquid",
+      "label": "Lookbook Code",
+      "info": "Add app snippets or other Liquid code to create advanced customizations."
+    },
+	{
+      "type": "product",
+      "id": "default-featured-product",
+      "label": "Default Featured Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Look Book"
+    }
+  ]
+}
+{% endschema %}

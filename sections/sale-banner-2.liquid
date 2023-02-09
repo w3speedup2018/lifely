@@ -1,0 +1,370 @@
+{% if section.settings.banner_image != blank %}
+  {% if section.settings.banner_heading != blank %}
+    {% assign bg_color = section.settings.background %}
+  {% else %}
+    {% assign bg_color = '#FFE8C6' %}
+  {% endif %}
+  {% style %}
+    {% if section.settings.heding_bg_image != blank %}
+    .banner_heading_section{
+    position:relative;
+    }
+    .banner_heading_section:after {
+    content: "";
+    background: url({{ section.settings.heding_bg_image | img_url:'master' }});
+    height: 100%;
+    width: 227px;
+    position: absolute;
+    bottom: 0;
+    right: -15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+    {% endif %}
+    .clearance_banner_bar {  display:block !important;
+    padding:7px 0px;
+     background: {{  section.settings.bar_background }};
+
+
+
+    font-family: 'Gellix';
+    color: {{ section.settings.bar_font}};
+    }
+    .clearance_banner {
+    color: {{ section.settings.banner_font}};
+    font-family: 'Gellix';
+    }
+    .sticky_clearance_banner_bar_active .clearance_banner_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999;
+    display:none;
+    }
+   
+ 
+
+
+.sale_banner2 { position:relative; }
+
+.sale_banner2 .desk_banner_img { width:100%; }
+
+
+.sale_banner2 .content .box { background: #F9F1E5; border-radius:100%; padding: 70px 40px;
+    width: 401px;
+    height: 400px;  }
+
+.sale_banner2 .content h3 {     font-family: 'bookmaniaregular';
+font-style: normal;
+font-weight: 700;
+font-size: 32px; 
+text-align: center;
+
+color: #E25B3C; }
+
+.sale_banner2 .content .btn {  display:inline-block;
+background: #E25B3C;
+border-radius: 100px; padding:4px 12px; font-size:16px; color:#fff; margin:15px 0; }
+
+.sale_banner2 .content .brand__img { 
+      -webkit-object-fit: cover;
+-moz-object-fit: cover; 
+      object-fit: cover;
+  object-position: bottom;
+  -moz-object-position: bottom;
+  -webkit-object-position: bottom;
+      
+    height: 132px;
+    width: 201px;
+   clear: both;
+    display: block;
+    margin: auto;  }
+
+.sale_banner2 .term { margin-bottom: -40px;      width:450px;
+    padding-top: 40px;  color:#F9F1E5; font-weight:bold; }
+
+.clearance_banner_bar p { padding:0px; margin:0px; }
+
+.clearance_banner_bar h3 { font-size:16px; text-align:left; }
+
+ 
+
+@media only screen and (max-width:1280px){
+
+.sale_banner2 .term { margin-bottom: -20px;     width: 331px;   padding-top:20px;   }
+
+
+}
+@media only screen and (max-width:1180px){
+
+  .sale_banner2 .content .box { zoom: 0.9; padding: 53px 40px;
+    width: 350px;
+    height: 350px; }
+
+.sale_banner2 .content h3 { font-size:27px; }
+  
+}
+
+@media only screen and (max-width:991px){
+.sale_banner2 .content .box { zoom: 0.6; }
+.sale_banner2 .term { padding:5px 0; width:250px;  }
+
+  
+}
+
+@media only screen and (min-width:767px){
+  
+.mobile_banner_img { display:none; }
+
+.sale_banner2 .content {  top:50%; left:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    position:absolute; width:100%;
+         text-align:center; }
+}
+
+
+@media only screen and (max-width:767px){
+
+.mobile_banner_img { display:block; width:100%; }
+  
+.sale_banner2 .desk_banner_img { display:none; }
+
+ .sale_banner2 .content {background: #AFBAA1; padding:20px 0 5px 0; }
+
+  .sale_banner2 .content .box { margin:auto; zoom:0.8; text-align: center;  }
+.sale_banner2 .term  { width:100%; padding:15px 0 0 0px; margin:0px; color: #2C474B; font-size:7px; font-weight:normal; text-align: center; }
+
+    .clearance_banner_bar h3 {
+    font-size: 12px;
+  }
+.sale_banner2 .content h3 {     font-size: 21px; }
+
+}
+      
+    {% endstyle %}
+
+  <div
+    class="clearance_banner {{ section.settings.class }}"
+    style="background:{{  section.settings.bar_background }};"
+  >
+    <div class="sale_banner2">
+      
+            {% if section.settings.mobile_banner_image != blank %}
+    <a href="{{ section.settings.banner_button_url }}">
+           <img class="mobile_banner_img" src="{{ section.settings.mobile_banner_image | img_url:"master"}}" alt="">
+    </a>
+            {% endif %}
+
+   {% if section.settings.banner_image != blank %}
+         <a href="{{ section.settings.banner_button_url }}">
+        <img class="desk_banner_img" src="{{ section.settings.banner_image | img_url:"master"}}" alt="">
+         </a>
+            {% endif %}
+   {% if section.settings['text-1'] != blank %}
+<div class="content">
+<div class="page-width">
+<div class="box">
+                {% if section.settings['text-1'] != blank %}
+ 
+ <h3>{{ section.settings['text-1'] }}</h3>
+                {% endif %}
+
+                {% if section.settings['text-2'] != blank %}
+                  <h4>{{ section.settings['text-2'] }}</h4>
+                {% endif %}
+   
+           
+
+                {% if section.settings.banner_button_text != blank %}
+                  <a href="{{ section.settings.banner_button_url }}" class="btn">
+                    {{- section.settings.banner_button_text -}}
+                  </a>
+                {% endif %}
+
+               {% if section.settings.brand_image != blank %}
+              <img class="brand__img" src="{{ section.settings.brand_image | img_url:"large"}}" alt="">
+            {% endif %}
+              </div>
+
+    {% if section.settings['terms-text'] != blank %}
+                  <div class="term">
+                    <p>{{ section.settings['terms-text'] }}</p>
+                  </div>
+                {% endif %}
+
+  
+            </div>
+            </div>
+    {% endif %}
+    </div>
+  </div>
+  {% if section.settings.top_banner_heading != blank %}
+    <div class="master-top-bar">
+      <div class="page-width">{{ section.settings.top_banner_heading }}</div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.banner_bar_heading != blank and section.settings.bar_sale_end_date != blank %}
+    <div class="clearance_banner_bar">
+      <div class="page-width">
+        <div class="clearance_bar_inner">
+          {% if section.settings.banner_bar_heading != blank %}
+            <div class="clearance_BannerBar_Heading" style="flex: 0 0 66.333333%;  ">
+              <h3>{{ section.settings.banner_bar_heading }}</h3>
+            </div>
+          {% endif %}
+          <div class="clearance_BannerBar_Timmer">
+            {% if section.settings.bar_sale_end_date != blank %}
+              <span id="countdownClearance_bar" data-date="{{section.settings.bar_sale_end_date}}">
+                <span class="ctime eliving-day"><span class="days">00</span> days</span>
+                <span class="ctime"><span class="hours">00</span> hrs</span>
+                <span class="ctime"><span class="minutes">00</span> min</span>
+                <span class="ctime"><span class="seconds">00</span> secs</span>
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if section.settings.sale_heading != blank or section.settings.sale_end_date != blank %}
+      <div class="banner_counter_section">
+        {% if section.settings.sale_heading != blank %}
+          <h3>
+            <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Frame_2226.png?v=1667409973">
+            {{ section.settings.sale_heading }}
+          </h3>
+        {% endif %}
+        {% if section.settings.sale_end_date != blank %}
+          <span id="countdownEliving" data-date="{{section.settings.sale_end_date}}">
+            <span class="ctime eliving-day"><span class="days">00</span> days</span>
+            <span class="ctime"><span class="hours">00</span> hrs</span>
+            <span class="ctime"><span class="minutes">00</span> min</span>
+            <span class="ctime"><span class="seconds">00</span> secs</span>
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+    <script>
+      jQuery(document).ready(function($){
+      $(window).scroll(function() {
+      var hT = $('.clearance_banner').offset().top,
+      hH = $('.clearance_banner').outerHeight(),
+      wH = $(window).height(),
+      wS = $(this).scrollTop();
+      if (wS > (hT+hH+50)){
+      $('body').addClass('sticky_clearance_banner_bar_active');
+      $('.clearance_banner_bar').show();
+      }else{
+      $('body').removeClass('sticky_clearance_banner_bar_active');
+      $('.clearance_banner_bar').hide();
+      }
+      });
+      });
+    </script>
+  {% endif %}
+{% endif %}
+{% schema %}
+{
+"name": "Sale Banner 2",
+"class":"new__baner",
+"settings": [
+
+  {
+"type":"text",
+"id":"class",
+"label":"Custom class"
+},
+ 
+{
+"type":"image_picker",
+"id":"brand_image",
+"label":"Brand Image"
+},
+
+{
+"type":"image_picker",
+"id":"banner_image",
+"label":"Banner Image"
+},
+
+{
+"type":"textarea",
+"id":"text-1",
+"label":"Title "
+},
+{
+"type":"textarea",
+"id":"text-2",
+"label":"Sub Title"
+},
+ 
+
+{
+"type":"text",
+"id":"banner_button_text",
+"label":"Banner Button Text"
+},
+
+
+{
+"type":"text",
+"id":"banner_button_url",
+"label":"Banner Button URL"
+},
+{
+"type":"textarea",
+"id":"terms-text",
+"label":"T&C text"
+},
+{
+"type":"image_picker",
+"id":"mobile_banner_image",
+"label":"Mobile Banner Image"
+},
+{
+"type":"text",
+"id":"sale_end_date",
+"label":"Sale end date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"banner_font",
+"label":"Banner Font Color",
+"default":"#000"
+},
+{
+"type":"textarea",
+"id":"banner_bar_heading",
+"label":"Bar Heading"
+},
+{
+"type":"text",
+"id":"bar_sale_end_date",
+"label":"Bar date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"bar_background",
+"label":"Bar Background Color",
+"default":"#fff"
+},
+{
+"type":"color",
+"id":"bar_font",
+"label":"Bar Font Color",
+"default":"#000"
+}
+],
+"presets": [
+{
+"name": "Sale Banner 2"
+}
+]
+}
+{% endschema %}

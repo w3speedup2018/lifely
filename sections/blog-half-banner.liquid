@@ -1,0 +1,80 @@
+{% if section.settings.heading != blank or section.settings.half_image != blank  or section.settings.sub_heading != blank %}
+    <section class="total-sec total-sec-without_slider blog-half-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 main-sprng d-flex align-items-center">
+             {% if section.settings.half_image != blank %}
+                  <div class="total-imge">
+                    <img src="{{ section.settings.half_image | img_url: 'master' }}" alt="{{ block.settings.half_image.alt }}" class="img-fluid"/>
+                  </div>                                       
+              {% endif %}
+              <div class="totl-contet">
+                <div class="slide-swec_without_slider">
+                  <div class="slide">
+                       {% if section.settings.icon_image != blank %}
+                            <img src="{{ section.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid" />                                 
+                      {% endif %}
+
+                      {% if section.settings.heading != blank %}
+                          <h4>{{section.settings.heading}}</h4>
+                      {% endif %}
+                      {% if section.settings.sub_heading != blank %}
+                          {{section.settings.sub_heading}}		
+                      {% endif %}
+                      {% if section.settings.button_link != blank and section.settings.button_label != blank %}
+                          <a  class="red-artcle" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>	
+                      {% endif %}
+                  </div>
+                </div>							
+              </div>	
+          </div>
+
+        </div>
+      </div>
+    </section> 
+{% endif %}
+{% schema %}
+  {
+    "name": "Half Bg With Content",
+    "settings": [
+		 {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"    
+         },
+		 {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+		 },
+		 {
+            "id": "sub_heading",
+            "type": "richtext",
+            "label": "Add Content",
+            "default": "<p>Add your text here</p>"
+         },
+		 {
+            "id": "button_label",
+            "type": "text",
+            "label": "Button Label",
+            "default": "Shop Now"
+         },
+		 {
+            "id": "button_link",
+            "type": "text",
+            "label": "Button Link"
+         },
+		 {
+          "type": "image_picker",
+          "id": "half_image",
+          "label": "Half Image"    
+         }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

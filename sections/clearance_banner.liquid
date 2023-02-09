@@ -1,0 +1,199 @@
+{% if section.settings.banner_heading != blank %}
+	
+	{% if section.settings.banner_heading != blank %}
+		{% assign bg_color = section.settings.background %} 
+	{% else %}
+		{% assign bg_color = '#fff' %} 
+    {% endif %}
+	<style>
+          {% if section.settings.heding_bg_image != blank %}
+              .banner_heading_section{
+                position:relative;
+              }
+              .banner_heading_section:after {
+                content: "";
+                background: url({{ section.settings.heding_bg_image | img_url:'master' }});
+                height: 100%;
+                width: 227px;
+                position: absolute;
+                bottom: 0;
+                right: -15%;
+                background-repeat: no-repeat;
+                background-size: contain;
+              }
+          {% endif %}
+      	  .clearance_banner_bar {
+              padding: 13px 0px;
+              background: {{  section.settings.bar_background }};
+              font-family: 'Gellix';
+              color: {{ section.settings.bar_font}};
+          }
+      	  .clearance_banner {
+              color: {{ section.settings.banner_font}};
+              font-family: 'Gellix';
+          } 
+          .clearance_banner_bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999999;
+            display:none;
+        }
+  </style>  
+	<div class="clearance_banner" style="background:{{bg_color}}">
+		<div class="page-width">
+			<div class="clearance_banner_container">
+          		<div class="clearance_breadcrumbs">
+                  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                      <ol class="breadcrumbs__list">
+                        <li class="breadcrumbs__item">
+                          <a class="breadcrumbs__link" href="/">Home</a>
+                        </li>
+                        <li class="breadcrumbs__item">
+                          <span class="curent_page">{{ section.settings.banner_heading }}</span>
+                        </li>                        
+                      </ol>
+                    </nav>
+              	</div>  
+              	<div class="clearance_banner_content">
+                  	<div class="banner_heading_section">
+                      <h1>{{ section.settings.banner_heading }} <sup><img src="{{section.settings.heding_image | img_url:'master' }}" alt=""></sup></h1>
+                      <p>{{ section.settings.banner_subheading }}</p>
+                  	</div>
+                  	{% if section.settings.sale_heading != blank or  section.settings.sale_end_date != blank %}
+                      <div class="banner_counter_section">
+                        {% if section.settings.sale_heading != blank %}
+                       		 
+                        {% endif %}
+                         {% if section.settings.sale_end_date != blank %}
+                             <span id="countdownEliving" data-date="{{section.settings.sale_end_date}}">
+                                  <span class="ctime eliving-day"><span class="days">00</span> days</span> 
+                                  <span class="ctime"><span class="hours">00</span> hrs</span> 
+                                  <span class="ctime"><span class="minutes">00</span> min</span> 
+                                  <span class="ctime"><span class="seconds">00</span> secs</span> 
+                              </span>
+                        {% endif %}
+                      </div>  
+                   {% endif %}
+              	</div>
+          	</div>  
+      	</div>  
+	</div> 
+	{% if section.settings.banner_bar_heading != blank and section.settings.bar_sale_end_date != blank %}
+      <div class="clearance_banner_bar">
+		<div class="page-width">
+        	<div class="clearance_bar_inner">
+          	  <div class="blank_div"></div>
+              <div class="clearance_BannerBar_Heading"><h3>{{ section.settings.banner_bar_heading }}</h3></div> 
+              <div class="clearance_BannerBar_Timmer">
+                 {% if section.settings.bar_sale_end_date != blank %} 	
+                     <span id="countdownClearance_bar" data-date="{{section.settings.bar_sale_end_date}}">
+                       <span class="ctime eliving-day"><span class="days">00</span> days</span> 
+                       <span class="ctime"><span class="hours">00</span> hrs</span> 
+                       <span class="ctime"><span class="minutes">00</span> min</span> 
+                       <span class="ctime"><span class="seconds">00</span> secs</span> 
+                    </span>    
+                 {% endif %}
+              	</div> 
+          	</div>  
+        </div>  
+      </div> 
+
+	 <script>
+       jQuery(document).ready(function($){
+          $(window).scroll(function() {
+             var hT = $('.clearance_banner').offset().top,
+                 hH = $('.clearance_banner').outerHeight(),
+                 wH = $(window).height(),
+                 wS = $(this).scrollTop();
+             if (wS > (hT+hH+50)){              
+               $('.clearance_banner_bar').show();
+             }else{
+             	$('.clearance_banner_bar').hide();
+             }
+          });
+       });
+	</script>  
+    {% endif %}
+
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+        {
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"textarea",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"text",
+			"id":"sale_heading",
+			"label":"Sale heading"
+        },
+		{
+			"type":"text",
+			"id":"sale_end_date",
+			"label":"Sale end date",
+			"info": "Please add date in this format mm/dd/yyyy"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"color",
+			"id":"banner_font",
+			"label":"Banner Font Color",
+			"default":"#000"
+        },
+		{
+			"type":"image_picker",
+			"id":"heding_image",
+			"label":"Icon After Heading"
+        },
+		{
+			"type":"image_picker",
+			"id":"heding_bg_image",
+			"label":"Icon Behind Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_bar_heading",
+			"label":"Bar Heading"
+        },
+		{
+			"type":"text",
+			"id":"bar_sale_end_date",
+			"label":"Bar date",
+			"info": "Please add date in this format mm/dd/yyyy"
+        },
+		{
+			"type":"color",
+			"id":"bar_background",
+			"label":"Bar Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"color",
+			"id":"bar_font",
+			"label":"Bar Font Color",
+			"default":"#000"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

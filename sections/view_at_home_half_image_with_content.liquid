@@ -1,0 +1,71 @@
+{% if section.settings.hlaf_image != blank or section.settings.heading != blank or section.settings.content != blank %}
+<div class="view_at_half_image_with_content">
+	<div class="container">
+  		<div class="view_at_half_image_with_content_inner_new">
+      		<div class="view_at_home_hal_inner">
+              {% if section.settings.hlaf_image_mobile != blank %}
+                {% if section.settings.hlaf_image != blank %}
+                  <div class="view_at_home_left_image hide-on-mobile"> 
+                      <img src="{{ section.settings.hlaf_image | img_url:'master' }}" alt="">
+                  </div> 
+                {% endif %}
+              	 {% if section.settings.hlaf_image_mobile != blank %}
+                  <div class="view_at_home_left_image hide-on-desktop"> 
+                      <img src="{{ section.settings.hlaf_image_mobile | img_url:'master' }}" alt="">
+                  </div> 
+                {% endif %}
+              {% else %}
+              	{% if section.settings.hlaf_image != blank %}
+                  <div class="view_at_home_left_image"> 
+                      <img src="{{ section.settings.hlaf_image | img_url:'master' }}" alt="">
+                  </div> 
+                {% endif %}
+              {% endif %}
+             {% if section.settings.heading != blank or section.settings.content != blank %}
+              <div class="view_at_home_right_content">
+                  {% if section.settings.heading != blank %}
+                	<h2>{{ section.settings.heading  }}</h2>
+                  {% endif %}
+                  {% if section.settings.content != blank %}
+                	{{ section.settings.content  }}
+                  {% endif %}
+              </div> 
+              {% endif %}
+          	</div>  
+      	</div>  
+  	</div>  
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Half Image With Content",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "hlaf_image",
+        "label": "Left Image"    
+      },
+      {
+        "type": "image_picker",
+        "id": "hlaf_image_mobile",
+        "label": "Left Image Mobile"    
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Section Heading"
+      },
+      {
+        "id": "content",
+        "type": "richtext",
+        "label": "Content"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

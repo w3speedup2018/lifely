@@ -1,0 +1,97 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+      <div class="announcement-bar" style="background:{{ block.settings.color_scheme1 }}" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.text != blank -%}
+          {%- if block.settings.link != blank -%}
+           <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
+          {%- endif -%}
+              <p class="announcement-bar__message h5" id="announc-id">
+                
+   
+       
+     <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.4562 1.05079L8.31591 0.971489C8.14023 0.96895 7.97347 1.0359 7.85193 1.15778L0.890716 8.11899C0.63202 8.37769 0.490964 8.73282 0.498566 9.10628C0.506167 9.47973 0.661801 9.84091 0.931247 10.1104L5.41157 14.5907C5.68102 14.8601 6.0422 15.0158 6.41565 15.0234C6.7891 15.031 7.14424 14.8899 7.40293 14.6312L14.3658 7.66837C14.4265 7.60824 14.4742 7.53607 14.5059 7.4561C14.5376 7.37613 14.5527 7.28997 14.5504 7.20269L14.403 2.9781C14.3876 2.47529 14.1745 1.99078 13.81 1.62989C13.4454 1.269 12.9589 1.06089 12.4562 1.05079ZM11.3632 4.56505C11.121 4.41218 10.9321 4.18647 10.8251 3.92213C10.7181 3.6578 10.6988 3.36926 10.7702 3.10026C10.8417 2.83127 10.9999 2.5965 11.2209 2.43154C11.4419 2.26658 11.7136 2.18043 11.9949 2.18616C12.2762 2.19188 12.5517 2.28916 12.7796 2.46326C13.0075 2.63736 13.1754 2.87878 13.2579 3.15091C13.3403 3.42303 13.3328 3.71102 13.2364 3.97122C13.1401 4.23141 12.9602 4.44963 12.724 4.59276C12.5222 4.71507 12.2879 4.77727 12.0476 4.77238C11.8072 4.76748 11.5702 4.69568 11.3632 4.56505Z" fill="#fff"/>
+</svg>
+     {{ block.settings.text   }}
+               {%- if block.settings.link != blank -%}  <u>Click Here</u>   
+<!--                   {% render 'icon-arrow' %} --> 
+                {%- endif -%}
+              </p>
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+	  {%- when 'header_top_menu' -%}
+      <div class="announcement-bar-menu">
+        <div class="announcement-bar-inner">
+          {%- if block.settings.top_menu != blank -%}
+              <ul class="top_menu_list">
+              {%- for link in block.settings.top_menu.links -%}
+                  <li>
+                      <a href="{{ link.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+                          {{ link.title | escape }}
+                      </a>
+                  </li>  
+              {% endfor %}
+              </ul>
+          {%- endif -%}
+        </div> 
+      </div>	
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+   {
+        "type": "color",
+        "id": "color_scheme1",
+      
+     "label": "Color"
+      },
+        
+         
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    },
+	{
+      "type": "header_top_menu",
+      "name": "header_top_menu",
+      "settings": [
+          {
+            "type": "link_list",
+            "id": "top_menu",
+            "default": "main-menu",
+            "label": "Top Menu"
+          }
+		]
+	}
+	
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

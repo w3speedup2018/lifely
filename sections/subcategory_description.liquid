@@ -1,0 +1,39 @@
+{% assign child_cat_desc = '' %}
+{% if current_tags.first and collection.metafields.subcategory.tag != blank %} 
+  {% for subcat in collection.metafields.subcategory.tag %}
+		{% assign count = forloop.index0 %}
+		{% if collection.metafields.subcategory.tag[count] == current_tags.first %}
+		   {% assign child_cat_desc = collection.metafields.subcategory.description[count] %}	
+		{% endif %}
+  {% endfor %}
+{% endif %}
+{% if child_cat_desc != blank  %}	
+	   <div class="collection_subcategory_description" >
+          <div class="page-width">
+              <div class="collection_subcategory_description_inner" {% if section.settings.color_code != blank%}style="background:{{section.settings.color_code}}"{% endif %}>
+					 <div class="collection-hero__subdescription" {% if section.settings.text_color != blank%}style="color:{{section.settings.text_color}}"{% endif %}>{{ child_cat_desc }}</div>
+              </div>  
+          </div>
+      </div>
+{%- endif -%}
+  
+{% schema %}
+  {
+    "name": "Subcategory Description",
+    "settings": [
+		{
+          "id": "color_code",
+          "type": "color",
+          "label": "Background Color",
+		  "default":"#F9F1E5"
+        },
+		{
+		  "type": "color",	
+          "id": "text_color",
+          "label": "Text Color",
+		  "default":"#2C474B"	
+        }
+	]
+  }
+{% endschema %}
+

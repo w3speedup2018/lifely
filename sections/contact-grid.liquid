@@ -1,0 +1,142 @@
+{% if section.blocks != blank %}
+<div class="contact-icon-grid-main">
+	<div class="page-width">
+		<div class="contact-grid-inner">
+			<div class="contact-flex-row">
+				{% for block in section.blocks %}
+					{% assign icon = block.settings.contact_box_image %}
+					{% assign title = block.settings.contact_box_heading %}
+					{% assign content = block.settings.contact_box_content %}
+					{% if icon != blank or title != blank or content != blank %} 
+						<div class="contact-flex-col">
+							<div class="contact-box-inner">
+								{% if icon != blank %}
+									<div class="contact-icon">
+										<img src="{{icon | img_url: 'master'}}" alt="icon">
+									</div>
+								{% endif %}		
+								{% if title != blank %}
+									<div class="contact-title">
+										<h3>{{ title }}</h3>
+									</div>
+								{% endif %}	
+								{% if content != blank %}
+									<div class="contact-content">
+										{{ content }}
+									</div>
+								{% endif %}	
+							</div>
+						</div>
+					{% endif %}  
+				
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+  .contact-icon-grid-main .contact-flex-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+  }
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col {
+      flex: 0 0 24%;
+      max-width: 24%;
+      border-right: 1px solid #f5f5f5;
+  }
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner {
+      padding: 20px;
+      text-align: center;
+  }
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner .contact-title h3 {
+      color: #0E0E0E;
+      font-family: 'Gellix';
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-icon {
+      margin-bottom: 20px;
+      min-height: 80px;
+  }
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content p,  
+  .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content a{
+      text-align: center;
+      color: #666666;
+      font-family: "Roboto", Sans-serif;
+      font-size: 18px;
+  }
+  .contact-icon-grid-main {
+      padding: 30px 0;
+  }
+  @media only screen and (max-width: 1024px){
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner .contact-title h3 {
+        font-size: 20px;
+    }
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content p,
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content a {
+        font-size: 16px;
+    }
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner {
+        padding: 20px 10px;
+    }
+  }
+  @media only screen and (max-width: 767px){
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+  }
+  @media only screen and (max-width: 480px){
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner .contact-title h3 {
+        font-size: 18px;
+    }
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content p, 
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-content a {
+        font-size: 14px;
+    }
+  }
+  @media only screen and (max-width: 360px){
+    .contact-icon-grid-main .contact-flex-row .contact-flex-col .contact-box-inner .contact-title h3 {
+        font-size: 16px;
+    }
+  }
+</style>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Contact Boxes",
+     "settings": [
+		 {
+            "id": "contact_box_heading",
+            "type": "text",
+            "label": "Section Heading"
+		 }
+	],
+	"blocks": [
+    {
+      "type": "contact_icon_box",
+      "name": "Icon Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "contact_box_image",
+          "label": "Image"    
+        },
+        {
+		  "type": "text",	
+          "id": "contact_box_heading",
+          "label": "Heading"
+        },
+		{
+          "type": "textarea",
+          "id": "contact_box_content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

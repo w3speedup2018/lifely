@@ -1,0 +1,25 @@
+{% if section.settings.show_shop_bar %}
+	{% if current_tags.first == blank %}
+      <div class="shop_bar_section collectionbar">
+          <div class="page-width">
+              <ul class="shop_bar_nav">
+                <li><a href="/">Home</a></li> 
+                <li><span>{{ collection.title }}</span></li>
+              </ul> 
+          </div>  
+      </div>  
+	{% endif %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Shop Bar",
+    "settings": [
+		{
+		  "type":"checkbox",
+		  "id":"show_shop_bar",
+		  "label":"Show shop bar"
+		}
+	]
+  }
+{% endschema %}
+

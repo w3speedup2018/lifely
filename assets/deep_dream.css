@@ -1,0 +1,2655 @@
+.gallery_thumb_with_3d.deep_dream_gallery_thumb div.slider-mobile-gutter {
+    max-width: 100%;
+}
+.gallery_thumb_with_3d.deep_dream_gallery_thumb {
+    display: block !important;
+}
+.gallery_thumb_with_3d.deep_dream_gallery_thumb #productSliderThumbs li img.gallery-thumb {
+    width: 135px;
+    height: 135px;
+}
+.deepdream_product__description.rte {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    color: #2c474b;
+    margin-top: 24px;
+    background: #F6F8F4;
+    padding: 22px 50px;
+}
+.jm-mfp-wrap {
+    z-index: 999999 !important;
+}
+.review_bedbuyer_logo img {
+    max-width: 151px !important;
+}
+.mattress_compare_content_item .compare_link_button {
+    margin-bottom: 15px;
+}
+.deepdream_product__description.rte ul.detail-list {
+    list-style: unset;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.deepdream_product__description.rte ul.detail-list li{
+	display:flex;
+    align-items:center;
+}
+.deepdream_product__description.rte ul.detail-list li span{
+	margin-right:2px;
+}
+.deep_dream_gllery_grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 10px;
+ 	margin-top: 26px;
+}
+.deep_dream_gllery_grid .gallery_grid_col {
+    flex: 0 0 49%;
+    max-width: 49%;
+    margin-bottom: 14px;
+}
+.deep_dream_gllery_grid .gallery_grid_col.full_img_col {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.deep_dream_gllery_grid .gallery_grid_col img {
+    max-width: 100%;
+}
+.deepdream_product__description.rte span{display:none;}
+
+.product_deepdream_Mid-Season .grid__item span.price-item.price-item--regular,
+.product_deepdream_new .grid__item span.price-item.price-item--regular {
+    color: #282828;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 28px;
+}
+body.product .price__container.shopify_price_container small.price_per_fortight.price_per_fortight_with_afterpay {
+    display: none !important;
+    font-size: 17px;
+}
+
+.product_deepdream_Mid-Season .product-form__input input[type=radio]:checked+label,
+.product_deepdream_new .product-form__input input[type=radio]:checked+label {
+    background-color: #2C474B;
+    color: #fff !important;
+    border-color: #2C474B;
+}
+
+.product_deepdream_Mid-Season .product-form__input input[type=radio]+label,
+.product_deepdream_new .product-form__input input[type=radio]+label {
+    border-color: #2C474B !important;
+    color: #2C474B !important;
+    font-size: 16px;
+    font-weight: 500;
+    border-width: 2px;
+}
+
+
+.product_deepdream_Mid-Season .csv_result_show p.shipping_deatil span.price_,
+.product_deepdream_Mid-Season .csv_result_show p.dispatch_deatil span.dispatch_date,
+.product_deepdream_Mid-Season .csv_result_show p.delivery_detail span.delivery_date,
+.product_deepdream_new .csv_result_show p.shipping_deatil span.price_,
+.product_deepdream_new .csv_result_show p.dispatch_deatil span.dispatch_date,
+.product_deepdream_new .csv_result_show p.delivery_detail span.delivery_date {
+    color: #cf7244;
+}
+
+.product_deepdream_Mid-Season .csv_result_show p.shipping_deatil span.price_, 
+.product_deepdream_new .csv_result_show p.shipping_deatil span.price_ {
+	text-transform:uppercase;
+}
+
+.product_deepdream_Mid-Season #accordion_deepdream.accordion .card-header:after,
+.product_deepdream_new #accordion_deepdream.accordion .card-header:after {
+    font-family: 'FontAwesome';  
+    content: "\f068";
+    float: right; 
+    color:#2C474B;
+    font-size: 16px;  
+}
+.product_deepdream_Mid-Season #accordion_deepdream.accordion .card-header.collapsed:after,
+.product_deepdream_new #accordion_deepdream.accordion .card-header.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f067"; 
+}
+#accordion_deepdream a.card-title {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2C474B;
+}
+div#accordion_deepdream .card-header {
+    background: transparent;
+    border-top: 1px solid #2C474B;
+    padding: 20px 0;
+}
+div#accordion_deepdream .card-body {
+    padding: 0;
+    font-size: 16px;
+    color: #2c474b;
+}
+div#accordion_deepdream .card.mb-0 {
+    background: #f6f8f4;
+    box-shadow: unset;
+    border: none;
+    padding: 29px;
+}
+div#accordion_deepdream {
+    border: none !important;
+}
+.deepdream_product_feature h3.text-center span {
+    border-bottom: 3px solid #2C474B;
+    padding-bottom: 4px;
+}
+.product-description.container.deepdream_product_feature {
+    padding-top: 14px;
+}
+.deepdream_product_feature h3.text-center {
+    color: #2c474b;
+    margin-bottom: 60px;
+}
+.mattresses_scale_slider_sec h2 {
+    text-align: center;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #2C474B;
+    margin-bottom: 30px;
+}
+.mattresses_scale_slider_sec {
+    padding: 50px 0;
+}
+.scale_slider {
+    max-width: 767px;
+    margin: 0 auto;
+    text-align: center;
+}
+.scale_slide_item h3 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #2C474B;
+}
+.scale_slide_item p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2c474b;
+}
+.mattresses_scale_slider_sec .scale_slider button {
+    position: absolute;
+    top: 45%;
+    font-size: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background: #F5F5F5;
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+}
+.mattresses_scale_slider_sec .scale_slider button.slick-next.slick-arrow:before {
+    background: url("right.png") no-repeat;
+    background-position: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.mattresses_scale_slider_sec .scale_slider button.slick-prev.slick-arrow:before {
+    background: url("left.png") no-repeat;
+    background-position: 100%;
+    content: "\f100";
+    font-family: "FontAwesome 5 Brands";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.mattresses_scale_slider_sec .scale_slider button.slick-prev.slick-arrow {
+    left: -60px;
+    z-index: 1;
+}
+.mattresses_scale_slider_sec button:before {
+    height: 12px;
+    width: 7px;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    z-index: 2;
+    cursor: pointer;
+}
+.scale_slide_item img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+.compare-section {
+    padding: 40px 5rem;
+    background: #F6F8F4;
+}
+.compare-section .heading-grid.text-center {
+    margin-bottom: 40px !important;
+}
+.product_deepdream_new .home_image_slider_container .mobile_insta_icon {
+    display: none;
+}
+section.home_image_slider.collection_image_slider {
+    background: #fff !important;
+}
+.closer_like_slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.closer_like_slide img {
+    max-width: 100%;
+}
+.closer_like_slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+.closer_like_slider_section {
+    background: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_188.png?v=1654511896);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 50px 0 30px;
+}
+.content-closer-slide {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.closer_like_slide > div {
+    flex: 0 0 55%;
+    max-width: 55%;
+}
+.closer_like_slide>div.right_sec {
+    flex: 0 0 44%;
+    max-width: 44%;
+}
+.closer_like_slide>div.right_sec h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+.content-closer-slide >div {
+    flex: 0 0 49%;
+  	max-width:49%;
+}
+.content-closer-slide .content_p p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+h2.closer_slider_heading {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 50px;
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+h2.mobile_heading_tab {
+	display:none;
+}
+.hide_tab_desktop,.USP_icon {
+    display: none;
+}
+.USP_icon img {
+    width: 100%;
+}
+
+.page_mattress-landing-page .collection__banner-head h2.text-center {
+    margin: 0;
+}
+.page_mattress-landing-page .collection__banner-head {
+    padding: 10px 0px 14px;
+}
+.mattress_collection_compare_slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 34px;    
+}
+.mattress_compare_slider_item img {
+    max-width: 100%;
+}
+.mattress_collection_compare_slider > div {
+    flex: 0 0 49%;
+    max-width: 49%;
+}
+.mattress_collection_compare_slider>div.mattress_compare_right_col {
+    max-width: 300px;
+}
+.mattress_collection_compare_slider_section {
+    background: #F6F8F4;
+    padding: 41px 0px;
+}
+.mattress_collection_compare_slider_section h2 {
+    color: #282828;
+    text-align: center;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+.mattress_compare_content_item h3 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #2C474B;
+}
+.mattress_compare_content_item p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2C474B;
+    
+}
+
+.mattress_compare_content_slider button {
+    position: absolute;
+    top: 45%;
+    font-size: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background: #F5F5F5;
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+}
+.mattress_compare_content_slider button.slick-next.slick-arrow:before {
+    background: url("right.png") no-repeat;
+    background-position: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.mattress_compare_content_slider button.slick-prev.slick-arrow:before {
+    background: url("left.png") no-repeat;
+    background-position: 100%;
+    content: "\f100";
+    font-family: "FontAwesome 5 Brands";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.mattress_compare_content_slider button.slick-next.slick-arrow {
+    left: 56px;
+    z-index: 1;
+    bottom: 15px;
+    top: unset;
+}
+.mattress_compare_content_slider button.slick-prev.slick-arrow {
+    left: 0px;
+    z-index: 1;
+    bottom: 15px;
+    top: unset;
+}
+.mattress_compare_content_slider button:before {
+    height: 12px;
+    width: 7px;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    z-index: 2;
+    cursor: pointer;
+}
+.mattress_compare_content_slider {
+    padding-bottom: 60px;
+}
+.compare_link_button a {
+    background: #FFFFFF;
+    border: 2px solid #2C474B;
+    border-radius: 100px;
+    width: 135px;
+    height: 38px;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 29px;
+    color: #2C474B;
+}
+.mattresses_scale_slider_sec .scale_slider button.slick-next.slick-arrow {
+    right: -60px;
+}
+.closer_like_slider_section.mobile_closer_section,.mobile-product-description-section.deep_dream_mobile_product_description {
+    display: none;
+}
+
+.product-description.container.deepdream_product_feature.collectionpage_product_feture .desc-content p ,.product-description.container.deepdream_product_feature.collectionpage_product_feture .desc-content h4{
+    color: #2C474B;
+}
+.product-description.container.deepdream_product_feature.collectionpage_product_feture {
+    padding-bottom: 70px;
+}
+.mattress_collection_product_grid_section .section_heading h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 42px;
+    text-align: center;
+    color: #2C474B;
+}
+.product_deepdream_new .mattress_collection_compare_slider_section h2 {
+    text-align: center;
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #2c474b;
+    margin-bottom: 30px;
+}
+.mattress_collection_product_grid_section .section_heading p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #2C474B;
+}
+.mattress_products_grid_s {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap:30px;
+}
+.mattress_products_grid_s .mattress_products_grid_c {
+    flex: 0 0 31.33%;
+    max-width: 31.33%;
+}
+.mattress_product_main_images img {
+    object-fit: cover;
+    width: 100%;
+}
+.mattress_product_thumb_images img {
+    height: 142px;
+    object-fit: cover;
+    width: 100%;
+}
+.mattress_product_con h3 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #282828;
+    margin-top: 15px;
+}
+.mattress_products_grid_s .price_div p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0;
+    color: #282828;
+}
+.mattress_products_grid_s .price_div p.price_amount {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+}
+.prooduct_short_desc p.short_description {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282828;
+}
+.prooduct_benifits ul.benifits-list {
+    background: #ECEEEA;
+    border-radius: 15px;
+    padding: 21px 17px;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-shrink: initial;
+    justify-content: space-between;
+    align-items: baseline;
+    min-height: 195px;
+}
+.prooduct_benifits ul.benifits-list li {
+    flex: 0 0 48%;
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    color: #2c474b;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.prooduct_benifits ul.benifits-list li img {
+    margin-right: 8px;
+}
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+.mattress_products_grid_s .mattress_products_grid_c {
+    margin-bottom: 30px;
+}
+.mattress_product_shop_now a {
+    width: 115px;
+    height: 38px;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 34px;
+    color: #fff;
+    background: #2C474B;
+    border-radius: 100px;
+    display: inline-block;
+    text-align: center;
+} 
+.mattress_product_shop_now {
+    margin-top: 25px;
+}
+.mattress_product_con .prooduct_short_desc {
+    margin-top: 20px;
+    min-height: 80px;
+}
+.mattress_product_con .prooduct_short_desc p a {
+    color: #2C474B;
+    text-decoration: underline;
+    font-size: 18px;
+}
+.mattress_product_con .prooduct_benifits {
+    margin-top: 11px;
+}
+.mattress_product_con .price_div {
+    margin-top: 15px;
+}
+.mattress_collection_product_grid_section .section_heading {
+    margin-bottom: 60px;
+}
+.mattress_collection_product_grid_section {
+    padding: 60px 0;
+}
+.mattress-review__bottom-image.text-center img {
+    max-width: 100%;
+}
+.page_mattress-landing-page .collection-hero__main .collection__banner-head h2.text-center { 
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    color: #2C474B;
+}
+.mattress-review__bottom-buuton.hide_on_desktop{
+  display:none;
+}
+
+button.mattress_landing_add_to_cart {
+    background: transparent;
+    border: none;
+    outline: unset;
+    box-shadow: none;
+}
+.page_mattress-landing-page .related_products {
+    display: none;
+}
+.clearance_banner.about_page_banner .clearance_banner_container {
+    max-width: 100%;
+}
+.clearance_banner.about_page_banner .clearance_banner_content .banner_heading_section {
+    flex: 0 0 60%;
+}
+.clearance_banner.about_page_banner .clearance_banner_content>div {
+    flex: 0 0 40%;
+}
+.clearance_banner.about_page_banner .clearance_banner_content .banner_image_section {
+    text-align: right;
+}
+.clearance_banner.about_page_banner .clearance_banner_content .banner_image_section img {
+    max-width: 100%;
+}
+.clearance_banner.about_page_banner h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    margin-top: 10px;
+}
+.clearance_banner.about_page_banner p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+.clearance_banner.about_page_banner .clearance_banner_content {
+    align-items: flex-end;
+}
+.about_half_image_with_text .about_half_image > img {
+    width: 100%;
+}
+.about_half_image_with_text .about_half_image {
+    position: relative;
+}
+.about_half_image_with_text .about_half_image .about_logo_image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about_half_image_with_text {
+    padding: 60px 0;
+}
+.about_half_image_with_text .about_half_image_content h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 82px;
+    color: inherit;
+}
+.about_half_image_with_text .about_half_image_content p {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: inherit;
+}
+.about_half_image_content {
+    padding-left: 60px;
+}
+.page_about_us .landing_our_mission_content h4,.page_about_us .landing_our_mission_content p {
+    color: #574E40;
+}
+.page_about_us .landing_our_mission_content {
+    background-position: bottom right;
+    background-size: 204px;
+    padding: 60px 69px 143px;
+}
+.page_about_us .landing_our_mission_content h4 {
+    margin-bottom: 30px;
+}
+.page_about_us section.icon_box_section.landing_icon_box .container-custom {
+    max-width: 1140px;
+    padding: 0;
+}
+.page_about_us section.icon_box_section.landing_icon_box h2 {
+    color: #758068;
+}
+.about_market_price_section h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 52px;
+    text-align: center;
+    color: #574E40;
+  	margin-bottom:60px;
+}
+.about_market_price_section h3{
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 32px;
+	color: #574E40;
+}
+.market_price_inner p{
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #574E40;
+}
+.about_market_price_section {
+    padding: 30px 0 60px;
+}
+.market_price_inner {
+    padding: 20px;
+}
+.banner_habitat {
+    padding-top: 40%;
+    position: relative;
+}
+.habitat_banner_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.habitat_banner_content.page-width {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.habitat_banner_content.page-width h1 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 66px;
+    line-height: 74px;
+    color: #FFFFFF;
+}
+.habitat_banner_content.page-width sup {
+    top: -36px !important;
+}
+.habitat_donation_section h2 {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 28px;
+    color: #574e40;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.habitat_donation_section p {
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	color: #574E40;
+}
+.habitat_donation_section h3 {
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 40px;
+	color: #2C474B;
+    text-align: center;
+  	margin-bottom: 25px;
+}
+.habitat_donation_section {
+    padding: 60px 0;
+}
+.habitat_donation_section h3 span {
+    background: #ECEEEA;
+    padding: 0px 14px;
+    border-radius: 6px;
+    line-height: 0;
+    padding-bottom: 4px;
+}
+.about_half_image_with_text.habit_half_image_with_text .about_half_image_content {
+    padding: 0;
+}
+.about_half_image_with_text.habit_half_image_with_text .about_half_image_content h2 {
+    line-height: 40px;
+    margin-bottom: 27px;
+}
+.popular_search_section {
+    padding: 33px 0;
+    margin-top: 14px;
+}
+.popular_search_section .popular-category-main {
+    padding: 12px 0;
+}
+.popular_search_section .popular-category-main .d-flex {
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.popular_search_section .popular-category-main .popular-cat-tags a {
+    font-size: 16px;
+    color: #2C474B;
+}
+li.boost-pfs-search-suggestion-header-suggestions.boost-pfs-search-suggestion-header,li.boost-pfs-search-suggestion-header-collections.boost-pfs-search-suggestion-header,li.boost-pfs-search-suggestion-header-products.boost-pfs-search-suggestion-header{
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #758068;
+}
+.boost-pfs-search-suggestion-header-view-all.boost-pfs-search-suggestion-header a {
+    color: #2C474B !important;
+    font-size: 17px !important;
+}
+.total_review_section .mattress-review__main .mattress-review__head h2 {
+    line-height: 45px;
+}
+.total_review_section .mattress-review__content.text-center p {
+    font-size: 16px;
+}
+.total_review_section .mattress-review__bottom-buuton.text-center a {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-top: 33px;
+    display: inline-block;
+    color: #2c474b;
+    text-decoration: underline;
+}
+.img_slider_heading {
+    display: flex;
+    justify-content: center;
+}
+.img_slider_heading .mobile_insta_icon {
+    margin-right: 10px;
+}
+.img_slider_heading  .be-heading.text-center {
+    margin-bottom: 0;
+}
+p.image_slider_bottom_heading {
+    text-align: center;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #282828;
+    margin-top: 20px;
+}
+body.page_reviews .related_product_tab_nav ul {
+    margin-bottom: 30px;
+}
+body.page_reviews .related_product_tab_nav ul a.active_tab {
+    color: #CF7244;
+    border-bottom: 2px solid #CF7244;
+}
+body.page_reviews .related_product_tab_nav ul a {
+    color: #2C474B;
+}
+img.review_placeholder {
+    max-width: 100%;
+}
+.shopify-section.master_banner .master-top-bar p {
+    color: #fff;
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+.shopify-section.master_banner .master-top-bar {
+    background: #2C474B;
+    margin-bottom: 0;
+    padding: 9px;
+}
+.shopify-section.master_banner span#countdownEliving {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+}
+.shopify-section.master_banner span#countdownEliving span.ctime {
+    position: relative;
+    background: #2C474B;
+    color: #fff;
+    padding: 13px 11px;
+    border-radius: 7px;
+}
+.shopify-section.master_banner span#countdownEliving span.days, .shopify-section.master_banner span#countdownEliving span.hours, .shopify-section.master_banner span#countdownEliving span.minutes, .shopify-section.master_banner span#countdownEliving span.seconds {
+    background: #2C474B;
+    display: block;
+    color: #fff;
+    font-size: 26px;
+    font-family: inherit;
+    font-weight: 500;
+    margin-left: 0;
+    min-width: 58px;
+    min-height: 26px;
+    line-height: 25px;
+}
+.shopify-section.master_banner span#countdownEliving span.ctime:after {
+    content: ":";
+    position: absolute;
+    top: 0;
+    right: -23px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #2C474B;
+}
+.master_discount_heading h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size:28px;
+    line-height: 74px;
+    text-align: center;
+    color: #2C474B;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.master_discount_heading p {
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 28px;
+	line-height: 31px;
+	text-align: center;
+	color: #2C474B;
+}
+.discount_heading_section {
+    border-bottom: 1px solid #AFBAA1;
+    padding-bottom: 54px;
+}
+.return_bottom_faq_section .faq_sectio_deatail h2 {
+    color: #282828 !important;
+}
+.review_bedbuyer_first_line.mobile_review_bedbuyer_first_line,.review_bedbuyer_second_line.mobile_review_bedbuyer_second_line{
+    display:none;
+}
+.quick-view-button a.quick-view {
+    color: transparent;
+    box-sizing: border-box;
+    box-shadow: none;
+    text-decoration: unset;
+    width: 43px;
+    height: 44px;
+    max-width: 200px !important;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+.quick-view-button a.quick-view:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    font-size: 15px;
+    line-height: 40px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    color:#fff;
+}
+.bestseller_product_image {
+    position: relative;
+} 
+.quick-view-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center !important;
+}
+/*
+.bestseller_product:hover .quick-view-button {
+    display: block !important;
+}
+*/
+/*******Responshive*********/
+@media only screen and (max-width: 1113px)  {
+	.mattress_products_grid_s {
+        column-gap: 23px;
+    }
+}
+@media only screen and (max-width: 991px)  {
+	.mattress_products_grid_s .mattress_products_grid_c {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+}
+@media only screen and (min-width: 767px)  {
+  div#accordion_deepdream .card.mb-0 > div:nth-child(3) {
+      border-top: none;
+  }
+  div#accordion_deepdream .card.mb-0 {
+      padding: 8px 30px 20px !important;
+  }
+}
+
+@media only screen and (max-width: 767px)  {
+    .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture.about .container {
+      padding: 0;
+      max-width: 100%;
+      margin: 15px 0;
+    }
+    .product_deepdream_new .mattress_compare_content_slider button.slick-next.slick-arrow {
+        right: -11px;
+    }
+    .product_deepdream_new .mattress_compare_content_slider button.slick-prev.slick-arrow {
+        left: -11px;
+    }
+    div#accordion_deepdream .card.mb-0 {
+        background: #f6f8f4;
+        box-shadow: unset;
+        border: none;
+        padding: 0px 29px 19px;
+        margin-top: 25px;
+    }
+    .review_bedbuyer_first_line,.review_bedbuyer_second_line {
+        padding: 0 20px;
+         display:none;
+    }
+    .review_bedbuyer_first_line.mobile_review_bedbuyer_first_line,.review_bedbuyer_second_line.mobile_review_bedbuyer_second_line{
+    	display:block;
+    }
+    .review_bedbuyer_logo{
+      display:block !important;
+    }
+  	.page_return-and-refunds .clearance_breadcrumbs {
+        display: none;
+    }
+    .page_return-and-refunds .banner_heading_section h1 sup {
+        display: none;
+    }
+    .page_return-and-refunds .clearance_banner .banner_heading_section {
+        padding-bottom: 20px !important;
+        padding-top: 20px;
+    }
+    .page_return-and-refunds .clearance_banner .banner_heading_section p {
+        display: block !important;
+    }
+  	.page_faq .clearance_breadcrumbs {
+        display: none;
+    }
+    .page_faq .banner_heading_section h1 sup {
+        display: none;
+    }
+    .page_faq .clearance_banner .banner_heading_section {
+        padding-bottom: 20px !important;
+        padding-top: 20px;
+    }
+    .page_faq .clearance_banner .banner_heading_section p {
+        display: block !important;
+    }
+  	.page_faq .clearance_banner_content .banner_heading_section > p {
+      display: none !important;
+    }
+  	.page_mattress-landing-page .collection-hero__fullwidth .collection-breadcrumb {
+      display: none;
+	}
+  	.mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture .container {
+        padding: 0 5rem;
+        max-width: 100%;
+    }
+    .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture.about {
+      padding: 0;
+      max-width: 100%;
+    }
+  	.compare-section.mattress_compare_section .card-header {
+        background: transparent;
+    }
+    .compare-section.mattress_compare_section h5 {
+        font-size: 16px;
+        line-height: 24px;
+        color: #2c474b;
+    }
+    .collection_bedroom.collection .progress_bar_count_sec {
+        justify-content: space-between;
+        padding: 0 5rem;
+    }
+    .collection_bedroom.collection .progress_bar_count_sec .progres_col {
+        flex: 0 0 85%;
+        max-width:11%;
+    }
+    .collection_bedroom.collection .progress_bar_count_sec .progres_count_col {
+        flex: 0 0 11%;
+        max-width:11%;
+    }
+    .compare-section.mattress_compare_section {
+        padding: 0;
+    }
+    .compare-section.mattress_compare_section div#accordion .card .card-body {
+        background: #ECEEEA;
+    }
+    .compare-section.mattress_compare_section .mobile_compiar_content_name span {
+        color: #2c474b;
+    }
+    .compare-section.mattress_compare_section .mobile_compiar_content_star span {
+        color: #2c474b;
+        font-weight: 500;
+    }
+    .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture .progress_bar_count_sec {
+         padding: 0;
+    }
+    .page_mattress-landing-page .sub-collection-hero .container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .page_mattress-landing-page .collection__banner-img {
+        display: none;
+    }
+    .page_mattress-landing-page .collection__banner-head {
+        display: none;
+    }
+    .mattress-review__bottom-image.text-center {
+        display: none;
+    }
+    .mattress-review__bottom-buuton.hide_on_desktop{
+		display:block;
+    }
+  	.collection-hero__main.Mattresses .collection-breadcrumb {
+        display: none;
+    }
+  
+/*     .closer_like_slider_section {
+        display: none;
+    } */
+    .mattress-review__main .mattress-review__head h2 {
+      font-size: 28px;
+      line-height: 36px;
+  }
+  .mattress_collection_compare_slider {
+      flex-wrap: wrap;
+      column-gap: 0;
+      flex-direction: column-reverse;
+  }
+
+  .mattress_compare_image_slider .compare_link_button { display:block; text-align:center; }
+
+    .mattress_compare_image_slider .compare_link_button a{ display: inline-block; width: 171px;    margin: 15px; }
+
+  .mattress_compare_content_slider button.slick-next.slick-arrow {  top:140px;   right: -38px; left:auto; }
+
+  .mattress_compare_content_slider button.slick-prev.slick-arrow { top:140px; left:-40px; }
+  
+   .mattress_compare_content_slider button {
+    
+  }
+  
+  .mattress_collection_compare_slider>div{
+  	flex:100%;
+    max-width:100%;
+  }
+  .mattress_compare_content_item h3 {
+    text-align: center;
+  }
+  .mattress_compare_content_item p {
+      text-align: center;
+  }
+  .compare_link_button a {
+      display: none;
+  }
+  .mattress_compare_content_slider {
+      padding-bottom: 0;
+  }
+  .mattress_collection_compare_slider_section h2 {
+      color: #2c474b;
+      font-size: 28px;
+      line-height: 36px;
+  }
+  .mattress-review__bottom-buuton.hide_on_desktop.text-center a {
+      font-size: 21px;
+      line-height: 24px;
+      color: #2C474B;
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      text-decoration: unset;
+      border-bottom: 1px solid #2C474B;
+  }
+  .product-description.container.deepdream_product_feature.collectionpage_product_feture {
+      display: none;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture {
+      display: block;
+  }
+   .mobile-product-description-section.deep_dream_mobile_product_description:before{
+        display:none
+   }
+  .closer_like_slider_section.mobile_closer_section{
+  		display:block;
+  }
+  .deep_dream_mobile_product_description h3.text-center {
+      color: #2C474B !important;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description .desc-image {
+      border-radius: 0px;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description .desc-content p {
+      font-weight: 400;
+      font-size: 16px;
+      color: #2C474B;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description .desc-content h4 {
+      color: #2C474B;
+    margin-top: 18px;
+  }
+  .closer_like_slide {
+      display: block !important;
+      flex-wrap: wrap;
+  }
+  .deepdream_product__description.rte {
+      display: none;
+  }
+  .closer_like_slide>div {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+  .content-closer-slide,.USP_icon {
+      display: block !important;
+  }
+  .content-closer-slide>div {
+      max-width: 100% !important;
+  }
+  .closer_like_slide>div.right_sec{
+  	 max-width: 100% !important;
+  }
+  h2.mobile_heading_tab {
+      display: block;
+      text-align: center;
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 36px;
+      color: #2C474B;
+  }
+  .deep_dream_gllery_grid {
+      display: none;
+  }
+  div#accordion_deepdream .card.mb-0 > .card-header:first-child {
+      border: none;
+  }
+  h2.mobile_heading_tab span {
+      border-bottom: 3px solid #2C474B;
+      padding-bottom: 3px;
+  }
+  .hide_tab_desktop {
+      display: block;
+  }
+  .closer_like_slider_section.mobile_closer_section {
+      background: unset;
+  }
+  .closer_like_slider_section.mobile_closer_section .left_sec {
+      background: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_188.png?v=1654511896);
+      background-size: cover;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      padding: 19px 0px;
+  }
+ .closer_like_slider_section.mobile_closer_section h2.closer_slider_heading {
+      background: #aab0b5;
+      margin-bottom: -1px;
+      padding: 32px 40px 30px;
+  }
+   .closer_like_slider_section.mobile_closer_section .closer_like_slide>div.right_sec h2 {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 18px;
+      color: #2C474B;
+  }
+   .closer_like_slider_section.mobile_closer_section .closer_like_slide .content_p p {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #2C474B;
+  }
+  .right_sec.page-width {
+      padding-top: 20px;
+  }
+  .right_sec.page-width .content-closer-slide img {
+      width: 100%;
+  }
+  .mattresses_scale_slider_sec .scale_slider button.slick-next.slick-arrow {
+    right: 0;
+}
+.mattresses_scale_slider_sec .scale_slider button.slick-prev.slick-arrow {
+    left: 0;
+  
+}
+  
+  .closer_like_slider_section.mobile_closer_section .progress {
+      background-image: linear-gradient(to right,#2c474b,#2c474b);
+      height:3px;
+  }
+  .closer_like_slider_section.mobile_closer_section .progres_count_col {
+      color: #2c474b !important;
+      font-size: 18px;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description .progress {
+      background-image: linear-gradient(to right,#2c474b,#2c474b);
+      height:3px;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description .progres_count_col {
+      color: #2c474b !important;
+      font-size: 18px;
+  }
+  .closer_like_slider_section.mobile_closer_section .progress_bar_count_sec {
+      margin-top: 15px;
+  }
+  .mattresses_scale_slider_sec h2,.product_deepdream_new .mattress_collection_compare_slider_section h2 {
+      font-size: 28px;
+      line-height: 36px;
+  }
+  .scale_slide_item h3,.product_deepdream_new .mattress_collection_compare_slider_section h3 {
+      font-size: 16px;
+      line-height: 36px;
+  }
+  .product_deepdream_new .mattress_collection_compare_slider>div.mattress_compare_right_col{
+    max-width:100%;
+  }
+  .product_deepdream_new .produt_mobile_detail_section {
+      display: none !important;
+  }
+  .product_deepdream_new .compare-section {
+      padding: 18px 0px 60px !important;
+  }
+  .product_deepdream_new .compare-section h3 {
+      font-size: 28px;
+      line-height: 36px;
+      color: #2C474B;
+  }
+  .product_deepdream_new .compare-section h5 {
+      font-size: 16px;
+      line-height: 24px;
+      color: #2C474B;
+  }
+  .product_deepdream_new .compare-section .card-header {
+      background: transparent;
+  }
+  .product_deepdream_new .compare-section div#accordion .card .card-body {
+      background: #ECEEEA;
+  }
+  .product_deepdream_new .mobile_compiar_content_name span{
+      color: #2C474B;
+  }
+  .product_deepdream_new .mobile_compiar_content_star span{
+      color: #2C474B;
+      font-weight:500;
+  }
+  .product_deepdream_new .home_image_slider_container .mobile_insta_icon {
+     display: block;
+      text-align: center;
+  }
+  .product_deepdream_new .be-heading h2 {
+      color: #000000;
+      margin: 9px 0px 9px;
+  }
+  .product_deepdream_new .be-heading p {
+      font-weight: 500;
+      color: #282828;
+  }
+ .product_deepdream_new .product-icons-grid .icon-box .content-grid h3 {
+      color: #282828;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 700;
+  }
+  .product_deepdream_new .product-icons-grid .icon-box .content-grid p {
+      display: block;
+      font-size: 16px;
+  } 
+  .product_deepdream_new.product .product-icons-grid .page-width:before {
+      display:none;
+  }
+  .product.product_deepdream_new  .product-icons-grid {
+      padding: 34px 0px 34px !important;
+  }
+  .mobile_compair button.btn.btn-link.collapsed i:before {
+     content: "\f067";
+  }
+  .mobile_compair button.btn.btn-link i:before {
+     content: "\f068";
+  }
+  .product_deepdream_new .product_3d_view {
+/*       display: block!important; */
+      padding: 9px 0px;
+  }
+  .product_deepdream_new ul#productSliderGallery button.slide-arrow.slick-arrow {
+      display: none !important;
+  }
+  .page_mattress-landing-page .related_products {
+    display: block;
+   }
+  .page_mattress-landing-page .icon-box p {
+        display: block !important;
+    }
+    .page_mattress-landing-page .icon-box h3 {
+        color: #282828 !important;
+        line-height: 24px;
+    }
+    .page_mattress-landing-page .icon-box p {
+        display: block !important;
+        font-weight: 500 !important;
+    }
+    .page_mattress-landing-page .product-icons-grid {
+        padding: 37px 15px !important;
+    }
+    .page_reviews .clearance_banner_content {
+      justify-content: center;
+    }
+    .page_reviews .clearance_banner_content .banner_heading_section {
+        padding-top: 20px;
+    }
+    .page_reviews .clearance_breadcrumbs {
+        display: none;
+    }
+  	.page_reviews .banner_heading_section h1 {
+        font-size: 40px !important;
+    }
+    .page_reviews .banner_heading_section h1 img {
+        max-width: 20px;
+    }
+    .page_reviews .banner_heading_section h1 sup {
+        right: 8px;
+    }
+    .total_review_section .mattress-review__main .mattress-review__head h2 {
+        line-height: 34px;
+    }
+  	.total_review_section .mattress-review__star.text-center img {
+        max-width: 28px;
+    }
+  	.page_reviews .mattress-review__content.text-center {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0px 30px;
+    }
+  	.total_review_section ul.slick-dots,.hide_on_mobile_review {
+        display: none !important;
+    }
+    .review_mobile_sec {
+        display: block !important;
+        text-align: center;
+    }
+  	p.image_slider_bottom_heading {
+        display: none;
+    }
+    .review_mobile_sec h2 {
+        color: #000 !important;
+    }
+    .review_mobile_sec p {
+        color: #282828 !important;
+    }
+    .page_reviews .popular-category-main,.page_reviews .collection-faq{
+      display:none;
+    }
+  	.page_reviews .product-icons-grid .icon-box .content-grid p {
+        display: block;
+    }
+    .page_reviews .product-icons-grid {
+        padding: 30px 0 !important;
+    }
+  	.page_reviews .product-icons-grid .icon-box .image-grid {
+        margin: 0px 14px;
+    }
+  	.page_reviews .product-icons-grid .icon-box .content-grid h3 {
+        color: #282828;
+    }
+   .mobile_bootom_image_review {
+        display: block !important;
+    }
+  	.mobile_bootom_image_review img {
+        max-width: 100%;
+    } 
+  	.page_reviews section.home_image_slider.collection_image_slider {
+        padding: 34px 0px 36px;
+    }
+    body.collection_mattresses .all_mobile_deep_drams_mattress_feature{
+      display:none !important;
+    }
+    .mattresses_product_custom_grid_section .mattress_products_grid_s .mattress_products_grid_c {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .deep_dream_mobile_product_main_title .jdgm-preview-badge .jdgm-star.jdgm-star{
+    	color: #F1C21B;
+    }
+}
+@media only screen and (max-width: 749px)  {
+  .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture .container {
+      padding: 0 20px;
+      max-width: 100%;
+  }
+  .mobile-product-description-section.deep_dream_mobile_product_description.collectionpage_product_feture.about .container {
+      padding: 0;
+      max-width: 100%;
+      margin: 15px 0;
+  }
+  .collection_bedroom.collection .progress_bar_count_sec {
+      padding: 0 20px;
+  }
+  .mobile_shop_button {
+      padding-top: 17px;
+  }
+  
+}
+@media only screen and (max-width: 604px)  {
+ .mattress_products_grid_s .mattress_products_grid_c {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+  .mattress_collection_product_grid_section {
+      padding: 0;
+  }
+  .mattress_collection_product_grid_section .section_heading {
+      display: none;
+  }
+  .mattress_product_con h3,.mattress_product_con .price_div {
+      display: none;
+  }
+  .mattress_product_mobile_heading {
+      display: block !important;
+  }
+  .mattress_product_mobile_heading h3 {
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 22px;
+      color: #282828;
+      margin-bottom: 22px;
+  }
+  .mattress_product_mobile_price {
+      display: flex !important;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding:0px 15px;
+  }
+   .mattress_product_mobile_price .price_sec_p p.price_label {
+      font-family: Gellix;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #282828;
+      margin-bottom: 0;
+  }
+  .mattress_product_mobile_price .price_sec_p p.price_amount{
+      font-family: 'Gellix';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      color: #282828;
+  }
+  .mattress_product_mobile_price .wishlist_sec_p {
+      display: flex;
+      align-items: center;
+  }
+  .mattress_product_mobile_price .zoomywishid {
+      border: 1px solid #CFCFD0;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+  }
+  .mattress_product_mobile_price .zoomywishid label {
+      margin-bottom: 0 !important;
+      display: inherit;
+  }
+  .mattress_product_mobile_price .zoomywishid p{
+      margin-bottom: 0 !important;
+  }
+  .mattress_product_mobile_price .zoomywishid p i{
+      padding: 0 !important;
+  }
+  .mattress_product_mobile_price .zoomywishid .zoomywishidheart {
+      padding: 6px 0 0 2px;
+  }
+  .mattress_product_mobile_price .zoomywishid .zoomywishidheart .fa-heart-o:before {
+      font-weight: 600;
+      color: #2C474B;
+  }
+  .mattress_product_mobile_price .zoomywishid .zoomywishidheart i.fa.fa-heart {
+      color: #2C474B;
+  }
+  .mattress_product_shop_now {
+      text-align: right;
+     padding: 0px 15px;
+  }
+  .page_mattress-landing-page .collection-hero__fullwidth img {
+      max-width: 100%;
+  }
+  .mattress_collection_product_grid_section .page-width {
+      max-width: 100%;
+      padding: 0;
+  }
+  .mattress_collection_product_grid_section .mattress_products_grid_s {
+      background: #F5F5F5;
+  }
+  .mattress_products_grid_s .mattress_products_grid_c {
+      background: #fff;
+      padding: 28px 0 42px 0px;
+  }
+  .mattress_product_con .prooduct_short_desc {
+      padding: 0 15px;
+  }
+  .mattress_product_con .prooduct_benifits {
+      padding: 0 15px;
+  }
+  .mattress_product_mobile_heading {
+      padding: 0 15px;
+  }
+  body.product_deepdream_new .product-sec-main .product-form__input.product-form__quantity {
+      padding-bottom: 0px!important;
+      margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 600px)  {
+  body.collection_mattresses .collection-hero__main {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+  }
+  body.collection_mattresses .collection-hero__main .sub-collection-hero {
+      padding-top: 20px;
+  }
+  body.collection_mattresses .collection-hero__fullwidth .child_cartegory_banner.collection-hero__text-wrapper .container {
+      padding-bottom: 30px;
+  }
+  .collection_mattresses .collection-hero__main .banner-head-inner h2.text-center {
+      font-size: 12px;
+      line-height: 12px;
+      padding-bottom: 9px;
+      padding-top: 8px;
+  }
+  .collection_mattresses .collection-hero__main .banner_logo.text-center {
+      padding: 0 25px;
+  }
+  .all_mobile_deep_drams_mattress_feature {
+      display: none;
+  }
+  .collection_mattresses   .collection-hero__main  .sub-collection-hero img {
+      max-width: 320px !important;
+  }
+  body.collection_mattresses .collection-hero__main > div {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+  .deep_dream_mobile_product_main_title {
+    display: block !important;
+    width: 100%;
+  }
+  .deep_dream_mobile_product_main_title .wish_list_with_title h2 {
+      font-size: 29px;
+      line-height: 30px;
+      font-family: Gellix;
+  }
+  .deep_dream_mobile_product_main_title .product_detail_review {
+      margin-top: 8px !important;
+      display: block !important;
+  }
+  .deep_dream_desktop_product_main_title {
+      display: none !important;
+  }	
+  .product_deepdream_new .product-sec-main .product-form__input.product-form__quantity .qty-minus, .product-sec-main .product-form__input.product-form__quantity .qty-plus {
+      background: #2C474B !important;
+  }
+  .product_deepdream_new .quantity__button svg {
+      width: 14px;
+      pointer-events: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 37px;
+  }
+  .product_deepdream_new .post_check_main_grid .postcode_check_grid .posthead {
+      font-family: Gellix;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 28px;
+      color: #2c474b;
+  }
+  .product_deepdream_new .post_check_main_grid .postcode_check_grid .posthead span {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      text-decoration-line: underline;
+      color: #2C474B;
+  }
+  .product_deepdream_new .csv_result_show p img {
+        width: auto;
+        margin-right: 9px;
+        height: 16px;
+        line-height: 0;
+        margin-bottom: 4px;
+    }
+  .product_deepdream_new .csv_result_show p.shipping_deatil span.price_ {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: bold;
+  }
+  .product_deepdream_new .csv_result_show p.dispatch_deatil span.dispatch_date, .product_deepdream_new .csv_result_show p.delivery_detail span.delivery_date {
+      color: #cf7244;
+      font-weight: bold;
+  }
+  .deep_dream_mobile_product_main_title .jdgm-preview-badge .jdgm-star.jdgm-star{
+  	color: #F1C21B;
+  }  
+  body.product_deepdream_new .product-sec-main  .postcode_form_grid .form-inner-wrap input {
+      margin-bottom: 0 !important;
+  }
+  body.product_deepdream_new .product-sec-main  form#post_check_form .form-group {
+      margin-bottom: 0;
+  }
+  body.product_deepdream_new .product-sec-main .postcode_check_grid .postcode_form_grid {
+      margin-bottom: 0;
+  }
+  body.product_deepdream_new .product-sec-main .postcode_check_grid {
+     padding: 13px 20px 20px;
+  }
+  body.product_deepdream_new .post_check_main_grid {
+      margin-top: 23px;
+  }
+  body.product_deepdream_new .postcode_form_grid .form-inner-wrap form#post_check_form button.form-icon {
+      margin-top: 10px;
+      font-weight: bolder;
+  }
+  body.product_deepdream_new .grid__item.product__media-wrapper ul.slick-dots {
+      max-width: 155px;
+      overflow: hidden;
+      margin: 0 auto 15px;
+      justify-content: flex-start !important;
+  }
+  body.product_deepdream_new .USP_icon {
+      display: none !important;
+  }
+  body.product.product_deepdream_new .price__container.shopify_price_container small.price_per_fortight {
+    display: none !important;font-size: 17px;font-family: 'Gellix';font-weight: 600;
+  }
+  body.product.product_deepdream_new .price__container.shopify_price_container small.price_per_fortight.price_per_fortight_with_afterpay {
+      display: block!important;
+      font-size: 14px !important;
+      font-family: Gellix;
+      line-height: 14px;
+      padding: 0;
+  }
+  body.product.product_deepdream_new .price__container.shopify_price_container small.price_per_fortight.price_per_fortight_with_afterpay a {
+      color: #2C474B !important;
+      text-decoration: underline;
+  }
+  body.product.product_deepdream_new .price.price--large.price--on-sale .price__container.shopify_price_container .price__sale {
+      display: flex;
+      align-items: center;
+  }
+  body.product.product_deepdream_new .price.price--large.price--on-sale .price__container.shopify_price_container .price__sale 
+   span.price-item.price-item--sale.price-item--last {
+      order: 1;
+     font-size: 28px;
+  }
+  body.product.product_deepdream_new .price.price--large.price--on-sale .price__container.shopify_price_container .price__sale span {
+      order: 2;
+  }
+   body.product.product_deepdream_new .price.price--large.price--on-sale .price__container.shopify_price_container .price__sale s.price-item.price-item--regular {
+      font-size: 22px;
+  }
+  body.product.product_deepdream_new section.page-width.breadcrumb-main {
+      display: none;
+  }
+  body.product.product_deepdream_new .deep_dream_mobile_product_main_title {
+      padding: 10px 0;
+  	background:#F8F8F8;
+  }
+  body.product.product_deepdream_new .deep_dream_mobile_product_main_title .wish_list_with_title h2 {
+  	font-weight: 600;
+  }
+}
+@media only screen and (max-width: 575px)  {
+  .gorg-custom-chatbox {
+      padding: 10px 6px 15px !important;
+  }
+  .gorg-custom-chatbox a {
+      line-height: 14px;
+      font-size: 14px !important;
+  }
+  .gorg-custom-chatbox img {
+      width: 21px !important;
+  }
+}
+@media only screen and (max-width: 480px)  {
+  .mattress-review__main .mattress-review__content {
+      font-size: 17px;
+      padding: 12px 0;
+  }
+  .review_bedbuyer_logo img {
+      max-width: 126px!important;
+  }
+  .mattress_compare_content_slider button.slick-prev.slick-arrow {
+      left: -25px;
+  }
+  .mattress_compare_content_slider button.slick-next.slick-arrow {
+      right: -25px;
+  }
+  .product_deepdream_new .mattress_compare_content_slider button.slick-next.slick-arrow {
+      right: -11px;
+  }
+  .product_deepdream_new .mattress_compare_content_slider button.slick-prev.slick-arrow {
+      left: -11px;
+  }
+}
+@media only screen and (max-width: 375px)  {
+  .collection_mattresses .collection-hero__main .sub-collection-hero img {
+      max-width: 100% !important;
+  }
+}
+@media only screen and (max-width: 365px)  {
+  .product_deepdream_new .csv_result_show p.shipping_deatil span.price_ {
+      text-transform: uppercase;
+      font-size: 12px;
+  }
+  .product_deepdream_new .csv_result_show p {
+      font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+	.landing_collection_grid_box_last .collection_grid_box {
+		min-height: 347px !important;
+	}
+	.landing_collection_grid_box {
+		min-height: 451px !important;
+	}
+}
+
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.landing_collection_grid_box_last .collection_grid_box {
+		min-height: 301px !important;
+	}
+	.landing_collection_grid_box {
+		min-height: 379px !important;
+	}
+}
+
+
+
+/******************************* Mattress PDP New ************************************/
+.mattress-pdp-new-design .wish_list_with_title {
+    padding-right: 153px;
+    position: relative;
+}
+.mattress-pdp-new-design  .jdgm-preview-badge .jdgm-star.jdgm-star {
+    color: #F1C21B;
+}
+.mattress-pdp-new-design  .product_detail_review {
+    margin-top: 6px;
+}
+.mattress-pdp-price {
+    margin-top: 5px;
+}
+body.product .mattress-pdp-new-design .price__container.shopify_price_container {
+    flex-wrap: wrap !important;
+}
+body.product  .mattress-pdp-new-design  .price__container.shopify_price_container small.price_per_fortight a {
+    color: #282828;
+    font-weight: 500;
+    text-decoration: underline;
+}
+body.product  .mattress-pdp-new-design  .price__container.shopify_price_container small.price_per_fortight {
+    color: #282828;
+}
+p.price_per_fortight.mattress_pdp_new_four_payment {
+    font-size: 17px;
+    font-family: 'Gellix';
+    font-weight: 600;
+}
+p.price_per_fortight.mattress_pdp_new_four_payment a {
+    font-weight: 500;
+    text-decoration: underline;
+    color: #282828;
+}
+.mattress_pdp_payments {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 15px;
+    color: #282828;
+    font-family: 'Gellix';
+    font-weight: 500;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden {
+    width: 172px;
+    float: left;
+    margin-right: 25px;
+}
+ .mattress-pdp-new-design .product-form__input.product-form__quantity {
+   width: 172px;
+    float: left;
+}
+ .mattress-pdp-new-design .clearfix{
+	clear:both;
+}
+.mattress-pdp-new-design{
+  clear:both;
+}
+.mattress-pdp-new-design quantity-input.quantity {
+    border: 2px solid #000;
+}
+.product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity .qty-minus, .product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity .qty-plus {
+    background: transparent !important;
+    border-radius: 100px;
+    color: #2c474b!important;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden .select select {
+    border: 2px solid #2C474B !important;
+    border-radius: 50px;
+    font-size: 15px;
+    color: #2C474B;
+    font-weight: 600;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden .product-form__input.product-form__input--dropdown {
+    margin-bottom: 0;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden .select:before, .mattress-pdp-new-design variant-selects.no-js-hidden .select:after {
+    display: none;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden label {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #282828;
+    margin-bottom: 6px;
+}
+.mattress_pdp_divider {
+    margin: 0;
+    width: 100%;
+    border-top: 1px solid #2c474b;
+    margin-bottom: 10px;
+}
+.mattress-pdp-price {
+    margin-bottom: 20px !important;
+}
+.product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity .qty-minus svg, .product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity .qty-plus svg {
+    color: #fff;
+    font-size: 24px !important;
+    width: 14px;
+    color: #2C474B !important;
+}
+.product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity label {
+    margin-bottom: 6px;
+}
+.mattress-pdp-new-design variant-selects.no-js-hidden .select select:focus,.mattress-pdp-new-design quantity-input.quantity input:focus,.mattress-pdp-new-design quantity-input.quantity input:active {
+    outline: unset !important;
+    box-shadow: none !important;
+}
+.product-sec-main.mattress-pdp-new-design .product-form__input.product-form__quantity {
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.mattress-pdp-new-design quantity-input.quantity {
+    border: 2px solid #000;
+    width: 100%;
+}
+.mattress-pdp-new-design quantity-input.quantity {
+    border: 2px solid #2C474B;
+    width: 100%;
+    border-radius: 50px;
+}
+.mattress-pdp-new-design quantity-input.quantity input {
+    border: none !important;
+    max-width: 66px;
+    font-size: 15px;
+    color: #2C474B;
+    font-weight: 600;
+}
+.mattress-pdp-new-design .product-form__input .select {
+    border: none;
+    margin-bottom: 0;
+}
+.mattress-pdp-new-design .post_check_main_grid .postcode_check_grid .posthead span {
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: unset !important;
+    color: #24A148;
+    line-height: 16px;
+    display: inline-block;
+    margin-right: 6px;
+}
+.mattress-pdp-new-design  .deliver_address_col {
+    display: flex;
+    align-items: flex-start;
+}
+.mattress-pdp-new-design .postcode_check_grid .posthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mattress-pdp-new-design .post_check_main_grid .postcode_check_grid {
+    background: #ECEEEA;
+    border-radius: 13px;
+}
+button.Recheck_Shipping_button {
+    background: #2C474B;
+    color: #fff;
+    padding: 8px 20px 9px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+}
+.mattress-pdp-new-design ul.csv_result_show {
+    padding: 0;
+    padding-left: 28px;
+}
+.mattress-pdp-new-design ul.csv_result_show li {
+    font-size: 14px;
+    margin-top: 8px;
+}
+.mattress-pdp-new-design ul.csv_result_show li span.shipping_fee {
+    background: #24A148;
+    color: #fff;
+    padding: 2px 7px;
+    text-transform: uppercase;
+    border-radius: 2.5px;
+}
+.mattress-pdp-new-design span.delivery_date_tooltip {
+    background: #24A148;
+    border-radius: 50%;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    line-height: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 3px;
+    position: relative;
+    border: 2px solid #24A148;
+    color: #fff;
+	font-weight: 600;
+}
+.mattress-pdp-new-design .postcode_check_grid .postcode_form_grid {
+    margin: 12px 0 0px;
+}
+.mattress-pdp-new-design ul.dispatch_check_list span.disp-main span.dispatch_label {
+    font-weight: 600;
+}
+.mattress-pdp-new-design ul.dispatch_check_list span.disp-main span.dispatch_label {
+    font-weight: 600;
+}
+.mattress-pdp-new-design ul.dispatch_check_list {
+    padding-left: 14px;
+}
+.mattress-pdp-new-design ul.dispatch_check_list li {
+    font-size: 14px;
+}
+.product_deepdream_new #measurment_dimensions_accordian.accordion .card-header.collapsed:after {
+    content: "\f067";
+}
+.product_deepdream_new #measurment_dimensions_accordian.accordion .card-header:after {
+    font-family: FontAwesome;
+    content: "\f068";
+    float: right;
+    color: #2c474b;
+    font-size: 16px;
+}
+
+div#measurment_dimensions_accordian .card-header {
+    background: transparent;
+    border: none!important;
+    padding: 0 15px 30px 0;
+}
+div#measurment_dimensions_accordian .card.mb-0 {
+    border: none;
+    border-bottom: 1px solid #2C474B;
+    border-radius: 0;
+}
+div#measurment_dimensions_accordian .card-body {
+    padding-top: 0!important;
+    padding-bottom: 18px;
+}
+#measurment_dimensions_accordian a.card-title {
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2c474b;
+}
+
+.mattress-pdp-new-design  .post_check_main_grid {
+    border-bottom: 1px solid #2C474B;
+}
+div#measurment_dimensions_accordian {
+    border: none !important;
+}
+div#mattresspdpzero ul li span:last-child {
+    font-weight: 600;
+    margin-left: 13px;
+}
+div#mattresspdpzero ul li {
+    display: flex;
+    justify-content: center;
+    font-family: Gellix;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2c474b;
+    margin-bottom: 13px;
+}
+div#mattresspdpzero ul li span {
+    min-width: 106px;
+}
+.mattress-pdp-new-design .m-features {
+    border: 1px solid #2C474B;
+    border-left: none;
+    border-right: none;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+.mattress-pdp-new-design .m-features-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.mattress-pdp-new-design .m-features-item span {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000;
+}
+.mattress-pdp-new-design .m-features-item:nth-child(1)::before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/pro_icon1.png?v=1665726992);
+}
+.mattress-pdp-new-design .m-features-item:nth-child(2)::before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/pro_icon2.png?v=1665727010);
+}
+.mattress-pdp-new-design .m-features-item:nth-child(3)::before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0562/7569/7706/files/pro_icon3.png?v=1665727010);
+}
+.mattress-pdp-new-design .m-features-item:before {
+    content: "";
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.mattress-pdp-new-desig div#accordion_deepdream {
+    margin-top: 0;
+}
+.mattress-pdp-new-design div#accordion_deepdream .card.mb-0 {
+    padding-top: 0 !important;
+}
+.mattress-pdp-new-design div#accordion_deepdream .card.mb-0 {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.mattress-pdp-new-design  div#accordion_deepdream {
+    margin-top: 0;
+}
+.mattress-pdp-new-design .product--thumbnail .product__media-gallery,.mattress-pdp-new-design .product--thumbnail_slider .product__media-gallery,.mattress-pdp-new-design .product--stacked .product__info-container--sticky {
+    position: static;
+}
+.mattress-pdp-new-design div#accordion_deepdream .card-header {
+    padding-right: 15px;
+}
+section.mattress_pdp_banner_new img {
+    width: 100%;
+}
+section.mattress_pdp_banner_new {
+    position: relative;
+}
+div#closer_like_slider_section.deep-dream-premium-mattress {
+/*     display: none; */
+}
+.mattress_pdp_banner_content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 30px;
+}
+.mattress_pdp_banner_content h2 {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #282828;
+}
+.mattress_pdp_banner_content p {
+	font-family: 'Gellix';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+	color: #282828;
+}
+.product_info_video {
+    position: relative;
+}
+.deep_dream_video_play_icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+}
+.deep_dream_video_play_icon span {
+    cursor: pointer !important;
+    z-index: 11;
+}
+.mattress-pdp-additional-description .sechead {
+    display: none;
+}
+.product-description.container.deepdream_product_feature.mattress-pdp-additional-description .desc-content h4,.product-description.container.deepdream_product_feature.mattress-pdp-additional-description .desc-content p {
+    color: #2C474B;
+}
+.product-description.container.deepdream_product_feature.mattress-pdp-additional-description .additional-desc-con.row.align-items-center .col-md-6.col-sm-6 {
+    margin-bottom: 27px;
+}
+.product-additional-info.page-width.deepdream-additional-info.mattress_deep_dream_pdp_detail h3 {
+    color: #2c474b!important;
+    text-align: left;
+    display: block;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.product-additional-info.page-width.deepdream-additional-info.mattress_deep_dream_pdp_detail .additional-info-con h4 {
+    border-bottom: 1px solid #CFCFD0;
+}
+.mattress-pdp-image-slider-section .be-heading h2 span {
+    margin-right: 9px;
+}
+.mattress-pdp-image-slider-section .be-heading h2 span.desktop_insta_icon {
+   display:none;
+}
+.product_deepdream_new .product-icons-grid .icon-box .d-flex.align-items-baseline {
+    display: block !important;
+    text-align: center !important;
+}
+.product_deepdream_new .product-icons-grid .icon-box .content-grid p{
+	padding-right:0px !important;
+}
+h2.mobile_heading_tab.hide {
+    display: none;
+}
+.mattress_pdp_payments.mattress_pdp_payments_mobile{
+  display:none;
+}
+.pdp_mobile_payement_section{
+  display:none;
+}
+.product-additional-info.page-width.deepdream-additional-info.mattress_deep_dream_pdp_detail .additional-content-list li {
+    align-items: flex-start !important;
+}
+@media only screen and (max-width: 1200px) {
+  .mattress-pdp-new-design .wish_list_with_title {
+      padding-right: 69px;
+      position: relative;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .mattress-pdp-image-slider-section .be-heading h2 span.desktop_insta_icon {
+     display:none;
+  }
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mattress-pdp-new-design .deliver_address_col {
+      flex-direction: row-reverse;
+  }
+  .mattress-pdp-new-design .deliver_address_col svg {
+      margin-right: 7px;
+  }
+  .mattress-pdp-new-design .wish_list_with_title {
+      padding-right: 43px;
+      position: relative;
+  }
+  
+}
+@media only screen and (max-width: 991px) {
+  .mattress-pdp-new-design .product-form__input.product-form__quantity {
+      width: 136px;
+      float: left;
+      min-width: auto;
+  }
+  .product-sec-main .product-form__input.product-form__quantity .quantity__input {
+      width: 31px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .product_deepdream_new .product-icons-grid .icon-box .d-flex.align-items-baseline {
+      display: flex !important;
+      text-align: left !important;
+      align-items: flex-start !important;
+  }
+  section.mattress-pdp-image-slider-section.home_image_slider.collection_image_slider {
+      padding-top: 50px;
+      padding-bottom: 20px;
+  }
+  .product_deepdream_new .product-icons-grid .icon-box .image-grid {
+      padding-top: 9px;
+  }
+  .measurment_dimensions_accordian {
+      display: none;
+  }
+  section.mattress_pdp_banner_new {
+      display: none;
+  }
+  .mattress_pdp_product_featred_mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .mattress_pdp_product_featred_mobile {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .mattress_pdp_product_featred_mobile > div {
+      flex: 0 0 30%;
+      max-width: 30%;
+  }
+  .mattress_pdp_product_featred_mobile {
+      padding-top: 20px;
+  }
+  .mattress_pdp_product_featred_mobile img{
+      width:100%;
+  }
+ .pdp_mobile_payement_section h4 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 15px;
+      font-weight: 400;
+  }
+  .pdp_mobile_payement_section {
+      border-top: 1px solid #2C474B;
+      padding-top: 20px;
+      display:block;
+      margin-top: 0;
+  }
+  .mattress_pdp_payments.mattress_pdp_payments_mobile {
+      display: flex;
+      justify-content: center;
+  }
+  div#accordion_deepdream div#deepdreamcollapsezero ul li {
+      display: flex;
+      margin-bottom:6px;
+  }
+  .mattress-pdp-new-design .m-features.m-feature-mobile {
+      display: flex !important;
+      flex-wrap: wrap;
+  }
+  .mattress-pdp-new-design div#accordion_deepdream .card.mb-0 {
+      border-top: 1px solid #2C474B!important;
+      padding-bottom: 0;
+  }
+  .matress_pdp_mobile_4_payment .product_payement_logo_new.active {
+      display: flex !important;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 12px;
+  }
+  .pdp_mobile_payement_section {
+      margin-top: 0;
+  }
+  .matress_pdp_mobile_4_payment .product_payement_logo_new.active p {
+        font-size: 15px;
+        text-align: center;
+    }
+  .mattress-pdp-new-design  .m-features {
+      display: none !important;
+  }
+  div#accordion_deepdream div#deepdreamcollapsezero ul li > span:nth-child(2) {
+      font-weight: 600;
+      margin-left: 10px;
+  }
+  div#accordion_deepdream div#deepdreamcollapsezero ul li span {
+      min-width: 88px;
+  }
+  .product_deepdream_new .deep_dream_desktop_product_main_title {
+      display: none;
+  }
+  .product_deepdream_new #productSliderGallery .global-media-settings img {
+      padding: 0 0;
+  }
+  body.product.product_deepdream_new .deep_dream_mobile_product_main_title .wish_list_with_title h2 {
+      font-weight: 600;
+      font-size: 29px;
+      line-height: 30px;
+      font-family: Gellix;
+  }
+  body.product.product_deepdream_new .deep_dream_mobile_product_main_title {
+      padding: 10px 0;
+      background: #F8F8F8;
+  }
+  body.product.product_deepdream_new .deep_dream_mobile_product_main_title {
+      display: block !important;
+  }
+  body.product.product_deepdream_new .product.product--medium.product--thumbnail_slider .slider-buttons.no-js-hidden {
+      display: none;
+  }
+  body.product.product_deepdream_new .gallery_thumb_with_3d div.slider-mobile-gutter {
+      display: block !important;
+  }
+  body.product_deepdream_new .grid__item.product__media-wrapper ul.slick-dots {
+      max-width: 155px;
+      overflow: hidden;
+      margin: 0 auto 15px;
+      justify-content: flex-start!important;
+  }
+  .mattress_pdp_payments {
+      display: none;
+  }
+  .mattress-pdp-new-design .product-form__input.product-form__quantity {
+      width: 40% !important;
+      max-width: 181px !important;
+  }
+  .mattress-pdp-new-design variant-selects.no-js-hidden {
+      width: 50%;
+      float: left;
+      margin-right: 25px;
+  }
+  body.product.product_deepdream_new .product-description.container{
+    display:block;
+  }
+  body.product.product_deepdream_new .mobile-product-description-section.deep_dream_mobile_product_description {
+      display: none;
+  }
+  body.product.product_deepdream_new .product-description .additional-desc-con {
+       margin-top: 0px;
+  }
+  body.product.product_deepdream_new div#closer_like_slider_section.deep-dream-premium-mattress {
+     display: block;
+  }
+}
+@media only screen and (min-width: 481px) {
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip] {
+    position: relative;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]::before,
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]::after {
+    text-transform: none;
+    font-size: 0.9em;
+    line-height: 17px;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]::before {
+    content: "";
+    border: 5px solid transparent;
+    z-index: 1001;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]::after {
+    content: attr(tooltip);
+    text-align: center;
+    min-width: 3em;
+    max-width: 25em;
+    width: 25em;
+    text-overflow: ellipsis;
+    padding: 13px 1.5ch;
+    border-radius: 0.3ch;
+    box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
+    background: #333;
+    color: #fff;
+    z-index: 1000;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:hover::before,
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:hover::after {
+    display: block;
+  }
+  .mattress-pdp-new-design span[tooltip=""]::before,
+  .mattress-pdp-new-design span[tooltip=""]::after {
+    display: none !important;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::after {
+    bottom: calc(100% + 5px);
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::before,
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::after {
+    left: 50%;
+    transform: translate(-50%, -0.5em);
+  }
+  @keyframes tooltips-vert {
+    to {
+      opacity: 0.9;
+      transform: translate(-50%, 0);
+    }
+  }
+  @keyframes tooltips-horz {
+    to {
+      opacity: 0.9;
+      transform: translate(0, -50%);
+    }
+  }
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow]):hover::before,
+  .mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow]):hover::after {
+    animation: tooltips-vert 300ms ease-out forwards;
+  }
+}
+@media only screen and (max-width: 475px) {
+	.mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::after {
+		left: 66px;
+		width: 13em;
+		font-size: 12px;
+		line-height: 15px;
+	}
+	.mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::before {
+		left: 9px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+    .mattress-pdp-new-design .m-features.m-feature-mobile .m-features-item {
+        margin-bottom: 15px;
+    }
+	.mattress-pdp-new-design span.tool_tip_inner {
+		position: absolute;
+		width: 268px;
+		left: 0;
+		bottom: -107px;
+		background: #ffff;
+		z-index: 9999;
+		padding: 30px 16px;
+		font-size: 13px;
+		box-shadow: 0 0 5px 0 #ccc;
+	  }
+	.mattress-pdp-new-design span.delivery_date_tooltip {
+		position: static !important;
+	  }
+	.mattress-pdp-new-design span.tool_tip_inner i {
+		top: -10px;
+		position: absolute;
+		right: -5px;
+		color: #fff;
+		background: #000;
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		line-height: 19px;
+	}
+    .mattress-pdp-new-design .m-features.m-feature-mobile  .m-features-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 414px) {
+
+  .compare-section {
+    padding:20px 0rem;
+    
+}
+  
+	.mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::before {
+		left: 9px;
+	}
+	.mattress-pdp-new-design span.delivery_date_tooltip[tooltip]:not([flow])::after {
+		left: 14px;
+		width: 13em;
+	}
+}
+
+ 

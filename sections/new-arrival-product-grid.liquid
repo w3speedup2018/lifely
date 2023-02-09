@@ -1,0 +1,261 @@
+{% if section.blocks != blank %}
+  {% assign block_size = section.blocks.size  %}
+   <div class="master_product_grid_main">	
+    <div class="page-width">
+      {%  if section.settings.heading != blank  %}
+        <div class="master-title-grid">
+          <h2>{{ section.settings.heading }}</h2>
+        
+      {%  if section.settings.subheading != blank  %}
+        <h4 class="sub-t"> {{ section.settings.subheading }}  </h4>
+        {% endif  %}
+        </div>
+      {% endif  %}
+      <div class="master_product_grid">
+        {% for block in section.blocks %}
+            {% assign card_product = block.settings.product_selector %}
+            <div class="bestseller-main-grid grid-col-{% if block_size > 4 %}4{% elsif block_size <=3 %}3{% endif %}">
+             <div class="bestseller_product">
+                  {%- if card_product and card_product != empty -%}
+  
+                     {%- if card_product.featured_media -%}
+                     <div class="bestseller_product_image">      
+                       <a href="{{ card_product.url }}">
+                       <img
+                            srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                    {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                    {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                    {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                    {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                    {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                    {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                            src="{{ card_product.featured_media | img_url: '533x' }}"
+                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                            alt="{{ card_product.featured_media.alt | escape }}"
+                            class="motion-reduce"
+                            {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            width="{{ card_product.featured_media.width }}"
+                            height="{{ card_product.featured_media.height }}"
+                            >    
+                       </a>
+                     </div>
+                     {%- endif -%}
+                     {% assign productTags = card_product.tags | join: ', ' %}
+                     <div class="custom_product_wishlist">
+                       {% render 'ZooomyListWishlistColl', product: card_product %}
+                     </div>
+<!--                      <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>   -->
+          <!--                     xmas offer new added -->
+           <div class="best_seller_discount_bar new_arrival new_in_store"><span>Spend & Save  |  Up to 20% Off</span></div>               	 
+
+                    
+                     <div class="bestseller_card__content">
+                       <div class="card__information">
+                         <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                           <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                             {{ card_product.title | escape }}
+                           </a>
+                         </h3>
+                         <div class="card-information">              
+                           {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: card_product %}
+                           {% render 'bestseller-price', product: card_product, price_class: '' %}
+                         </div>
+                    
+                         {% assign color_active = false %}
+                          {% for option in card_product.options %}
+                          {% if option == 'Color' %}
+                          {% assign color_active = true %}
+                          {% endif %}
+                          {% endfor %}
+                          {% assign colorlist = '' %}
+                          {% if card_product.variants.size > 1 and color_active == true %}
+                              <div class="collection_product_color_swatches">
+                                <ul>
+                                  {% for option in card_product.options %}
+                                  {% if option == 'Color' %}
+                                  {% assign index = forloop.index0 %}
+                                  
+                                  {% assign color = '' %}
+                                  {% for variant in card_product.variants %}
+                                  {% capture color %}
+                                  {{ variant.options[index] }}
+                                  {% endcapture %}
+                
+                                  {% if colorlist contains color %} 
+                                   
+                                  {% else %}
+                                    <li class="Swatches-Color {{color | strip}}" value="{{color | strip}}" data-img="{%- if variant.featured_image != null -%} {{ variant.featured_image | img_url:'master' }} {% endif %}" data-orignel="{%- if card_product.featured_image != null -%}{{ card_product.featured_media | img_url: 'master' }}{% endif %}"><span></span></li>
+                                  {% endif %}  
+                                  {% assign p = color %}
+                                  {% assign colorlist = colorlist | append: p %}
+                                  
+                                  {% endfor %}
+                                  {% endif %}
+                                  {% endfor %}
+                                </ul>  
+                              </div> 
+                            
+                          {% endif %}
+                       </div>
+                     </div>	
+                     {% endif %}
+                </div>  
+            </div>
+            {% assign counter = counter | plus: 1 %}
+        {% endfor %}
+      </div>
+	 {%  if section.settings.button_text != blank %}
+
+		<div class="master-shop-all">
+			<div class="master-btn-wrap">
+				<a href="{{section.settings.button_url}}">{{section.settings.button_text}}</a>
+			</div>
+		</div>
+	  {% endif %}
+    </div>
+  </div>
+  <style>
+    .master_product_grid .grid-col-4 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .master_product_grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .bestseller_card__content .jdgm-preview-badge .jdgm-star.jdgm-star {
+        font-size: 14px;
+    }
+    .bestseller_card__content .jdgm-preview-badge span.jdgm-prev-badge__text {
+        font-size: 14px;
+     }
+    .master_product_grid .grid-col-4 {
+        flex: 0 0 25%;
+        max-width: 25%;
+        margin-bottom: 0px;
+    }
+    .master_product_grid .bestseller_product_image img {
+        width: 100%;
+        height: auto;
+    }
+    .master_product_grid p.rating-count.caption {
+      display: none;
+    }
+    .master_product_grid p.rating-text.caption {
+        display: none;
+    }
+    .master_product_grid .rating {
+        display: none !important;
+    }
+    .master_product_grid_main {
+        padding: 50px 0 30px;
+    }
+    .master_product_grid_main h2 {
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        text-align: center;
+        color: #2C474B;
+        order: 0;
+        flex-grow: 0;
+        padding-bottom: 30px;
+    }
+
+  .master_product_grid_main h4.sub-t { font-family: 'Gellix';
+        font-style: normal;
+        font-weight: normal;   color: #2C474B;
+        font-size:24px; margin:-30px 0 30px 0;   text-align: center;  }
+  
+    .master-shop-all { margin-top:-20px;
+        text-align: center;
+        padding:0px 0;
+    }
+    .master-shop-all .master-btn-wrap a {
+        background: #2C474B;
+        border-radius: 29px;
+        font-family: 'Gellix';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 36px;
+        text-align: center;
+        color: #F9F1E5;
+        padding: 14px 35px;
+    }
+    @media only screen and (max-width: 767px){
+      .master_product_grid .grid-col-4 {
+          flex: 0 0 33%;
+          max-width: 33%;
+          margin-bottom: 10px;
+      }
+      .bestseller_product_image {
+          height: auto;
+      }
+      .master-shop-all {
+          padding: 10px 0;
+      }
+      .bestseller_product {
+          padding: 0 8px;
+      }
+    }
+    @media only screen and (max-width: 480px){
+      .master_product_grid .grid-col-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      
+    }
+
+  </style>
+{% endif %}
+    
+{% schema %}
+  {
+    "name": "Products Grid",
+    "class":"product_selector_grid",
+    "settings": [
+		{
+			"type":"text",
+			"id":"heading",
+			"label":"Heading"
+		},
+{
+			"type":"text",
+			"id":"subheading",
+			"label":"subheading"
+		},
+      
+        {
+			"type":"text",
+			"id":"button_text",
+			"label":"Button Title"
+		},
+        {
+          "type":"text",
+          "id":"button_url",
+          "label":"Button Url"
+        }
+	],
+    "blocks": [
+    {
+        "type": "column",
+        "name": "Add Product",
+        "settings": [
+            {
+              "type":"product",
+              "id":"product_selector",
+              "label":"Select Products"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

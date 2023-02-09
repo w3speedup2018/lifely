@@ -1,0 +1,201 @@
+<div class="mattress-review__main">
+    <div class="mattress-review__inner" style="background-color:{% if section.settings.review_background_color != blank %}{{section.settings.review_background_color}}{% endif %} " > 
+        {% if section.settings.review_heading != blank or section.settings.review_subheading != blank %}
+            <div class="mattress-review__head text-center">
+                {% if section.settings.review_heading != blank %}
+                    <h2>{{section.settings.review_heading}}</h2>
+                {% endif %}
+                {% if section.settings.review_subheading != blank %}
+                    <h2>{{section.settings.review_subheading}}</h2>
+                {% endif %} 
+            </div>
+        {% endif %}
+        {% if section.settings.review_star_count != blank %}
+            <div class="mattress-review__star text-center">
+              <ul>
+                {% if section.settings.review_star_count == 'one'%}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'two' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                {% elsif section.settings.review_star_count == 'three' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'four'%}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-empty.svg?v=1654601472" alt="star"></span></li>
+                {% elsif section.settings.review_star_count == 'five' %}
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>	
+                    <li><span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/star-full.svg?v=1654601472" alt="star"></span></li>
+                {% endif %}
+              </ul>
+            </div>
+        {% endif %}
+      
+        {% if section.settings.review_content != blank %} 
+            <div class="mattress-review__content text-center review_bedbuyer_first_line">
+              <p>{{section.settings.review_content}}</p>  
+            </div>            
+        {% endif %}
+        {% if section.settings.mobile_review_content != blank %} 
+            <div class="mattress-review__content text-center review_bedbuyer_first_line mobile_review_bedbuyer_first_line">
+              <p>{{section.settings.mobile_review_content}}</p>  
+            </div>            
+        {% endif %}
+        {% if section.settings.review_image != blank %}
+            <div class="mattress-review__bottom-image text-center review_bedbuyer_logo">
+                <img src="{{section.settings.review_image | img_url: "master"}}" alt="image">  
+            </div>
+        {% endif %}
+        {% if section.settings.second_review_content != blank %}
+            <div class="mattress-review__content text-center review_bedbuyer_second_line">
+              <p>{{section.settings.second_review_content}}</p>  
+            </div>
+        {% endif %}
+        {% if section.settings.mobile_second_review_content != blank %}
+            <div class="mattress-review__content text-center review_bedbuyer_second_line mobile_review_bedbuyer_second_line">
+              <p>{{section.settings.mobile_second_review_content}}</p>  
+            </div>
+        {% endif %}
+    </div>
+    {% if section.blocks and section.blocks != blank %}
+       <div class="row">
+        <div class="col-12">
+          <div class="image-slider-contet">
+              <div class="homeImage_slider">	
+                {%- for block in section.blocks -%}
+                  {% if block.settings.icon_image != blank %}
+                        <div class="image_slide">
+                          <a href="{{ block.settings.url }}"><img src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid" /></a>
+                        </div>  
+                   {% endif %}	
+                {% endfor %}
+              </div>  
+          </div>  
+        </div>  
+      </div>
+     {% endif %}
+     {% if section.settings.review_shop_label != blank and section.settings.review_shop_link != blank %}
+          <div class="mobile_shop_button"><a href="{{ section.settings.review_shop_link }}">{{ section.settings.review_shop_label }}</a></div>
+     {% endif %} 
+</div>
+{% schema %}
+{
+  "name": "Review With Image Slider",
+  "class": "section",
+  "settings": [
+	{
+		"type" : "color",
+		"id": "review_background_color",
+		"label": "Background Color"
+	},
+    {
+	  "type": "text",	
+	  "id": "review_heading",	
+      "label": "Review Heading"
+    },
+	{
+		"type": "text",
+		"id": "review_subheading",
+		"label": "Review Subheading"
+	},
+    {
+      "type": "select",
+      "id": "review_star_count",
+      "options": [
+        {
+      	  "value": "one",
+     	  "label": "1"
+        },
+        {
+      	  "value": "two",
+      	  "label": "2"
+        },
+		{
+      	  "value": "three",
+     	  "label": "3"
+        },
+		{
+      	  "value": "four",
+     	  "label": "4"
+        },
+		{
+      	  "value": "five",
+     	  "label": "5"
+        }
+      ],
+      "default": "five",
+      "label": "Review Star Count"
+    },
+	{
+		"type": "text",
+		"id": "review_content",
+		"label": "Review BedBuyer First Line"
+	},
+    {
+		"type": "text",
+		"id": "mobile_review_content",
+		"label": "Mobile Review BedBuyer First Line"
+	},
+	{
+	  "id": "review_image",	
+      "type": "image_picker",
+      "label": "BedBuyer Image"
+    },
+    {
+    	"type": "text",
+		"id": "second_review_content",
+		"label": "Review BedBuyer Second Line"
+	},
+     {
+    	"type": "text",
+		"id": "mobile_second_review_content",
+		"label": "Mobile Review BedBuyer Second Line"
+	},
+	{
+	  "id": "review_shop_label",	
+      "type": "text",
+      "label": "Mobile Button Label"
+    },
+	{
+	  "id": "review_shop_link",	
+      "type": "url",
+      "label": "Mobile Button Link"
+    }
+  ],
+  "blocks": [
+        {
+          "type": "image-slide",
+          "name": "Slide",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "icon_image",
+              "label": "Post Image"    
+            },
+            {
+              "type": "text",
+              "id": "url",
+              "label": "Post Url"    
+            }	 
+          ]
+        }
+      ]	
+}
+{% endschema %}

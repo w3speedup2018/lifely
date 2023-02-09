@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+    <link rel="icon" type="image/png" href="//cdn.shopify.com/s/files/1/0562/7569/7706/files/Lifely_Favicon_2_32x32.png?v=1660017455">
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    <style>
+		@font-face {
+			font-family: 'Gellix';
+			src: url("{{'Gellix-Bold.woff' | asset_url }}") format('woff');
+			font-weight: bold;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Gellix';
+			src: url("{{'Gellix-Regular.woff' | asset_url }}") format('woff');
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Gellix';
+			src: url("{{'GellixMedium.woff' | asset_url }}") format('woff');
+			font-weight: 500;
+			font-style: normal;
+			font-display: swap;
+		}
+     	 @font-face {
+			font-family: 'Bookmania-Regular';
+			src: url("{{'Bookmania-Regular.woff' | asset_url }}") format('woff');
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+    </style>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'checkout_page.css' | asset_url | stylesheet_tag }}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+ 	 {% section 'checkout-header' %}	
+     <header class="cbanner banner" data-header role="banner">
+      <div class="wrap mb-check">
+        {% comment %}}
+        {{ content_for_logo }}
+        {% endcomment %}
+        <div class="checkout-mb-logo">
+            <a href="/" class="header__heading-link link link--text focus-inset checkout">
+              <img src="//cdn.shopify.com/s/files/1/0562/7569/7706/files/Logo_90x.png?v=1646035020" loading="lazy" class="header__heading-logo" alt="Lifely">
+            </a>
+        </div>
+        <div class="checkot_contact_number">
+            <a href="tel:(03) 90710088"><svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 1V25.5C6 26.4283 6.35558 27.3185 6.98851 27.9749C7.62145 28.6313 8.47989 29 9.375 29H20.625C21.5201 29 22.3786 28.6313 23.0115 27.9749C23.6444 27.3185 24 26.4283 24 25.5V1H6ZM16.1306 26.6842H13.8671V24.3333H16.1306V26.6842ZM9.375 22V4.5H20.625V22H9.375Z" fill="#768169"/>
+            </svg>(03) 90710088</a>
+         </div> 
+      </div>
+    </header>
+    {{ skip_to_content_link }} 
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap checkout_inner_main_section">
+        <div class="main">
+          <header class="main__header" role="banner">
+ 
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+            <div class="additional-checkout-fields" style="display:none">
+               <div class="fieldset fieldset--order-note" data-additional-fields>
+                  <div class="field field--optional field--order-note">
+                     <h2 class="additional-field-title">Order notes</h2>
+                     <div class="field__input-wrapper">
+                        <textarea class="input__textarea" name="checkout[order_notes]" id="checkout_attributes_OrderNotes" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          </main>
+          <footer class="main__footer" role="contentinfo" style="display:none;">
+            {{ content_for_footer }}
+          </footer>
+          <div class="checkout_mobile_footer_section" style="display:none">
+             <div class="product-partners-logo">                
+                <span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/partners_logo.png?v=1653036527"></span>
+              </div>
+              <div class="cart_togther_sec">
+                 <h3>Together for the World</h3>
+                 <p>1% of the profits will be donated to Habitat for Humanity</p>
+                 <span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_142.png?v=1653035811" alt=""></span>
+              </div>
+          </div>  
+        </div>
+        <aside class="sidebar" role="complementary">
+          <header class="main__header mobile_checkout_header" role="banner" style="display:none">
+            {{ breadcrumb }}
+          </header>
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            
+            {{ content_for_order_summary }}
+             <div class="checkout_desktop_footer_section">
+                <div class="product-partners-logo">                
+                  <span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/partners_logo.png?v=1653036527"></span>
+                </div>
+                <div class="cart_togther_sec">
+                   <h3>Together for the World</h3>
+                   <p>1% of the profits will be donated to Habitat for Humanity</p>
+                   <span><img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/image_142.png?v=1653035811" alt=""></span>
+                </div>
+             </div>  
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" defer="defer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js" defer="defer"></script>
+    <script src="https://qhmodel-viewer-oss.kujiale.com/release/0.0.149-release.28/sdk.min.js"> </script>
+    <script src="{{ 'custom_script.js' | asset_url }}" defer="defer"></script>
+     {% section 'footer' %}
+    {% section 'mobile-footer' %}
+    <style>
+      .fieldset.fieldset--order-note textarea {
+          width: 96%;
+          border: 1px solid #d9d9d9;
+          border-radius: 5px;
+          padding: 10px;
+      }
+      .fieldset--order-note h2.additional-field-title {
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 36px;
+          color: #282828;
+          margin: 15px 0;
+      }
+      .order-summary__section__content td.product__price br {
+          display: none;
+      } 
+      td.product__price span.order-summary__emphasis {
+          color: #ce2a1e;
+      }  
+      @media only screen and (max-width: 991px){
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section {
+              display: flex !important;
+              flex-wrap: wrap;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section aside.sidebar header.main__header.mobile_checkout_header {
+              display: block !important;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section aside.sidebar {
+              order: 1;
+              padding-bottom: 10px;
+              padding-top: 10px;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section .main {
+              order: 2;
+              padding-bottom: 30px;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section .main .checkout_mobile_footer_section {
+              display: block !important;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section aside.sidebar .checkout_desktop_footer_section {
+              display: none !important;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section .main header.main__header > nav {
+              display: none;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section .main:after {
+              box-shadow: unset !important;
+          }
+          .wrap.checkout_inner_main_section, .anyflexbox .content .wrap.checkout_inner_main_section aside.sidebar:after {
+              box-shadow: unset;
+          }
+          .wrap.checkout_inner_main_section form.edit_checkout .step__footer button#continue_button {
+              font-family: Gellix;
+              font-size: 18px;
+              padding: 15px;
+              font-weight: 500;
+          }
+          tfoot.total-line-table__footer tr.total-line span.payment-due__price.skeleton-while-loading--lg {
+              font-weight: 600;
+          }
+      }  
+      @media only screen and (max-width: 480px){
+        .fieldset.fieldset--order-note textarea {
+            width: 95%;
+        }
+      }
+
+    </style>
+    <script>
+      /* (function($) {
+        $(document).on("page:load", function() {
+          console.log(Shopify.Checkout.step);
+            if(Shopify.Checkout.step == 'thank_you '){
+                alert('Thanku');             
+            }
+        });
+      })($.Checkout); */
+
+       if (window.jQuery) {
+          jquery = window.jQuery;
+       }else if (window.Checkout && window.Checkout.$) {
+          jquery = window.Checkout.$;
+       }
+
+        jquery(function() {            
+           
+            if(Shopify.Checkout.estimatedPrice >= 750){
+               jQuery('input#checkout_reduction_code').prop('disabled',true);
+               jQuery('input#checkout_reduction_code').attr('placeholder','Voucher is not applicable due to free gift');  
+               if(jQuery('#checkout_clear_discount').length > 0){
+                 jQuery('#checkout_clear_discount').parent().find('button').trigger('click');
+                 disable_coupon_section();
+               }
+            }
+            /*
+            if(jQuery('.order-summary__section__content table.product-table th.product__description span.reduction-code__text').length > 0){
+                jQuery('.order-summary__section__content table.product-table th.product__description span.reduction-code__text').each(function(){
+                   var coupon_text = jQuery(this).text();
+                   console.log(coupon_text);
+                   var str2 = 'Spend'; 
+                   if(coupon_text.indexOf(str2) != -1){
+                       jQuery('input#checkout_reduction_code').prop('disabled',true);
+                        jQuery('input#checkout_reduction_code').attr('placeholder','Voucher is not applicable due to free gift');
+                       if(jQuery('#checkout_clear_discount').length > 0){
+                         jQuery('#checkout_clear_discount').parent().find('button').trigger('click');
+                         disable_coupon_section();
+                       }
+                   }    
+                });  
+          } */
+          function disable_coupon_section(){
+            setTimeout(function(){
+                jQuery('input#checkout_reduction_code').prop('disabled',true);
+                jQuery('input#checkout_reduction_code').attr('placeholder','Voucher is not applicable due to free gift');                
+            },5000);
+          }
+          
+          
+            if (jquery('.section--shipping-address .section__content').length) {
+                var addType = jquery('.additional-checkout-fields').html();
+                jquery('.section--shipping-address .section__content').append(addType);
+        
+                // Get saved data from sessionStorage
+                let savedOrderNotes = sessionStorage.getItem('order_notes');
+        
+                // if some value exist in sessionStorage
+                if (savedOrderNotes !== null) {
+                    jquery('textarea[name="checkout[order_notes"]').val(savedOrderNotes);
+                } 
+        
+                // Listen to change event on radio button
+                jquery('textarea[name="checkout[order_notes]"]').change(function() {
+                    if (this.value !== savedOrderNotes) {
+                        savedOrderNotes = this.value;
+                        sessionStorage.setItem('order_notes', savedOrderNotes);
+                    }
+                });  
+            }
+
+          
+        }); 
+      
+    </script>
+  </body>
+</html>

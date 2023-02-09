@@ -1,0 +1,111 @@
+{% if section.settings.bl_subheading != blank and section.settings.image_right != blank %}
+	<div class="about_better_lives_wrap" style="background:{{section.settings.background}};color:{{section.settings.banner_font}};">
+		<div class="container">
+            {% if section.settings.top_heading != blank or section.settings.top_subheading != blank %}
+                <div class="top-heading-grid"> 
+                  {% if section.settings.top_heading != blank %}
+                      <h2>{{ section.settings.top_heading }}</h2>
+                  {% endif %}
+            
+                  {% if section.settings.top_subheading != blank %}
+                      <h4>{{ section.settings.top_subheading }}</h4>
+                  {% endif %}
+                </div>
+            {% endif %}
+
+            <div class="bottom-content-grid">
+        		<div class="row align-items-center">
+                <div class="col-md-6">         
+                    {% if section.settings.image_right != blank %}
+                        <div class="better_lives_image">
+                          <img src="{{ section.settings.image_right | img_url:"master" }}" />                         
+                        </div>
+                    {% endif %}  
+                </div>
+                <div class="col-md-6">
+                	  <div class="better_lives_content">    
+                        {% if section.settings.bl_subheading != blank %}
+                            {{ section.settings.bl_subheading }}
+                        {% endif %}
+                        {% if section.settings.image_after_content != blank %}
+                              <div class="content_logo_image">
+                                <img src="{{ section.settings.image_after_content | img_url:"master" }}" />
+                              </div>
+                        {% endif %}	
+                        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                              <div class="content_link">
+                                <a href="{{ section.settings.button_link}}">{{ section.settings.button_label}}</a>
+                              </div>
+                        {% endif %}
+                    </div>  
+                </div>
+            	</div>  
+            </div>
+      	</div>  
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Better Lives",
+    "settings": [
+        {
+			"type":"text",
+			"id":"top_heading",
+			"label":"Top Heading"
+        },
+        {
+			"type":"text",
+			"id":"top_subheading",
+			"label":"Top SubHeading"
+        },
+        {
+			"type":"image_picker",
+			"id":"image_right",
+			"label":"Image On Right"
+        },
+		{
+			"type":"text",
+			"id":"bl_heading",
+			"label":"Left Heading"
+        },
+		{
+			"type":"textarea",
+			"id":"bl_subheading",
+			"label":"Left Content"
+        },
+		{
+			"type":"image_picker",
+			"id":"image_after_content",
+			"label":"Logo after content"
+        },
+		{
+			"type":"text",
+			"id":"button_label",
+			"label":"Button Label"
+        },
+		{
+			"type":"text",
+			"id":"button_link",
+			"label":"Button Link"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"color",
+			"id":"banner_font",
+			"label":"Banner Font Color",
+			"default":"#000"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

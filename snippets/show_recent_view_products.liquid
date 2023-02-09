@@ -1,0 +1,553 @@
+<style>
+ul.recently-viewed.grid .card__media {
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+ul.recently-viewed.grid .card__media .media {
+  height: 100%;
+  width: 100%;
+}
+.recent_view_product_sec li.grid__item {
+  max-width: 97% !important;
+  width: 97% !important;
+  padding: 10px;
+  background: #fff;
+}
+.recent_view_product_sec li.grid__item .card {
+  border: none !important;
+}
+.recent_view_product_sec h2 {
+  font-family: 'Gellix';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 56px;
+  text-align: center;
+  color: #758068;
+}
+.recent_view_product_sec {
+  position: fixed;
+  top: 240px;
+  width: 500px;
+  z-index: 99999999999;
+  right: 0;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%); 
+  max-width: 522px;
+}
+.recent_view_product_sec.active.hide_sec{
+   animation: slide-out 0.5s forwards;
+}  
+.recent_view_product_sec.active{
+  visibility: visible;
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}  
+.recent_view_product_sec .recent_view_product_inner{
+  background: #FCF9F4;
+  padding: 20px 35px 20px 40px;
+}
+.recent_view_product_sec ul.slick-dots {
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.recent_view_product_sec ul.slick-dots button {
+  position: static!important;
+  background-color: #afbaa1!important;
+  height: 8px!important;
+  width: 8px!important;
+  opacity: .5!important;
+  border: 0!important;
+  border-radius: 50%!important;
+  padding: 0!important;
+  font-size: 0!important;
+}
+.recent_view_product_sec ul.slick-dots li {
+    margin: 0 10px;
+}
+.recent_view_product_sec ul.slick-dots button:before {
+  height: 12px;
+  width: 7px;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  z-index: 2;
+  cursor: pointer;
+}
+.recent_view_product_sec button.slick-prev.slick-arrow {
+    left: -47px;
+    z-index: 1;
+}
+.recent_view_product_sec button.slick-next.slick-arrow {
+    right: -29px;
+    z-index: 1;
+}
+.recent_view_product_sec button.slick-prev.slick-arrow:before {
+    background: url("https://cdn.shopify.com/s/files/1/0562/7569/7706/t/24/assets/left.png") no-repeat;
+    background-position: 100%;
+    content: "1";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 30px;
+    color:transparent;
+}
+.recent_view_product_sec button.slick-next.slick-arrow:before {
+    background: url("https://cdn.shopify.com/s/files/1/0562/7569/7706/t/24/assets/right.png") no-repeat;
+    background-position: 100%;
+    content: "1";
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 30px;
+    color:transparent;
+}
+.recent_view_product_sec button.slick-arrow {
+    position: absolute;
+    top: 45%;
+    font-size: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background:transparent;
+    border-radius: 100px;
+    width: 44px;
+    height: 44px;
+}
+.recent_view_product_sec ul.slick-dots li.slick-active button {
+    background: #2C474B !important;
+}
+.recent_view_product_sec li.grid__item a {
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #2C474B;
+    border-radius: 43.9728px;
+    height: 27px;
+    padding: 6px;
+    margin-top: 6px;
+}
+.recent_view_product_inner .jdgm-preview-badge .jdgm-star.jdgm-star {
+    color: #F1C21B;
+}
+.recent_view_product_sec .recent_view_product_inner .product_rating_main {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent {
+    padding-left: 5px;
+}
+.recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent span {
+  color: #6E6E6E;
+  font-family: 'Gellix';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+}  
+.recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent span.total-rating-no.hascount:before {
+  content: "(";
+}  
+.recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent span.total-rating-no.hascount:after {
+  content: ")";
+}  
+button.recent_view_hide_button_grid {
+    display: inline-block;
+    text-decoration: none;
+    position: absolute;
+    left: -38px;
+    top: calc(50% + 105px);
+    width: 210px;
+    height: 38px;
+    line-height: 32px;
+    font-size: 16px;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    background-color: #7A936B;
+    text-align: center;
+    color: #ffff !important;
+    border-color: #7A936B !important;
+    outline: unset;
+    border: none;
+}
+button.recent_view_hide_button_grid svg {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+   transform: rotate(90deg);
+   margin-left: 11px;
+   top: -3px;
+   position: relative;
+  color:#fff;
+}  
+.recent_view_product_sec.active button.recent_view_hide_button_grid svg{
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    position: relative;
+    top: -2px;
+}
+.recent-rw-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 33333;
+}
+.recent_view_product_sec button.slick-arrow.slick-disabled {
+    opacity: 0.6;
+}
+.recent_view_product_sec .price {
+    font-size: 12px;
+    margin-top: 2px !important;
+    display: block;
+    font-weight: 600;
+}
+.recent_view_product_sec .price span.recent_product_price_with_discount del {
+    opacity: 0.6;
+}
+.recent_view_product_sec .price span.recent_product_price_with_discount inc {
+    color: #951e35;
+}
+ul.recently-viewed.grid .card__media a {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    border-radius: unset;
+}
+ul.recently-viewed.grid .card__media a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.recent_view_product_inner h3.card__heading.h5 a {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+    border-radius: unset;
+}
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+@media only screen and (max-width: 767px){
+  .recent_view_product_sec {
+        width: 90%;
+  }
+}
+    
+@media only screen and (max-width: 575px){
+  .recent_view_product_sec {
+    width: 90%;
+  }
+} 
+
+@media only screen and (max-width: 450px){
+  .recent_view_product_sec {
+    width: 90%;
+  }
+  .recent_view_product_inner .jdgm-preview-badge .jdgm-star.jdgm-star {
+      padding-right: 2px !important;
+  }
+  .recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent span {
+      font-size: 10px;
+  }
+  .recent_view_product_sec button.slick-prev.slick-arrow {
+      left: -37px;
+      z-index: 1;
+  } 
+  .recent_view_product_sec button.slick-next.slick-arrow {
+      right: -25px;
+      z-index: 1;
+  }
+  .recent_view_product_sec .recent_view_product_inner {
+    padding: 15px 20px;
+  }
+  .recent_view_product_sec .grid__item h3.card__heading.h5 {
+      font-size: 14px;
+      line-height: 16px;
+  }
+  .recent_view_product_sec .recent_view_product_inner .price {
+      font-size: 10px;
+      line-height: 15px;
+  } 
+  /*
+  .recent_view_hide_button_grid {
+    top: 46%;
+  }
+ */ 
+}  
+@media only screen and (max-width: 395px){
+  .recent_view_product_sec {
+    width: 90%;
+  }
+  .recent_view_hide_button_grid {
+      left: -173px;
+  }
+  .recent_view_product_sec .recent_view_product_inner .product_rating_main {
+    flex-wrap: wrap;
+  }
+  .recent_view_product_sec .recent_view_product_inner .product_rating_main .product_rating_recent {
+    padding-left: 0;
+    padding-top: 0px;
+  }
+  .recent_view_product_sec li.grid__item a {
+    font-size: 12px;
+    line-height: 14px;
+    height: 24px;
+    padding: 4px;
+  }
+}  
+@media only screen and (max-width: 360px){
+  .recent_view_product_sec {
+    width: 90%;
+  }
+}  
+@media only screen and (max-width: 350px){
+  .recent_view_product_sec {
+      width: 90%;
+  }
+  .recent_view_product_sec ul.slick-dots {
+    margin-top: 0;
+  }
+}  
+</style> 
+
+{% comment %}
+<div class="recent_view_show_button_grid" style="display:none;">
+  <button type="button" id="recent_view_btn">Recently Viewed <span><img src="{{ 'leftarw.png' | asset_url }}"></span></button>
+</div>  
+{% endcomment %}
+<div class="recent-rw-overlay" style="display: none;"></div>
+<div class="recent_view_product_sec" {% if template contains 'index' %}id="recent_view_product_sec"{% endif %} style="display:none;" id="recent_view_product_sec">
+  <button type="button" id="recent_view_hide" class="recent_view_hide_button_grid"><span>Recently Viewed</span><svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 1L3.5 3.5L1 6L6 11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+  <div class="recent_view_product_inner">
+    <h2 class="product-recommendations__heading h2">Recently Viewed</h2>
+    <ul class="recently-viewed grid product-grid grid--4-col-desktop grid--2-col-tablet-down" role="list""></ul>
+  </div>  
+</div>
+
+<script>
+  
+function setRecentlyViewedProducts() {
+  var total_ratings = "{{product.metafields.reviews.rating.value}}";
+  if(total_ratings > 0){
+    var decimal = parseFloat("{{ product.metafields.reviews.rating.value}}");
+    if (decimal >=0.3 && decimal <= 0.7) {
+      rating_decimal = 0.5;
+    } else if (decimal > 0.7) {
+      rating_decimal = 1;
+    }
+    var htll = '';
+    var j = 0;
+    for(var i = 1;i<=5;i++){
+      if(total_ratings >= i){
+        htll += '<span class="jdgm-star jdgm--on"></span>';
+      }else if(total_ratings < i && j < total_ratings){
+        if(rating_decimal == 0.5){
+          htll += '<span class="jdgm-star jdgm--half"></span>';
+        }else if(rating_decimal == 1){
+          htll += '<span class="jdgm-star jdgm--on"></span>';
+        } 
+      }else{
+        htll += '<span class="jdgm-star jdgm--off"></span>';
+      }
+      j = i;
+    }
+  }
+
+  var product_review = "{{ product.metafields.reviews.rating.value }}";
+  var product_rating_count = "{{ product.metafields.reviews.rating_count }}";
+
+    
+  if(product_review == ''){
+    product_review = '';
+  }
+
+  if(product_rating_count == ''){
+    product_rating_count = '';
+  }
+
+  var product_price = 0;
+  var money_price_min =  "{{ product.price_min | money_without_currency }}";
+  var money_price_max =  "{{ product.price_max | money_without_currency }}";
+  if(money_price_min < money_price_max){
+     var money_price_min_with_cur =  "{{ product.price_min | money_without_currency }}";
+     var money_price_max_with_cur =  "{{ product.price_max | money_without_currency }}";
+     product_price = "<span class='recent_view_variabel_price'>$"+money_price_min_with_cur+" - $"+money_price_max_with_cur+"</span>";
+  }else{
+    var compaire_price = "{{ product.compare_at_price | money_without_currency }}";
+    var price = "{{ product.price | money_without_currency }}";
+    if(compaire_price > price){
+      var price_regular_with_cur =  "{{ product.compare_at_price | money_without_currency }}";
+      var price_with_cur =  "{{ product.price | money_without_currency }}";
+      product_price = "<span class='recent_product_price_with_discount'><del>$"+price_regular_with_cur+"</del> <inc>$"+price_with_cur+"</inc></span>";
+    }else{
+      var price = "{{ product.price | money_without_currency }}";
+      product_price = "$"+price;
+    } 
+  }
+ 
+      
+  const productData = {
+    productTitle: "{{ product.title }}",
+    productId: "{{ product.id }}",
+    productImg: "{{ product.featured_media | image_url: width: 533 }}",
+    imgWidth:"{{ product.featured_media.width }}",
+    imgHeight:"{{ product.featured_media.height }}",
+    productPrice: product_price,
+    productUrl: "{{ product.url }}",
+    productImageAltText: "{{product.featured_media.alt | escape }}",
+    productReview:product_review,
+    productRating_count:product_rating_count,
+    productRatinghtml:htll
+  };
+
+  
+  
+  const productList = [];
+  let jsonResp, jsonRespArr, jsonRespArrStr;
+  const numberOfProducts = 10;
+  productList.push(productData);
+  const currProductPageTitle = productData.productTitle;
+  const productDataString = JSON.stringify(productList);
+  const localData = localStorage.getItem("recentlyViewedProduct");
+
+  if (localData === null && currProductPageTitle != null) {
+    localStorage.setItem("recentlyViewedProduct", productDataString);
+  } else if (localData) {
+    
+    if(currProductPageTitle != null){
+      const oldProductData = localStorage.getItem("recentlyViewedProduct");
+      const countProductData = (oldProductData.match(/productTitle/g) || []).length;
+      const sameProduct = oldProductData.includes(currProductPageTitle);
+      if (countProductData < numberOfProducts && sameProduct == false) {
+        jsonResp = JSON.parse(oldProductData);
+        jsonRespArr = jsonResp.concat(productList);
+        jsonRespArrStr = JSON.stringify(jsonRespArr);
+        localStorage.setItem("recentlyViewedProduct", jsonRespArrStr);
+      } else if (countProductData >= numberOfProducts && sameProduct == false) {
+        jsonResp = JSON.parse(oldProductData);
+        jsonResp.shift();
+        jsonRespArr = jsonResp.concat(productList);
+        jsonRespArr = JSON.stringify(jsonRespArr);
+        localStorage.setItem("recentlyViewedProduct", jsonRespArr);
+      }
+    }
+
+  }
+}
+
+setRecentlyViewedProducts();
+
+
+const localViewed = localStorage.recentlyViewedProduct;
+function getRecentlyViewedProducts() {
+  const productData = JSON.parse(localStorage.getItem("recentlyViewedProduct"));
+  var i = 0;
+  const recentlyViewedHtml = [];
+  productData.map(item => {
+    if(item.productTitle == ''){
+
+    }else{
+      recentlyViewedHtml.unshift(`
+        <li class="grid__item">
+         <div class="card-wrapper underline-links-hover">
+          <div class="card card--standard card--media " style="--ratio-percent: 100%;">
+            <div class="card__inner color-background-2 gradient ratio" style="--ratio-percent: 100%;">
+             <div class="card__media">
+             <div class="media media--transparent media--hover-effect">
+                <a href="${item.productUrl}"><img class="motion-reduce" src="${item.productImg}" width="${item.imgWidth}" height="${item.imgHeight}"  loading="lazy" alt="${item.productImageAltText}"/></a>
+             </div> 
+             </div>
+           </div>
+           <div class="card__content">
+           <div class="card__information">
+           <h3 class="card__heading h5"><a href="${item.productUrl}">${item.productTitle}</a></h3>
+           <div class="product_rating_main">
+             <div style="text-align: left;" class="jdgm-widget jdgm-preview-badge collection_product_reviews" data-id="${item.productId}">
+                <div style="display:none" class="jdgm-prev-badge" data-average-rating="${item.productReview}" data-number-of-reviews="${item.productRating_count}" data-number-of-questions="0">
+                    <span class="jdgm-prev-badge__stars" data-score="${item.productReview}" tabindex="0" aria-label="${item.productReview} stars" role="button">
+                    ${item.productRatinghtml}</span>
+                </div>
+              </div>
+              <div class="product_rating_recent"><span>${item.productReview}</span> <span class="total-rating-no">${item.productRating_count}</span></div>
+            </div>
+             <div class="card-information">
+               <div class="price ">
+                 <div class="price__container">
+                   <div class="price-item price-item--regular">
+                       ${item.productPrice}
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <a class="full-unstyled-link" href="${item.productUrl}">View Product</a>
+           </div>
+           </div>
+           </div>
+           </div>
+        </li>
+      `);
+      i++;
+    }
+  });
+  const newProductData = `${recentlyViewedHtml.join("")}`;
+  const fullContent = document.getElementsByClassName("recently-viewed");
+  fullContent[0].innerHTML = newProductData;
+  if(i > 0){
+     //document.getElementById("recent_view_product_sec").style.display = "block";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  getRecentlyViewedProducts();
+});
+   
+</script>

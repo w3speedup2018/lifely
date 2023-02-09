@@ -1,0 +1,556 @@
+ 
+{% assign product_desc_heading = product.metafields.arena.product_desc_heading %}
+{% assign desc_image = product.metafields.lifely.new_product_desc_img %}
+{% assign desc_video = product.metafields.lifely.new_product_desc_video_url %}
+{% assign desc_title = product.metafields.lifely.new_product_desc_title %}
+{% assign desc_content = product.metafields.lifely.new_product_desc_content %}
+
+{% if template.name == 'product' and template.suffix == 'deepdream_new_design'%}
+    {% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+    	<div class="product-description container deepdream_product_feature mattress-pdp-additional-description">
+          	{% if product_desc_heading != blank %}
+              <div class="sechead">
+                  <h3 class="text-center">{{product_desc_heading}}</h3>  
+              </div>
+          	{% else %}
+          		<div class="sechead">
+                  <h3 class="text-center"><span>Product Feature</span></h3>  
+             	</div>
+          	{% endif %}
+          	<div class="additional-desc-con row align-items-center">
+              {% for t in desc_title %}
+                {% assign index = forloop.index0 %}
+              	{%assign m = index | modulo: 2 %}
+              	{% if m == 0 %}
+                    <div class="col-md-6 col-sm-6">  
+                        {% if desc_video[index] != blank %}
+                                <div class="product_info_video">
+                                  <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
+                                   <video preload="none" class="pro_-video" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline>
+                                    Your browser does not support the video tag.
+                                   </video>
+                                </div>
+                        {% else %}           
+                          	<div class="desc-image">
+                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            </div>                  
+                      {% endif %}
+                    </div>
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_title != blank or desc_content != blank %}
+                      	<div class="desc-content">
+                          	<h4>{{t}}</h4>  
+                          <p>{{desc_content[index]}}</p>
+                      	</div>
+                      {% endif %}
+              		</div>
+                {% elsif m == 1 %}
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_title != blank or desc_content != blank %}
+                      	<div class="desc-content">
+                          	<h4>{{t}}</h4>  
+                         	<p>{{desc_content[index]}}</p>
+                      	</div>
+                      {% endif %}
+                    </div>
+              		<div class="col-md-6 col-sm-6">
+                      {% if desc_video[index] != blank %}                   
+                            <div class="product_info_video">
+                                  <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
+                                   <video class="pro_-video" preload="none" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline>
+                                    Your browser does not support the video tag.
+                                   </video>
+                              </div>
+                      {% else %}           
+                      	<div class="desc-image">
+                          	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                        </div>
+                      {% endif %}
+              		</div>
+              	{% endif %}
+              {% endfor %}
+           </div>
+    	</div>
+    
+    	<div class="mobile-product-description-section deep_dream_mobile_product_description">	 
+    		<div class="container">
+          		  <div class="sechead">
+                      <h3 class="text-center">Feature</h3>  
+                  </div>
+              	<div class="mobile-product-description-slider">
+              		{% assign i = 0 %}
+                  	{% for t in desc_title %}
+                  		
+                  	{% assign index = forloop.index0 %}
+                      <div class="description-slide">
+                           {% if desc_video[index] != blank %}                   
+                              <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                              Your browser does not support the video tag.
+                              </video>
+                          {% else %}                             
+                          	<div class="desc-image">
+                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            </div>                  
+                          {% endif %}
+                          {% if desc_title != blank or desc_content != blank %}
+                          <div class="desc-content">
+                              <h4>{{t}}</h4>  
+                            <p>{{desc_content[index]}}</p>
+                          </div>
+                         {% endif %}
+                      </div>  
+                    {% endfor %}
+              	</div>  
+              	{% if desc_title.size > 0 %}          		
+                  <div class="progress_bar_count_sec">
+                      <div class="progres_col">	
+                        <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                          <span class="slider__label sr-only"></span>
+                        </div>
+                      </div>  
+                      <div class="progres_count_col">	
+                        <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                      </div> 
+              	  </div>   
+               {% endif %}
+          	</div>
+    	</div> 
+    {% else %}
+        {% assign product_desc_heading = product.metafields.arena.product_desc_heading %}
+        {% assign desc_image = product.metafields.arena.desc_image %}
+        {% assign desc_video = product.metafields.arena.desc_video %}
+        {% assign desc_title = product.metafields.arena.desc_title %}
+        {% assign desc_content = product.metafields.arena.desc_content %}
+        
+        {% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+        	<div class="product-description container deepdream_product_feature mattress-pdp-additional-description">
+              	{% if product_desc_heading != blank %}
+                  <div class="sechead">
+                      <h3 class="text-center">{{product_desc_heading}}</h3>  
+                  </div>
+              	{% else %}
+              		<div class="sechead">
+                      <h3 class="text-center"><span>Product Feature</span></h3>  
+                 	</div>
+              	{% endif %}
+              	<div class="additional-desc-con row align-items-center">
+                  {% for t in desc_title %}
+                    {% assign index = forloop.index0 %}
+                  	{%assign m = index | modulo: 2 %}
+                  	{% if m == 0 %}
+                        <div class="col-md-6 col-sm-6">  
+                            {% if desc_video[index] != blank %}
+                                                       
+                                   <div class="product_info_video">
+                                    <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
+                                     <video class="pro_-video" preload="none" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline >
+                                      Your browser does not support the video tag.
+                                     </video> 
+                                
+                                  </div>
+                            {% else %}           
+                              	<div class="desc-image">
+                                  	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                </div>                  
+                          {% endif %}
+                        </div>
+                  		<div class="col-md-6 col-sm-6">
+                          {% if desc_title != blank or desc_content != blank %}
+                          	<div class="desc-content">
+                              	<h4>{{t}}</h4>  
+                              <p>{{desc_content[index]}}</p>
+                          	</div>
+                          {% endif %}
+                  		</div>
+                    {% elsif m == 1 %}
+                  		<div class="col-md-6 col-sm-6">
+                          {% if desc_title != blank or desc_content != blank %}
+                          	<div class="desc-content">
+                              	<h4>{{t}}</h4>  
+                             	<p>{{desc_content[index]}}</p>
+                          	</div>
+                          {% endif %}
+                        </div>
+                  		<div class="col-md-6 col-sm-6">
+                          {% if desc_video[index] != blank %}                   
+                                <div class="product_info_video">
+                                  <div class="deep_dream_video_play_icon"><span>{% render:'deep_dream_video_play_icon' %}</span></div>
+                                   <video preload="none" class="pro_-video" data-src="{{ desc_video[index] }}" type="video/mp4" muted playsinline webkit-playsinline >
+                                    Your browser does not support the video tag.
+                                   </video>
+                                   <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
+                                </div>
+                          {% else %}           
+                          	<div class="desc-image">
+                              	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                            </div>
+                          {% endif %}
+                  		</div>
+                  	{% endif %}
+                  {% endfor %}
+               </div>
+        	</div>
+        
+        	<div class="mobile-product-description-section deep_dream_mobile_product_description">	 
+        		<div class="container">
+              		  <div class="sechead">
+                          <h3 class="text-center">Feature</h3>  
+                      </div>
+                  	<div class="mobile-product-description-slider">
+                  		{% assign i = 0 %}
+                      	{% for t in desc_title %}
+                      		
+                      	{% assign index = forloop.index0 %}
+                          <div class="description-slide">
+                               {% if desc_video[index] != blank %}                   
+                                  <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                                  Your browser does not support the video tag.
+                                  </video>
+                              {% else %}                             
+                              	<div class="desc-image">
+                                  	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                                </div>                  
+                              {% endif %}
+                              {% if desc_title != blank or desc_content != blank %}
+                              <div class="desc-content">
+                                  <h4>{{t}}</h4>  
+                                <p>{{desc_content[index]}}</p>
+                              </div>
+                             {% endif %}
+                          </div>  
+                        {% endfor %}
+                  	</div>  
+                  	{% if desc_title.size > 0 %}          		
+                      <div class="progress_bar_count_sec">
+                          <div class="progres_col">	
+                            <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                              <span class="slider__label sr-only"></span>
+                            </div>
+                          </div>  
+                          <div class="progres_count_col">	
+                            <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                          </div> 
+                  	  </div>   
+                   {% endif %}
+              	</div>
+        	</div>
+        {% endif %}
+    {% endif %}	
+    
+    
+    
+    {% if product.metafields.mattress.mobile_image != blank %}
+      <div class="closer_like_slider_section mobile_closer_section">  
+          <div class="container_f">
+              <h2 class="closer_slider_heading">Let’s take a closer look</h2>
+              <div class="mcloser_like_slider">
+                  {% for closer_slide_image in product.metafields.mattress.mobile_image %}
+                      {% assign index = forloop.index0 %}
+                      {% if product.metafields.mattress.mobile_image[index] != blank and product.metafields.closer_look.heading[index] != blank %}
+                         <div class="closer_like_slide">
+                           <div class="left_sec">
+                              <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.mattress.mobile_image[index]}}"/>
+                           </div> 
+                            <div class="right_sec page-width">
+                              <h2>{{ product.metafields.closer_look.heading[index] }}</h2>
+                              {% if product.metafields.cloder_look.content[index] != blank and product.metafields.closer_look.left_image[index] != blank %}
+                                <div class="content-closer-slide">
+                                  <div class="image">
+                                      <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.closer_look.left_image[index] }}"/>
+                                  </div>
+                                  <div class="content_p">
+                                    <p>{{product.metafields.cloder_look.content[index]}}</p>
+                                  </div>  
+                                </div>                             
+                              {% endif %}
+                            </div> 
+                        </div>  
+                     {% endif %}
+                 {% endfor %}             
+              </div>
+              {% if product.metafields.mattress.mobile_image.size > 0 %}          		
+                  <div class="progress_bar_count_sec">
+                      <div class="progres_col">	
+                        <div class="progress" data-total="{{product.metafields.mattress.mobile_image.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                          <span class="slider__label sr-only"></span>
+                        </div>
+                      </div>  
+                      <div class="progres_count_col">	
+                        <span class="curent_slide_active_p">1</span> of {{product.metafields.mattress.mobile_image.size}}
+                      </div> 
+              	  </div>   
+             {% endif %}
+          </div>  
+      </div>
+    {% endif %}
+{% else %}
+  {% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+  	<div class="product-description container deepdream_product_feature">
+        	{% if product_desc_heading != blank %}
+            <div class="sechead">
+                <h3 class="text-center">{{product_desc_heading}}</h3>  
+            </div>
+        	{% else %}
+        		<div class="sechead">
+                <h3 class="text-center"><span>Product Feature</span></h3>  
+           	</div>
+        	{% endif %}
+        	<div class="additional-desc-con row align-items-center">
+            {% for t in desc_title %}
+              {% assign index = forloop.index0 %}
+            	{%assign m = index | modulo: 2 %}
+            	{% if m == 0 %}
+                  <div class="col-md-6 col-sm-6">  
+                      {% if desc_video[index] != blank %}
+                          <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                          Your browser does not support the video tag.
+                          </video>
+                          <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
+                      {% else %}           
+                        	<div class="desc-image">
+                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                          </div>                  
+                    {% endif %}
+                  </div>
+            		<div class="col-md-6 col-sm-6">
+                    {% if desc_title != blank or desc_content != blank %}
+                    	<div class="desc-content">
+                        	<h4>{{t}}</h4>  
+                        <p>{{desc_content[index]}}</p>
+                    	</div>
+                    {% endif %}
+            		</div>
+              {% elsif m == 1 %}
+            		<div class="col-md-6 col-sm-6">
+                    {% if desc_title != blank or desc_content != blank %}
+                    	<div class="desc-content">
+                        	<h4>{{t}}</h4>  
+                       	<p>{{desc_content[index]}}</p>
+                    	</div>
+                    {% endif %}
+                  </div>
+            		<div class="col-md-6 col-sm-6">
+                    {% if desc_video[index] != blank %}                   
+                          <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                          Your browser does not support the video tag.
+                          </video>
+                          <img src="{{ desc_video_thumbnail[index] }}" class="video_thumbnail_iphone" style="display:none;"> 
+                    {% else %}           
+                    	<div class="desc-image">
+                        	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                      </div>
+                    {% endif %}
+            		</div>
+            	{% endif %}
+            {% endfor %}
+         </div>
+  	</div>
+  
+  	<div class="mobile-product-description-section deep_dream_mobile_product_description">	 
+  		<div class="container">
+        		  <div class="sechead">
+                    <h3 class="text-center">Feature</h3>  
+                </div>
+            	<div class="mobile-product-description-slider">
+            		{% assign i = 0 %}
+                	{% for t in desc_title %}
+                		
+                	{% assign index = forloop.index0 %}
+                    <div class="description-slide">
+                         {% if desc_video[index] != blank %}                   
+                            <video class="pro_-video" preload="none" muted playsinline webkit-playsinline  data-src="{{ desc_video[index] }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                            </video>
+                        {% else %}                             
+                        	<div class="desc-image">
+                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                          </div>                  
+                        {% endif %}
+                        {% if desc_title != blank or desc_content != blank %}
+                        <div class="desc-content">
+                            <h4>{{t}}</h4>  
+                          <p>{{desc_content[index]}}</p>
+                        </div>
+                       {% endif %}
+                    </div>  
+                  {% endfor %}
+            	</div>  
+            	{% if desc_title.size > 0 %}          		
+                <div class="progress_bar_count_sec">
+                    <div class="progres_col">	
+                      <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                        <span class="slider__label sr-only"></span>
+                      </div>
+                    </div>  
+                    <div class="progres_count_col">	
+                      <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                    </div> 
+            	  </div>   
+             {% endif %}
+        	</div>
+  	</div> 
+  {% else %}
+      {% assign product_desc_heading = product.metafields.arena.product_desc_heading %}
+      {% assign desc_image = product.metafields.arena.desc_image %}
+      {% assign desc_video = product.metafields.arena.desc_video %}
+      {% assign desc_title = product.metafields.arena.desc_title %}
+      {% assign desc_content = product.metafields.arena.desc_content %}
+      
+      {% if product_desc_heading != blank or desc_title != blank or desc_content != blank %}
+      	<div class="product-description container deepdream_product_feature">
+            	{% if product_desc_heading != blank %}
+                <div class="sechead">
+                    <h3 class="text-center">{{product_desc_heading}}</h3>  
+                </div>
+            	{% else %}
+            		<div class="sechead">
+                    <h3 class="text-center"><span>Product Feature</span></h3>  
+               	</div>
+            	{% endif %}
+            	<div class="additional-desc-con row align-items-center">
+                {% for t in desc_title %}
+                  {% assign index = forloop.index0 %}
+                	{%assign m = index | modulo: 2 %}
+                	{% if m == 0 %}
+                      <div class="col-md-6 col-sm-6">  
+                          {% if desc_video[index] != blank %}
+                                                     
+                                  <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                                  Your browser does not support the video tag.
+                                  </video>
+                          {% else %}           
+                            	<div class="desc-image">
+                                	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                              </div>                  
+                        {% endif %}
+                      </div>
+                		<div class="col-md-6 col-sm-6">
+                        {% if desc_title != blank or desc_content != blank %}
+                        	<div class="desc-content">
+                            	<h4>{{t}}</h4>  
+                            <p>{{desc_content[index]}}</p>
+                        	</div>
+                        {% endif %}
+                		</div>
+                  {% elsif m == 1 %}
+                		<div class="col-md-6 col-sm-6">
+                        {% if desc_title != blank or desc_content != blank %}
+                        	<div class="desc-content">
+                            	<h4>{{t}}</h4>  
+                           	<p>{{desc_content[index]}}</p>
+                        	</div>
+                        {% endif %}
+                      </div>
+                		<div class="col-md-6 col-sm-6">
+                        {% if desc_video[index] != blank %}                   
+                              <video class="pro_-video" preload="none" muted playsinline webkit-playsinline data-src="{{ desc_video[index] }}" type="video/mp4">
+                              Your browser does not support the video tag.
+                              </video>
+                        {% else %}           
+                        	<div class="desc-image">
+                            	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                          </div>
+                        {% endif %}
+                		</div>
+                	{% endif %}
+                {% endfor %}
+             </div>
+      	</div>
+      
+      	<div class="mobile-product-description-section deep_dream_mobile_product_description">	 
+      		<div class="container">
+            		  <div class="sechead">
+                        <h3 class="text-center">Feature</h3>  
+                    </div>
+                	<div class="mobile-product-description-slider">
+                		{% assign i = 0 %}
+                    	{% for t in desc_title %}
+                    		
+                    	{% assign index = forloop.index0 %}
+                        <div class="description-slide">
+                             {% if desc_video[index] != blank %}                   
+                                <video class="pro_-video" preload="none" muted playsinline webkit-playsinline  data-src="{{ desc_video[index] }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                                </video>
+                            {% else %}                             
+                            	<div class="desc-image">
+                                	<img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{desc_image[index]}}" alt="image">
+                              </div>                  
+                            {% endif %}
+                            {% if desc_title != blank or desc_content != blank %}
+                            <div class="desc-content">
+                                <h4>{{t}}</h4>  
+                              <p>{{desc_content[index]}}</p>
+                            </div>
+                           {% endif %}
+                        </div>  
+                      {% endfor %}
+                	</div>  
+                	{% if desc_title.size > 0 %}          		
+                    <div class="progress_bar_count_sec">
+                        <div class="progres_col">	
+                          <div class="progress" data-total="{{desc_title.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                            <span class="slider__label sr-only"></span>
+                          </div>
+                        </div>  
+                        <div class="progres_count_col">	
+                          <span class="curent_slide_active_p">1</span> of {{desc_title.size}}
+                        </div> 
+                	  </div>   
+                 {% endif %}
+            	</div>
+      	</div>
+      {% endif %}
+  {% endif %}	
+  
+  
+  
+  {% if product.metafields.mattress.mobile_image != blank %}
+    <div class="closer_like_slider_section mobile_closer_section">  
+        <div class="container_f">
+            <h2 class="closer_slider_heading">Let’s take a closer look</h2>
+            <div class="mcloser_like_slider">
+                {% for closer_slide_image in product.metafields.mattress.mobile_image %}
+                    {% assign index = forloop.index0 %}
+                    {% if product.metafields.mattress.mobile_image[index] != blank and product.metafields.closer_look.heading[index] != blank %}
+                       <div class="closer_like_slide">
+                         <div class="left_sec">
+                            <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{product.metafields.mattress.mobile_image[index]}}"/>
+                         </div> 
+                          <div class="right_sec page-width">
+                            <h2>{{ product.metafields.closer_look.heading[index] }}</h2>
+                            {% if product.metafields.cloder_look.content[index] != blank and product.metafields.closer_look.left_image[index] != blank %}
+                              <div class="content-closer-slide">
+                                <div class="image">
+                                    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ product.metafields.closer_look.left_image[index] }}"/>
+                                </div>
+                                <div class="content_p">
+                                  <p>{{product.metafields.cloder_look.content[index]}}</p>
+                                </div>  
+                              </div>                             
+                            {% endif %}
+                          </div> 
+                      </div>  
+                   {% endif %}
+               {% endfor %}             
+            </div>
+            {% if product.metafields.mattress.mobile_image.size > 0 %}          		
+                <div class="progress_bar_count_sec">
+                    <div class="progres_col">	
+                      <div class="progress" data-total="{{product.metafields.mattress.mobile_image.size}}" role="progressbar" aria-valuemin="25" aria-valuemax="100" style="background-size: 25% 100%;">
+                        <span class="slider__label sr-only"></span>
+                      </div>
+                    </div>  
+                    <div class="progres_count_col">	
+                      <span class="curent_slide_active_p">1</span> of {{product.metafields.mattress.mobile_image.size}}
+                    </div> 
+            	  </div>   
+           {% endif %}
+        </div>  
+    </div>
+  {% endif %}
+{% endif %}  
+
+
+
+

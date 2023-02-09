@@ -1,0 +1,40 @@
+{% if section.blocks and section.blocks != blank %}
+	<style>
+	{% for block in section.blocks %}
+       {% if block.settings.color_name != blank and block.settings.color_code != blank %}
+      		variant-radios .product-form__input input[value="{{block.settings.color_name}}"] + label {
+      			background: {{block.settings.color_code}} !important;
+            }
+            variant-radios .product-form__input input[value="{{block.settings.color_name}}"]:checked+label,variant-radios .product-form__input input[value="{{block.settings.color_name}}"]:hover+label{
+               background: {{block.settings.color_code}} !important;
+            }
+            li.Swatches-Color[value={{block.settings.color_name}}]{
+              background: {{block.settings.color_code}} !important;
+            }
+       {% endif %}
+	{% endfor %}
+	</style>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Color Swatches",
+	"blocks": [
+    {
+      "type": "Color_Swatches",
+      "name": "Color",
+      "settings": [
+        {
+          "id": "color_code",
+          "type": "color",
+          "label": "Color Code"
+        },
+		{
+		  "type": "text",	
+          "id": "color_name",
+          "label": "Color Name"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

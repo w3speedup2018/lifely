@@ -1,0 +1,150 @@
+{% if section.settings.heading != blank  and section.blocks.size > 0 %}
+  {% style %}
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 239px;
+        margin: 0 auto;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:first-child {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:first-child img {
+        max-width: 100%;
+        width: 204px !important;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a {
+        flex: 0 0 45%;
+        max-width: 45%;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:first-child img {
+        max-width: 100%;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner img {
+          max-width: 100%;
+          width: 86px !important;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:nth-child(3) img {
+        max-width: 100% !important;
+        width: 97px !important;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo h2 {
+        text-align: center;
+        font-family: 'Gellix';
+        font-size: 28px;
+        color: #2C474B;
+        font-weight: 600;
+        margin-bottom: 23px;
+    }
+    .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo {
+        background: #fff;
+        padding: 30px;
+    }
+    .all_mobile_deep_drams_mattress_feature{
+      	display:none;
+      }	
+    @media only screen and (max-width:767px){
+      .all_mobile_deep_drams_mattress_feature{
+      	display:block;
+      }	
+      .all_deep_drams_mattress_feature{
+      	display:none;
+      }	
+    }
+    @media only screen and (max-width:480px){
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a {
+          flex: 0 0 45%;
+          max-width: 45%;
+          margin-bottom: 25px;
+          text-align: center;
+      }
+    }
+    @media only screen and (max-width:400px){
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:first-child img {
+          max-width: 100%;
+      }
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner img {
+          max-width: 100%;
+          width: 86px !important;
+      }
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a {
+          flex: 0 0 45%;
+          max-width: 45%;
+          margin-bottom: 25px;
+          text-align: center;
+      }
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner a:nth-child(3) img {
+          max-width: 100% !important;
+      }
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo_inner {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+      .all_mobile_deep_drams_mattress_feature .all_deep_dream_fetured_logo h2 {
+        text-align: center;
+        font-family: 'Gellix';
+        font-size: 25px;
+        color: #2C474B;
+        font-weight: 600;
+        margin-bottom: 23px;
+    }
+    }
+  {% endstyle %}  
+  <div class="page-width">
+    <div class="all_deep_dream_fetured_logo">
+        <h2>{{ section.settings.heading }}</h2>
+         <div class="all_deep_dream_fetured_logo_inner"> 
+            {% for block in section.blocks %}
+              {% if block.settings.logo != blank %}  
+                <a href="{{ block.settings.logo_link}}"><img src="{{ block.settings.logo | img_url:"master" }}" alt=""/></a>
+               {% endif %}
+            {% endfor %}
+         </div> 
+    </div>  
+  </div>  
+{% endif  %}  
+{% schema %}
+  {
+    "name": "Mobile Feture Logo",
+    "class":"all_mobile_deep_drams_mattress_feature",
+    "settings": [
+        {
+          "type":"text",
+          "id":"heading",
+          "label":"Section Heading"
+        }
+    ],
+    "blocks": [
+       {
+          "type": "mat-fetured-logo",
+          "name": "Featured Logo",
+          "settings": [
+			{
+              "type": "image_picker",
+              "id": "logo",
+              "label": "Logo"    
+            },
+			{
+              "type": "text",
+              "id": "logo_link",
+              "label": "Logo Link",
+              "default":"#"
+            }
+          ]	
+      }	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

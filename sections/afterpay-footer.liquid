@@ -1,0 +1,48 @@
+{% if section.settings.afterpay_footer_heading_left != blank or section.settings.afterpay_footer_heading_right != blank %}
+<div class="afterpay-footer">
+	<div class="container">
+		<div class="afterpay-footer-inner">
+			<div class="d-flex justify-content-between">
+				<div class="col6">
+					{% if section.settings.afterpay_footer_heading_left != blank %}
+						<div class="afterpay-fcontent-left">
+							<h3>{{ section.settings.afterpay_footer_heading_left }}</h3>
+						</div>
+					{% endif %}
+				</div>
+				<div class="col6">
+					{% if section.settings.afterpay_footer_heading_right != blank %}
+						<div class="afterpay-fcontent-right">
+							<h3>{{ section.settings.afterpay_footer_heading_right }}</h3>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "After Pay Footer",
+    "settings": [
+       {
+        "type": "textarea",
+        "id": "afterpay_footer_heading_left",
+        "label": "Footer Heading Left"    
+       },
+       {
+        "type": "textarea",
+        "id": "afterpay_footer_heading_right",
+        "label": "Footer Heading Right"    
+       }  
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

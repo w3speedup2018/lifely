@@ -1,0 +1,122 @@
+{% if section.settings.banner_heading != blank %}
+	
+	{% if section.settings.banner_heading != blank %}
+		{% assign bg_color = section.settings.background %} 
+	{% else %}
+		{% assign bg_color = '#fff' %} 
+    {% endif %}
+	<style>
+          {% if section.settings.heding_bg_image != blank %}
+              .banner_heading_section{
+                position:relative;
+              }             
+          {% endif %}      	  
+      	  .clearance_banner {
+              color: {{ section.settings.banner_font}};
+              font-family: 'Gellix';
+          } 
+  </style> 
+	<section class="clearance-banner-main">
+      <div class="page-width">
+        <div class="clearance_breadcrumbs breadcrumb-mobile hide-on-desktop">
+          <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+            <ol class="breadcrumbs__list">
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="/">Home</a>
+              </li>
+              <li class="breadcrumbs__item">
+                <span class="curent_page">{{ page.title }}</span>
+              </li>                        
+            </ol>
+          </nav>
+        </div>	
+      </div>
+      <div class="clearance_banner about_page_banner" style="background:{{bg_color}}">
+          <div class="container">
+              <div class="clearance_banner_container">
+                  <div class="clearance_breadcrumbs hide-on-mobile">
+                    <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+                        <ol class="breadcrumbs__list">
+                          <li class="breadcrumbs__item">
+                            <a class="breadcrumbs__link" href="/">Home</a>
+                          </li>
+                          <li class="breadcrumbs__item">
+                            <span class="curent_page">{{ page.title }}</span>
+                          </li>                        
+                        </ol>
+                      </nav>
+                  </div>  
+                  <div class="clearance_banner_content">
+                      <div class="banner_heading_section">
+                       {% if section.settings.logo != blank %}
+                        <div class="about_banner_logo">
+                           <img src="{{ section.settings.logo | img_url:"master" }}" />
+                        </div> 
+                        {% endif %}
+                        <h1 class="hide-on-mobile">{{ section.settings.banner_heading }}</h1>
+                        <h2 class="hide-on-desktop mobile-heading">{{ section.settings.banner_mobile_heading }}</h2>
+                        <p>{{ section.settings.banner_subheading }}</p>
+                      </div>
+                      {% if section.settings.right_image != blank %}
+                        <div class="banner_image_section">
+                          {% if section.settings.right_image != blank %}
+                               <img src="{{ section.settings.right_image | img_url:"master" }}" />
+                          {% endif %}                         
+                        </div>  
+                     {% endif %}
+                  </div>
+              </div>  
+          </div>  
+      </div> 
+  </section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+        {
+			"type":"image_picker",
+			"id":"logo",
+			"label":"Logo Image"
+        },
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"text",
+			"id":"banner_mobile_heading",
+			"label":"Mobile Heading"
+        },
+		{
+			"type":"textarea",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"image_picker",
+			"id":"right_image",
+			"label":"Right Image"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"color",
+			"id":"banner_font",
+			"label":"Banner Font Color",
+			"default":"#000"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

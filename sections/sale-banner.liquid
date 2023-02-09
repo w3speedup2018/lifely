@@ -1,0 +1,640 @@
+{% if section.settings.banner_image != blank %}
+  {% if section.settings.banner_heading != blank %}
+    {% assign bg_color = section.settings.background %}
+  {% else %}
+    {% assign bg_color = '#FFE8C6' %}
+  {% endif %}
+  {% style %}
+    {% if section.settings.heding_bg_image != blank %}
+    .banner_heading_section{
+    position:relative;
+    }
+    .banner_heading_section:after {
+    content: "";
+    background: url({{ section.settings.heding_bg_image | img_url:'master' }});
+    height: 100%;
+    width: 227px;
+    position: absolute;
+    bottom: 0;
+    right: -15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+    {% endif %}
+    .clearance_banner_bar {  display:block !important;
+    padding:7px 0px;
+     background: {{  section.settings.bar_background }};
+
+
+
+    font-family: 'Gellix';
+    color: {{ section.settings.bar_font}};
+    }
+    .clearance_banner {
+    color: {{ section.settings.banner_font}};
+    font-family: 'Gellix';
+    }
+    .sticky_clearance_banner_bar_active .clearance_banner_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999;
+    display:none;
+    }
+    .shopify-section.master_banner .clearance_banner_container {
+    width: 100%;
+    max-width: 100%;
+    }
+    .shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img {
+    width: 100%;
+    }
+    .banner_heading_section {
+    position: relative;
+    }
+
+    .banner_heading_section .content { top:50%; left:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    position:absolute; max-width:1230px; width:100%; padding:0 50px;  text-align:center; }
+
+    .banner_heading_section .content .afterpay { max-width:250px; display:inline-block;  }
+
+    .banner_heading_section .content .box { max-width:330px;  }
+
+    .banner_heading_section img { max-width:100%; height:auto; }
+
+    .banner_heading_section h4 { font-size:80px; font-weight: 700; text-transform:uppercase;  color:#fff; }
+
+    .banner_heading_section h4 span { font-size:44px; font-weight:400; display:block; }
+
+    .banner_heading_section .code { border:2px solid #fff; padding:5px 20px; font-size:25px; display:block; margin:20px 0 30px 0; color:#fff;  }
+    .banner_heading_section .code  span {  font-weight: 700;text-transform:uppercase;  }
+
+
+
+    .banner_heading_section .term { position:absolute; bottom:0px; right:0px; padding:20px; color:#fff;  }
+
+    .banner_heading_section .term p { font-size:13px; }
+
+
+
+    .new__baner .clearance_banner_container { max-width:100%; }
+
+    .new__baner .banner_sale-text { width:100%; display:flex; flex-wrap:wrap; }
+
+
+    .new__baner .clearance_banner {           background-repeat: no-repeat !important;
+
+    background-size: cover !important;
+    background-position: center !important;    }
+
+
+
+
+    .banner_sale-text .content {     display: flex;     align-items: center;   width:48%;  min-height:450px;
+        order: 2;
+        padding:90px 40px;
+        margin-left: 0;       text-align: center; color: #fff; }
+
+    .banner_sale-text .content .box { margin: auto;   display: inline-block; max-width:520px; }
+
+    .banner_sale-text .content h5 { font-size:48px; font-weight:500; margin:0px;  color:#FF0099; line-height: 1.44; }
+
+
+    .banner_sale-text .offer-code { display:flex; color:#fff; font-weight:bold; font-size:40px; margin:20px 0; }
+
+
+    .banner_sale-text .code { border:2px solid #38FFAB; padding:5px 15px;     font-size:24px;
+        display: inline-block; margin:20px 0 30px 0; color:#38FFAB;  }
+    .banner_sale-text .code  span {  font-weight: 700;   }
+
+
+    .banner_sale-text .offer-code .code { padding:0 15px; border-left:2px solid #38FFAB; line-height:1;  }
+    .banner_sale-text .offer-code .code:nth-child(1) { padding-left:0; border-left:none;  }
+
+    .new__baner .master-top-bar { background:#E25B3C; font-size:16px; text-transform: uppercase; color:#fff; text-align:center; padding:10px 0; }
+
+    .banner_sale-text .offer-code span { font-size:14px; font-weight:normal; display:block; clear:both; }
+
+    .banner_sale-text .offer-code span i { font-style:normal; }
+
+    .banner_sale-text .banner-btn-wrap  { font-size:20px; color:#fff; text-decoration: underline; padding-bottom:15px; }
+
+    .banner_sale-text .term { margin-top:60px; color:#C33252; font-size:11px; }
+
+
+
+    .banner_sale-text a.btn {
+    background:#C33252;
+    border-radius: 29px;
+    font-family: 'Gellix';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    display:inline-block;
+    line-height:30px;
+    padding: 5px 20px 8px 20px;
+    }
+
+    .banner_sale-text .content h4.sale-ex { text-transform:uppercase; line-height:1;  font-size:70px;     letter-spacing: 2px; }
+      .sale-ex b{ display:block; clear:both; font-size:40px;  font-style: normal;     font-weight: 500;   letter-spacing:-1px; }
+
+    #shopify-section-template--14798090764330__mattress-category-grid .shop_cat_grid { max-width:900px; }
+    #shopify-section-template--14798090764330__mattress-category-grid .shop_cat_grid .shop_cat_grid_item { width:17%; }
+    .master_campaign_coupon_inner_bar h2 { font-size:24px; }
+
+    #shopify-section-template--14798090764330__master-campaign-coupon-bar .master_campaign_coupon_inner_bar { margin-top:0px; }
+
+
+    @media only screen and (max-width:1300px){
+
+    .banner_sale-text .content  { padding:40px 20px; }
+    .banner_sale-text .term {
+    margin-top:20px;
+    }
+    }
+
+    @media only screen and (max-width:1024px){
+    .banner_sale-text .offer-code { font-size:30px; }
+
+      .banner_sale-text .content {     width: 26%;   }
+    .banner_sale-text .code {     font-size: 16px;  }
+
+      .banner_sale-text .content h4 {
+        font-size: 45px;
+      }
+
+    }
+
+    @media only screen and (max-width:991px){
+
+    .shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img {
+    min-height: 500px;
+    object-fit: cover;
+    }
+
+
+    }
+
+
+    @media only screen and (max-width:767px){
+
+    .shopify-section.master_banner .clearance_banner_container .master-clearance_banner_content img.desktop_banner_img { display:none; }
+
+    .master-clearance_banner_content img.mobile_banner_img { display:block; width:100%; }
+
+
+
+    .banner_heading_section .content { padding:0 15px; }
+
+    .banner_heading_section .content .box {
+    max-width: 100%;
+    }
+
+    .banner_heading_section .code { font-size:18px; display:inline-block; }
+    .banner_heading_section h4 span {
+    font-size: 30px; }
+    .banner_heading_section h4  {
+    font-size: 70px; }
+    .banner_heading_section .term p { display:block; }
+    .banner_heading_section .term {
+    padding: 10px;
+
+    text-align: center; }
+
+    .clearance_banner_bar .clearance_BannerBar_Heading { text-align:center !important; }
+
+    .new__baner .desktop_banner_img { display:none; }
+
+    .banner_sale-text .content { width:100%; text-align: center;     min-height:200px; }
+
+    .banner_sale-text .img-texts {     display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between; }
+
+
+
+      #shopify-section-template--14831246737450__f8749534-747c-4c23-a938-4e5155e12df0  .banner_sale-text .img-texts { display:block; }
+
+    .banner_sale-text .img-texts img {  max-width: 98px; }
+    .banner_sale-text .code {     margin:2px 0 10px 0; }
+    .banner_sale-text .content h5 { font-size:20px;   }
+    .banner_sale-text .content h4 { font-size:28px }
+
+    .banner_sale-text .banner-btn-wrap a {
+    font-size: 14px;
+    }
+
+    .banner_sale-text .offer-code {
+    font-size: 20px; margin: 15px 0;
+    }
+
+    .banner_sale-text .offer-code span i { display:none; }
+    .banner_sale-text .offer-code {     display: flex;
+    flex-wrap: wrap-reverse; }
+    .banner_sale-text .content {
+    padding: 20px;
+    }
+
+
+    .banner_sale-text .offer-code .code {
+    padding: 0 10px; }
+
+    #shopify-section-template--14798090764330__mattress-category-grid .shop_cat_grid .shop_cat_grid_item { width:50%; }
+
+    .banner_sale-text .offer-code {
+    justify-content: center;
+    }
+
+      .clearance_bar_inner .clearance_BannerBar_Heading h3 { display: flex;      text-align: center;
+        color: #000;   padding-bottom: 15px; }
+
+
+    .banner_sale-text .content h4.sale-ex { font-size:40px; }
+
+    .banner_sale-text .content h4.sale-ex b { font-size:22px; }
+
+    /* 13 cybermonday banner */
+      .banner_sale-text .content {     position: absolute;
+        bottom: 0; left:0px; right:0px; }
+      .new__baner .banner_sale-text {     position: relative; }
+      .banner_sale-text .img-texts { display:block; }
+      .banner_sale-text .content h5 {
+        font-size:28px;
+    }
+
+    body.page_master-campaign .clearance_bar_inner .clearance_BannerBar_Heading span.formobile { text-align:left; }
+
+      .banner_sale-text .code {
+        font-size: 14px;
+    }
+
+        .banner_sale-text .code {
+        font-size: 14px;
+    }
+
+
+
+    }
+
+      .clearance_bar_inner .clearance_BannerBar_Heading h3 { margin: 0px;
+        color:#C33252;  font-size:16px;
+        justify-content: center;
+        align-items: center;
+        text-align: left; }
+
+      .clearance_bar_inner .clearance_BannerBar_Heading h3 img {   vertical-align: top; }
+
+      .banner_sale-text .content h4 { font-size:55px; font-weight:900; margin:0px;
+    text-transform: uppercase;
+
+    color: #E57294;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      -webkit-text-stroke:1px  #fff;
+    text-shadow: 3px 4px 0px #28b6e8; }
+
+          .banner_sale-text .content h4 span { font-size:30px;
+    text-transform: lowercase;
+    width: 48px;
+    
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1  }
+
+     .spend-text {  color: #AE001F; font-size:16px;
+    background: #FFE8C6;
+    border: 1px solid #AE001F;
+    box-shadow: 6px 6px 0px #E46767;
+    border-radius: 9px; padding:12px 30px;      font-family: 'bookmaniabold_italic';
+   display: inline-block; margin:10px auto 20px auto; font-size:28px; font-weight:bold; }
+
+     .spend-text span { display:block; clear:both;      font-family: 'bookmaniaregular';
+ font-size:16px; font-weight:normal; }
+
+    .sale-offer  {  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+   
+     font-size:12px;     margin:15px 0; }
+
+      .sale-offer strong { font-size:24px; font-weight:900;    }
+
+      .sale-offer .sec__ { width:100%; background: #FFFFFF;
+ padding:5px 10px; margin:5px;
+    border:2px solid #000; 
+    box-shadow: 3px 3px 0px #FCA594;
+    border-radius: 9px; color: #000;    }
+
+     
+
+    .clearance_bar_inner .clearance_BannerBar_Heading h3 p { margin:0px; }
+    
+      .sale-offer p { margin:0px; }
+
+   .new__baner .banner_sale-text .boxing-text {  font-family: 'Gellix';
+font-style: normal;
+font-weight:900; line-height:1;
+font-size:100px;  -webkit-text-stroke:1px #fff;
+    text-shadow: 3px 4px 0px #28B6E8;
+
+color:#E57294;  }
+
+
+    .new__baner .banner_sale-text .boxing-text b{    -webkit-text-stroke:transparent;
+    text-shadow:none;  font-size:34px; font-weight: 700;
+
+    color:#C33252;
+    display: block;
+    clear: both;
+
+    }
+
+    .c_code { border:2px solid #C33252; padding:6px 10px; margin-top: 21px; background:#fff; font-weight: 600; font-size:18px; display: inline-block; color: #C33252;  }
+
+    @media only screen and (max-width:767px){
+
+ .spend-text  {    padding: 10px 15px;
+    margin-bottom: 10px;
+    line-height: 1;  font-size: 24px; }
+  
+.banner_sale-text .content h4 { font-size:36px;  line-height: 1;     }
+
+  .clearance_bar_inner .clearance_BannerBar_Heading h3 { font-size:12px; text-align:left; }
+ 
+.banner_sale-text .term { font-size:10px; }
+.sale-offer strong {
+font-size:16px;
+}
+ 
+.sale-offer .sec__ { padding: 5px 5px;
+    margin: 2px; }
+
+      .new__baner .banner_sale-text .boxing-text b { font-size:16px; }
+      
+  .new__baner .banner_sale-text .boxing-text { font-size:60px; }
+
+      .banner_sale-text .content h4 span {     font-size: 20px; width:40px; }
+
+  .sale-offer {       margin: 7px 0;  font-size: 10px; }
+  .banner_sale-text .content .box { width:100%; }
+
+      .c_code {   font-size: 14px; }
+}
+
+    @media only screen and (max-width:375px){
+
+  .new__baner .banner_sale-text .boxing-text { font-size:54px;}
+
+      .banner_sale-text a.btn { padding:1px 20px 1px 20px }
+
+}
+
+    {% endstyle %}
+
+  <div
+    class="clearance_banner {{ section.settings.class }}"
+    style="background:#cee6f4 url({{ section.settings.banner_image | img_url:"master"}});"
+  >
+    <div class="page-width-banner">
+      <div class="clearance_banner_container">
+        <div class="master-clearance_banner_content">
+          <div class="banner_sale-text">
+            {% if section.settings.mobile_banner_image != blank %}
+              <img class="mobile_banner_img" src="{{ section.settings.mobile_banner_image | img_url:"master"}}" alt="">
+            {% endif %}
+
+            <div class="content">
+              <div class="box">
+                {% if section.settings['text-2'] != blank %}
+<!-- spend-text   class name for different style -->
+ <div class="boxing-text ">{{ section.settings['text-2'] }}</div>
+                {% endif %}
+
+                {% if section.settings['text-1'] != blank %}
+                  <h4>{{ section.settings['text-1'] }}</h4>
+                {% endif %}
+  <div class="c_code"> Use Code: <b> HotSummerSale  </b> </div>
+
+                <div class="sale-offer">
+                  {% if section.settings['offer-1'] != blank %}
+                    <div class="sec__">{{ section.settings['offer-1'] }}</div>
+                  {% endif %}
+                  {% if section.settings['offer-2'] != blank %}
+                    <div class="sec__">{{ section.settings['offer-2'] }}</div>
+                  {% endif %}
+                  {% if section.settings['offer-3'] != blank %}
+                    <div class="sec__">{{ section.settings['offer-3'] }}</div>
+                  {% endif %}
+                </div>
+
+
+                {% if section.settings.banner_button_text != blank %}
+                  <a href="{{ section.settings.banner_button_url }}" class="btn">
+                    {{- section.settings.banner_button_text -}}
+                  </a>
+                {% endif %}
+
+                {% if section.settings['terms-text'] != blank %}
+                  <div class="term">
+                    <p>{{ section.settings['terms-text'] }}</p>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if section.settings.top_banner_heading != blank %}
+    <div class="master-top-bar">
+      <div class="page-width">{{ section.settings.top_banner_heading }}</div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.banner_bar_heading != blank and section.settings.bar_sale_end_date != blank %}
+    <div class="clearance_banner_bar">
+      <div class="page-width">
+        <div class="clearance_bar_inner">
+          {% if section.settings.banner_bar_heading != blank %}
+            <div class="clearance_BannerBar_Heading" style="flex: 0 0 66.333333%; text-align:right;">
+              <h3>{{ section.settings.banner_bar_heading }}</h3>
+            </div>
+          {% endif %}
+          <div class="clearance_BannerBar_Timmer">
+            {% if section.settings.bar_sale_end_date != blank %}
+              <span id="countdownClearance_bar" data-date="{{section.settings.bar_sale_end_date}}">
+                <span class="ctime eliving-day"><span class="days">00</span> days</span>
+                <span class="ctime"><span class="hours">00</span> hrs</span>
+                <span class="ctime"><span class="minutes">00</span> min</span>
+                <span class="ctime"><span class="seconds">00</span> secs</span>
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if section.settings.sale_heading != blank or section.settings.sale_end_date != blank %}
+      <div class="banner_counter_section">
+        {% if section.settings.sale_heading != blank %}
+          <h3>
+            <img src="https://cdn.shopify.com/s/files/1/0562/7569/7706/files/Frame_2226.png?v=1667409973">
+            {{ section.settings.sale_heading }}
+          </h3>
+        {% endif %}
+        {% if section.settings.sale_end_date != blank %}
+          <span id="countdownEliving" data-date="{{section.settings.sale_end_date}}">
+            <span class="ctime eliving-day"><span class="days">00</span> days</span>
+            <span class="ctime"><span class="hours">00</span> hrs</span>
+            <span class="ctime"><span class="minutes">00</span> min</span>
+            <span class="ctime"><span class="seconds">00</span> secs</span>
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+    <script>
+      jQuery(document).ready(function($){
+      $(window).scroll(function() {
+      var hT = $('.clearance_banner').offset().top,
+      hH = $('.clearance_banner').outerHeight(),
+      wH = $(window).height(),
+      wS = $(this).scrollTop();
+      if (wS > (hT+hH+50)){
+      $('body').addClass('sticky_clearance_banner_bar_active');
+      $('.clearance_banner_bar').show();
+      }else{
+      $('body').removeClass('sticky_clearance_banner_bar_active');
+      $('.clearance_banner_bar').hide();
+      }
+      });
+      });
+    </script>
+  {% endif %}
+{% endif %}
+{% schema %}
+{
+"name": "Sale Banner",
+"class":"new__baner",
+"settings": [
+
+  {
+"type":"text",
+"id":"class",
+"label":"Custom class"
+},
+
+  {
+"type":"text",
+"id":"top_banner_heading",
+"label":"Top Bar Heading"
+},
+{
+"type":"image_picker",
+"id":"banner_image",
+"label":"Banner Image"
+},
+
+{
+"type":"textarea",
+"id":"text-1",
+"label":"Text"
+},
+{
+"type":"textarea",
+"id":"text-2",
+"label":"Spend Text"
+},
+
+  {
+"type":"richtext",
+"id":"offer-1",
+"label":"Offer 1"
+},
+
+    {
+"type":"richtext",
+"id":"offer-2",
+"label":"Offer 2"
+},
+
+    {
+"type":"richtext",
+"id":"offer-3",
+"label":"Offer 3"
+},
+
+
+{
+"type":"text",
+"id":"banner_button_text",
+"label":"Banner Button Text"
+},
+
+
+{
+"type":"text",
+"id":"banner_button_url",
+"label":"Banner Button URL"
+},
+{
+"type":"textarea",
+"id":"terms-text",
+"label":"T&C text"
+},
+{
+"type":"image_picker",
+"id":"mobile_banner_image",
+"label":"Mobile Banner Image"
+},
+{
+"type":"text",
+"id":"sale_end_date",
+"label":"Sale end date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"banner_font",
+"label":"Banner Font Color",
+"default":"#000"
+},
+{
+"type":"textarea",
+"id":"banner_bar_heading",
+"label":"Bar Heading"
+},
+{
+"type":"text",
+"id":"bar_sale_end_date",
+"label":"Bar date",
+"info": "Please add date in this format mm/dd/yyyy"
+},
+{
+"type":"color",
+"id":"bar_background",
+"label":"Bar Background Color",
+"default":"#fff"
+},
+{
+"type":"color",
+"id":"bar_font",
+"label":"Bar Font Color",
+"default":"#000"
+}
+],
+"presets": [
+{
+"name": "Sale Banner"
+}
+]
+}
+{% endschema %}

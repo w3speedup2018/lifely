@@ -1,0 +1,81 @@
+<section class="crt-account-grid hide-on-desktop" style="background:{% if section.settings.background != blank %}{{section.settings.background}}{% endif%}">
+  <div class="crt-grid-inner">
+    <div class="page-width">
+      {% if section.settings.section_image != blank %}
+      	<div class="acc-img-grid">
+        	<img src="{{section.settings.section_image | img_url: "master" }}" alt="Image">  
+      	</div>
+      {% endif %}
+      {% if section.settings.image_after_content != blank or section.settings.account_heading != blank or section.settings.account_subheading!= blank or section.settings.button_label != blank %}
+      	<div class="acc-content-grid">
+          {% if section.settings.image_after_content != blank %}
+          	<img src="{{section.settings.image_after_content | img_url: "master" }}" alt="logo">
+          {% endif %}
+          {% if section.settings.account_heading != blank %}
+          	<h3>{{section.settings.account_heading}}</h3>
+          {% endif%}
+          {% if section.settings.account_subheading != blank %}
+          	<h4>{{section.settings.account_subheading}}</h4>
+          {% endif%}
+          {% if section.settings.button_label != blank %}
+          	<div class="crt-btn-wrap">
+              <a href="{{section.settings.button_link}}">{{section.settings.button_label}}</a>
+          	</div>
+          {% endif %}
+      	</div>
+      {% endif%}
+       
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Create Account",
+    "settings": [
+		{
+			"type":"text",
+			"id":"account_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"richtext",
+			"id":"account_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"image_picker",
+			"id":"image_after_content",
+			"label":"Logo after content"
+        },
+		{
+			"type":"text",
+			"id":"button_label",
+			"label":"Button Label"
+        },
+		{
+			"type":"text",
+			"id":"button_link",
+			"label":"Button Link"
+        },
+		{
+			"type":"image_picker",
+			"id":"section_image",
+			"label":"Main Image"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

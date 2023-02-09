@@ -1,0 +1,347 @@
+{% if section.settings.show_related_products == true %}
+   {% if product.metafields.upsell.products != blank or product.metafields.crosssell.products != blank %}
+    <div class="clearfix"></div>
+    <div class="related_products" data-section-id="{{ section.id }}">
+    {% assign number_of_rows = section.settings.related_grid_num %}
+
+
+    {% assign heading = section.settings.related_title %}
+    {% assign same_vendor = false %}
+    {% assign same_type = false %}
+    {% assign exclusions = 'frontpage,all' | split: ',' %}
+
+    {% if product.metafields.c_f['Related Products'] %}
+      {% assign collection = collections[product.metafields.c_f['Related Products']] %}
+    {% endif %}
+
+    {% assign found_a_collection = false %}
+    {% if collection and collection.all_products_count > 1 %}
+      {% unless exclusions contains collection.handle %}
+        {% assign found_a_collection = true %}
+      {% endunless %}
+    {% endif %}
+    {% unless found_a_collection %}
+      {% for c in product.collections %}
+        {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+          {% assign found_a_collection = true %}
+          {% assign collection = c %}
+          {% break %}
+        {% endunless %}
+      {% endfor %}
+    {% endunless %}
+
+    {% assign counter = 0 %}  
+    {% if product.metafields.crosssell.products != blank %}
+      {% assign break_at = number_of_rows %}
+      {% assign current_product = product %}
+
+      {% assign upsell_array = product.metafields.crosssell.products | split: '|' %}     
+      
+
+      {% capture related_items %}
+         <div class="related_slider active">	
+
+          {% for upsell in upsell_array %}       
+          {% assign card_product = all_products[upsell] %}
+				
+				{% if card_product != blank %}		
+                 <div class="bestseller_product">
+                            {%- if card_product and card_product != empty -%}
+
+                                {%- if card_product.featured_media -%}
+                                  <div class="bestseller_product_image">  
+                                      <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                                          <img
+                                            srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                              {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                              {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                              {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                              {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                              {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                              {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                                            src="{{ card_product.featured_media | img_url: '533x' }}"
+                                            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                            alt="{{ card_product.featured_media.alt | escape }}"
+                                            class="motion-reduce"
+                                            {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                                            width="{{ card_product.featured_media.width }}"
+                                            height="{{ card_product.featured_media.height }}"
+                                          >   
+                                             </a>
+                                  </div>
+                                {%- endif -%}
+                                {% assign productTags = card_product.tags | join: ', ' %}
+                   				 <div class="custom_product_wishlist">
+                                     {% render 'ZooomyListWishlistColl', product: card_product %}
+                                </div>
+                                 {%  if card_product.metafields.product_discount.label != blank %}
+                                  <div class="best_seller_discount_bar">
+                                      <span>{{ card_product.metafields.product_discount.label }}</span>
+                                  </div>
+                                 {% elsif productTags contains 'New Arrivals' %}
+                                        <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                                 {% elsif productTags contains 'Sale' %}
+                                        <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                                 {% endif %}	 
+                                <div class="bestseller_card__content">
+                                  <div class="card__information">
+                                    <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                                      <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                                        {{ card_product.title | escape }}
+                                      </a>
+                                    </h3>
+                                    <div class="card-information">     
+                                      {% render 'bestseller-price', product: card_product, price_class: '' %}
+                                    </div>
+                                  </div>
+                                </div>	
+                            {% endif %}
+                         </div>  
+                        {% assign counter = counter | plus: 1 %}
+				{% endif %}		
+          {% endfor %}
+    </div>
+      {% endcapture %}
+
+      {% endif %}
+
+
+      {% if product.metafields.upsell.products != blank or product.metafields.crosssell.products != blank %}
+      <div class="related_product_tab_nav">
+        <ul>
+          {% if product.metafields.crosssell.products != blank  %}
+          <li><a class="active_tab entire_collection" href="related_products">{% if heading != blank %} {{ heading }} {% else %} Shop entire collection {% endif %}</a></li>
+          {% endif %}
+          {% if product.metafields.upsell.products != blank %}
+          <li><a {%if product.metafields.crosssell.products == blank  %}class="active_tab also_like_produts"{% else %}class="also_like_produts"{% endif %} href="also_like_produts">{% if section.settings.recommendations != blank %} {{ section.settings.recommendations }} {% else %}You may also like{% endif %}</a></li>
+          {% endif %}
+        </ul>
+      </div>  
+      {% endif %}
+
+
+      {% assign related_items = related_items | trim %}
+      {% unless related_items == blank %}
+         {% if product.metafields.crosssell.products != blank %}
+            {{ related_items }}
+         {% endif %}	
+      {% endunless %}
+
+
+      {% assign heading = 'You may also like' %}
+      {% assign limit = 10 %}
+      {% if product.metafields.upsell.products != blank %}
+      {% assign crosssell_array = product.metafields.upsell.products | split: '|' %}	
+      {% assign newcounter = 0 %}
+       <div class="also_like_slider {%if product.metafields.crosssell.products == blank  %}active{% endif %}">	
+          {% for crosssell in crosssell_array %}       
+             {% assign card_product = all_products[crosssell] %} 
+				
+				{% if card_product != blank %}
+				
+                <div class="bestseller_product">
+                  {%- if card_product and card_product != empty -%}
+
+                      {%- if card_product.featured_media -%}
+                        <div class="bestseller_product_image">
+                            <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                            <img
+                              srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | img_url: '165x' }} 165w,{%- endif -%}
+                                {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | img_url: '360x' }} 360w,{%- endif -%}
+                                {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | img_url: '533x' }} 533w,{%- endif -%}
+                                {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | img_url: '720x' }} 720w,{%- endif -%}
+                                {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | img_url: '940x' }} 940w,{%- endif -%}
+                                {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | img_url: '1066x' }} 1066w,{%- endif -%}
+                                {{ card_product.featured_media | img_url: 'master' }} {{ card_product.featured_media.width }}w"
+                              src="{{ card_product.featured_media | img_url: '533x' }}"
+                              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                              alt="{{ card_product.featured_media.alt | escape }}"
+                              class="motion-reduce"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                              width="{{ card_product.featured_media.width }}"
+                              height="{{ card_product.featured_media.height }}"
+                            > 
+                            </a>                
+                        </div>
+                      {%- endif -%}
+                     {% assign productTags = card_product.tags | join: ', ' %}
+                  	 <div class="custom_product_wishlist">
+                           {% render 'ZooomyListWishlistColl', product: card_product %}
+                      </div>
+                      {%  if card_product.metafields.product_discount.label != blank %}
+                        <div class="best_seller_discount_bar">
+                          <span>{{ card_product.metafields.product_discount.label }}</span>
+                        </div>
+                        {% elsif productTags contains 'New Arrivals' %}
+                        <div class="best_seller_discount_bar new_arrival new_in_store"><span>NEW IN</span></div>
+                        {% elsif productTags contains 'Sale' %}
+                        <div class="best_seller_discount_bar new_arrival lastchance_store"><span>LAST CHANCE</span></div>
+                      {% endif %}	
+                      <div class="bestseller_card__content">
+                        <div class="card__information">
+                          <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                            <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
+                              {{ card_product.title | escape }}
+                            </a>
+                          </h3>
+                          <div class="card-information">
+                            {%- if card_product.metafields.reviews.rating.value != blank -%}
+                              {% liquid
+                                assign rating_decimal = 0
+                                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                                if decimal >= 0.3 and decimal <= 0.7
+                                  assign rating_decimal = 0.5
+                                elsif decimal > 0.7
+                                  assign rating_decimal = 1
+                                endif
+                              %}
+                              <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                                <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                              </div>
+                              <p class="rating-text caption">
+                                <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+                              </p>
+                              <p class="rating-count caption">
+                                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                                <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                              </p>
+                            {%- endif -%}
+
+                            {% render 'bestseller-price', product: card_product, price_class: '' %}
+                          </div>
+                        </div>
+                      </div>	
+                  {% endif %}
+                  </div> 
+                 {% assign newcounter = newcounter | plus: 1 %}
+			{% endif %}	 
+         {% endfor %}
+       </div>
+      {% endif %}
+    </div>
+    {% endif %}
+{% endif %}
+<div class="yotpo yotpo-main-widget"
+data-product-id="{{ product.id }}"
+data-name="{{ product.title | escape }}"
+data-url="{{ shop.url }}{{ product.url }}"
+data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+data-price="{{ variant.price | money_without_currency }}"
+data-currency="{{ shop.currency }}"
+data-description="{{ product.description | escape }}">
+</div>
+
+<script type="lazyload2">
+    setTimeout(function() {
+      var length_related_slider = jQuery('.related_products .related_slider .bestseller_product').length; 
+      var length_like_slider = jQuery('.related_products .also_like_slider .bestseller_product').length;
+      
+      if(length_related_slider < 1){
+        jQuery('.related_products .related_product_tab_nav ul li a.entire_collection').hide();
+      }
+
+      if(length_like_slider < 1){
+        jQuery('.related_products .related_product_tab_nav ul li a.also_like_produts').hide();
+      }
+
+      if(length_related_slider < 1 && length_like_slider < 1){
+        jQuery('.related_products').hide();
+      }
+      
+    })
+  
+</script>
+
+{% schema %}
+{
+  "name": "Related products",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_related_products",
+      "label": "Show related products",
+      "default": false
+    },
+    {
+      "id": "related_title",
+      "type": "text",
+      "label": "Related title",
+      "default": "Shop entire collection"
+    },
+	 {
+      "id": "recommendations",
+      "type": "text",
+      "label": "Recommended title",
+      "default": "You may also like"
+    },
+    {
+      "type": "select",
+      "id": "related_grid_num",
+      "label": "Products per row (Desktop)",
+      "default": "4",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+		{
+          "value": "6",
+          "label": "6"
+        },
+		{
+          "value": "7",
+          "label": "7"
+        },
+		{
+          "value": "8",
+          "label": "8"
+        },
+		{
+          "value": "9",
+          "label": "9"
+        },
+		{
+          "value": "10",
+          "label": "10"
+        },
+		{
+          "value": "11",
+          "label": "11"
+        },
+        {
+          "value": "12",
+          "label": "12"
+        },
+        {
+          "value": "13",
+          "label": "13"
+        },
+        {
+          "value": "14",
+          "label": "14"
+        },
+        {
+          "value": "15",
+          "label": "15"
+        },
+        {
+          "value": "16",
+          "label": "16"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

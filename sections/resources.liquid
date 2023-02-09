@@ -1,0 +1,118 @@
+{% if section.settings.heading != blank  or section.settings.sub_heading != blank or section.blocks != blank %}
+<section class="featured_section">
+    <div class="container">
+      <div class="row">
+        	{% if section.settings.heading != blank or section.settings.sub_heading != blank%}
+              <div class="col-12">
+                  <div class="be-heading text-center">
+                      {% if section.settings.heading != blank %}
+                     	 <h2>{{ section.settings.heading }}</h2>
+                      {% endif %}
+                      {% if section.settings.sub_heading != blank %}
+                      	<p>{{ section.settings.sub_heading }} </p>
+                      {% endif %}
+                  </div>              
+              </div>
+        	{% endif %}
+        	{% if section.blocks and section.blocks != blank %}
+                <div class="col-12">
+                  <div class="row">                    	
+                    {%- for block in section.blocks -%}
+                    	<div class="col-md-4">
+                          	<div class="resources-col">
+                           	 {% if block.settings.icon_image != blank %}
+                              	<div class="resources-image">
+                                  <img src="{{ block.settings.icon_image | img_url: 'master' }}" alt="{{ block.settings.icon_image.alt }}" class="img-fluid" />
+                              	</div>  
+							 {% endif %}
+                             {% if block.settings.block_heading != blank or block.settings.block_sub_heading != blank %} 
+                              <div class="resources_content_div" style="background:{{ block.settings.color_bg }};color:{{ block.settings.text_color }}">
+                                 {% if block.settings.block_heading != blank %}                                 
+                                		<h3 style="color:{{ block.settings.text_color }}">{{ block.settings.block_heading }}</h3> 
+                                 {% endif %}
+                                 {% if block.settings.block_sub_heading != blank %}                                 
+                                		<p style="color:{{ block.settings.text_color }}">{{ block.settings.block_sub_heading }}</p> 
+                                 {% endif %}
+                                {% if block.settings.button_link != blank %}
+                                <span><a style="color:{{ block.settings.text_color }}" href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a> <i class="fa fa-angle-right"></i></span>
+                                {% endif%}
+                              </div>  
+                           	{% endif %}
+                          	</div>  
+                   		 </div>  
+                    {% endfor %}   
+                  </div>  
+                </div>  
+            {% endif %}
+      </div>
+    </div>
+</section>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Resources",
+    "settings": [
+         {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+          },
+          {
+            "id": "sub_heading",
+            "type": "textarea",
+            "label": "Content"
+          }
+	],
+	"blocks": [
+        {
+          "type": "resources-item",
+          "name": "Resource",
+          "settings": [
+			{
+              "type": "image_picker",
+              "id": "icon_image",
+              "label": "Image"    
+			},
+			{
+              "id": "block_heading",
+              "type": "text",
+              "label": "Heading"
+            },
+            {
+              "id": "block_sub_heading",
+              "type": "textarea",
+              "label": "Content"
+            },
+			{
+              "type": "text",
+              "id": "button_label",
+              "label": "Button Label"    
+			},
+			{
+              "type": "text",
+              "id": "button_link",
+              "label": "Button Link"    
+			},	
+			{
+              "type": "color",
+              "id": "color_bg",
+              "label": "Background",
+              "default": "#ffffff"
+            },
+			{
+              "type": "color",
+              "id": "text_color",
+              "label": "Content Color",
+              "default": "#000000"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

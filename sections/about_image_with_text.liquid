@@ -1,0 +1,97 @@
+{% if section.settings.banner_subheading != blank and section.settings.section_image != blank %}
+	<div class="about_half_image_with_text" style="background:{{section.settings.background}};color:{{section.settings.banner_font}};">
+		<div class="container">
+      		<div class="row align-items-center">
+              <div class="col-md-6">         
+                 <h2 class="hide-on-desktop text-head-mobile">{{ section.settings.banner_heading }}</h2>	
+                  {% if section.settings.section_image != blank %}
+                      <div class="about_half_image">
+                        <img src="{{ section.settings.section_image | img_url:"master" }}" />                        
+                        {% if section.settings.section_logo != blank %}
+                            <div class="about_logo_image">
+                              <img src="{{ section.settings.section_logo | img_url:"master" }}" />
+                            </div>
+                        {% endif %}  
+                      </div>
+                  {% endif %}  
+              </div>
+              <div class="col-md-6">
+              	  <div class="about_half_image_content">    
+                      <h2 class="hide-on-mobile">{{ section.settings.banner_heading }}</h2>
+                      {{ section.settings.banner_subheading }}	
+                      {% if section.settings.image_after_content != blank %}
+                            <div class="content_logo_image">
+                              <img src="{{ section.settings.image_after_content | img_url:"master" }}" />
+                            </div>
+                      {% endif %}	
+                      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                            <div class="content_link">
+                              <a href="{{ section.settings.button_link}}">{{ section.settings.button_label}}</a>
+                            </div>
+                      {% endif %}
+                  </div>  
+              </div>
+          	</div>  
+      	</div>  
+	</div>  
+{% endif %}
+{% schema %}
+  {
+    "name": "Image With Content",
+    "settings": [
+		{
+			"type":"text",
+			"id":"banner_heading",
+			"label":"Heading"
+        },
+		{
+			"type":"richtext",
+			"id":"banner_subheading",
+			"label":"Sub heading"
+        },
+		{
+			"type":"image_picker",
+			"id":"image_after_content",
+			"label":"Logo after content"
+        },
+		{
+			"type":"text",
+			"id":"button_label",
+			"label":"Button Label"
+        },
+		{
+			"type":"text",
+			"id":"button_link",
+			"label":"Button Link"
+        },
+		{
+			"type":"image_picker",
+			"id":"section_image",
+			"label":"Image"
+        },
+		{
+			"type":"image_picker",
+			"id":"section_logo",
+			"label":"Logo above image"
+        },
+		{
+			"type":"color",
+			"id":"background",
+			"label":"Background Color",
+			"default":"#fff"
+        },
+		{
+			"type":"color",
+			"id":"banner_font",
+			"label":"Banner Font Color",
+			"default":"#000"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

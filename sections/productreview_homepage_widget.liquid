@@ -1,0 +1,42 @@
+{% if current_tags.first == blank %}
+  {% if section.settings.custom_text_title != blank or section.settings.custom_text_body != blank %}
+      <section class="ProductReviewwidget_section">
+          <div class="container">
+              <div class="custom-text-section">
+                {% if section.settings.custom_text_title != blank %}
+                  <h2> {{ section.settings.custom_text_title }} </h2>
+                {% endif %}
+                {% if section.settings.custom_text_body != blank %}
+                   <div>{{ section.settings.custom_text_body }}</div>
+                {% endif %}
+              </div>	
+          </div>  
+      </section>  
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+"name": "ProductReview widget",
+"settings": [
+{
+"id": "custom_text_title",
+"type": "text",
+"label": "Title",
+"default": "Reviews on ProductReview.com.au"
+},
+{
+"id": "custom_text_body",
+"type": "html",
+"label": "Add widget code below",
+"default": "<p>Add your widget code here</p>"
+}
+],
+"presets": [
+{
+"name": "ProductReview widget",
+"category": "Custom"
+}
+]
+}
+{% endschema %}
